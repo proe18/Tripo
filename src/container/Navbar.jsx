@@ -4,22 +4,25 @@ import { FiMenu } from 'react-icons/fi'
 import { CgClose, CgChevronUp, CgChevronDown } from 'react-icons/cg'
 import { Logo } from '../components'
 import { Navbar } from '../components'
-import { DropDown } from '../container';
+import { DropDown } from '../container'
 import * as ROUTES from '../constants/routes'
 
 const NavBar = () => {
     const theme = useTheme()
     const [dropDown, setDropDown] = useState(false)
     const [showMobileMenu, setShowMobileMenu] = useState(false)
-    const [mobileDropDown, setMobileDropDown] = useState(false)
+    const checkMobile = window.innerWidth <= +theme.breakPoint;
 
     //Handle show and hidden navbar dropdown if device is PC or Tablet
-    const handleMouseEnter = () => setDropDown(!window.innerWidth <= +theme.breakPoint && !dropDown)
-    const handleMouseLeave = () => setDropDown(!window.innerWidth <= +theme.breakPoint && !dropDown)
+    const handleMouseEnter = () => setDropDown(!checkMobile && !dropDown)
+    const handleMouseLeave = () => setDropDown(!checkMobile && !dropDown)
     //Handle show and hidden navbar menu on mobile
-    const handleClickMobileMenu = () => setShowMobileMenu(window.innerWidth <= +theme.breakPoint && !showMobileMenu)
-    //Handle change icon of item DropDown
-    const handleClickMobileDropDown = () => setMobileDropDown(!mobileDropDown)
+    const handleClickMobileMenu = () => {
+        setShowMobileMenu(window.innerWidth <= +theme.breakPoint && !showMobileMenu)
+        setDropDown(false)
+    }
+    //Handle show and hidden navbar dropdown if device is mobile and change icon
+    const handleClickMobileDropDown = () => setDropDown(checkMobile && !dropDown)
 
     return (
         <Navbar.Container mobileMenu={showMobileMenu}>
@@ -34,29 +37,24 @@ const NavBar = () => {
 
                 <Navbar.Nav mobileMenu={showMobileMenu}>
                     <Navbar.Item onClick={handleClickMobileMenu}>
-                        <Navbar.Link
-                            index='true'
-                            to={ROUTES.HOME}
-                        >
-                            Home
-                        </Navbar.Link>
+                        <Navbar.Link index='true' to={ROUTES.HOME}>Home</Navbar.Link>
                     </Navbar.Item>
                     <Navbar.Item
+                        dropDown={dropDown}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
+                        onClick={handleClickMobileDropDown}
                     >
-                        <Navbar.NavDropDown
-                            onClick={handleClickMobileDropDown}
-                        >
+                        <Navbar.NavDropDown>
                             {!showMobileMenu
                                 ? 'Games'
                                 : <Navbar.DropDownIcon>
                                     <span>Games</span>
-                                    {!mobileDropDown ? <CgChevronDown /> : <CgChevronUp />}
+                                    {!dropDown ? <CgChevronDown /> : <CgChevronUp />}
                                 </Navbar.DropDownIcon>
                             }
                         </Navbar.NavDropDown>
-                        {dropDown && <DropDown mobileMenu={showMobileMenu} />}
+                        {dropDown && <DropDown handleClickMobileMenu={handleClickMobileMenu}/>}
                     </Navbar.Item>
                     <Navbar.Item onClick={handleClickMobileMenu}>
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>

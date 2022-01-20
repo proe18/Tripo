@@ -17,18 +17,29 @@ export const Inner = styled.div`
     }
 
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
-        position: relative;
-        /* ${({ mobileMenu }) => mobileMenu && 'width: 100%;'} */
+        width: 100%;
+        max-width: 100vw;
+        position: unset;
+
+        &::before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: unset;
+        }
     }
 `
 
 export const Menu = styled.ul`
-    width: 100%;
-    max-width: 104px;
     list-style: none;
     overflow: hidden;
     border-radius: ${({ theme }) => theme.borderRadius.radius1};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
+
+    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        border-radius: unset;
+        box-shadow: unset;
+    }
 `
 
 export const Item = styled.li`
@@ -46,5 +57,12 @@ export const Item = styled.li`
 
     &:hover ${Link} {
         color: ${({ theme }) => theme.color.whiteColor};
+    }
+
+    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        ${Link} {
+            font-size: 1.8rem;
+            padding-left: 50px;
+        }
     }
 `

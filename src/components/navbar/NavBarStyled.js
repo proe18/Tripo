@@ -1,5 +1,16 @@
-import styled from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components';
 import { NavLink as ReactRouerNavLink } from 'react-router-dom';
+
+const slipDown = keyframes`
+    0% {
+        transform: translateY(-150%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+`
 
 export const Container = styled.div`
     width: 100%;
@@ -11,7 +22,7 @@ export const Container = styled.div`
     
     //Mobile device
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
-        width: 80%;
+        width: 90%;
         align-items: flex-start;
         ${({ mobileMenu }) => mobileMenu && 'width: 100%;'}
     }
@@ -30,14 +41,14 @@ export const Inner = styled.div`
     //Mobile device
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         ${({ mobileMenu }) => mobileMenu
-            ? 
-                `width: 100vw;
+        ?
+        `width: 100vw;
                 height: 100vh;
                 overflow: hidden;`
-            : 
-                `width: 100%;
+        :
+        `width: 100%;
                 height: 50px;`
-        }
+    }
         position: relative;
         z-index: 10;
         background-color: ${({ theme }) => theme.color.whiteColor};
@@ -64,9 +75,11 @@ export const Nav = styled.ul`
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         font-size: 2.6rem;
         display: ${({ mobileMenu }) => !mobileMenu && 'none'};
+        will-change: animation;
+        animation: 0.6s linear ${slipDown};
         flex-direction: column;
         justify-content: flex-start;
-        margin-top: ${({mobileMenu}) => mobileMenu && '95px'};
+        margin-top: ${({ mobileMenu }) => mobileMenu && '95px'};
         position: absolute;
         top: 0;
         max-width: 100vw;
@@ -93,6 +106,7 @@ export const Item = styled.li`
     line-height: 60px;
     cursor: pointer;
     text-align: center;
+    will-change: transition;
     transition: ease-in-out 0.28s;
 
     ${Link}.active {
@@ -110,6 +124,13 @@ export const Item = styled.li`
 
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         text-align: left;
+        will-change: transition;
+        transition: ease-in-out 0.3s;
+        ${({ dropDown }) => dropDown &&
+            `line-height: nomal;
+            max-height: 182px;`
+        }
+
         &:hover:not(:nth-child(2)) ${Link} {
             color: ${({ theme }) => theme.color.primaryColor};
         }
@@ -128,6 +149,7 @@ export const NavDropDown = styled.div`
     //Mobile device
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         padding-left: 30px;
+        position: unset;
     }
 `
 
@@ -154,7 +176,7 @@ export const Icon = styled.div`
         display: block;
         position: absolute;
         top: 0;
-        right: 5%;
+        ${({ mobileMenu }) => mobileMenu && 'right: 5%;'}
         z-index: 11;
     }
     //Hidden icon on PC and Tablet device
