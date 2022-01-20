@@ -1,0 +1,7 @@
+export const HOME = '/'
+export const CAREERS ='/careers'
+export const ABOUT = '/about'
+export const CONTACT = '/contact'
+export const KIPON = '/kipon'
+export const ROBOTRIX = '/robotrix'
+export const TREASURE = '/treasure-box'

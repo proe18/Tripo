@@ -1,0 +1,6 @@
+export { default as Home } from './home'
+export { default as Kipon } from './kipon'
+export { default as Robotrix } from './robotrix'
+export { default as TreasureBox } from './treasureBox'
+export { default as About } from './about'
+export { default as Careers } from './careers'
