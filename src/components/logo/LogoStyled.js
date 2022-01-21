@@ -15,6 +15,10 @@ export const LogoStyled = styled.div`
         font-size: 2.2rem;
         display: ${({mobileMenu}) => mobileMenu && 'none'};
     }
+
+    @media (max-width: 280px) {
+        font-size: 1.8rem;
+    }
 `
 
 export const LogoLink = styled(Link)`
@@ -29,5 +33,9 @@ export const LogoLink = styled(Link)`
 
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         padding: 12px 24px;
+    }
+
+    @media (max-width: 280px) {
+        padding: 13px 24px;
     }
 `

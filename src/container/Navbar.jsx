@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTheme } from 'styled-components'
 import { FiMenu } from 'react-icons/fi'
 import { CgClose, CgChevronUp, CgChevronDown } from 'react-icons/cg'
@@ -11,18 +11,30 @@ const NavBar = () => {
     const theme = useTheme()
     const [dropDown, setDropDown] = useState(false)
     const [showMobileMenu, setShowMobileMenu] = useState(false)
-    const checkMobile = window.innerWidth <= +theme.breakPoint;
 
     //Handle show and hidden navbar dropdown if device is PC or Tablet
-    const handleMouseEnter = () => setDropDown(!checkMobile && !dropDown)
-    const handleMouseLeave = () => setDropDown(!checkMobile && !dropDown)
+    const handleMouseEnter = () => setDropDown(window.innerWidth > 1368 && !dropDown)
+    const handleMouseLeave = () => setDropDown(window.innerWidth > 1368 && !dropDown)
     //Handle show and hidden navbar menu on mobile
     const handleClickMobileMenu = () => {
         setShowMobileMenu(window.innerWidth <= +theme.breakPoint && !showMobileMenu)
         setDropDown(false)
     }
     //Handle show and hidden navbar dropdown if device is mobile and change icon
-    const handleClickMobileDropDown = () => setDropDown(checkMobile && !dropDown)
+    const handleClickMobileDropDown = () => setDropDown(window.innerWidth <= 1368 && !dropDown)
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > +theme.breakPoint) {
+                setShowMobileMenu(false)
+                setDropDown(false)
+            }
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     return (
         <Navbar.Container mobileMenu={showMobileMenu}>
@@ -41,6 +53,7 @@ const NavBar = () => {
                     </Navbar.Item>
                     <Navbar.Item
                         dropDown={dropDown}
+                        mobileMenu={showMobileMenu}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                         onClick={handleClickMobileDropDown}

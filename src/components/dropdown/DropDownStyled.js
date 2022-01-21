@@ -65,4 +65,11 @@ export const Item = styled.li`
             padding-left: 50px;
         }
     }
+
+    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) and (min-height: 1368px) {
+        ${Link} {
+            font-size: 2rem;
+            padding-left: 50px;
+        }
+    }
 `

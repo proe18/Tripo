@@ -42,12 +42,12 @@ export const Inner = styled.div`
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         ${({ mobileMenu }) => mobileMenu
         ?
-        `width: 100vw;
-                height: 100vh;
-                overflow: hidden;`
+            `width: 100vw;
+            height: 100vh;
+            overflow: hidden;`
         :
-        `width: 100%;
-                height: 50px;`
+            `width: 100%;
+            height: 50px;`
     }
         position: relative;
         z-index: 10;
@@ -76,7 +76,7 @@ export const Nav = styled.ul`
         font-size: 2.6rem;
         display: ${({ mobileMenu }) => !mobileMenu && 'none'};
         will-change: animation;
-        animation: 0.6s linear ${slipDown};
+        animation: 0.67s linear ${({ mobileMenu }) => mobileMenu && slipDown};
         flex-direction: column;
         justify-content: flex-start;
         margin-top: ${({ mobileMenu }) => mobileMenu && '95px'};
@@ -85,13 +85,36 @@ export const Nav = styled.ul`
         max-width: 100vw;
         max-height: 100vh;
     }
+
+    @media (min-height: 280px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        margin-top: ${({ mobileMenu }) => mobileMenu && '55px'};
+        font-size: 2rem;
+        overflow: scroll;
+    }   
+
+    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) and (min-height: 1368px) {
+        font-size: 2.2rem;
+    }
+
+    @media (min-height: 360px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        margin-top: ${({ mobileMenu }) => mobileMenu && '55px'};        
+    }
+
+    @media (min-height: 720px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        animation: 0.86s linear ${({ mobileMenu }) => mobileMenu && slipDown};
+    }
+
+    @media (min-height: 1024px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        animation: 0.96s linear ${({ mobileMenu }) => mobileMenu && slipDown};
+    }
 `
 
 export const Link = styled(ReactRouerNavLink)`
     display: block;
     text-decoration: none;
     color: ${({ theme }) => theme.color.textColor};
-    transition: ease-in-out 0.28s;
+    will-change: transition;
+    transition: all linear 0.28s;
 
     //Mobile device
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
@@ -105,9 +128,10 @@ export const Item = styled.li`
     max-height: 60px;
     line-height: 60px;
     cursor: pointer;
-    text-align: center;
-    will-change: transition;
-    transition: ease-in-out 0.28s;
+    ${({mobileMenu}) => !mobileMenu && `
+        text-align: center;
+        transition: all linear 0.28s;
+    `}
 
     ${Link}.active {
         color: ${({ theme }) => theme.color.whiteColor};
@@ -124,11 +148,8 @@ export const Item = styled.li`
 
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         text-align: left;
-        will-change: transition;
-        transition: ease-in-out 0.3s;
         ${({ dropDown }) => dropDown &&
-            `line-height: nomal;
-            max-height: 182px;`
+            `max-height: 162px;`
         }
 
         &:hover:not(:nth-child(2)) ${Link} {
@@ -138,6 +159,19 @@ export const Item = styled.li`
         ${Link}.active {
             color: ${({ theme }) => theme.color.primaryColor};
             background-color: ${({ theme }) => theme.color.whiteColor};
+        }
+    }
+
+    @media (min-height: 280px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        max-height: 40px;
+        ${({ dropDown }) => dropDown &&
+            `max-height: 135px;`
+        }   
+    }
+
+    @media (min-height: 360px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        ${({ dropDown }) => dropDown &&
+            `max-height: 152px;`
         }
     }
 `
@@ -169,6 +203,8 @@ export const Icon = styled.div`
         font-size: 2.6rem;
         padding-top: 5px;
         color: ${({ theme, mobileMenu }) => mobileMenu && theme.color.whiteColor};
+        will-change: transition;
+        transition: all 0.3s linear;
     }
 
     //Show icon on mobile device
