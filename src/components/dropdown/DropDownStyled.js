@@ -60,6 +60,7 @@ export const Item = styled.li`
     }
 
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        line-height: 35px;
         ${Link} {
             font-size: 1.8rem;
             padding-left: 50px;

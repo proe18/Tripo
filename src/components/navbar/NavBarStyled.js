@@ -24,7 +24,10 @@ export const Container = styled.div`
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         width: 90%;
         align-items: flex-start;
-        ${({ mobileMenu }) => mobileMenu && 'width: 100%;'}
+        ${({ mobileMenu }) => mobileMenu && `
+            width: 100%;
+            transform: translateY(23px);
+        `}
     }
 
     //PC and Tablet device
@@ -41,14 +44,16 @@ export const Inner = styled.div`
     //Mobile device
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         ${({ mobileMenu }) => mobileMenu
-        ?
-            `width: 100vw;
+        ?`
+            width: 100vw;
             height: 100vh;
-            overflow: hidden;`
-        :
-            `width: 100%;
-            height: 50px;`
-    }
+            overflow: hidden;
+            margin-top: -23px;
+        `
+        :`
+            width: 100%;
+            height: 50px;
+        `}
         position: relative;
         z-index: 10;
         background-color: ${({ theme }) => theme.color.whiteColor};
@@ -148,9 +153,7 @@ export const Item = styled.li`
 
     @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
         text-align: left;
-        ${({ dropDown }) => dropDown &&
-            `max-height: 162px;`
-        }
+        ${({ dropDown }) => dropDown && `max-height: 182px;`}
 
         &:hover:not(:nth-child(2)) ${Link} {
             color: ${({ theme }) => theme.color.primaryColor};
@@ -163,16 +166,13 @@ export const Item = styled.li`
     }
 
     @media (min-height: 280px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+        line-height: 40px;
         max-height: 40px;
-        ${({ dropDown }) => dropDown &&
-            `max-height: 135px;`
-        }   
+        ${({ dropDown }) => dropDown && `max-height: 175px;`}   
     }
 
     @media (min-height: 360px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
-        ${({ dropDown }) => dropDown &&
-            `max-height: 152px;`
-        }
+        ${({ dropDown }) => dropDown && `max-height: 175px;`}
     }
 `
 
