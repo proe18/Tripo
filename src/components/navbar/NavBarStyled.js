@@ -70,9 +70,10 @@ export const Nav = styled.ul`
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
+    overflow: hidden;
+    background-color: #ffff;
     font-family: ${({ theme }) => theme.font.roboto};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
-    overflow: hidden;
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
 
