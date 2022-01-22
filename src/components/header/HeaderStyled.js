@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as ReactRouterLink } from 'react-router-dom';
 import BackGround from '../../images/background_home_1.jpg'
 
 export const Background = styled.header`
@@ -17,25 +18,28 @@ export const Wrapper = styled.div`
 `
 
 export const Heading = styled.div`
-    padding-top: 185px;
-    color: ${({theme}) => theme.color.textColor};
+    padding: ${({ padding }) => padding};
+    color: ${({ textColor }) => textColor};
+    position: ${({ position }) => position};
+    left: ${({left}) => left};
+    bottom: ${({bottom}) => bottom};
 `
 
 export const Title = styled.h1`
-    font-size: 8rem;
-    font-family: 'Suez One', serif;
+    font-size: ${({ fontSizeTitle }) => fontSizeTitle};
+    font-family: ${({ fontFamilyTitle }) => fontFamilyTitle};
 `
 
 export const Text = styled.p`
-    font-size: 2.4rem;
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 45px;
+    font-size: ${({ fontSizeText }) => fontSizeText};
+    font-family: ${({ fontFamilyText }) => fontFamilyText};
+    margin: ${({ margin }) => margin};
 `
 
 export const Platforms = styled.div`
     width: 100%;
     height: 100%;
-    max-width: 290px;
+    max-width: 305px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,13 +48,74 @@ export const Platforms = styled.div`
 export const Image = styled.img`
     width: 100%;
     height: 100%;
-    max-width: 135px;
-    max-height: 45px;
+    max-width: ${({ maxWidth }) => maxWidth};
+    min-height: ${({ minHeight }) => minHeight};
     object-fit: cover;
 `
 
-export const Games = styled.div``
+export const Games = styled.div`
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 256px;
+`
 
-export const Game = styled.div``
+export const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(180deg, transparent ,rgb(188, 52, 41));
+    will-change: transition;
+    transition: background-image ease-out 0.9s;
+    -moz-transition: background-image ease-out 0.9s;
+    -webkit-transition: background-image ease-out 0.9s;
+`
 
-export const Overlay = styled.div``
+export const Game = styled(ReactRouterLink)`
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 398px;
+    text-decoration: none;
+    position: relative;
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
+    overflow: hidden;
+
+    &:hover ${Overlay} {
+        background: transparent;
+    }
+
+    &:hover ${Heading} {
+        display: none;
+    }
+`
+
+export const Link = styled.a`
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+`
+
+export const More = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    min-height: 398px;
+    overflow: hidden;
+    position: relative;
+    background-color: yellow;
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
+
+    &:hover ${Overlay} {
+        background: transparent;
+    }
+
+    &:hover ${Heading} {
+        display: none;
+    }
+`

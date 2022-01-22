@@ -1,5 +1,4 @@
-import AppStore from "../images/app_store.jpg"
-import GooglePlay from "../images/google_play.jpg"
+import { PlatForms } from './Platform_data'
 import Kipon from "../images/kipon_avatar.jpg"
 import Robotrix from "../images/robotrix_avatar.jpg"
 import Treasure from "../images/treasure_avatar.jpg"
@@ -11,56 +10,42 @@ import MainImage from "../images/home_1.jpg"
 import SubImage from "../images/home_2.jpg"
 import OurGameImage from "../images/home_3.jpg"
 import JoinOurImage from "../images/home_4.jpg"
+import * as ROUTES from '../constants/routes'
 
 export const homeData = {
     header: {
         title: "Made to Be Played",
         text: "The Very Best in Mobile Gaming",
-        platForms: [
+        platForms: PlatForms,
+        listGames: [
             {
-                img: AppStore,
-                alt: "App Store"
+                title: "Kipon",
+                path: ROUTES.KIPON,
+                text: "Casual - Free",
+                img: KiponBg,
+                avatar: Kipon,
+                description: `I'm a paragraph. Click here to add your own text and edit me.
+                ’m a great place for you to tell a story and let your users know a little more about you.`
             },
             {
-                img: GooglePlay,
-                alt: "Google Play"
-            }
+                title: "Robotrix",
+                path: ROUTES.ROBOTRIX,
+                text: "RPG - Free",
+                img: RobotrixBg,
+                avatar: Robotrix,
+                description: `I'm a paragraph. Click here to add your own text and edit me.
+                I’m a great place for you to tell a story and let your users know a little more about you.`
+            },
+            {
+                title: "Treasure Box",
+                path: ROUTES.TREASURE,
+                text: "Adventure - Free",
+                img: TreasureBg,
+                avatar: Treasure,
+                description: `I'm a paragraph. Click here to add your own text and edit me.
+                I’m a great place for you to tell a story and let your users know a little more about you.`
+            },
         ],
-        listGames: {
-            games: [
-                {
-                    title: "Kipon",
-                    path: "/kipon",
-                    cName: "dropdown-link",
-                    subtitle: "Casual - Free",
-                    img: KiponBg,
-                    avatar: Kipon,
-                    description: `I'm a paragraph. Click here to add your own text and edit me.
-                I’m a great place for you to tell a story and let your users know a little more about you.`
-                },
-                {
-                    title: "Robotrix",
-                    path: "/robotrix",
-                    cName: "dropdown-link",
-                    subtitle: "RPG - Free",
-                    img: RobotrixBg,
-                    avatar: Robotrix,
-                    description: `I'm a paragraph. Click here to add your own text and edit me.
-                I’m a great place for you to tell a story and let your users know a little more about you.`
-                },
-                {
-                    title: "Treasure Box",
-                    path: "/treasure-box",
-                    cName: "dropdown-link",
-                    subtitle: "Adventure - Free",
-                    img: TreasureBg,
-                    avatar: Treasure,
-                    description: `I'm a paragraph. Click here to add your own text and edit me.
-                I’m a great place for you to tell a story and let your users know a little more about you.`
-                },
-            ],
-            gameTitle: "Explore Our Games"
-        },
     },
     about: {
         title: "About Tripo",

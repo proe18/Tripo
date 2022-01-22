@@ -5,10 +5,12 @@ import {
     Title,
     Text,
     Platforms,
+    Link,
     Image,
     Games,
     Game,
-    Overlay
+    Overlay,
+    More
 } from './HeaderStyled'
 
 const Header = ({ children, ...restProps }) => {
@@ -47,6 +49,12 @@ Header.Platforms = function HeaderPlatforms({ children, ...restProps }) {
     )
 }
 
+Header.Link = function HeaderLink({children, ...restProps}) {
+    return (
+        <Link {...restProps}>{children}</Link>
+    )
+}
+
 Header.Image = function HeaderImage({ children, ...restProps }) {
     return (
         <Image {...restProps}>{children}</Image>
@@ -68,6 +76,12 @@ Header.Game = function HeaderGame({ children, ...restProps }) {
 Header.Overlay = function HeaderOverlay({ children, ...restProps }) {
     return (
         <Overlay {...restProps}>{children}</Overlay>
+    )
+}
+
+Header.More = function HeaderMore({ children, ...restProps }) {
+    return (
+        <More {...restProps}>{children}</More>
     )
 }
 
