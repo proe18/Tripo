@@ -8,16 +8,16 @@ export const LogoStyled = styled.div`
     max-height: 60px;
     text-align: center;
     font-size: 2.6rem;
+    overflow: hidden;
+    box-shadow: ${({theme}) => theme.shadow.boxShadow};
+    border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
+    border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         max-width: 140px;
         max-height: 50px;
         font-size: 2.2rem;
         display: ${({mobileMenu}) => mobileMenu && 'none'};
-    }
-
-    @media (max-width: 280px) {
-        font-size: 1.8rem;
     }
 `
 
@@ -27,11 +27,9 @@ export const LogoLink = styled(Link)`
     text-decoration: none;
     font-family: ${({theme}) => theme.font.caveat};
     color: ${({ theme }) => theme.color.whiteColor};
-    border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
-    border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
     background-color: ${({ theme }) => theme.color.primaryColor};
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         padding: 12px 24px;
     }
 

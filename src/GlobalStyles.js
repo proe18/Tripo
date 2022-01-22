@@ -26,8 +26,7 @@ export const theme = {
         roboto: 'Roboto, sans-serif',
         caveat: 'Caveat, cursive'
     },
-    breakPoint: '1000'
-    
+    breakPoint: '1000',
 }
 
 export const GlobalStyles = createGlobalStyle`

@@ -16,7 +16,7 @@ export const Inner = styled.div`
         top: -7px;
     }
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         width: 100%;
         max-width: 100vw;
         position: unset;
@@ -36,7 +36,7 @@ export const Menu = styled.ul`
     border-radius: ${({ theme }) => theme.borderRadius.radius1};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         border-radius: unset;
         box-shadow: unset;
     }
@@ -59,7 +59,7 @@ export const Item = styled.li`
         color: ${({ theme }) => theme.color.whiteColor};
     }
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         line-height: 35px;
         ${Link} {
             font-size: 1.8rem;
@@ -67,7 +67,7 @@ export const Item = styled.li`
         }
     }
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) and (min-height: 1368px) {
+    @media (max-width: 1000px) and (min-height: 1368px) {
         ${Link} {
             font-size: 2rem;
             padding-left: 50px;

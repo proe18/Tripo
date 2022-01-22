@@ -21,7 +21,7 @@ export const Container = styled.div`
     margin: 0 auto;
     
     //Mobile device
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         width: 90%;
         align-items: flex-start;
         ${({ mobileMenu }) => mobileMenu && `
@@ -31,29 +31,31 @@ export const Container = styled.div`
     }
 
     //PC and Tablet device
-    @media (min-width: ${({ theme }) => `${+theme.breakPoint + 1}px`}) {
+    @media (min-width: 1001px) {
         width: 90%;
     }
 `
 
 export const Inner = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: flex-end;
     
     //Mobile device
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         ${({ mobileMenu }) => mobileMenu
-        ?`
+        ? `
             width: 100vw;
             height: 100vh;
-            overflow: hidden;
             margin-top: -23px;
         `
-        :`
-            width: 100%;
-            height: 50px;
+        : `
+            max-width: 50px;
+            min-height: 50px;
         `}
+        border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
+        border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
         position: relative;
         z-index: 10;
         background-color: ${({ theme }) => theme.color.whiteColor};
@@ -78,7 +80,7 @@ export const Nav = styled.ul`
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
 
     //Mobile device
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         font-size: 2.6rem;
         display: ${({ mobileMenu }) => !mobileMenu && 'none'};
         will-change: animation;
@@ -86,31 +88,32 @@ export const Nav = styled.ul`
         flex-direction: column;
         justify-content: flex-start;
         margin-top: ${({ mobileMenu }) => mobileMenu && '95px'};
+        box-shadow: none;
         position: absolute;
         top: 0;
         max-width: 100vw;
         max-height: 100vh;
     }
 
-    @media (min-height: 280px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (min-height: 280px) and (max-width: 1000px) {
         margin-top: ${({ mobileMenu }) => mobileMenu && '55px'};
         font-size: 2rem;
         overflow: scroll;
     }   
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) and (min-height: 1368px) {
+    @media (max-width: 1000px) and (min-height: 1368px) {
         font-size: 2.2rem;
     }
 
-    @media (min-height: 360px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (min-height: 360px) and (max-width: 1000px) {
         margin-top: ${({ mobileMenu }) => mobileMenu && '55px'};        
     }
 
-    @media (min-height: 720px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (min-height: 720px) and (max-width: 1000px) {
         animation: 0.86s linear ${({ mobileMenu }) => mobileMenu && slipDown};
     }
 
-    @media (min-height: 1024px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (min-height: 1024px) and (max-width: 1000px) {
         animation: 0.96s linear ${({ mobileMenu }) => mobileMenu && slipDown};
     }
 `
@@ -134,7 +137,7 @@ export const Item = styled.li`
     max-height: 60px;
     line-height: 60px;
     cursor: pointer;
-    ${({mobileMenu}) => !mobileMenu && `
+    ${({ mobileMenu }) => !mobileMenu && `
         text-align: center;
         transition: all linear 0.28s;
     `}
@@ -152,7 +155,7 @@ export const Item = styled.li`
         color: ${({ theme }) => theme.color.whiteColor};
     }
 
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         text-align: left;
         ${({ dropDown }) => dropDown && `max-height: 182px;`}
 
@@ -166,13 +169,13 @@ export const Item = styled.li`
         }
     }
 
-    @media (min-height: 280px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (min-height: 280px) and (max-width: 1000px) {
         line-height: 40px;
         max-height: 40px;
         ${({ dropDown }) => dropDown && `max-height: 175px;`}   
     }
 
-    @media (min-height: 360px) and (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (min-height: 360px) and (max-width: 1000px) {
         ${({ dropDown }) => dropDown && `max-height: 175px;`}
     }
 `
@@ -182,7 +185,7 @@ export const NavDropDown = styled.div`
     position: relative;
 
     //Mobile device
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         padding-left: 30px;
         position: unset;
     }
@@ -209,7 +212,7 @@ export const Icon = styled.div`
     }
 
     //Show icon on mobile device
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         display: block;
         position: absolute;
         top: 0;
