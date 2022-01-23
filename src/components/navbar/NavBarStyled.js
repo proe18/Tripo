@@ -40,9 +40,26 @@ export const Inner = styled.div`
     height: 100%;
     display: flex;
     justify-content: flex-end;
+
+    @media (min-width: 768px) and (max-width: 1000px) {
+        ${({ mobileMenu }) => mobileMenu
+        ? `
+            width: 100vw;
+            height: 100vh;
+        `
+        : `
+            max-width: 60px;
+            min-height: 60px;
+        `}
+        border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
+        border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
+        position: relative;
+        z-index: 10;
+        background-color: ${({ theme }) => theme.color.whiteColor};
+    }
     
     //Mobile device
-    @media (max-width: 1000px) {
+    @media (max-width: 767px) {
         ${({ mobileMenu }) => mobileMenu
         ? `
             width: 100vw;
@@ -195,10 +212,10 @@ export const NavDropDown = styled.div`
 export const Icon = styled.div`
     width: 100%;
     height: 100%;
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 60px;
+    max-height: 60px;
     text-align: center;
-    line-height: 50px;
+    line-height: 60px;
     background-color: ${({ theme, mobileMenu }) => !mobileMenu ? theme.color.whiteColor : theme.color.primaryColor};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
@@ -210,6 +227,12 @@ export const Icon = styled.div`
         color: ${({ theme, mobileMenu }) => mobileMenu && theme.color.whiteColor};
         will-change: transition;
         transition: all 0.3s linear;
+    }
+
+    @media (min-width: 280px) and (max-width: 767px) {
+        max-width: 50px;
+        max-height: 50px;
+        line-height: 50px;
     }
 
     //Show icon on mobile device

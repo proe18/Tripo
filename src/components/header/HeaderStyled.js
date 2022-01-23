@@ -8,11 +8,35 @@ export const Background = styled.header`
     max-height: 800px;
     background: url(${BackGround}) no-repeat;
     background-size: cover;
-    display: ${({mobileMenu}) => mobileMenu && 'none'};
+    display: ${({ mobileMenu }) => mobileMenu && 'none'};
 
-    @media (max-width: 1000px) {
+    @media (max-width: 280px) {
         max-height: 315px;
         background-position: 50% 0;
+    }
+
+    @media (min-width: 281px) and (max-width: 376px) {
+        max-height: 380px;
+        background-position: 46% 0;
+    }
+
+    @media (min-width: 376px) and (max-width: 415px) {
+        max-height: 390px;
+        background-position: 40% 0;
+    }
+
+    @media (min-width: 416px) and (max-width: 540px) {
+        max-height: 450px;
+        background-position: 30% 0;
+    }
+
+    @media (min-width: 768px) and (max-width: 912px) {
+        max-height: 640px;
+        background-position: 32% 0;
+    }
+
+    @media (min-width: 1001px) and (max-width: 1286px) {
+        background-position: 22% 0;
     }
 `
 
@@ -22,7 +46,11 @@ export const Wrapper = styled.div`
     max-width: 1320px;
     margin: 0 auto;
 
-    @media (max-width: 280px) {
+    @media (max-width: 1000px) {
+        width: 90%;
+    }
+
+    @media (min-width: 1001px) {
         width: 90%;
     }
 `
@@ -31,7 +59,7 @@ export const Heading = styled.div`
     padding-top: 185px;
     color: ${({ theme }) => theme.color.textColor};
 
-    @media (max-width: 280px) {
+    @media (max-width: 415px) {
         padding-top: 70px;
     }
 `
@@ -45,6 +73,21 @@ export const Title = styled.h1`
         width: 80%;
         font-size: 4rem;
     }
+
+    @media (min-width: 281px) and (max-width: 376px) {
+        width: 80%;
+        font-size: 5.5rem;
+    }
+
+    @media (min-width: 376px) and (max-width: 541px) {
+        width: 80%;
+        font-size: 6rem;
+    }
+
+    @media (min-width: 541px) and (max-width: 768px) {
+        width: 100%;
+        font-size: 7rem;
+    }
 `
 
 export const Text = styled.p`
@@ -54,6 +97,16 @@ export const Text = styled.p`
 
     @media (max-width: 280px) {
         font-size: 1.6rem;
+        margin: 8px 0 15px;
+    }
+
+    @media (min-width: 281px) and (max-width: 376px) {
+        font-size: 1.9rem;
+        margin: 8px 0 15px;
+    }
+
+    @media (min-width: 376px) and (max-width: 415px) {
+        font-size: 2rem;
         margin: 8px 0 15px;
     }
 `
@@ -66,7 +119,7 @@ export const Platforms = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    @media (max-width: 280px) {
+    @media (max-width: 415px) {
         max-width: 235px;
     }
 `
@@ -92,7 +145,7 @@ export const Link = styled.a`
         max-width: 152px;
     }
 
-    @media (max-width: 280px) {
+    @media (max-width: 415px) {
         min-height: 35px;
 
         &:first-of-type {
@@ -113,9 +166,32 @@ export const Games = styled.div`
     align-items: center;
     margin-top: 228px;
 
-    @media (max-width: 280px) {
+    @media (max-width: 416px) {
         flex-direction: column;
         margin-top: 85px;
+    }
+
+    @media (min-width: 281px) and (max-width: 415px) {
+        margin-top: 105px;
+    }
+
+    @media (min-width: 416px) and (max-width: 912px) {
+        margin: 150px auto 0;
+        flex-wrap: wrap;
+    }
+
+    @media (min-width: 416px) and (max-width: 820px) {
+        max-width: 680px;
+    }
+
+    @media (min-width: 821px) and (max-width: 912px) {
+        max-width: 700px;
+    }
+
+    @media (min-width: 1001px) and (max-width: 1286px) {
+        max-width: 690px;
+        flex-wrap: wrap;
+        margin: 180px auto 0;
     }
 `
 
@@ -138,6 +214,8 @@ export const Game = styled(ReactRouterLink)`
     max-width: 300px;
     max-height: 398px;
     text-decoration: none;
+    outline: none;
+    border: 0;
     position: relative;
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
     overflow: hidden;
@@ -162,7 +240,7 @@ export const Game = styled(ReactRouterLink)`
         color: ${({ theme }) => theme.color.whiteColor};
         font-family: 'Roboto', sans-serif;
 
-        @media (max-width: 280px) {
+        @media (max-width: 415px) {
             left: 30px;
             width: 70%;
         }
@@ -197,9 +275,21 @@ export const Game = styled(ReactRouterLink)`
         -webkit-transform: scale(1.1);
     }
 
-    @media (max-width: 280px) {
+    @media (max-width: 376px) {
         max-height: 375px;
         margin-bottom: 8px;
+    }
+
+    @media (min-width: 360px) and (max-width: 415px) {
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 416px) and (max-width: 912px) {
+        margin-bottom: 30px;
+    }
+
+    @media (min-width: 1001px) and (max-width: 1286px) {
+        margin-bottom: 30px;
     }
 `
 
@@ -210,6 +300,7 @@ export const More = styled.div`
     min-height: 398px;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
     background-color: rgb(252, 255, 114);
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
 
@@ -220,6 +311,7 @@ export const More = styled.div`
     ${Heading} {
         width: 80%;
         max-width: 300px;
+        min-height: 398px;
         color: #000;
         padding-top: 0;
         margin: 49% 10%;
@@ -234,6 +326,11 @@ export const More = styled.div`
         @media (max-width: 280px) {
             margin: 65% 10%;
         }
+
+        @media (min-width: 281px) and (max-width: 415px) {
+            margin: 53% 10%;
+        }
+        
     }
 
     ${Title} {
@@ -241,7 +338,7 @@ export const More = styled.div`
         font-weight: 600;
         font-family: 'Roboto', sans-serif;
 
-        @media (max-width: 280px) {
+        @media (max-width: 415px) {
             width: 100%;
         }
     }
@@ -254,9 +351,28 @@ export const More = styled.div`
         -webkit-transform: scale(1.1);
     }
 
-    @media (max-width: 280px) {
-        max-height: 375px;
-        width: 100%;
+    @media (max-width: 415px) {
+        &:hover ${Heading} {
+            transform: none;
+            -ms-transform: none;
+            -moz-transform: none;
+            -webkit-transform: none;
+        }
+    }
+
+    @media (min-width: 416px) and (max-width: 912px) {
+        margin-top: -30px;
+
+        &:hover ${Heading} {
+            transform: none;
+            -ms-transform: none;
+            -moz-transform: none;
+            -webkit-transform: none;
+        }
+    }
+
+    @media (min-width: 1001px) and (max-width: 1286px) {
+        margin-top: -31px;
 
         &:hover ${Heading} {
             transform: none;
