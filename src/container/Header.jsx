@@ -1,12 +1,15 @@
+import { useContext } from 'react'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 import { Header } from '../components'
+import { NavbarContext } from '../context/NavbarContext'
 import { homeData } from '../data/Home_data'
 
 const HeaderContainer = () => {
     const data = homeData.header
+    const { mobileMenu } = useContext(NavbarContext)
 
     return (
-        <Header>
+        <Header mobileMenu={mobileMenu}>
             <Header.Wrapper>
                 <Header.Heading>
                     <Header.Title>{data.title}</Header.Title>
@@ -25,7 +28,7 @@ const HeaderContainer = () => {
                 <Header.Games>
                     {data.listGames.map(game =>
                         <Header.Game key={game.title} to={game.path}>
-                            <Header.Image src={game.img} alt='GameImage'/>
+                            <Header.Image src={game.img} alt='GameImage' />
                             <Header.Overlay>
                                 <Header.Heading>
                                     <Header.Title>{game.title}</Header.Title>

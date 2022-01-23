@@ -8,7 +8,7 @@ export const Background = styled.header`
     max-height: 800px;
     background: url(${BackGround}) no-repeat;
     background-size: cover;
-    /* display: none; */
+    display: ${({mobileMenu}) => mobileMenu && 'none'};
 
     @media (max-width: 1000px) {
         max-height: 315px;
@@ -232,10 +232,7 @@ export const More = styled.div`
         -webkit-transition: ease-in-out 0.9s;
 
         @media (max-width: 280px) {
-            margin: 0;
-            top: 55%;
-            left: 90%;
-            transform: translate(-90%, -55%);
+            margin: 65% 10%;
         }
     }
 
@@ -243,6 +240,10 @@ export const More = styled.div`
         font-size: 3rem;
         font-weight: 600;
         font-family: 'Roboto', sans-serif;
+
+        @media (max-width: 280px) {
+            width: 100%;
+        }
     }
 
     &:hover ${Heading} {
@@ -255,5 +256,13 @@ export const More = styled.div`
 
     @media (max-width: 280px) {
         max-height: 375px;
+        width: 100%;
+
+        &:hover ${Heading} {
+            transform: none;
+            -ms-transform: none;
+            -moz-transform: none;
+            -webkit-transform: none;
+        }
     }
 `

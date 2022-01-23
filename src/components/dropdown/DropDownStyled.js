@@ -60,7 +60,7 @@ export const Item = styled.li`
     }
 
     @media (max-width: 1000px) {
-        line-height: 35px;
+        line-height: 40px;
         ${Link} {
             font-size: 1.8rem;
             padding-left: 50px;

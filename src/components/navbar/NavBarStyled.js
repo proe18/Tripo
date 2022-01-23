@@ -1,5 +1,5 @@
-import styled, { keyframes } from 'styled-components';
-import { NavLink as ReactRouerNavLink } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components'
+import { NavLink as ReactRouerNavLink } from 'react-router-dom'
 
 const slipDown = keyframes`
     0% {
@@ -26,7 +26,6 @@ export const Container = styled.div`
         align-items: flex-start;
         ${({ mobileMenu }) => mobileMenu && `
             width: 100%;
-            transform: translateY(23px);
         `}
     }
 
@@ -48,7 +47,6 @@ export const Inner = styled.div`
         ? `
             width: 100vw;
             height: 100vh;
-            margin-top: -23px;
         `
         : `
             max-width: 50px;
@@ -126,7 +124,7 @@ export const Link = styled(ReactRouerNavLink)`
     transition: all linear 0.28s;
 
     //Mobile device
-    @media (max-width: ${({ theme }) => `${theme.breakPoint}px`}) {
+    @media (max-width: 1000px) {
         padding-left: 30px;
     }
 `
@@ -157,7 +155,11 @@ export const Item = styled.li`
 
     @media (max-width: 1000px) {
         text-align: left;
-        ${({ dropDown }) => dropDown && `max-height: 182px;`}
+        ${({ dropDown }) => dropDown && `max-height: 190px;`}
+
+        &:hover:not(:nth-child(2)) {
+            background-color: ${({ theme }) => theme.color.whiteColor};
+        }
 
         &:hover:not(:nth-child(2)) ${Link} {
             color: ${({ theme }) => theme.color.primaryColor};
@@ -171,12 +173,11 @@ export const Item = styled.li`
 
     @media (min-height: 280px) and (max-width: 1000px) {
         line-height: 40px;
-        max-height: 40px;
-        ${({ dropDown }) => dropDown && `max-height: 175px;`}   
+        max-height: 40px;   
     }
 
     @media (min-height: 360px) and (max-width: 1000px) {
-        ${({ dropDown }) => dropDown && `max-height: 175px;`}
+        ${({ dropDown }) => dropDown && `max-height: 190px;`}
     }
 `
 
@@ -220,7 +221,7 @@ export const Icon = styled.div`
         z-index: 11;
     }
     //Hidden icon on PC and Tablet device
-    @media (min-width: ${({ theme }) => `${+theme.breakPoint + 1}px`}) {
+    @media (min-width: 1001px) {
         display: none;
     }
 `

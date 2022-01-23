@@ -1,65 +1,53 @@
-import { useEffect, useState } from 'react'
-import { useTheme } from 'styled-components'
+import { useContext, useEffect } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { CgClose, CgChevronUp, CgChevronDown } from 'react-icons/cg'
 import { Logo } from '../components'
 import { Navbar } from '../components'
 import { DropDown } from '../container'
 import * as ROUTES from '../constants/routes'
+import { NavbarContext } from '../context/NavbarContext'
 
 const NavBar = () => {
-    const theme = useTheme()
-    const [dropDown, setDropDown] = useState(false)
-    const [showMobileMenu, setShowMobileMenu] = useState(false)
-
-    //Handle show and hidden navbar dropdown if device is PC or Tablet
-    const handleMouseEnter = () => setDropDown(window.innerWidth > 1368 && !dropDown)
-    const handleMouseLeave = () => setDropDown(window.innerWidth > 1368 && !dropDown)
-    //Handle show and hidden navbar menu on mobile
-    const handleClickMobileMenu = () => {
-        setShowMobileMenu(window.innerWidth <= +theme.breakPoint && !showMobileMenu)
-        setDropDown(false)
-    }
-    //Handle show and hidden navbar dropdown if device is mobile and change icon
-    const handleClickMobileDropDown = () => setDropDown(window.innerWidth <= 1368 && !dropDown)
+    const {
+        mobileMenu,
+        dropDown,
+        handleMouseEnter,
+        handleMouseLeave,
+        handleClickMobileMenu,
+        handleClickMobileDropDown,
+        handleResize
+    } = useContext(NavbarContext)
 
     useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > +theme.breakPoint) {
-                setShowMobileMenu(false)
-                setDropDown(false)
-            }
-        }
-
         window.addEventListener('resize', handleResize)
 
         return () => window.removeEventListener('resize', handleResize)
-    }, [])
+    }, [handleResize])
 
     return (
-        <Navbar.Container mobileMenu={showMobileMenu}>
-            <Logo mobileMenu={showMobileMenu} />
-            <Navbar mobileMenu={showMobileMenu}>
+        <Navbar.Container mobileMenu={mobileMenu}>
+            <Logo mobileMenu={mobileMenu} />
+            <Navbar mobileMenu={mobileMenu}>
                 <Navbar.Icon
-                    mobileMenu={showMobileMenu}
+                    mobileMenu={mobileMenu}
                     onClick={handleClickMobileMenu}
                 >
-                    {!showMobileMenu ? <FiMenu /> : <CgClose />}
+                    {!mobileMenu ? <FiMenu /> : <CgClose />}
                 </Navbar.Icon>
 
-                <Navbar.Nav mobileMenu={showMobileMenu}>
+                <Navbar.Nav mobileMenu={mobileMenu}>
                     <Navbar.Item onClick={handleClickMobileMenu}>
                         <Navbar.Link index='true' to={ROUTES.HOME}>Home</Navbar.Link>
                     </Navbar.Item>
                     <Navbar.Item
                         dropDown={dropDown}
-                        mobileMenu={showMobileMenu}
+                        mobileMenu={mobileMenu}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
                         onClick={handleClickMobileDropDown}
                     >
                         <Navbar.NavDropDown>
-                            {!showMobileMenu
+                            {!mobileMenu
                                 ? 'Games'
                                 : <Navbar.DropDownIcon>
                                     <span>Games</span>
@@ -67,7 +55,7 @@ const NavBar = () => {
                                 </Navbar.DropDownIcon>
                             }
                         </Navbar.NavDropDown>
-                        {dropDown && <DropDown handleClickMobileMenu={handleClickMobileMenu}/>}
+                        {dropDown && <DropDown />}
                     </Navbar.Item>
                     <Navbar.Item onClick={handleClickMobileMenu}>
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>

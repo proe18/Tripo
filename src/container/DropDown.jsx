@@ -1,7 +1,11 @@
+import { useContext } from 'react'
 import { Dropdown } from '../components'
 import * as ROUTES from '../constants/routes'
+import { NavbarContext } from '../context/NavbarContext'
 
-const DropDown = ({ handleClickMobileMenu }) => {
+const DropDown = () => {
+    const {handleClickMobileMenu} = useContext(NavbarContext)
+
     return (
         <Dropdown>
             <Dropdown.Menu>
