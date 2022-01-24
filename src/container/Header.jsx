@@ -2,10 +2,8 @@ import { useContext } from 'react'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 import { Header } from '../components'
 import { NavbarContext } from '../context/NavbarContext'
-import { homeData } from '../data/Home_data'
 
-const HeaderContainer = () => {
-    const data = homeData.header
+const HeaderContainer = ({data}) => {
     const { mobileMenu } = useContext(NavbarContext)
 
     return (

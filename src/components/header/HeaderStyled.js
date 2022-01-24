@@ -39,6 +39,10 @@ export const Background = styled.header`
         background-position: 32% 0;
     }
 
+    @media (min-width: 913px) and (max-width: 916px) {
+        background-position: 35% 0;
+    }
+
     @media (min-width: 1001px) and (max-width: 1286px) {
         background-position: 22% 0;
     }
