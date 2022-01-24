@@ -30,7 +30,7 @@ export const Container = styled.div`
     }
 
     //PC and Tablet device
-    @media (min-width: 1001px) {
+    @media (min-width: 1001px) and (max-width: 1319px) {
         width: 90%;
     }
 `
