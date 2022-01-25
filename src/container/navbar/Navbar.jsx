@@ -1,11 +1,11 @@
 import { useContext, useEffect } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { CgClose, CgChevronUp, CgChevronDown } from 'react-icons/cg'
-import { Logo } from '../components'
-import { Navbar } from '../components'
-import { DropDown } from '../container'
-import * as ROUTES from '../constants/routes'
-import { NavbarContext } from '../context/NavbarContext'
+import { Logo } from '../../components'
+import { Navbar } from '../../components'
+import { DropDown } from '../../container'
+import * as ROUTES from '../../constants/routes'
+import { NavbarContext } from '../../context/NavbarContext'
 
 const NavBar = () => {
     const {

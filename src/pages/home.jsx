@@ -1,14 +1,18 @@
-import { HeaderContainer, AboutSection } from '../container'
+import { Header, About, OurGames, JoinTeam } from '../container'
 import { homeData } from '../data/Home_data'
 
 const Home = () => {
     const headerData = homeData.header
     const aboutData = homeData.about
+    const ourGamesData = homeData.ourGames
+    const joinTeamData = homeData.joinTeam
 
     return (
         <>
-            <HeaderContainer data={headerData}/>
-            <AboutSection data={aboutData}/>
+            <Header data={headerData} />
+            <About data={aboutData} />
+            <OurGames data={ourGamesData} />
+            <JoinTeam data={joinTeamData} />
         </>
     );
 }

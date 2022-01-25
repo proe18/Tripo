@@ -1,15 +1,16 @@
 import { PlatForms } from './Platform_data'
-import Kipon from "../images/kipon_avatar.jpg"
-import Robotrix from "../images/robotrix_avatar.jpg"
-import Treasure from "../images/treasure_avatar.jpg"
-import PrimayBg from "../images/background_home_2.jpg"
-import KiponBg from "../images/background_kipon_1.jpg"
-import RobotrixBg from "../images/background_robotrix_1.jpg"
-import TreasureBg from "../images/background_treasure_2.jpg"
-import MainImage from "../images/home_1.jpg"
-import SubImage from "../images/home_2.jpg"
-import OurGameImage from "../images/home_3.jpg"
-import JoinOurImage from "../images/home_4.jpg"
+import Kipon from '../images/kipon_avatar.jpg'
+import Robotrix from '../images/robotrix_avatar.jpg'
+import Treasure from '../images/treasure_avatar.jpg'
+import KiponBg from '../images/background_kipon_1.jpg'
+import RobotrixBg from '../images/background_robotrix_1.jpg'
+import TreasureBg from '../images/background_treasure_2.jpg'
+import MainImage from '../images/home_1.jpg'
+import SubImage from '../images/home_2.jpg'
+import OurGameImage from '../images/home_3.jpg'
+import JoinTeam_1Bg from '../images/background_home_2.jpg'
+import JoinTeam_2Bg from '../images/background_careers_3.jpg'
+import JoinTeamImage from '../images/home_4.jpg'
 import * as ROUTES from '../constants/routes'
 
 export const homeData = {
@@ -23,7 +24,6 @@ export const homeData = {
                 path: ROUTES.KIPON,
                 text: "Casual - Free",
                 img: KiponBg,
-                avatar: Kipon,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 ’m a great place for you to tell a story and let your users know a little more about you.`
             },
@@ -32,7 +32,6 @@ export const homeData = {
                 path: ROUTES.ROBOTRIX,
                 text: "RPG - Free",
                 img: RobotrixBg,
-                avatar: Robotrix,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 I’m a great place for you to tell a story and let your users know a little more about you.`
             },
@@ -41,7 +40,6 @@ export const homeData = {
                 path: ROUTES.TREASURE,
                 text: "Adventure - Free",
                 img: TreasureBg,
-                avatar: Treasure,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 I’m a great place for you to tell a story and let your users know a little more about you.`
             },
@@ -71,14 +69,45 @@ export const homeData = {
     },
     ourGames: {
         title: "Our Games",
-        description: `I'm a paragraph. Click here to add your own text and edit me.
+        text: `I'm a paragraph. Click here to add your own text and edit me.
         I’m a great place for you to tell a story and let your users know a little more about you.`,
-        img: OurGameImage
+        games: [
+            {
+                avatar: Kipon,
+                title: "Kipon",
+                text: "Casual - Free",
+                path: ROUTES.KIPON,
+                description: `I'm a paragraph. Click here to add your own text and edit me.
+                ’m a great place for you to tell a story and let your users know a little more about you.`,
+                platForms: PlatForms
+            },
+            {
+                avatar: Robotrix,
+                title: "Robotrix",
+                text: "RPG - Free",
+                path: ROUTES.ROBOTRIX,
+                description: `I'm a paragraph. Click here to add your own text and edit me.
+                I’m a great place for you to tell a story and let your users know a little more about you.`,
+                platForms: PlatForms
+            },
+            {
+                avatar: Treasure,
+                title: "Treasure Box",
+                text: "Adventure - Free",
+                path: ROUTES.TREASURE,
+                description: `I'm a paragraph. Click here to add your own text and edit me.
+                I’m a great place for you to tell a story and let your users know a little more about you.`,
+                platForms: PlatForms
+            }
+        ],
+        img: OurGameImage,
     },
     joinTeam: {
         title: "Join Our Team",
-        subtitle: "It takes the world's best talent to change the game.",
-        background: PrimayBg,
-        img: JoinOurImage
+        text: "It takes the world's best talent to change the game.",
+        path: ROUTES.CAREERS,
+        name: 'Explore Careers',
+        background: [JoinTeam_1Bg, JoinTeam_2Bg],
+        img: JoinTeamImage
     }
 }

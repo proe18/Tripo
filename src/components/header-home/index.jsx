@@ -1,12 +1,9 @@
+import { Wrapper, PlatForms, Link, Image, } from '../../GlobalStyles'
 import {
     Background,
-    Wrapper,
     Heading,
     Title,
     Text,
-    Platforms,
-    Link,
-    Image,
     Games,
     Game,
     Overlay,
@@ -43,21 +40,21 @@ Header.Text = function HeaderText({ children, ...restProps }) {
     )
 }
 
-Header.Platforms = function HeaderPlatforms({ children, ...restProps }) {
+Header.PlatForms = function HeaderPlatForms({ children, ...restProps }) {
     return (
-        <Platforms {...restProps}>{children}</Platforms>
+        <PlatForms {...restProps}>{children}</PlatForms>
     )
 }
 
-Header.Link = function HeaderLink({children, ...restProps}) {
+Header.Link = function HeaderLink({ children, ...restProps }) {
     return (
         <Link {...restProps}>{children}</Link>
     )
 }
 
-Header.Image = function HeaderImage({ children, ...restProps }) {
+Header.Image = function HeaderImage({ ...restProps }) {
     return (
-        <Image {...restProps}>{children}</Image>
+        <Image {...restProps} />
     )
 }
 

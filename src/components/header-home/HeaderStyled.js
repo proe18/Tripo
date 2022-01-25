@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link as ReactRouterLink } from 'react-router-dom'
+import { Image } from '../../GlobalStyles'
 import BackGround from '../../images/background_home_1.jpg'
 
 export const Background = styled.header`
@@ -45,21 +46,6 @@ export const Background = styled.header`
 
     @media (min-width: 1001px) and (max-width: 1286px) {
         background-position: 22% 0;
-    }
-`
-
-export const Wrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    max-width: 1320px;
-    margin: 0 auto;
-
-    @media (max-width: 1000px) {
-        width: 90%;
-    }
-
-    @media (min-width: 1001px) and (max-width: 1319px) {
-        width: 90%;
     }
 `
 
@@ -121,53 +107,6 @@ export const Text = styled.p`
     @media (min-width: 416px) and (max-width: 540px) {
         font-size: 2.2rem;
     }
-`
-
-export const Platforms = styled.div`
-    width: 100%;
-    height: 100%;
-    max-width: 305px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media (max-width: 540px) {
-        max-width: 235px;
-    }
-`
-
-export const Link = styled.a`
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 45px;
-    text-decoration: none;
-
-    &:first-of-type {
-        max-width: 135px;
-    }
-
-    &:last-of-type {
-        max-width: 152px;
-    }
-
-    @media (max-width: 540px) {
-        min-height: 35px;
-
-        &:first-of-type {
-            max-width: 105px;
-        }
-
-        &:last-of-type {
-            max-width: 117px;
-        }
-    }
-`
-
-export const Image = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 `
 
 export const Games = styled.div`

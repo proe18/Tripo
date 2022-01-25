@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
-import { Header } from '../components'
-import { NavbarContext } from '../context/NavbarContext'
+import { Header } from '../../components'
+import { NavbarContext } from '../../context/NavbarContext'
 
 const HeaderContainer = ({data}) => {
     const { mobileMenu } = useContext(NavbarContext)
@@ -12,7 +12,7 @@ const HeaderContainer = ({data}) => {
                 <Header.Heading>
                     <Header.Title>{data.title}</Header.Title>
                     <Header.Text>{data.text}</Header.Text>
-                    <Header.Platforms>
+                    <Header.PlatForms>
                         {data.platForms.map((platForm, index) =>
                             <Header.Link key={index} href='/'>
                                 <Header.Image
@@ -21,7 +21,7 @@ const HeaderContainer = ({data}) => {
                                 />
                             </Header.Link>
                         )}
-                    </Header.Platforms>
+                    </Header.PlatForms>
                 </Header.Heading>
                 <Header.Games>
                     {data.listGames.map(game =>
