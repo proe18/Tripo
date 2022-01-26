@@ -1,4 +1,5 @@
 import { PlatForms } from './Platforms_data'
+import * as ROUTES from '../constants/routes'
 
 export const footerData = {
     text: 'An Immersive Gaming Experience',
@@ -17,27 +18,27 @@ export const footerData = {
             list: [
                 {
                     title: "Games",
-                    path: "/"
+                    path: ROUTES.HOME
                 },
                 {
                     title: "Careers",
-                    path: "/careers"
+                    path: ROUTES.CAREERS
                 },
                 {
                     title: "About",
-                    path: "/about"
+                    path: ROUTES.ABOUT
                 },
                 {
                     title: "Contact",
-                    path: "/"
+                    path: ROUTES.CONTACT
                 },
                 {
                     title: "Privacy Policy",
-                    path: "/privacy-policy"
+                    path: ROUTES.POLICY
                 },
                 {
                     title: "Terms & Conditions",
-                    path: "/terms-and-conditions"
+                    path: ROUTES.TERMS
                 },
             ]
         },

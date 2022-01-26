@@ -4,6 +4,7 @@ export const theme = {
     color: {
         primaryColor: '#da392b',
         secondColor: '#fcff72',
+        footerColor: '#757575',
         overlayBg: 'rgb(39, 36, 67)',
         textColor: '#272443',
         textColorFooter: 'rgb(117, 117, 117)',

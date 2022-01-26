@@ -1,4 +1,4 @@
-import { Wrapper } from '../../GlobalStyles'
+import { Wrapper, Image } from '../../GlobalStyles'
 import {
     Inner,
     Heading,
@@ -7,6 +7,8 @@ import {
     NavList,
     ListTitle,
     Item,
+    Link,
+    RouteLink,
     CoppyRight
 } from './FooterStyled'
 
@@ -55,6 +57,24 @@ Footer.ListTitle = function FooterListTitle({ children, ...restProps }) {
 Footer.Item = function FooterItem({ children, ...restProps }) {
     return (
         <Item {...restProps}>{children}</Item>
+    )
+}
+
+Footer.Link = function FooterLink({children, ...restProps}) {
+    return (
+        <Link {...restProps}>{children}</Link>
+    )
+}
+
+Footer.RouteLink = function FooterRouteLink({children, ...restProps}) {
+    return (
+        <RouteLink {...restProps}>{children}</RouteLink>
+    )
+}
+
+Footer.Image = function FooterImage({...restProps}) {
+    return (
+        <Image {...restProps}/>
     )
 }
 
