@@ -4,14 +4,14 @@ export const theme = {
     color: {
         primaryColor: '#da392b',
         secondColor: '#fcff72',
-        thirdColor: 'rgb(39, 36, 67)',
+        overlayBg: 'rgb(39, 36, 67)',
         textColor: '#272443',
         textColorFooter: 'rgb(117, 117, 117)',
         whiteColor: '#ffff',
         blackColor: '#000',
         bgColor: '#f6f4f0',
         bgPrimaryColor: 'rgba(218, 57, 43, 0.75)',
-        bgCareersColor: 'rgb(39, 36, 67, 0.65)',
+        bgCareersColor: 'rgba(39, 36, 67, 0.65)',
         bgHoverFounder: 'rgba(8, 8, 8, 0.75)',
     },
     borderRadius: {

@@ -80,6 +80,7 @@ export const Game = styled.div`
             width: 100%;
             height: 100%;
             min-height: 40px;
+            cursor: pointer;
         }
 
         ${Link}:first-of-type {

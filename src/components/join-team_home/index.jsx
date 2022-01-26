@@ -1,5 +1,5 @@
 import { Image, Wrapper } from '../../GlobalStyles'
-import { Inner, Background, Heading, Title, Text } from './JoinTeamStyled'
+import { Inner, Background, Heading, Title, Text, Overlay } from './JoinTeamStyled'
 
 const JoinTeam = ({ children, ...restProps }) => {
     return (
@@ -40,6 +40,12 @@ JoinTeam.Text = function JoinTeamText({ children, ...restProps }) {
 JoinTeam.Image = function JoinTeamImage({ ...restProps }) {
     return (
         <Image {...restProps} />
+    )
+}
+
+JoinTeam.Overlay = function JoinTeamOverlay({children, ...restProps}) {
+    return (
+        <Overlay {...restProps}>{children}</Overlay>
     )
 }
 

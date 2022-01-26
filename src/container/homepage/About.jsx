@@ -8,13 +8,7 @@ const AboutContainer = ({ data }) => {
                     <About.SubTitle>{data.subTitle}</About.SubTitle>
                     <About.Title>{data.title}</About.Title>
                     <About.Text>{data.text}</About.Text>
-                    <ButtonLink
-                        to={data.button.path}
-                        widthbutton={'142px'}
-                        outlinehover='true'
-                    >
-                        {data.button.name}
-                    </ButtonLink>
+                    <ButtonLink to={data.button.path}>{data.button.name}</ButtonLink>
                 </About.Heading>
                 <About.Wrap>
                     {data.images.map((image, index) =>

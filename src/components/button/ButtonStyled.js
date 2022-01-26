@@ -11,7 +11,7 @@ export const ButtonStyled = styled.button`
     outline: none;
     border: none;
     font-family: "Roboto", sans-serif;
-    border-radius: ${({theme}) => theme.borderRadius.radius1};
+    border-radius: ${({ theme }) => theme.borderRadius.radius1};
 `
 
 export const ButtonLinkStyled = styled(Link)`
@@ -27,20 +27,19 @@ export const ButtonLinkStyled = styled(Link)`
     outline: none;
     border: none;
     font-family: "Roboto", sans-serif;
-    border-radius: ${({theme}) => theme.borderRadius.radius1};
+    border-radius: ${({ theme }) => theme.borderRadius.radius1};
     will-change: transition;
     transition: ease-in 0.3s;
     -moz-transition: ease-in 0.3s;
     -o-transition: ease-in 0.3s;
     -webkit-transition: ease-in 0.3s;
     
-    max-width: ${({widthbutton}) => widthbutton};
-    color: ${({theme, colorbutton}) => colorbutton ? colorbutton : theme.color.whiteColor};
-    background-color: ${({theme, bgbutton}) => bgbutton ? bgbutton : theme.color.primaryColor};
+    color: ${({ theme }) => theme.color.whiteColor};
+    background-color: ${({ theme }) => theme.color.primaryColor};
 
     &:hover {
-        outline: ${({outlinehover}) => outlinehover && '1px solid'};
-        color: ${({theme, colorhover}) => colorhover ? colorhover : theme.color.textColor};
-        background-color: ${({theme, bghover}) => bghover ? bghover : theme.color.whiteColor};
+        outline: none;
+        color: ${({ theme }) => theme.color.textColor};
+        background-color: ${({ theme }) => theme.color.whiteColor};
     }
 `

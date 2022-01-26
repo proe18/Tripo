@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
 
 export const Inner = styled.section``
 
@@ -6,6 +7,14 @@ export const Heading = styled.div`
     margin-top: 410px;
     text-align: center;
     color: ${({theme}) => theme.color.textColor};
+
+    ${ButtonLink} {
+        max-width: 142px;
+        
+        &:hover {
+            outline: 1px solid;
+        }
+    }
 `
 
 export const Title = styled.h1`

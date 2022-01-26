@@ -1,4 +1,4 @@
-import { PlatForms } from './Platform_data'
+import { PlatForms } from './Platforms_data'
 import Kipon from '../images/kipon_avatar.jpg'
 import Robotrix from '../images/robotrix_avatar.jpg'
 import Treasure from '../images/treasure_avatar.jpg'
