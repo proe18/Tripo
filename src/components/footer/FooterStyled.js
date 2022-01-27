@@ -29,6 +29,10 @@ export const Wrap = styled.div`
     border-style: solid;
     border-width: 1px 0;
     margin-top: 50px;
+
+    @media (max-width: 280px) {
+        flex-wrap: wrap;
+    }
 `
 
 
@@ -92,5 +96,9 @@ export const CoppyRight = styled.div`
     ${Text} {
         font-size: 1.6rem;
         padding: 70px 0;
+
+        @media (max-width: 280px) {
+            padding: 20px 0;
+        }
     }
 `

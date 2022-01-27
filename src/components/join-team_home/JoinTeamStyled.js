@@ -15,6 +15,17 @@ export const Inner = styled.section`
         position: absolute;
         top: 335px;
         right: 138px;
+
+        @media (max-width: 280px) {
+            max-width: 240px;
+            max-height: 180px;
+            right: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    @media (max-width: 280px) {
+        max-width: 280px;
     }
 `
 
@@ -32,6 +43,8 @@ export const Background = styled.div`
     &:nth-last-of-type(2) {
         min-height: 600px;
     }
+
+    
 `
 
 export const Overlay = styled.div`
@@ -54,16 +67,35 @@ export const Heading = styled.div`
         &:hover {
             background-color: ${({ theme }) => theme.color.whiteColor};
         }
+
+        @media (max-width: 280px) {
+            max-height: 55px;
+            line-height: 55px;
+        }
+    }
+
+    @media (max-width: 280px) {
+        max-width: 260px;
+        top: 40px;
     }
 `
 
 export const Title = styled.h1`
     font-size: 2.1rem;
     font-family: 'Roboto', sans-serif;
+
+    @media (max-width: 280px) {
+        font-size: 1.8rem;
+    }
 `
 
 export const Text = styled.p`
     font-size: 5rem;
     font-family: 'Suez One', serif;
     margin: 15px 0;
+
+    @media (max-width: 280px) {
+        font-size: 2.6rem;
+        margin: 15px 0 25px;
+    }
 `

@@ -14,6 +14,15 @@ export const Heading = styled.div`
         &:hover {
             outline: 1px solid;
         }
+
+        @media (max-width: 280px) {
+            max-width: 140px;
+            max-height: 55px;
+        }
+    }
+
+    @media (max-width: 280px) {
+        margin-top: 1630px;
     }
 `
 
@@ -24,12 +33,20 @@ export const Title = styled.h1`
     font-size: 5rem;
     font-weight: 500;
     font-family: 'Suez One', serif;
+
+    @media (max-width: 280px) {
+        font-size: 2.6rem;
+    }
 `
 
 export const SubTitle = styled.h2`
     margin-bottom: 20px;
     font-size: 2.1rem;
     font-family: "Roboto", sans-serif;
+
+    @media (max-width: 280px) {
+        font-size: 1.8rem;
+    }
 `
 
 export const Text = styled.p`
@@ -39,6 +56,10 @@ export const Text = styled.p`
     margin: 20px auto 40px;
     font-size: 1.8rem;
     font-family: "Roboto", sans-serif;
+
+    @media (max-width: 280px) {
+        font-size: 1.6rem;
+    }
 `
 
 export const Wrap = styled.div`
@@ -46,6 +67,10 @@ export const Wrap = styled.div`
     max-height: 398px;
     margin: 65px auto 0;
     position: relative;
+
+    @media (max-width: 280px) {
+        max-height: 233px;
+    }
 `
 
 export const Image = styled.img`
@@ -61,5 +86,13 @@ export const Image = styled.img`
         position: absolute;
         bottom: -50px;
         left: -90px;
+
+        @media (max-width: 280px) {
+            max-width: 120px;
+            max-height: 130px;
+            bottom: -85px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 `
