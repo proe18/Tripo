@@ -51,14 +51,14 @@ const FooterContainer = ({ data }) => {
                     <Logo />
                     <Footer.Text>{data.text}</Footer.Text>
                 </Footer.Heading>
-                <Footer.Wrap>
+                <Footer.Box>
                     {data.nav.map(({ title, list }, index) =>
                         <Footer.NavList key={index}>
                             <Footer.ListTitle>{title}</Footer.ListTitle>
-                            {renderList(list)}
+                            <Footer.Wrap>{renderList(list)}</Footer.Wrap>
                         </Footer.NavList>
                     )}
-                </Footer.Wrap>
+                </Footer.Box>
                 <Footer.CoppyRight>
                     <Footer.Text>{data.coppyRight}</Footer.Text>
                 </Footer.CoppyRight>

@@ -4,6 +4,7 @@ import {
     Heading,
     Text,
     Wrap,
+    Box,
     NavList,
     ListTitle,
     Item,
@@ -39,6 +40,12 @@ Footer.Text = function FooterText({ children, ...restProps }) {
 Footer.Wrap = function FooterWrap({ children, ...restProps }) {
     return (
         <Wrap {...restProps}>{children}</Wrap>
+    )
+}
+
+Footer.Box = function FooterBox({ children, ...restProps }) {
+    return (
+        <Box {...restProps}>{children}</Box>
     )
 }
 

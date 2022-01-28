@@ -15,14 +15,35 @@ export const Heading = styled.div`
             outline: 1px solid;
         }
 
-        @media (max-width: 280px) {
+        @media (max-width: 394px) {
             max-width: 140px;
             max-height: 55px;
+            line-height: 55px;
         }
     }
 
-    @media (max-width: 280px) {
+    @media (max-width: 376px) {
         margin-top: 1630px;
+    }
+
+    @media (min-width: 377px) and (max-width: 540px) {
+        margin-top: 1700px;
+    }
+
+    @media (min-width: 541px) and (max-width: 720px) {
+        margin-top: 650px;
+    }
+
+    @media (min-width: 740px) and (max-width: 767.5px) {
+        margin-top: 650px;
+    }
+
+    @media (min-width: 768px) and (max-width: 1000px) {
+        margin-top: 800px;
+    }
+
+    @media (min-width: 1001px) and (max-width: 1280px) {
+        margin-top: 700px;
     }
 `
 
@@ -34,8 +55,16 @@ export const Title = styled.h1`
     font-weight: 500;
     font-family: 'Suez One', serif;
 
-    @media (max-width: 280px) {
+    @media (max-width: 394px) {
         font-size: 2.6rem;
+    }
+
+    @media (min-width: 395px) and (max-width: 719px) {
+        font-size: 3rem;
+    }
+
+    @media (min-width: 541px) and (max-width: 719px) {
+        max-width: 500px;
     }
 `
 
@@ -44,8 +73,12 @@ export const SubTitle = styled.h2`
     font-size: 2.1rem;
     font-family: "Roboto", sans-serif;
 
-    @media (max-width: 280px) {
+    @media (max-width: 394px) {
         font-size: 1.8rem;
+    }
+
+    @media (min-width: 395px) and (max-width: 719px) {
+        font-size: 2rem;
     }
 `
 
@@ -57,7 +90,7 @@ export const Text = styled.p`
     font-size: 1.8rem;
     font-family: "Roboto", sans-serif;
 
-    @media (max-width: 280px) {
+    @media (max-width: 394px) {
         font-size: 1.6rem;
     }
 `
@@ -68,7 +101,7 @@ export const Wrap = styled.div`
     margin: 65px auto 0;
     position: relative;
 
-    @media (max-width: 280px) {
+    @media (max-width: 394px) {
         max-height: 233px;
     }
 `
@@ -87,12 +120,25 @@ export const Image = styled.img`
         bottom: -50px;
         left: -90px;
 
-        @media (max-width: 280px) {
-            max-width: 120px;
-            max-height: 130px;
+        @media (max-width: 1000px) {
             bottom: -85px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%); 
+        }
+
+        @media (max-width: 389px) {
+            max-width: 120px;
+            max-height: 130px;
+        }
+
+        @media (min-width: 390px) and (max-width: 415px) {
+            max-width: 150px;
+            max-height: 165px;
+        }
+
+        @media (min-width: 416px) and (max-width: 540px) {
+            max-width: 180px;
+            max-height: 195px;
         }
     }
 `

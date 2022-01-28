@@ -13,6 +13,12 @@ export const Heading = styled.div`
 
     ${Logo} {
         margin: 0 auto 20px;
+
+        @media (max-width: 280px) {
+            font-size: 2.2rem;
+            max-width: 140px;
+            max-height: 50px;
+        }
     }
 `
 
@@ -20,9 +26,14 @@ export const Text = styled.p`
     font-size: 2.4rem;
     font-family: 'Roboto', sans-serif;
     color: ${({ theme }) => theme.color.textColor};
+
+    @media (max-width: 280px) {
+        font-size: 1.9rem;
+        margin-top: 25px;
+    }
 `
 
-export const Wrap = styled.div`
+export const Box = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
@@ -32,6 +43,8 @@ export const Wrap = styled.div`
 
     @media (max-width: 280px) {
         flex-wrap: wrap;
+        margin-top: 33px;
+        justify-content: flex-start;
     }
 `
 
@@ -41,7 +54,14 @@ export const ListTitle = styled.h1`
     font-family: 'Roboto', sans-serif;
     color: ${({ theme }) => theme.color.textColor};
     margin-bottom: 20px;
+
+    @media (max-width: 280px) {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+    }
 `
+
+export const Wrap = styled.div``
 
 export const NavList = styled.ul`
     list-style: none;
@@ -51,12 +71,42 @@ export const NavList = styled.ul`
         max-width: 135px;
     }
 
-    &:nth-last-of-type(1) ${Image} {
+    ${Image}:nth-last-of-type(1) {
         max-height: 40px;
+
+        @media (max-width: 280px) {
+            max-height: 35px;
+        }
     }
 
-    &:last-of-type ${Image} {
+    ${Image}:last-of-type {
         min-height: 40px;
+
+        @media (max-width: 280px) {
+            min-height: 35px;
+        }
+    }
+
+    @media (max-width: 280px) {
+        padding: 20px 0;
+
+        ${Image} {
+            max-width: 115px;
+        }
+
+        &:nth-last-of-type(2) {
+            margin-left: 30px;
+        }
+
+        &:last-of-type {
+            min-width: 250px;
+
+            ${Wrap} {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
     }
 `
 
@@ -74,11 +124,18 @@ export const Item = styled.li`
     ${Text} {
         font-size: 1.6rem;
         color: ${({ theme }) => theme.color.footerColor};
+        margin: 0;
+
     }
 
     ${Link} {
         text-decoration: none;
         color: ${({ theme }) => theme.color.footerColor};
+    }
+
+    @media (max-width: 280px) {
+        min-height: 30px;
+        line-height: 30px;
     }
 `
 

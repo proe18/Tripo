@@ -43,12 +43,9 @@ export const Background = styled.div`
     &:nth-last-of-type(2) {
         min-height: 600px;
     }
-
-    
 `
 
-export const Overlay = styled.div`
-`
+export const Overlay = styled.div``
 
 export const Heading = styled.div`
     width: 100%;
