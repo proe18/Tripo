@@ -50,7 +50,7 @@ export const Box = styled.div`
         justify-content: flex-start;
     }
 
-    @media (min-width: 380px) and (max-width: 640px) {
+    @media (min-width: 380px) and (max-width: 700px) {
         justify-content: space-between;
     }
 `
@@ -81,7 +81,7 @@ export const NavList = styled.ul`
     ${Image}:nth-last-of-type(1) {
         max-height: 40px;
 
-        @media (max-width: 640px) {
+        @media (max-width: 700px) {
             max-height: 35px;
         }
     }
@@ -89,20 +89,18 @@ export const NavList = styled.ul`
     ${Image}:last-of-type {
         min-height: 40px;
 
-        @media (max-width: 640px) {
+        @media (max-width: 700px) {
             min-height: 35px;
         }
     }
 
     @media (max-width: 640px) {
-        ${Image} {
-            max-width: 115px;
-        }
+        padding: 30px 0;
     }
 
-    @media (max-width: 379.5px) {
-        &:nth-last-of-type(2) {
-            margin-left: 30px;
+    @media (max-width: 700px) {
+        ${Image} {
+            max-width: 115px;
         }
     }
 
@@ -110,11 +108,31 @@ export const NavList = styled.ul`
         &:first-of-type {
             min-width: 70%;
         }
+
+        &:nth-last-of-type(2) {
+            margin-left: 30px;
+        }
+
+        &:last-of-type {
+            min-width: 250px;
+
+            ${Wrap} {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
     }
 
     @media (min-width: 380px) and (max-width: 464px) {
         &:first-of-type {
             min-width: 50%;
+        }
+    }
+
+    @media (min-width: 380px) and (max-width: 640px) {
+        &:last-of-type {
+            min-width: 139.4px;
         }
     }
 
@@ -127,24 +145,6 @@ export const NavList = styled.ul`
     @media (min-width: 581px) and (max-width: 640px) {
         &:first-of-type {
             min-width: 70%;
-        }
-    }
-
-    @media (max-width: 379.5px) {
-        &:last-of-type {
-            min-width: 250px;
-
-            ${Wrap} {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-        }
-    }
-
-    @media (min-width: 380px) and (max-width: 640px) {
-        &:last-of-type {
-            min-width: 139.4px;
         }
     }
 `
@@ -190,7 +190,7 @@ export const CoppyRight = styled.div`
         font-size: 1.6rem;
         padding: 70px 0;
 
-        @media (max-width: 640px) {
+        @media (max-width: 700px) {
             padding: 20px 0;
         }
     }
