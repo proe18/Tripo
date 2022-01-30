@@ -99,7 +99,7 @@ export const Text = styled.p`
         margin: 8px 0 15px;
     }
 
-    @media (min-width: 376px) and (max-width: 415px) {
+    @media (min-width: 377px) and (max-width: 415px) {
         font-size: 2rem;
         margin: 8px 0 15px;
     }
@@ -127,6 +127,10 @@ export const Games = styled.div`
 
     @media (max-width: 280px) {
         margin-top: 85px;
+    }
+
+    @media (min-width: 281px) and (max-width: 359px) {
+        margin-top: 45px;
     }
 
     @media (min-width: 360px) and (max-width: 415px) {
@@ -251,11 +255,7 @@ export const Game = styled(ReactRouterLink)`
         margin-bottom: 10px;
     }
 
-    @media (min-width: 541px) and (max-width: 916px) {
-        margin-bottom: 30px;
-    }
-
-    @media (min-width: 1001px) and (max-width: 1286px) {
+    @media (min-width: 541px) and (max-width: 1286px) {
         margin-bottom: 30px;
     }
 `
@@ -318,7 +318,7 @@ export const More = styled.div`
         -webkit-transform: scale(1.1);
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 1286px) {
         &:hover ${Heading} {
             transform: none;
             -ms-transform: none;
@@ -329,13 +329,6 @@ export const More = styled.div`
 
     @media (min-width: 541px) and (max-width: 912px) {
         margin-top: -30px;
-
-        &:hover ${Heading} {
-            transform: none;
-            -ms-transform: none;
-            -moz-transform: none;
-            -webkit-transform: none;
-        }
     }
 
     @media (min-width: 653px) and (max-width: 668px) {
@@ -345,12 +338,5 @@ export const More = styled.div`
 
     @media (min-width: 1001px) and (max-width: 1286px) {
         margin-top: -31px;
-
-        &:hover ${Heading} {
-            transform: none;
-            -ms-transform: none;
-            -moz-transform: none;
-            -webkit-transform: none;
-        }
     }
 `

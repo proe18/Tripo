@@ -14,7 +14,7 @@ export const Heading = styled.div`
     ${Logo} {
         margin: 0 auto 20px;
 
-        @media (max-width: 280px) {
+        @media (max-width: 640px) {
             font-size: 2.2rem;
             max-width: 140px;
             max-height: 50px;
@@ -27,7 +27,7 @@ export const Text = styled.p`
     font-family: 'Roboto', sans-serif;
     color: ${({ theme }) => theme.color.textColor};
 
-    @media (max-width: 280px) {
+    @media (max-width: 640px) {
         font-size: 1.9rem;
         margin-top: 25px;
     }
@@ -41,10 +41,17 @@ export const Box = styled.div`
     border-width: 1px 0;
     margin-top: 50px;
 
-    @media (max-width: 280px) {
+    @media (max-width: 640px) {
         flex-wrap: wrap;
         margin-top: 33px;
+    }
+
+    @media (max-width: 379.5px) {
         justify-content: flex-start;
+    }
+
+    @media (min-width: 380px) and (max-width: 640px) {
+        justify-content: space-between;
     }
 `
 
@@ -55,7 +62,7 @@ export const ListTitle = styled.h1`
     color: ${({ theme }) => theme.color.textColor};
     margin-bottom: 20px;
 
-    @media (max-width: 280px) {
+    @media (max-width: 640px) {
         font-size: 1.8rem;
         margin-bottom: 12px;
     }
@@ -74,7 +81,7 @@ export const NavList = styled.ul`
     ${Image}:nth-last-of-type(1) {
         max-height: 40px;
 
-        @media (max-width: 280px) {
+        @media (max-width: 640px) {
             max-height: 35px;
         }
     }
@@ -82,22 +89,48 @@ export const NavList = styled.ul`
     ${Image}:last-of-type {
         min-height: 40px;
 
-        @media (max-width: 280px) {
+        @media (max-width: 640px) {
             min-height: 35px;
         }
     }
 
-    @media (max-width: 280px) {
-        padding: 20px 0;
-
+    @media (max-width: 640px) {
         ${Image} {
             max-width: 115px;
         }
+    }
 
+    @media (max-width: 379.5px) {
         &:nth-last-of-type(2) {
             margin-left: 30px;
         }
+    }
 
+    @media (max-width: 379.5px) {
+        &:first-of-type {
+            min-width: 70%;
+        }
+    }
+
+    @media (min-width: 380px) and (max-width: 464px) {
+        &:first-of-type {
+            min-width: 50%;
+        }
+    }
+
+    @media (min-width: 465px) and (max-width: 580px) {
+        &:first-of-type {
+            min-width: 60%;
+        }
+    }
+
+    @media (min-width: 581px) and (max-width: 640px) {
+        &:first-of-type {
+            min-width: 70%;
+        }
+    }
+
+    @media (max-width: 379.5px) {
         &:last-of-type {
             min-width: 250px;
 
@@ -108,9 +141,13 @@ export const NavList = styled.ul`
             }
         }
     }
-`
 
-export const Link = styled.a``
+    @media (min-width: 380px) and (max-width: 640px) {
+        &:last-of-type {
+            min-width: 139.4px;
+        }
+    }
+`
 
 export const Item = styled.li`
     display: block;
@@ -125,18 +162,17 @@ export const Item = styled.li`
         font-size: 1.6rem;
         color: ${({ theme }) => theme.color.footerColor};
         margin: 0;
-
     }
 
-    ${Link} {
-        text-decoration: none;
-        color: ${({ theme }) => theme.color.footerColor};
-    }
-
-    @media (max-width: 280px) {
+    @media (max-width: 640px) {
         min-height: 30px;
         line-height: 30px;
     }
+`
+
+export const Link = styled.a`
+    text-decoration: none;
+    color: ${({ theme }) => theme.color.footerColor};
 `
 
 export const RouteLink = styled(ReactRouterLink)`
@@ -154,7 +190,7 @@ export const CoppyRight = styled.div`
         font-size: 1.6rem;
         padding: 70px 0;
 
-        @media (max-width: 280px) {
+        @media (max-width: 640px) {
             padding: 20px 0;
         }
     }
