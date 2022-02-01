@@ -4,7 +4,7 @@ import * as ROUTES from '../../constants/routes'
 import { NavbarContext } from '../../context/NavbarContext'
 
 const DropDown = () => {
-    const {handleClickMobileMenu} = useContext(NavbarContext)
+    const { handleClickMobileMenu } = useContext(NavbarContext)
 
     return (
         <Dropdown>

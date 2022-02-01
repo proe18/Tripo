@@ -9,7 +9,10 @@ export const Background = styled.header`
     max-height: 800px;
     background: url(${BackGround}) no-repeat;
     background-size: cover;
-    display: ${({ mobileMenu }) => mobileMenu && 'none'};
+
+    @media (max-width: 860px) {
+        display: ${({ mobileMenu }) => mobileMenu && 'none'};
+    }
 
     @media (max-width: 280px) {
         max-height: 315px;

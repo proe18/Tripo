@@ -14,7 +14,7 @@ const NavBar = () => {
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
-        handleClickMobileDropDown,
+        handleClickDropDown,
         handleResize
     } = useContext(NavbarContext)
 
@@ -23,7 +23,7 @@ const NavBar = () => {
 
         return () => window.removeEventListener('resize', handleResize)
     }, [handleResize])
-
+    
     return (
         <Navbar.Container mobileMenu={mobileMenu}>
             <Logo mobileMenu={mobileMenu} />
@@ -44,7 +44,7 @@ const NavBar = () => {
                         mobileMenu={mobileMenu}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
-                        onClick={handleClickMobileDropDown}
+                        onClick={handleClickDropDown}
                     >
                         <Navbar.NavDropDown>
                             {!mobileMenu

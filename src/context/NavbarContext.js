@@ -6,20 +6,20 @@ const NavbarProvider = ({ children }) => {
     const [dropDown, setDropDown] = useState(false)
     const [mobileMenu, setMobileMenu] = useState(false)
     
-    //Handle show and hidden navbar dropdown if device is PC or Tablet
-    const handleMouseEnter = () => setDropDown(window.innerWidth > 1368 && !dropDown)
-    const handleMouseLeave = () => setDropDown(window.innerWidth > 1368 && !dropDown)
-    //Handle show and hidden navbar menu on mobile
+    //Handle show and hidden dropdown if device is PC
+    const handleMouseEnter = () => setDropDown(window.innerWidth > 1280 && !dropDown)
+    const handleMouseLeave = () => setDropDown(window.innerWidth > 1280 && !dropDown)
+    //Handle show and hidden mobile menu on mobile
     const handleClickMobileMenu = () => {
-        setMobileMenu(window.innerWidth <= 1000 && !mobileMenu)
+        setMobileMenu(window.innerWidth <= 860 && !mobileMenu)
         setDropDown(false)
     }
-    //Handle show and hidden navbar dropdown if device is mobile and change icon
-    const handleClickMobileDropDown = () => setDropDown(window.innerWidth <= 1368 && !dropDown)
+    //Handle show and hidden dropdown if device is mobile and tablet
+    const handleClickDropDown = () => setDropDown(window.innerWidth <= 1280 && !dropDown)
 
     //Handle resize website
     const handleResize = () => {
-        if (window.innerWidth > 1000) {
+        if (window.innerWidth > 860) {
             setMobileMenu(false)
             setDropDown(false)
         }
@@ -31,7 +31,7 @@ const NavbarProvider = ({ children }) => {
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
-        handleClickMobileDropDown,
+        handleClickDropDown,
         handleResize
     }
 

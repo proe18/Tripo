@@ -14,10 +14,16 @@ export const Heading = styled.div`
     ${Logo} {
         margin: 0 auto 20px;
 
-        @media (max-width: 640px) {
+        @media (max-width: 420px) {
             font-size: 2.2rem;
             max-width: 140px;
             max-height: 50px;
+        }
+
+        @media (min-width: 421px) and (max-width: 640px) {
+            max-width: 150px;
+            max-height: 50px;
+            font-size: 2.2rem;
         }
     }
 `

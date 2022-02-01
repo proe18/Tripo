@@ -13,39 +13,38 @@ export const LogoStyled = styled.div`
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
 
-    @media (min-width: 768px) {
-        font-size: 2.4rem;
+    @media (max-width: 860px) {
         display: ${({mobileMenu}) => mobileMenu && 'none'};
     }
 
-    @media (min-width: 416px) and (max-width: 767px) {
-        max-width: 140px;
+    @media (max-width: 420px) {
+        max-width: 160px;
         max-height: 50px;
-        line-height: 2.6rem;
+        line-height: 50px;
         font-size: 2.2rem;
-        display: ${({mobileMenu}) => mobileMenu && 'none'};
     }
 
-    @media (min-width: 280px) and (max-width: 415px) {
+    @media (min-width: 421px) and (max-width: 640px) {
+        max-width: 150px;
         max-height: 50px;
-        line-height: 2.6rem;
-        display: ${({mobileMenu}) => mobileMenu && 'none'};
+        line-height: 50px;
+        font-size: 2.2rem;
+    }
+
+    @media (max-width: 280px) {
+        max-width: 140px;
     }
 `
 
 export const LogoLink = styled(Link)`
     display: block;
-    padding: 15px 27px;
+    padding: 13.6px 27px;
     text-decoration: none;
     font-family: ${({theme}) => theme.font.caveat};
     color: ${({ theme }) => theme.color.whiteColor};
     background-color: ${({ theme }) => theme.color.primaryColor};
 
-    @media (min-width: 416px) and (max-width: 767px) {
-        padding: 12px 24px;
-    }
-
-    @media (min-width: 280px) and (max-width: 415px) {
-        padding: 12px 24px;
+    @media (max-width: 640px) {
+        padding: 0 24px;
     }
 `

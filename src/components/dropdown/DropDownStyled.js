@@ -16,7 +16,7 @@ export const Inner = styled.div`
         top: -7px;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 860px) {
         width: 100%;
         max-width: 100vw;
         position: unset;
@@ -36,7 +36,7 @@ export const Menu = styled.ul`
     border-radius: ${({ theme }) => theme.borderRadius.radius1};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
 
-    @media (max-width: 1000px) {
+    @media (max-width: 860px) {
         border-radius: unset;
         box-shadow: unset;
     }
@@ -45,6 +45,7 @@ export const Menu = styled.ul`
 export const Item = styled.li`
     line-height: normal;
     background-color: ${({ theme }) => theme.color.whiteColor};
+    will-change: transition;
     transition: ease-in-out 0.3s;
 
     ${Link} {
@@ -59,18 +60,29 @@ export const Item = styled.li`
         color: ${({ theme }) => theme.color.whiteColor};
     }
 
-    @media (max-width: 1000px) {
-        line-height: 40px;
+    @media (max-width: 860px) {
+        line-height: 50px;
+        min-height: 50px;
+    }
+
+    @media (max-width: 420px) {
         ${Link} {
             font-size: 1.8rem;
-            padding-left: 50px;
+            padding: 0 50px;
         }
     }
 
-    @media (max-width: 1000px) and (min-height: 1368px) {
+    @media (min-width: 421px) and (max-width: 640px) {
         ${Link} {
             font-size: 2rem;
-            padding-left: 50px;
+            padding: 0 50px;
+        }
+    }
+
+    @media (min-width: 641px) and (max-width: 860px) {
+        ${Link} {
+            font-size: 2.2rem;
+            padding: 0 50px;
         }
     }
 `
