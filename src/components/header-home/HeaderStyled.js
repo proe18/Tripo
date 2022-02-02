@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link as ReactRouterLink } from 'react-router-dom'
-import { Image } from '../../GlobalStyles'
+import { Image, PlatForms, Link } from '../../GlobalStyles'
 import BackGround from '../../images/background_home_1.jpg'
 
 export const Background = styled.header`
@@ -10,45 +10,28 @@ export const Background = styled.header`
     background: url(${BackGround}) no-repeat;
     background-size: cover;
 
-    @media (max-width: 860px) {
-        display: ${({ mobileMenu }) => mobileMenu && 'none'};
-    }
-
-    @media (max-width: 280px) {
+    @media (max-width: 420px) {
         max-height: 315px;
         background-position: 50% 0;
     }
 
-    @media (min-width: 281px) and (max-width: 376px) {
-        max-height: 380px;
-        background-position: 46% 0;
+    @media (min-width: 421px) and (max-width: 640px) {
+        max-height: 480px;
+        background-position: 53% 0;
     }
 
-    @media (min-width: 377px) and (max-width: 415px) {
-        max-height: 390px;
+    @media (min-width: 641px) and (max-width: 768px) {
+        max-height: 550px;
         background-position: 40% 0;
     }
 
-    @media (min-width: 416px) and (max-width: 540px) {
-        max-height: 450px;
-        background-position: 30% 0;
+    @media (min-width: 769px) and (max-width: 1024px) {
+        max-height: 650px;
+        background-position: 36% 0;
     }
 
-    @media (min-width: 653px) and (max-width: 740px) {
-        background-position: 55% 0;
-    }
-
-    @media (min-width: 768px) and (max-width: 912px) {
-        max-height: 640px;
-        background-position: 32% 0;
-    }
-
-    @media (min-width: 913px) and (max-width: 916px) {
-        background-position: 35% 0;
-    }
-
-    @media (min-width: 1001px) and (max-width: 1286px) {
-        background-position: 22% 0;
+    @media (min-width: 1025px) and (max-width: 1180px) {
+        background-position: 20% 0;
     }
 `
 
@@ -56,8 +39,32 @@ export const Heading = styled.div`
     padding-top: 185px;
     color: ${({ theme }) => theme.color.textColor};
 
-    @media (max-width: 541px) {
+    @media (max-width: 450.5px) {
         padding-top: 70px;
+    }
+
+    @media (min-width: 451px) and (max-width: 640px) {
+        padding-top: 100px;
+    }
+
+    ${PlatForms} {
+        @media (max-width: 640px) {
+            max-width: 235px;
+        }
+    }
+
+    ${Link} {
+        @media (max-width: 640px) {
+            min-height: 35px;
+
+            &:first-of-type {
+                max-width: 105px;
+            }
+
+            &:last-of-type {
+                max-width: 117px;
+            }
+        }
     }
 `
 
@@ -66,24 +73,27 @@ export const Title = styled.h1`
     font-weight: 500;
     font-family: 'Suez One', serif;
 
-    @media (min-width: 280px) and (max-width: 415px) {
+    @media (max-width: 290.5px) {
         width: 80%;
-    }
-    
-    @media (max-width: 280px) {
         font-size: 4rem;
     }
 
-    @media (min-width: 281px) and (max-width: 376px) {
+    @media (min-width: 291px) and (max-width: 320px) {
+        width: 72%;
+        font-size: 4rem;
+    }
+
+    @media (min-width: 321px) and (max-width: 420px) {
+        width: 90%;
+        font-size: 5rem;
+    }
+
+    @media (min-width: 421px) and (max-width: 640px) {
         font-size: 5.5rem;
     }
 
-    @media (min-width: 377px) and (max-width: 540px) {
+    @media (min-width: 641px) and (max-width: 770px) {
         font-size: 6rem;
-    }
-
-    @media (min-width: 541px) and (max-width: 768px) {
-        font-size: 7rem;
     }
 `
 
@@ -92,22 +102,23 @@ export const Text = styled.p`
     font-family: 'Roboto', sans-serif;
     margin-bottom: 45px;
 
-    @media (max-width: 280px) {
+    @media (max-width: 528px) {
+        margin: 8px 0 15px;
+    }
+
+    @media (max-width: 320px) {
         font-size: 1.6rem;
-        margin: 8px 0 15px;
     }
 
-    @media (min-width: 281px) and (max-width: 376px) {
+    @media (min-width: 321px) and (max-width: 420px) {
         font-size: 1.9rem;
-        margin: 8px 0 15px;
     }
 
-    @media (min-width: 377px) and (max-width: 415px) {
+    @media (min-width: 421px) and (max-width: 528px) {
         font-size: 2rem;
-        margin: 8px 0 15px;
     }
 
-    @media (min-width: 416px) and (max-width: 540px) {
+    @media (min-width: 529px) and (max-width: 640px) {
         font-size: 2.2rem;
     }
 `
@@ -120,43 +131,52 @@ export const Games = styled.div`
     align-items: center;
     margin-top: 228px;
 
-    @media (max-width: 540px) {
+    @media (max-width: 690px) {
         flex-direction: column;
     }
 
-    @media (min-width: 653px) and (max-width: 1286px) {
+    @media (min-width: 690px) and (max-width: 1319px) {
         flex-wrap: wrap;
     }
 
-    @media (max-width: 280px) {
+    @media (max-width: 320px) {
         margin-top: 85px;
     }
 
-    @media (min-width: 281px) and (max-width: 359px) {
-        margin-top: 45px;
+    @media (min-width: 321px) and (max-width: 420px) {
+        margin-top: 55px;
     }
 
-    @media (min-width: 360px) and (max-width: 415px) {
-        margin-top: 105px;
+    @media (min-width: 421px) and (max-width: 450.5px) {
+        margin-top: 205px;
     }
 
-    @media (min-width: 416px) and (max-width: 912px) {
-        margin: 150px auto 0;
+    @media (min-width: 451px) and (max-width: 528px) {
+        margin-top: 175px;
     }
 
-    @media (min-width: 416px) and (max-width: 820px) {
-        max-width: 680px;
+    @media (min-width: 641px) and (max-width: 768px) {
+        margin-top: 195px;
     }
 
-    @media (min-width: 821px) and (max-width: 916px) {
+    @media (min-width: 769px) and (max-width: 1000px) {
+        margin-top: 130px;
+    }
+
+    @media (min-width: 1001px) and (max-width: 1024px) {
+        margin: 80px auto 0;
+    }
+
+    @media (min-width: 821px) and (max-width: 1000px) {
         max-width: 700px;
         margin-left: auto;
         margin-right: auto;
     }
 
-    @media (min-width: 1001px) and (max-width: 1286px) {
+    @media (min-width: 1001px) and (max-width: 1319px) {
         max-width: 690px;
-        margin: 180px auto 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 `
 
@@ -193,7 +213,7 @@ export const Game = styled(ReactRouterLink)`
         -moz-transition: ease-in-out 0.9s;
         -webkit-transition: ease-in-out 0.9s;
 
-        @media (max-width: 280px) {
+        @media (max-width: 320px) {
             min-height: 375px;
         }
     }
@@ -205,13 +225,8 @@ export const Game = styled(ReactRouterLink)`
         color: ${({ theme }) => theme.color.whiteColor};
         font-family: 'Roboto', sans-serif;
 
-        @media (max-width: 541px) {
-            left: 30px;
+        @media (max-width: 420px) {
             width: 70%;
-        }
-
-        @media (min-width: 653px) and (max-width: 668px) {
-            left: 32px;
         }
     }
 
@@ -244,11 +259,6 @@ export const Game = styled(ReactRouterLink)`
         -webkit-transform: scale(1.1);
     }
 
-    @media (min-width: 653px) and (max-width: 668px) {
-        max-width: 250px;
-        max-height: 350px;
-    }
-
     @media (max-width: 376px) {
         max-height: 375px;
         margin-bottom: 8px;
@@ -258,7 +268,7 @@ export const Game = styled(ReactRouterLink)`
         margin-bottom: 10px;
     }
 
-    @media (min-width: 541px) and (max-width: 1286px) {
+    @media (min-width: 541px) and (max-width: 1319px) {
         margin-bottom: 30px;
     }
 `
@@ -331,7 +341,7 @@ export const More = styled.div`
     }
 
     @media (min-width: 541px) and (max-width: 912px) {
-        margin-top: -30px;
+        margin-top: 10px;
     }
 
     @media (min-width: 653px) and (max-width: 668px) {
@@ -339,7 +349,7 @@ export const More = styled.div`
         min-height: 350px;
     }
 
-    @media (min-width: 1001px) and (max-width: 1286px) {
-        margin-top: -31px;
+    @media (min-width: 1001px) and (max-width: 1319px) {
+        margin-top: -30px;
     }
 `

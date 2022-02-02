@@ -1,15 +1,19 @@
+import { useContext } from 'react'
+import { NavbarContext } from './context/NavbarContext'
 import { Route, Routes } from 'react-router-dom'
 import * as ROUTES from './constants/routes'
-import { GlobalStyles, Pages } from './GlobalStyles'
 import { NavBar } from './container'
+import { GlobalStyles, Pages } from './GlobalStyles'
 import { About, Careers, Home, Kipon, Robotrix, TreasureBox } from './pages'
 
 const App = () => {
+  const { mobileMenu } = useContext(NavbarContext)
+
   return (
     <>
       <GlobalStyles />
       <NavBar />
-      <Pages>
+      <Pages mobileMenu={mobileMenu}>
         <Routes>
           <Route index path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.KIPON} element={<Kipon />} />
@@ -19,8 +23,8 @@ const App = () => {
           <Route path={ROUTES.CAREERS} element={<Careers />} />
           <Route path={ROUTES.CONTACT} element={<Home />} />
 
-          <Route path={ROUTES.POLICY} element={<Home/>}/>
-          <Route path={ROUTES.TERMS} element={<Home/>}/>
+          <Route path={ROUTES.POLICY} element={<Home />} />
+          <Route path={ROUTES.TERMS} element={<Home />} />
         </Routes>
       </Pages>
     </>

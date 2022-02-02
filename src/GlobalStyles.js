@@ -51,6 +51,10 @@ export const Pages = styled.div`
     height: 100%;
     margin-top: -60px;
     background-color: ${theme.color.bgColor};
+
+    @media (max-width: 860px) {
+        display: ${({ mobileMenu }) => mobileMenu && 'none'};
+    }
 `
 
 export const Wrapper = styled.div`
@@ -59,11 +63,7 @@ export const Wrapper = styled.div`
     max-width: 1320px;
     margin: 0 auto;
 
-    @media (max-width: 1000px) {
-        width: 90%;
-    }
-
-    @media (min-width: 1001px) and (max-width: 1319px) {
+    @media (max-width: 1319px) {
         width: 90%;
     }
 `
@@ -75,10 +75,6 @@ export const PlatForms = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (max-width: 540px) {
-        max-width: 235px;
-    }
 `
 
 export const Link = styled.a`
@@ -94,18 +90,6 @@ export const Link = styled.a`
 
     &:last-of-type {
         max-width: 152px;
-    }
-
-    @media (max-width: 540px) {
-        min-height: 35px;
-
-        &:first-of-type {
-            max-width: 105px;
-        }
-
-        &:last-of-type {
-            max-width: 117px;
-        }
     }
 `
 

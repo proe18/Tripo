@@ -9,6 +9,7 @@ export const Container = styled.div`
     align-items: center;
     margin: 0 auto;
     
+    //Responsive mobile and tablet
     @media (max-width: 860px) {
         width: 90%;
         align-items: flex-start;
@@ -26,6 +27,7 @@ export const Inner = styled.div`
     display: flex;
     justify-content: flex-end;
 
+    //Responsive mobile and tablet
     @media (min-width: 641px) and (max-width: 860px) {
         ${({ mobileMenu }) => mobileMenu
         ? `
@@ -61,7 +63,7 @@ export const Inner = styled.div`
         background-color: ${({ theme }) => theme.color.whiteColor};
     }
 `
-//======= KEYFRAMES ANIMATION OF NAV ========
+//======= ANIMATION KEYFRAMES OF NAV ========
 const slipDown = keyframes`
     0% {
         transform: translateY(-150%);
@@ -91,6 +93,7 @@ export const Nav = styled.ul`
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
 
+    //Responsive mobile and tablet
     @media (max-width: 860px) {
         max-width: 100vw;
         max-height: 100vh;
@@ -161,6 +164,7 @@ export const Item = styled.li`
         color: ${({ theme }) => theme.color.whiteColor};
     }
 
+    //Responsive mobile and tablet
     @media (max-width: 860px) {
         text-align: left;
 
@@ -195,6 +199,7 @@ export const NavDropDown = styled.div`
     cursor: pointer;
     position: relative;
 
+    //Responsive mobile and tablet
     @media (max-width: 860px) {
         padding-left: 30px;
         position: unset;
@@ -221,6 +226,7 @@ export const Icon = styled.div`
         transition: all 0.3s linear;
     }
 
+    //Mobile device
     @media (max-width: 640px) {
         max-width: 50px;
         max-height: 50px;
