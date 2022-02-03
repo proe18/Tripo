@@ -131,11 +131,11 @@ export const Games = styled.div`
     align-items: center;
     margin-top: 228px;
 
-    @media (max-width: 690px) {
+    @media (max-width: 680px) {
         flex-direction: column;
     }
 
-    @media (min-width: 690px) and (max-width: 1319px) {
+    @media (min-width: 681px) and (max-width: 1319px) {
         flex-wrap: wrap;
     }
 
@@ -259,12 +259,11 @@ export const Game = styled(ReactRouterLink)`
         -webkit-transform: scale(1.1);
     }
 
-    @media (max-width: 376px) {
+    @media (max-width: 360px) {
         max-height: 375px;
-        margin-bottom: 8px;
     }
 
-    @media (min-width: 360px) and (max-width: 540px) {
+    @media (max-width: 540px) {
         margin-bottom: 10px;
     }
 
@@ -289,12 +288,11 @@ export const More = styled.div`
     }
 
     ${Heading} {
-        width: 80%;
+        width: 100%;
         max-width: 300px;
         min-height: 398px;
         color: #000;
-        padding-top: 0;
-        margin: 49% 10%;
+        padding: 49% 10%;
         position: absolute;
         text-align: center;
         font-size: 4rem;
@@ -304,13 +302,8 @@ export const More = styled.div`
         -webkit-transition: ease-in-out 0.9s;
 
         @media (max-width: 280px) {
-            margin: 65% 10%;
+            padding: 65% 10%;
         }
-
-        @media (min-width: 281px) and (max-width: 415px) {
-            margin: 53% 10%;
-        }
-        
     }
 
     ${Title} {
@@ -331,7 +324,7 @@ export const More = styled.div`
         -webkit-transform: scale(1.1);
     }
 
-    @media (max-width: 1286px) {
+    @media (max-width: 1280px) {
         &:hover ${Heading} {
             transform: none;
             -ms-transform: none;
@@ -340,16 +333,7 @@ export const More = styled.div`
         }
     }
 
-    @media (min-width: 541px) and (max-width: 912px) {
-        margin-top: 10px;
-    }
-
-    @media (min-width: 653px) and (max-width: 668px) {
-        max-width: 250px;
-        min-height: 350px;
-    }
-
-    @media (min-width: 1001px) and (max-width: 1319px) {
+    @media (min-width: 681px) and (max-width: 1319px) {
         margin-top: -30px;
     }
 `

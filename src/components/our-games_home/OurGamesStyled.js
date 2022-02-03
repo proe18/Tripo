@@ -25,11 +25,13 @@ export const Background = styled.div`
         margin-top: -415px;
     }
 
+    @media (max-width: 540px) {
+        background: none;
+    }
+
     @media (max-width: 280px) {
         max-width: 252px;
         margin-top: 70px;
-        /* background-size: contain; */
-        background: none;
 
         & > ${Image} {
             max-width: 185px;

@@ -1,10 +1,35 @@
 import styled from 'styled-components'
 import { ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
 
-export const Inner = styled.section``
+export const Inner = styled.section`
+    margin-top: 410px;
+
+    @media (max-width: 376px) {
+        margin-top: 1630px;
+    }
+
+    @media (min-width: 377px) and (max-width: 540px) {
+        margin-top: 1700px;
+    }
+
+    @media (min-width: 541px) and (max-width: 680px) {
+        margin-top: 1780px;
+    }
+
+    @media (min-width: 681px) and (max-width: 768px) {
+        margin-top: 900px;
+    }
+
+    @media (min-width: 769px) and (max-width: 1000px) {
+        margin-top: 800px;
+    }
+
+    @media (min-width: 1001px) and (max-width: 1319px) {
+        margin-top: 750px;
+    }
+`
 
 export const Heading = styled.div`
-    margin-top: 410px;
     text-align: center;
     color: ${({theme}) => theme.color.textColor};
 
@@ -20,30 +45,6 @@ export const Heading = styled.div`
             max-height: 55px;
             line-height: 55px;
         }
-    }
-
-    @media (max-width: 376px) {
-        margin-top: 1630px;
-    }
-
-    @media (min-width: 377px) and (max-width: 540px) {
-        margin-top: 1700px;
-    }
-
-    @media (min-width: 541px) and (max-width: 720px) {
-        margin-top: 650px;
-    }
-
-    @media (min-width: 740px) and (max-width: 767.5px) {
-        margin-top: 650px;
-    }
-
-    @media (min-width: 768px) and (max-width: 1000px) {
-        margin-top: 800px;
-    }
-
-    @media (min-width: 1001px) and (max-width: 1280px) {
-        margin-top: 700px;
     }
 `
 
