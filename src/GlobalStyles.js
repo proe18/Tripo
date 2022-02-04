@@ -81,7 +81,7 @@ export const Link = styled.a`
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 45px;
+    max-height: 45px;
     text-decoration: none;
 
     &:first-of-type {

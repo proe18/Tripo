@@ -25,18 +25,57 @@ export const Background = styled.div`
         margin-top: -415px;
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 799.5px) {
         background: none;
+        max-height: max-content;
+        margin-top: 70px;
+        justify-content: center;
     }
 
-    @media (max-width: 280px) {
-        max-width: 252px;
-        margin-top: 70px;
+    @media (min-width: 800px) and (max-width: 890.5px) {
+        background-size: contain;
+        background-position-y: 60%;
+    }
 
+    @media (max-width: 340px) {
         & > ${Image} {
-            max-width: 185px;
+            max-width: 180px;
             max-height: 200px;
             margin: 20px auto 0;
+        }
+    }
+
+    @media (min-width: 341px) and (max-width: 799.5px) {
+        & > ${Image} {
+            margin: 40px auto 0;
+        }
+    }
+
+    @media (min-width: 341px) and (max-width: 420px) {
+        & > ${Image} {
+            max-width: 200px;
+            min-height: 220px;
+        }
+    }
+
+    @media (min-width: 421px) and (max-width: 640px) {
+        & > ${Image} {
+            max-width: 220px;
+            min-height: 240px;
+        }
+    }
+
+    @media (min-width: 641px) and (max-width: 732px) {
+        & > ${Image} {
+            max-width: 300px;
+            min-height: 330px;
+        }
+    }
+
+    @media (min-width: 733px) and (max-width: 799.5px) {
+        & > ${Image} {
+            max-width: 330px;
+            min-height: 360px;
         }
     }
 `
@@ -46,7 +85,7 @@ export const Heading = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.color.textColor};
     
-    @media (max-width: 280px) {
+    @media (max-width: 640px) {
         margin-top: 140px;
     }
 `
@@ -56,8 +95,13 @@ export const Title = styled.h1`
     font-weight: 500;
     font-family: 'Suez One', serif;
 
-    @media (max-width: 280px) {
+    @media (max-width: 320px) {
         font-size: 2.6rem;
+        margin-bottom: 35px;
+    }
+
+    @media (min-width: 321px) and (max-width: 640px) {
+        font-size: 3.7rem;
         margin-bottom: 35px;
     }
 `
@@ -70,7 +114,7 @@ export const Text = styled.p`
     font-size: 1.8rem;
     font-family: 'Roboto', sans-serif;
 
-    @media (max-width: 280px) {
+    @media (max-width: 320px) {
         font-size: 1.6rem;
     }
 `
@@ -85,10 +129,19 @@ export const Game = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
     background-color: ${({ theme }) => theme.color.whiteColor};
 
+    @media (max-width: 380px) {
+        min-height: 356px;
+        padding: 25px 36px;
+    }
+
+    @media (min-width: 800px) and (max-width: 890.5px) {
+        max-width: 350px;
+    }
+
     &:not(:last-child) {
         margin-bottom: 415px;
 
-        @media (max-width: 280px) {
+        @media (max-width: 799.5px) {
             margin-bottom: 20px;
         }
     }
@@ -101,9 +154,12 @@ export const Game = styled.div`
         align-items: center;
         text-align: left;
 
-        @media (max-width: 280px) {
-            min-width: 180px;
+        @media (max-width: 428px) {
             margin-bottom: 10px;
+        }
+
+        @media (max-width: 420px) {
+            min-width: 180px;
         }
     }
 
@@ -116,13 +172,19 @@ export const Game = styled.div`
         ${Link} {
             width: 100%;
             height: 100%;
-            min-height: 40px;
+            max-height: 40px;
             cursor: pointer;
 
-            @media (max-width: 280px) {
+            @media (max-width: 340px) {
                 ${Image} {
                     min-height: 32px;
                     object-fit: contain;
+                }
+            }
+
+            @media (min-width: 341px) and (max-width: 420px) {
+                ${Image} {
+                    max-height: 35px;
                 }
             }
         }
@@ -130,28 +192,51 @@ export const Game = styled.div`
         ${Link}:first-of-type {
             max-width: 120px;
 
-            @media (max-width: 280px) {
+            @media (max-width: 300px) {
                 max-width: 80px;
+            }
+
+            @media (min-width: 301px) and (max-width: 340px) {
+                max-width: 90px;
+            }
+
+            @media (min-width: 341px) and (max-width: 420px) {
+                max-width: 110px;
+            }
+
+            @media (min-width: 800px) and (max-width: 890.5px) {
+                max-width: 110px;
             }
         }
 
         ${Link}:last-of-type {            
             max-width: 137px;
             
-            @media (max-width: 280px) {
+            @media (max-width: 300px) {
                 max-width: 90px;
             }
+
+            @media (min-width: 301px) and (max-width: 340px) {
+                max-width: 100px;
+            }
+
+            @media (min-width: 341px) and (max-width: 420px) {
+                max-width: 120px;
+            }
+
+            @media (min-width: 800px) and (max-width: 890.5px) {
+                max-width: 120px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            justify-content: space-around;
         }
 
         @media (max-width: 280px) {
             max-width: 180px;
             max-height: 32px;
         }
-    }
-
-    @media (max-width: 280px) {
-        max-height: 356px;
-        padding: 25px 36px;
     }
 `
 
@@ -166,7 +251,7 @@ export const Wrap = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
 
-    @media (max-width: 280px) {
+    @media (max-width: 420px) {
         max-width: 80px;
         min-height: 80px;
     }
@@ -180,7 +265,7 @@ export const Avatar = styled.img`
     object-fit: cover;
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
 
-    @media (max-width: 280px) {
+    @media (max-width: 420px) {
         max-width: 70px;
         max-height: 70px;
     }
@@ -194,43 +279,66 @@ export const Info = styled.div`
         font-weight: 600;
         font-family: 'Roboto', sans-serif;
 
-        @media (max-width: 280px) {
-            font-size: 1.9rem;
+        @media (max-width: 420px) {
             margin-bottom: 0;
+        }
 
-            &:last-of-type {
-                font-size: 1.5rem;
-            }
+        @media (max-width: 285px) {
+            font-size: 1.5rem;
+        }
+
+        @media (min-width: 286px) and (max-width: 300px) {
+            font-size: 1.6rem;
+        }
+
+        @media (min-width: 301px) and (max-width: 320px) {
+            font-size: 1.8rem;
+        }
+
+        @media (min-width: 321px) and (max-width: 420px) {
+            font-size: 1.9rem;
         }
     }
 
     ${Text} {
         font-size: 1.6rem;
 
-        @media (max-width: 280px) {
-            font-size: 1.4rem;
+        @media (max-width: 284px) {
+            font-size: 1.2rem;
+        }
 
-            &:last-of-type {
-                font-size: 1.1rem;
-            }
+        @media (min-width: 285px) and (max-width: 300px) {
+            font-size: 1.3rem;
+        }
+
+        @media (min-width: 301px) and (max-width: 320px) {
+            font-size: 1.5rem;
         }
     }
 
-    @media (max-width: 280px) {
+    @media (max-width: 320px) {
         margin-left: 10px;
     }
 `
 
 export const Description = styled.p`
     width: 100%;
-    min-width: 280px;
+    max-width: 280px;
     margin-bottom: 35px;
     font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
     line-height: 2.5rem;
 
-    @media (max-width: 280px) {
-        min-width: 180px;
-        margin-bottom: 20px;
+    @media (max-width: 428px) {
         text-align: center;
+        min-width: 180px;
+    }
+
+    @media (max-width: 380px) {
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 800px) and (max-width: 890.5px) {
+        margin-bottom: 20px;
     }
 `
