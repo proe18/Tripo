@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { Link, PlatForms, Image } from '../../GlobalStyles'
 import BackGround from '../../images/background_home_3.jpg'
 
+export const Inner = styled.section``
+
 export const Background = styled.div`
     width: 100%;
     height: 100%;
@@ -25,14 +27,14 @@ export const Background = styled.div`
         margin-top: -415px;
     }
 
-    @media (max-width: 799.5px) {
+    @media (max-width: 699.5px) {
         background: none;
         max-height: max-content;
         margin-top: 70px;
         justify-content: center;
     }
 
-    @media (min-width: 800px) and (max-width: 890.5px) {
+    @media (min-width: 681px) and (max-width: 890.5px) {
         background-size: contain;
         background-position-y: 60%;
     }
@@ -45,7 +47,7 @@ export const Background = styled.div`
         }
     }
 
-    @media (min-width: 341px) and (max-width: 799.5px) {
+    @media (min-width: 341px) and (max-width: 699.5px) {
         & > ${Image} {
             margin: 40px auto 0;
         }
@@ -65,17 +67,10 @@ export const Background = styled.div`
         }
     }
 
-    @media (min-width: 641px) and (max-width: 732px) {
+    @media (min-width: 641px) and (max-width: 799.5px) {
         & > ${Image} {
-            max-width: 300px;
-            min-height: 330px;
-        }
-    }
-
-    @media (min-width: 733px) and (max-width: 799.5px) {
-        & > ${Image} {
-            max-width: 330px;
-            min-height: 360px;
+            max-width: 250px;
+            min-height: 280px;
         }
     }
 `
@@ -97,12 +92,10 @@ export const Title = styled.h1`
 
     @media (max-width: 320px) {
         font-size: 2.6rem;
-        margin-bottom: 35px;
     }
 
     @media (min-width: 321px) and (max-width: 640px) {
         font-size: 3.7rem;
-        margin-bottom: 35px;
     }
 `
 
@@ -134,6 +127,11 @@ export const Game = styled.div`
         padding: 25px 36px;
     }
 
+    @media (min-width: 700px) and (max-width: 799.5px) {
+        max-width: 310px;
+        padding: 25px 36px;
+    }
+
     @media (min-width: 800px) and (max-width: 890.5px) {
         max-width: 350px;
     }
@@ -141,7 +139,7 @@ export const Game = styled.div`
     &:not(:last-child) {
         margin-bottom: 415px;
 
-        @media (max-width: 799.5px) {
+        @media (max-width: 699.5px) {
             margin-bottom: 20px;
         }
     }
@@ -156,9 +154,6 @@ export const Game = styled.div`
 
         @media (max-width: 428px) {
             margin-bottom: 10px;
-        }
-
-        @media (max-width: 420px) {
             min-width: 180px;
         }
     }
@@ -204,8 +199,12 @@ export const Game = styled.div`
                 max-width: 110px;
             }
 
+            @media (min-width: 700px) and (max-width: 799.5px) {
+                max-width: 100px;
+            }
+
             @media (min-width: 800px) and (max-width: 890.5px) {
-                max-width: 110px;
+                max-width: 108px;
             }
         }
 
@@ -224,8 +223,12 @@ export const Game = styled.div`
                 max-width: 120px;
             }
 
+            @media (min-width: 700px) and (max-width: 799.5px) {
+                max-width: 110px;
+            }
+
             @media (min-width: 800px) and (max-width: 890.5px) {
-                max-width: 120px;
+                max-width: 118px;
             }
         }
 

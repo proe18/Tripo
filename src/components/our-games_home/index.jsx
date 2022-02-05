@@ -1,5 +1,6 @@
 import { Wrapper, Image, Link, PlatForms } from '../../GlobalStyles'
 import {
+    Inner,
     Background,
     Heading,
     Title, 
@@ -12,6 +13,12 @@ import {
 } from './OurGamesStyled'
 
 const OurGames = ({ children, ...restProps }) => {
+    return (
+        <Inner {...restProps}>{children}</Inner>
+    )
+}
+
+OurGames.BackGround = function OurGamesBackGround({children, ...restProps}) {
     return (
         <Background {...restProps}>{children}</Background>
     )
