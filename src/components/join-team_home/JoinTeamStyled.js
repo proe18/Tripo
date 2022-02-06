@@ -14,6 +14,10 @@ export const Inner = styled.section`
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+
+        @media (max-width: 699.5px) {
+            height: 500px;
+        }
     }
 
     ${Image} {
@@ -28,17 +32,47 @@ export const Inner = styled.section`
             max-height: 200px;
         }
 
-        @media (max-width:280px) {
-            right: 2%;
+        @media (min-width: 391px) and (max-width: 420px) {
+            max-width: 270px;
+            max-height: 230px;
+        }
+
+        @media (min-width: 421px) and (max-width: 699.5px) {
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        @media (min-width: 700px) and (max-width: 1000px) {
+            max-width: 260px;
+            max-height: 220px;
+        }
+
+        @media (min-width: 1001px) and (max-width: 1280px) {
+            max-width: 300px;
+            max-height: 250px;
+        }
+
+        @media (min-width: 1281px) and (max-width: 1300px) {
+            max-width: 350px;
+            max-height: 300px;
+        }
+
+        @media (max-width: 640px) {
+            right: 50%;
+            transform: translateX(50%);
+        }
+
+        @media (min-width: 700px) and (max-width: 1000px) {
+            right: 10px;
+        }
+
+        @media (min-width: 1001px) and (max-width: 1280px) {
+            right: 30px;
         }
     }
 
     @media (max-width: 699.5px) {
         margin-top: 40px;
-    }
-
-    @media (max-width: 280px) {
-        max-width: 280px;
     }
 `
 
@@ -59,6 +93,16 @@ export const Background = styled.div`
 
     @media (max-width: 600px) {
         background-position: center;
+    }
+
+    @media (max-width: 699.5px) {
+        &:first-of-type {
+            min-height: 500px;
+        }
+
+        &:nth-last-of-type(2) {
+            min-height: 847px;
+        }
     }
 `
 
@@ -82,7 +126,7 @@ export const Heading = styled.div`
             background-color: ${({ theme }) => theme.color.whiteColor};
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 699.5px) {
             max-width: 140px;
             max-height: 50px;
             line-height: 50px;
@@ -90,7 +134,7 @@ export const Heading = styled.div`
         }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 699.5px) {
         top: 40px;
     }
 `
@@ -109,7 +153,7 @@ export const Text = styled.p`
     font-family: 'Suez One', serif;
     margin: 15px 0;
 
-    @media (max-width: 640px) {
+    @media (max-width: 570.5px) {
         margin: 15px 0 25px;
     }
 
