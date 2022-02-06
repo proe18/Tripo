@@ -1,8 +1,18 @@
+import { Footer, HeaderCareers, JobsPosition } from '../container';
+import { careersData } from '../data/Careers_data';
+import { footerData } from '../data/Footer_data'
+
 function Careers() {
+    const headerData = careersData.header
+    const jobsPositionData = careersData.jobs
+    const data = footerData
+
     return (
-        <div className="Careers">
-            <h1>Careers</h1>
-        </div>
+        <>
+            <HeaderCareers data={headerData} />
+            <JobsPosition data={jobsPositionData}/>
+            <Footer data={data} />
+        </>
     );
 }
 

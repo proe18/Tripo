@@ -1,4 +1,4 @@
-import { Header, About, OurGames, JoinTeam, Footer } from '../container'
+import { HeaderHome, About, OurGames, JoinTeam, Footer } from '../container'
 import { footerData } from '../data/Footer_data'
 import { homeData } from '../data/Home_data'
 
@@ -11,7 +11,7 @@ const Home = () => {
 
     return (
         <>
-            <Header data={headerData} />
+            <HeaderHome data={headerData} />
             <About data={aboutData} />
             <OurGames data={ourGamesData} />
             <JoinTeam data={joinTeamData} />

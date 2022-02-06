@@ -199,8 +199,6 @@ export const Game = styled(ReactRouterLink)`
     max-width: 300px;
     max-height: 398px;
     text-decoration: none;
-    outline: none;
-    border: 0;
     position: relative;
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
     overflow: hidden;

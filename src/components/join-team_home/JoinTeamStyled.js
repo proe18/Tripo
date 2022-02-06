@@ -91,8 +91,12 @@ export const Background = styled.div`
         min-height: 600px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
         background-position: center;
+    }
+
+    @media (max-width: 1000px) {
+        background-attachment: unset;
     }
 
     @media (max-width: 699.5px) {

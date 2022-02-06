@@ -1,47 +1,47 @@
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
-import { Header } from '../../components'
+import { HeaderHome } from '../../components'
 
 const HeaderContainer = ({data}) => {
     return (
-        <Header>
-            <Header.Wrapper>
-                <Header.Heading>
-                    <Header.Title>{data.title}</Header.Title>
-                    <Header.Text>{data.text}</Header.Text>
-                    <Header.PlatForms>
+        <HeaderHome>
+            <HeaderHome.Wrapper>
+                <HeaderHome.Heading>
+                    <HeaderHome.Title>{data.title}</HeaderHome.Title>
+                    <HeaderHome.Text>{data.text}</HeaderHome.Text>
+                    <HeaderHome.PlatForms>
                         {data.platForms.map((platForm, index) =>
-                            <Header.Link key={index} href='/'>
-                                <Header.Image
+                            <HeaderHome.Link key={index} href='/'>
+                                <HeaderHome.Image
                                     src={platForm.img}
                                     alt={platForm.alt}
                                 />
-                            </Header.Link>
+                            </HeaderHome.Link>
                         )}
-                    </Header.PlatForms>
-                </Header.Heading>
-                <Header.Games>
+                    </HeaderHome.PlatForms>
+                </HeaderHome.Heading>
+                <HeaderHome.Games>
                     {data.listGames.map(game =>
-                        <Header.Game key={game.title} to={game.path}>
-                            <Header.Image src={game.img} alt='GameImage' />
-                            <Header.Overlay>
-                                <Header.Heading>
-                                    <Header.Title>{game.title}</Header.Title>
-                                    <Header.Text>{game.text}</Header.Text>
-                                </Header.Heading>
-                            </Header.Overlay>
-                        </Header.Game>
+                        <HeaderHome.Game key={game.title} to={game.path}>
+                            <HeaderHome.Image src={game.img} alt='GameImage' />
+                            <HeaderHome.Overlay>
+                                <HeaderHome.Heading>
+                                    <HeaderHome.Title>{game.title}</HeaderHome.Title>
+                                    <HeaderHome.Text>{game.text}</HeaderHome.Text>
+                                </HeaderHome.Heading>
+                            </HeaderHome.Overlay>
+                        </HeaderHome.Game>
                     )}
-                    <Header.More>
-                        <Header.Overlay>
-                            <Header.Heading>
-                                <Header.Title>Explore Our Games</Header.Title>
+                    <HeaderHome.More>
+                        <HeaderHome.Overlay>
+                            <HeaderHome.Heading>
+                                <HeaderHome.Title>Explore Our Games</HeaderHome.Title>
                                 <HiOutlineArrowNarrowDown />
-                            </Header.Heading>
-                        </Header.Overlay>
-                    </Header.More>
-                </Header.Games>
-            </Header.Wrapper>
-        </Header>
+                            </HeaderHome.Heading>
+                        </HeaderHome.Overlay>
+                    </HeaderHome.More>
+                </HeaderHome.Games>
+            </HeaderHome.Wrapper>
+        </HeaderHome>
     )
 }
 
