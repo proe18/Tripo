@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Image, Wrapper } from '../../GlobalStyles'
+import CareersBG from '../../images/background_careers_3.jpg'
 import { ButtonLinkStyled as Button } from '../button/ButtonStyled'
 
 export const Inner = styled.section`
@@ -179,4 +180,93 @@ export const Place = styled.p`
 
 export const Text = styled.p`
     line-height: 2.3rem;
+`
+
+export const Send = styled.div`
+    width: 100%;
+    height: 100%;
+    min-height: 476px;
+    background: url(${CareersBG}) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed, scroll;
+
+    ${Overlay} {
+        width: 100%;
+        height: 100%;
+        max-width: 1320px;
+        min-height: 476px;
+        background-color: ${({theme}) => theme.color.bgSecondColor};
+    }
+`
+
+export const SubTitle = styled.h2`
+    width: 100%;
+    max-width: 770px;
+    font-size: 2.1rem;
+    font-family: 'Roboto', sans-serif;
+
+    @media (max-width: 320px) {
+        font-size: 1.8rem;
+    }
+`
+
+export const Group = styled.div`
+    width: 100%;
+    max-width: 1120px;
+    padding-top: 125px;
+    margin: 0 auto;
+    color: ${({theme}) => theme.color.whiteColor};
+    text-align: left;
+
+    ${Title} {
+        padding: 15px 0 50px;
+        text-align: unset;
+    }
+
+    ${Button} {
+        max-width: 142px;
+        max-height: 60px;
+        margin: 0;
+        text-align: center;
+        color: ${({theme}) => theme.color.textColor};
+        background-color: ${({theme}) => theme.color.secondColor};
+
+        &:hover {
+            background-color: ${({theme}) => theme.color.whiteColor};
+        }
+    }
+
+    @media (max-width: 1150.5px) {
+        text-align: center;
+
+        ${SubTitle} {
+            margin: 0 auto;
+        }
+
+        ${Button} {
+            margin: 0 auto;
+        }
+    }
+
+    @media (max-width: 640px) {
+        ${Button} {
+            max-height: 55px;
+            line-height: 55px;
+        }
+    }
+
+    @media (max-width: 404px) {
+        width: 90%;
+    }
+
+    @media (min-width: 405px) and (max-width: 420px) {
+        width: 80%;
+    }
+
+    @media (max-width: 499.5px) {
+        ${Title} {
+            padding: 20px 0;
+        }
+    }
 `

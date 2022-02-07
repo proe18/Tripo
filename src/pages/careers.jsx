@@ -4,7 +4,7 @@ import { footerData } from '../data/Footer_data'
 
 function Careers() {
     const headerData = careersData.header
-    const jobsPositionData = careersData.jobs
+    const jobsPositionData = careersData.jobsPosition
     const data = footerData
 
     return (

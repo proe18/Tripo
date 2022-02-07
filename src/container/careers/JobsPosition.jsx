@@ -4,9 +4,9 @@ const JobsPositionContainer = ({ data }) => {
     return (
         <JobsPosition>
             <JobsPosition.Wrapper>
-                <JobsPosition.Title>Job Openings</JobsPosition.Title>
+                <JobsPosition.Title>{data.title}</JobsPosition.Title>
                 <JobsPosition.ListJob>
-                    {data.map(job =>
+                    {data.jobs.map(job =>
                         <JobsPosition.Position key={job.title}>
                             <JobsPosition.Wrap to={job.path}>
                                 <JobsPosition.Image src={job.img} alt={job.title} />
@@ -22,6 +22,15 @@ const JobsPositionContainer = ({ data }) => {
                         </JobsPosition.Position>
                     )}
                 </JobsPosition.ListJob>
+                <JobsPosition.Send>
+                    <JobsPosition.Overlay>
+                        <JobsPosition.Group>
+                            <JobsPosition.SubTitle>{data.sendCV.subTitle}</JobsPosition.SubTitle>
+                            <JobsPosition.Title>{data.sendCV.title}</JobsPosition.Title>
+                            <ButtonLink to={'/'}>{data.sendCV.button}</ButtonLink>
+                        </JobsPosition.Group>
+                    </JobsPosition.Overlay>
+                </JobsPosition.Send>
             </JobsPosition.Wrapper>
         </JobsPosition>
     )

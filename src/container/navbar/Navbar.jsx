@@ -37,7 +37,7 @@ const NavBar = () => {
 
                 <Navbar.Nav mobileMenu={mobileMenu}>
                     <Navbar.Item onClick={handleClickMobileMenu}>
-                        <Navbar.Link index='true' to={ROUTES.HOME}>Home</Navbar.Link>
+                        <Navbar.Link to={ROUTES.HOME}>Home</Navbar.Link>
                     </Navbar.Item>
                     <Navbar.Item
                         dropDown={dropDown}

@@ -12,7 +12,7 @@ export const theme = {
         blackColor: '#000',
         bgColor: '#f6f4f0',
         bgPrimaryColor: 'rgba(218, 57, 43, 0.75)',
-        bgCareersColor: 'rgba(39, 36, 67, 0.65)',
+        bgSecondColor: 'rgba(39, 36, 67, 0.65)',
         bgHoverFounder: 'rgba(8, 8, 8, 0.75)',
     },
     borderRadius: {

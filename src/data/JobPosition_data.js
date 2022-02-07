@@ -1,6 +1,8 @@
+import * as ROUTES from '../constants/routes'
+
 export const jobPositionData = [
     {
-        path: "/community-manager-position",
+        path: ROUTES.MANAGER,
         title: "Community Manager",
         subtitle: "Careers",
         location: "Location: San Francisco",
@@ -49,7 +51,7 @@ export const jobPositionData = [
         }
     },
     {
-        path: "/qa-tester-position",
+        path: ROUTES.TESTER,
         title: "QA Tester",
         subtitle: "Careers",
         location: "Location: San Francisco",
@@ -98,7 +100,7 @@ export const jobPositionData = [
         }
     },
     {
-        path: "/game-designer-position",
+        path: ROUTES.DESIGNER,
         title: "Game Designer",
         subtitle: "Careers",
         location: "Location: San Francisco",
@@ -147,7 +149,7 @@ export const jobPositionData = [
         }
     },
     {
-        path: "/game-developer-position",
+        path: ROUTES.DEVELOPER,
         title: "Game Developer",
         subtitle: "Careers",
         location: "Location: San Francisco",

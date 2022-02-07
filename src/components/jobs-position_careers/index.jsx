@@ -8,7 +8,10 @@ import {
     Wrap, 
     Place, 
     Text,
-    Overlay
+    Overlay,
+    SubTitle,
+    Send,
+    Group
 } from './JobsPositionStyled'
 
 const JobsPosition = ({children, ...restProps}) => {
@@ -74,6 +77,24 @@ JobsPosition.Text = function JobsPositionText({children, ...restProps}) {
 JobsPosition.Overlay = function JobsPositionOverlay({children, ...restProps}) {
     return (
         <Overlay {...restProps}>{children}</Overlay>
+    )
+}
+
+JobsPosition.Send = function JobsPositionSend({children, ...restProps}) {
+    return (
+        <Send {...restProps}>{children}</Send>
+    )
+}
+
+JobsPosition.Group = function JobsPositionGroup({children, ...restProps}) {
+    return (
+        <Group {...restProps}>{children}</Group>
+    )
+}
+
+JobsPosition.SubTitle = function JobsPositionSubTitle({children, ...restProps}) {
+    return (
+        <SubTitle {...restProps}>{children}</SubTitle>
     )
 }
 
