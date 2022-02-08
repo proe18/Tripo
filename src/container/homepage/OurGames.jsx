@@ -8,7 +8,7 @@ const OurGamesContainer = ({ data }) => {
                 <OurGames.Title>{data.title}</OurGames.Title>
                 <OurGames.Text>{data.text}</OurGames.Text>
             </OurGames.Heading>
-            <OurGames.BackGround>
+            <OurGames.Background>
                 {data.games.map((game, index) =>
                     <OurGames.Game key={index}>
                         <OurGames.Heading>
@@ -31,7 +31,7 @@ const OurGamesContainer = ({ data }) => {
                     </OurGames.Game>
                 )}
                 <OurGames.Image src={data.img} alt='' />
-            </OurGames.BackGround>
+            </OurGames.Background>
         </OurGames.Wrapper>
         </OurGames>
     )

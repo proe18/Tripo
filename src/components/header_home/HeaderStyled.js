@@ -44,7 +44,7 @@ export const Heading = styled.div`
     }
 
     @media (min-width: 451px) and (max-width: 640px) {
-        padding-top: 100px;
+        padding-top: 90px;
     }
 
     ${PlatForms} {

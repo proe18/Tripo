@@ -1,6 +1,10 @@
 const Position = () => {
     return (
-        <div>Position</div>
+        <>
+            <div className="Position">
+                <h1>Position</h1>
+            </div>
+        </>
     )
 }
 

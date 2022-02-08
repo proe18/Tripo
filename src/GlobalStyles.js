@@ -6,6 +6,7 @@ export const theme = {
         secondColor: '#fcff72',
         footerColor: '#757575',
         overlayBg: 'rgb(39, 36, 67)',
+        overlayAbout: 'rgba(246, 244, 240, 0.75)',
         textColor: '#272443',
         textColorFooter: 'rgb(117, 117, 117)',
         whiteColor: '#ffff',
@@ -62,6 +63,10 @@ export const Wrapper = styled.div`
     height: 100%;
     max-width: 1320px;
     margin: 0 auto;
+
+    /* @media (max-width: 320px) {
+        max-width: 280px;
+    } */
 
     @media (max-width: 1319px) {
         width: 90%;

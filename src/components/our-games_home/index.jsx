@@ -18,7 +18,7 @@ const OurGames = ({ children, ...restProps }) => {
     )
 }
 
-OurGames.BackGround = function OurGamesBackGround({children, ...restProps}) {
+OurGames.Background = function OurGamesBackground({children, ...restProps}) {
     return (
         <Background {...restProps}>{children}</Background>
     )
