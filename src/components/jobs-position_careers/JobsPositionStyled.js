@@ -14,6 +14,7 @@ export const Inner = styled.section`
     @media (max-width: 1180px) {
         ${Wrapper} {
             width: 100%;
+            max-width: 100%;
         }
     }
 

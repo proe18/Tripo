@@ -1,34 +1,37 @@
 import styled from 'styled-components'
 import { Wrapper } from '../../GlobalStyles'
 
+const maxHeight = '860px'
+
 export const Background = styled.section`
     width: 100%;
     height: 100%;
-    max-height: 860px;
+    max-height: ${maxHeight};
     background: ${({bg}) => `url(${bg})`} no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
 
     @media (max-width: 866.5px) {
-        max-height: calc(860px * 2);
+        max-height: calc(${maxHeight} * 2);
     }
 `
 
 export const Overlay = styled.div`
     width: 100%;
     height: 100%;
-    max-height: 860px;
+    max-height: ${maxHeight};
     background-color: ${({theme}) => theme.color.overlayAbout};
 
-    @media (max-width: 420px) {
-        ${Wrapper} {
-            max-width: 280px;
-        }
+    ${Wrapper} {
+        padding: 136px 0 132px;
     }
 
     @media (max-width: 866.5px) {
-        max-height: calc(860px * 2);
+        ${Wrapper} {
+            padding: 40px 0;
+        }
+        max-height: calc(${maxHeight} * 2);
     }
 `
 
@@ -37,8 +40,7 @@ export const Title = styled.h1`
     font-family: 'Suez One', serif;
     font-weight: 500;
     text-align: center;
-    padding-top: 155px;
-    margin-bottom: 75px;
+    margin-bottom: 54px;
     color: ${({theme}) => theme.color.textColor};
 
     @media (max-width: 639.5px) {
@@ -54,7 +56,6 @@ export const Title = styled.h1`
     }
 
     @media (max-width: 866.5px) {
-        padding-top: 40px;
         margin: 0;
     }
 `
@@ -136,7 +137,7 @@ export const Content = styled.div`
 
 export const Text = styled.p`
     font-size: 1.6rem;
-    line-height: 2.8rem;
+    line-height: 2.48rem;
     font-family: 'Roboto', sans-serif;
     margin-top: 20px;
 `

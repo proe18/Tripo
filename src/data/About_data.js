@@ -44,27 +44,27 @@ export const aboutData = {
             }
         ]
     },
-    founders: {
+    founder: {
         title: "Meet the Founders",
         founders: [
             {
                 img: DaisySuarez,
-                info: "Daisy Suarez",
+                founderName: "Daisy Suarez",
                 position: "CTO"
             },
             {
                 img: RayFinigan,
-                info: "Ray Finigan",
+                founderName: "Ray Finigan",
                 position: "Senior Game Developer"
             },
             {
                 img: TaoDeng,
-                info: "Tao Deng",
+                founderName: "Tao Deng",
                 position: "Senior Game Designer"
             },
             {
                 img: BenSingleton,
-                info: "Ben Singleton",
+                founderName: "Ben Singleton",
                 position: "Senior Game Developer"
             }
         ]
