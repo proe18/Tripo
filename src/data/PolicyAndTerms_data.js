@@ -1,10 +1,10 @@
 export const policyAndTermsData = {
     policy: {
         title: "Privacy Policy",
-        description: `A privacy policy is a statement that discloses some or all of the ways
+        text: `A privacy policy is a statement that discloses some or all of the ways
         a website collects, uses, discloses, and manages the data of its visitors and customers.
         It fulfills a legal requirement to protect a visitor or client's privacy.`,
-        description2: `Countries have their own laws with different requirements
+        text2: `Countries have their own laws with different requirements
         per jurisdiction regarding the use of privacy policies.
         Make sure you are following the legislation relevant to your activities and location.`,
         question: {
@@ -20,7 +20,7 @@ export const policyAndTermsData = {
                 "Contact Information"
             ]
         },
-        notice: `The explanations and information provided herein are only general explanations,
+        description: `The explanations and information provided herein are only general explanations,
         information and samples. You should not rely on this article as legal advice or
         as recommendations regarding what you should actually do.
         We recommend that you seek legal advice to help you understand and to assist you
@@ -28,10 +28,10 @@ export const policyAndTermsData = {
     },
     terms: {
         title: "Terms & Conditions",
-        description: `Terms and conditions (“Terms”) are a set of legal terms defined by the owner of a website. 
+        text: `Terms and conditions (“Terms”) are a set of legal terms defined by the owner of a website. 
         They set forth the terms and conditions governing the activities of the website visitors 
         on the said website and the relationship between the site visitors and the website owner.`,
-        description2: ` Terms must be defined according to the specific needs and nature of each website. 
+        text2: ` Terms must be defined according to the specific needs and nature of each website. 
         For example, a website offering products to customers in e-commerce transactions requires Terms 
         that are different from the Terms of a website only providing information.     
         Terms provide the website owner the ability to protect themselves from potential legal exposure.`,
@@ -51,7 +51,7 @@ export const policyAndTermsData = {
                 "Contact info"
             ]
         },
-        notice: `The explanations and information provided herein are only general explanations,
+        description: `The explanations and information provided herein are only general explanations,
         information and samples. You should not rely on this article as legal advice or
         as recommendations regarding what you should actually do.
         We recommend that you seek legal advice to help you understand and to assist you

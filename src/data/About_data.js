@@ -1,5 +1,6 @@
-import Team from "../images/about_1.jpg"
 import InfoBg from '../images/background_about_1.jpg'
+import OfficesBg from '../images/background_about_2.jpg'
+import Team from "../images/about_1.jpg"
 import Invite from "../images/about_2.jpg"
 import DaisySuarez from "../images/founder_about_1.jpg"
 import RayFinigan from "../images/founder_about_2.jpg"
@@ -70,6 +71,7 @@ export const aboutData = {
         ]
     },
     offices: {
+        bg: OfficesBg,
         title: "Our Offices",
         place: "Our Studio in San Francisco",
         text: `I'm a paragraph.
@@ -81,7 +83,8 @@ export const aboutData = {
             title: "We’d Love to Work With You",
             text: `I'm a paragraph.
             Click here to add your own text and edit me.
-            Let your users get to know you.`
+            Let your users get to know you.`,
+            button: 'Explore Opportunities'
         }
     },
 }
