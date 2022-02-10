@@ -8,6 +8,11 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+
+    //Responsive mobile
+    @media (max-width: 320px) {
+        max-width: 280px;
+    }
     
     //Responsive mobile and tablet
     @media (max-width: 860px) {

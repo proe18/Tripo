@@ -9,7 +9,7 @@ export const policyAndTermsData = {
         Make sure you are following the legislation relevant to your activities and location.`,
         question: {
             title: "In general, what should you cover in your Privacy Policy?",
-            questions: [
+            listQuestion: [
                 "What type of information do you collect?",
                 "How do you collect information?",
                 "Why do you collect such personal information?",
@@ -37,7 +37,7 @@ export const policyAndTermsData = {
         Terms provide the website owner the ability to protect themselves from potential legal exposure.`,
         question: {
             title: "In general, what should you cover in your Terms & Conditions?",
-            questions: [
+            listQuestion: [
                 "Who can use your website; what are the requirements to create an account (if relevant)",
                 "Key commercial Terms offered to customers",
                 "Retention of right to change offering",
