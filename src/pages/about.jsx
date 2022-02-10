@@ -1,5 +1,5 @@
-import { Footer, Founder, HeaderAbout, Info, Offices } from '../container';
-import { aboutData } from '../data/About_data';
+import { Footer, Founder, HeaderAbout, Info, Offices } from '../container'
+import { aboutData } from '../data/About_data'
 import { footerData } from '../data/Footer_data'
 
 const About = () => {

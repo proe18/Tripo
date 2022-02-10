@@ -1,4 +1,5 @@
 import { ButtonLink, Offices } from '../../components'
+import * as ROUTES from '../../constants/routes'
 
 const OfficesContainer = ({ data }) => {
     return (
@@ -18,7 +19,7 @@ const OfficesContainer = ({ data }) => {
                             <Offices.Content>
                                 <Offices.Title>{data.box.title}</Offices.Title>
                                 <Offices.Text>{data.box.text}</Offices.Text>
-                                <ButtonLink to={'/'}>{data.box.button}</ButtonLink>
+                                <ButtonLink to={ROUTES.CAREERS}>{data.box.button}</ButtonLink>
                             </Offices.Content>
                         </Offices.Box>
                     </Offices.Group>

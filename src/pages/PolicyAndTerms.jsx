@@ -7,17 +7,17 @@ import { policyAndTermsData } from '../data/PolicyAndTerms_data'
 const PolicyAndTerms = () => {
     const location = useLocation()
 
-    const checkLocation = (path) => {
+    const checkPath = (path) => {
         switch (path) {
             case ROUTES.POLICY:
                 return policyAndTermsData.policy
             case ROUTES.TERMS:
                 return policyAndTermsData.terms
-            default: break;
+            default: break
         }
     }   
 
-    const contentData = checkLocation(location.pathname)
+    const contentData = checkPath(location.pathname)
 
     return (
         <>

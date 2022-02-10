@@ -1,5 +1,5 @@
-import { Footer, HeaderCareers, JobsPosition } from '../container';
-import { careersData } from '../data/Careers_data';
+import { Footer, HeaderCareers, JobsPosition } from '../container'
+import { careersData } from '../data/Careers_data'
 import { footerData } from '../data/Footer_data'
 
 function Careers() {
