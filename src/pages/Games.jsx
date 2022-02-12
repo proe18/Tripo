@@ -1,8 +1,9 @@
 import { useLocation } from 'react-router-dom'
-import { Footer, HeaderGames } from '../container'
+import { Footer, HeaderGames, Screenshots } from '../container'
 import * as ROUTES from '../constants/routes'
 import { gamesData } from '../data/Games_data'
 import { footerData } from '../data/Footer_data'
+import { GamesPageProvider } from '../context/GamesPageContext'
 
 const Games = () => {
     const location = useLocation()
@@ -18,14 +19,15 @@ const Games = () => {
             default: break
         }
     }
-    
+
     const gameData = checkPath(location.pathname)
 
     return (
-        <>
+        <GamesPageProvider>
             <HeaderGames data={gameData.header} />
+            <Screenshots data={gameData.screenshots} />
             <Footer data={footerData} />
-        </>
+        </GamesPageProvider>
     );
 }
 

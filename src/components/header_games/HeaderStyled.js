@@ -41,7 +41,7 @@ export const Box = styled.div`
     @media (max-width: 748px) {
         width: 87.5%;
         top: 230px;
-        min-height: ${({heightElement}) => heightElement !== 0 && `${heightElement}px`};
+        min-height: ${({heightBox}) => heightBox && `${heightBox}px`};
     }
 `
 

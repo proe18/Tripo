@@ -1,24 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react';
 import { HeaderGames } from '../../components'
+import { GamesPageContext } from '../../context/GamesPageContext';
 
-const HeaderContainer = ({ data }) => {
-    const [heightElement, setHeightElement] = useState(618)
-
-    useEffect(() => {
-        const getHeightElement = () => {
-            setHeightElement(document.getElementById('groupElement').offsetHeight)
-        }
-
-        window.addEventListener('resize', getHeightElement)
-
-        return () => window.removeEventListener('resize', getHeightElement)
-    }, [])
+const HeaderContainer = ({ data}) => {
+    const heightElement = useContext(GamesPageContext)
 
     return (
         <HeaderGames>
             <HeaderGames.Background bg={data.bg} >
                 <HeaderGames.Wrapper>
-                    <HeaderGames.Box heightElement={heightElement}>
+                    <HeaderGames.Box heightBox={heightElement}>
                         <HeaderGames.Group id='groupElement'>
                             <HeaderGames.Info>
                                 <HeaderGames.Wrap>
@@ -36,7 +27,7 @@ const HeaderContainer = ({ data }) => {
                         </HeaderGames.Group>
                     </HeaderGames.Box>
                 </HeaderGames.Wrapper>
-                </HeaderGames.Background>
+            </HeaderGames.Background>
         </HeaderGames>
     )
 }
