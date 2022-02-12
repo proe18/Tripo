@@ -248,8 +248,13 @@ export const Icon = styled.div`
         position: absolute;
         top: 0;
         z-index: 11;
+        
+    }
+
+    @media (min-width: 321px) and (max-width: 860px) {
         ${({ mobileMenu }) => mobileMenu && 'right: 5%;'}
     }
+
     //Hidden icon navbar
     @media (min-width: 861px) {
         display: none;

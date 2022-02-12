@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react';
+import { useEffect, useState, createContext } from 'react';
 
 const NavbarContext = createContext()
 
@@ -16,14 +16,20 @@ const NavbarProvider = ({ children }) => {
     }
     //Handle show and hidden dropdown if device is mobile and tablet
     const handleClickDropDown = () => setDropDown(window.innerWidth <= 1280 && !dropDown)
-
-    //Handle resize website
-    const handleResize = () => {
-        if (window.innerWidth > 860) {
-            setMobileMenu(false)
-            setDropDown(false)
+    
+    useEffect(() => {
+        //Handle Navbar when width > 860
+        const handleNavbar = () => {
+            if (window.innerWidth > 860) {
+                setMobileMenu(false)
+                setDropDown(false)
+            }
         }
-    }
+
+        window.addEventListener('resize', handleNavbar)
+
+        return () => window.removeEventListener('resize', handleNavbar)
+    }, [])
 
     const value = {
         mobileMenu,
@@ -31,8 +37,7 @@ const NavbarProvider = ({ children }) => {
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
-        handleClickDropDown,
-        handleResize
+        handleClickDropDown
     }
 
     return (

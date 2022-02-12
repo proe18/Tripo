@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { CgClose, CgChevronUp, CgChevronDown } from 'react-icons/cg'
 import { Logo } from '../../components'
@@ -14,16 +14,9 @@ const NavBar = () => {
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
-        handleClickDropDown,
-        handleResize
+        handleClickDropDown
     } = useContext(NavbarContext)
 
-    useEffect(() => {
-        window.addEventListener('resize', handleResize)
-
-        return () => window.removeEventListener('resize', handleResize)
-    }, [handleResize])
-    
     return (
         <Navbar.Container mobileMenu={mobileMenu}>
             <Logo mobileMenu={mobileMenu} />

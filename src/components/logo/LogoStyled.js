@@ -9,6 +9,7 @@ export const LogoStyled = styled.div`
     text-align: center;
     font-size: 2.6rem;
     overflow: hidden;
+    z-index: 10;
     box-shadow: ${({theme}) => theme.shadow.boxShadow};
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};

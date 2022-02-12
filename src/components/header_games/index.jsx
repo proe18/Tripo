@@ -20,9 +20,9 @@ const Header = ({ children, ...restProps }) => {
     )
 }
 
-Header.Background = function HeaderBackground({ ...restProps }) {
+Header.Background = function HeaderBackground({ children, ...restProps }) {
     return (
-        <Background {...restProps} />
+        <Background {...restProps} >{children}</Background>
     )
 }
 
