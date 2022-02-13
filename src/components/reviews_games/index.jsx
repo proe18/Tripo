@@ -1,101 +1,128 @@
-import { Wrapper } from '../../GlobalStyles'
-import { 
-    Inner, 
-    Heading, 
-    Rating, 
-    Group, 
-    Icon, 
-    Text, 
-    Title, 
-    Box, 
-    Content, 
+import { Wrapper, Image } from '../../GlobalStyles'
+import {
+    Inner,
+    Heading,
+    Rating,
+    Group,
+    Icon,
+    Text,
+    Title,
+    Box,
+    Content,
     Name,
     Background,
     Overlay,
-    SubTitle 
+    SubTitle,
+    BoxPlatForms,
+    Platforms,
+    Wrap
 } from './ReviewsStyled'
 
-const Reviews = ({children, ...restProps}) => {
+const Reviews = ({ children, ...restProps }) => {
     return (
         <Inner {...restProps}>{children}</Inner>
     )
 }
 
-Reviews.Wrapper = function ReviewsWrapper({children, ...restProps}) {
+Reviews.Wrapper = function ReviewsWrapper({ children, ...restProps }) {
     return (
         <Wrapper {...restProps}>{children}</Wrapper>
     )
 }
 
-Reviews.Heading = function ReviewsHeading({children, ...restProps}) {
+Reviews.Heading = function ReviewsHeading({ children, ...restProps }) {
     return (
         <Heading {...restProps}>{children}</Heading>
     )
 }
 
-Reviews.Rating = function ReviewsRating({children, ...restProps}) {
+Reviews.Rating = function ReviewsRating({ children, ...restProps }) {
     return (
         <Rating {...restProps}>{children}</Rating>
     )
 }
 
-Reviews.Group = function ReviewsGroup({children, ...restProps}) {
+Reviews.Group = function ReviewsGroup({ children, ...restProps }) {
     return (
         <Group {...restProps}>{children}</Group>
     )
 }
 
-Reviews.Icon = function ReviewsIcon({children, ...restProps}) {
+Reviews.Icon = function ReviewsIcon({ children, ...restProps }) {
     return (
         <Icon {...restProps}>{children}</Icon>
     )
 }
 
-Reviews.Text = function ReviewsText({children, ...restProps}) {
+Reviews.Text = function ReviewsText({ children, ...restProps }) {
     return (
         <Text {...restProps}>{children}</Text>
     )
 }
 
-Reviews.Title = function ReviewsTitle({children, ...restProps}) {
+Reviews.Title = function ReviewsTitle({ children, ...restProps }) {
     return (
         <Title {...restProps}>{children}</Title>
     )
 }
 
-Reviews.Box = function ReviewsBox({children, ...restProps}) {
+Reviews.Box = function ReviewsBox({ children, ...restProps }) {
     return (
         <Box {...restProps}>{children}</Box>
     )
 }
 
-Reviews.Content = function ReviewsContent({children, ...restProps}) {
+Reviews.Content = function ReviewsContent({ children, ...restProps }) {
     return (
         <Content {...restProps}>{children}</Content>
     )
 }
 
-Reviews.Name = function ReviewsName({children, ...restProps}) {
+Reviews.Name = function ReviewsName({ children, ...restProps }) {
     return (
         <Name {...restProps}>{children}</Name>
     )
 }
 
-Reviews.Background = function ReviewsBackground({children, ...restProps}) {
+Reviews.Background = function ReviewsBackground({ children, ...restProps }) {
     return (
         <Background {...restProps}>{children}</Background>
     )
 }
 
-Reviews.Overlay = function ReviewsOverlay({children, ...restProps}) {
+Reviews.Overlay = function ReviewsOverlay({ children, ...restProps }) {
     return (
         <Overlay {...restProps}>{children}</Overlay>
     )
 }
 
-Reviews.SubTitle = function ReviewsSubTitle({children, ...restProps}) {
+Reviews.SubTitle = function ReviewsSubTitle({ children, ...restProps }) {
     return (
         <SubTitle {...restProps}>{children}</SubTitle>
+    )
+}
+
+Reviews.BoxPlatForms = function ReviewsBoxPlatForms({ children, ...restProps }) {
+    return (
+        <BoxPlatForms {...restProps}>{children}</BoxPlatForms>
+    )
+}
+
+Reviews.Platforms = function ReviewsPlatforms({ children, ...restProps }) {
+    return (
+        <Platforms {...restProps}>{children}</Platforms>
+    )
+}
+
+Reviews.Wrap = function ReviewsWrap({ children, ...restProps }) {
+    return (
+        <Wrap {...restProps}>{children}</Wrap>
+    )
+}
+
+Reviews.Image = function ReviewsImage({ ...restProps }) {
+    return (
+        <Image {...restProps} />
     )
 }
 

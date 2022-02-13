@@ -72,18 +72,19 @@ export const gamesData = {
                 Click here to add your own text and edit me.
                 It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
                 I’m a great place for you to tell a story and let your users know a little more about you.`,
-                bg: KiponBg_2
-            },
-            platForm: [
-                {
-                    img: AppStore,
-                    alt: "App Store"
-                },
-                {
-                    img: GooglePlay,
-                    alt: "Google Play"
-                }
-            ]
+                bg: KiponBg_2,
+                title_2: 'Play Now',
+                platForms: [
+                    {
+                        img: AppStore,
+                        alt: "App Store"
+                    },
+                    {
+                        img: GooglePlay,
+                        alt: "Google Play"
+                    }
+                ]
+            }
         },
     },
     robotrix: {
@@ -141,18 +142,19 @@ export const gamesData = {
                 Click here to add your own text and edit me.
                 It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
                 I’m a great place for you to tell a story and let your users know a little more about you.`,
-                bg: RobotrixBg_2
-            },
-            platForm: [
-                {
-                    img: AppStore,
-                    alt: "App Store"
-                },
-                {
-                    img: GooglePlay,
-                    alt: "Google Play"
-                }
-            ]
+                bg: RobotrixBg_2,
+                title_2: 'Play Now',
+                platForms: [
+                    {
+                        img: AppStore,
+                        alt: "App Store"
+                    },
+                    {
+                        img: GooglePlay,
+                        alt: "Google Play"
+                    }
+                ]
+            } 
         }
     },
     treasure: {
@@ -211,18 +213,19 @@ export const gamesData = {
                 Click here to add your own text and edit me.
                 It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
                 I’m a great place for you to tell a story and let your users know a little more about you.`,
-                bg: TreasureBg_2
-            },
-            platForm: [
-                {
-                    img: AppStore,
-                    alt: "App Store"
-                },
-                {
-                    img: GooglePlay,
-                    alt: "Google Play"
-                }
-            ]
+                bg: TreasureBg_2,
+                title_2: 'Play Now',
+                platForms: [
+                    {
+                        img: AppStore,
+                        alt: "App Store"
+                    },
+                    {
+                        img: GooglePlay,
+                        alt: "Google Play"
+                    }
+                ]
+            }
         }
     }
 }

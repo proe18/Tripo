@@ -30,7 +30,7 @@ const ReviewsContainer = ({ data }) => {
             <Reviews.Background bg={data.content.bg}>
                 <Reviews.Overlay>
                     <Reviews.Content>
-                        {data.content?.subTitle && 
+                        {data.content?.subTitle &&
                             <Reviews.SubTitle>{data.content.subTitle}</Reviews.SubTitle>
                         }
                         <Reviews.Title>{data.content.title}</Reviews.Title>
@@ -38,6 +38,16 @@ const ReviewsContainer = ({ data }) => {
                     </Reviews.Content>
                 </Reviews.Overlay>
             </Reviews.Background>
+            <Reviews.BoxPlatForms>
+                <Reviews.Title>{data.content.title_2}</Reviews.Title>
+                <Reviews.Platforms>
+                    {data.content.platForms.map(platform =>
+                        <Reviews.Wrap key={platform.alt} href={'/'}>
+                            <Reviews.Image src={platform.img} alt={platform.alt}/>
+                        </Reviews.Wrap>
+                    )}
+                </Reviews.Platforms>
+            </Reviews.BoxPlatForms>
         </Reviews>
     )
 }

@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 export const Inner = styled.section`
     margin-top: 95px;
+
+    @media (max-width: 320px) {
+        margin-top: 50px;
+    }
 `
 
 export const Group = styled.div`
@@ -9,10 +13,16 @@ export const Group = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 55px;
+
+    @media (max-width: 320px) {
+        display: block;
+        margin: 0;
+    }
 `
 
 export const Text = styled.p`
     font-size: 1.6rem;
+    line-height: 2.5rem;
     font-family: 'Roboto', sans-serif;
 `
 
@@ -40,8 +50,17 @@ export const Heading = styled.div`
         line-height: 35px;
         text-align: center;
         border-radius: 50px;
-        margin-right: 4px;
+        margin: 0 3.2px 0.5px 0;
         background-color: ${({ theme }) => theme.color.whiteColor};
+    }
+
+    @media (max-width: 320px) {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+
+        ${Group} {
+            display: flex;
+        }
     }
 `
 
@@ -69,6 +88,11 @@ export const Title = styled.h1`
     font-family: 'Suez One', serif;
     font-weight: 500;
     margin-left: 50px;
+
+    @media (max-width: 320px) {
+        margin: 0 0 30px;
+        font-size: 3rem;
+    }
 `
 
 export const Box = styled.div`
@@ -79,12 +103,26 @@ export const Box = styled.div`
     border: 1px solid #000;
     display: flex;
     align-items: center;
+
+    @media (max-width: 320px) {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 1px solid #000;
+        min-height: 200px;
+        margin-top: 30px;
+    }
 `
 
 export const Content = styled.div`
     width: 100%;
     max-width: 241px;
     margin: 0 auto;
+
+    @media (max-width: 320px) {
+        margin: 0;
+        max-width: 100%;
+    }
 `
 
 export const Name = styled.p`
@@ -92,6 +130,10 @@ export const Name = styled.p`
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     margin-top: 25px;
+
+    @media (max-width: 320px) {
+        font-size: 1.9rem;
+    }
 `
 
 export const Background = styled.div`
@@ -117,11 +159,21 @@ export const Overlay = styled.div`
         text-align: center;
         padding: 185px 0;
         color: ${({theme}) => theme.color.whiteColor};
+
+        @media (max-width: 320px) {
+            width: 85%;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
     }
 
     ${Title} {
         max-width: 602.1px;
         margin: 0 auto 20px;
+
+        @media (max-width: 320px) {
+            font-size: 2.6rem;
+        }
     }
 
     ${Text} {
@@ -129,6 +181,10 @@ export const Overlay = styled.div`
         font-size: 1.8rem;
         line-height: 3rem;
         margin: 0 auto;
+
+        @media (max-width: 320px) {
+            font-size: 1.6rem;
+        }
     }
 `
 
@@ -136,4 +192,76 @@ export const SubTitle = styled.h2`
     font-size: 2.1rem;
     font-family: 'Roboto', sans-serif;
 
+    @media (max-width: 320px) {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+`
+
+export const BoxPlatForms = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 568px;
+    max-height: 222px;
+    margin: 80px auto 0;
+    padding: 45px 0;
+    text-align: center;
+    border-radius: ${({theme}) => theme.borderRadius.radius2};
+    background-color: ${({theme}) => theme.color.whiteColor};
+    box-shadow: ${({theme}) => theme.shadow.boxShadow};
+
+    ${Title} {
+        color: ${({theme}) => theme.color.textColor};
+        margin: 0 0 30px;
+
+        @media (max-width: 320px) {
+            margin: 0 0 5px;
+        }
+    }
+
+    @media (max-width: 320px) {
+        max-width: 280px;
+        max-height: 144px;
+        margin: 40px auto 0;
+        padding: 35px 0;
+    }
+`
+
+export const Wrap = styled.a`
+    width: 100%;
+    height: 100%;
+    max-height: 45px;
+
+    @media (max-width: 320px) {
+        max-height: 35px;
+    }
+`
+
+export const Platforms = styled.div`
+    width: 100%;
+    max-width: 307px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ${Wrap}:first-of-type {
+        max-width: 135px;
+
+        @media (max-width: 320px) {
+            max-width: 105px;
+        }
+    }
+
+    ${Wrap}:last-of-type {
+        max-width: 152px;
+
+        @media (max-width: 320px) {
+            max-width: 117px;
+        }
+    }
+
+    @media (max-width: 320px) {
+        max-width: 232px;
+    }
 `
