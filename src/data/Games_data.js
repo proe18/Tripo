@@ -1,6 +1,11 @@
+import AppStore from "../images/app_store.jpg"
+import GooglePlay from "../images/google_play.jpg"
 import KiponBg from '../images/background_kipon_1.jpg'
+import KiponBg_2 from '../images/background_kipon_2.jpg'
 import RobotrixBg from '../images/background_robotrix_1.jpg'
+import RobotrixBg_2 from '../images/background_robotrix_2.jpg'
 import TreasureBg from '../images/background_treasure_1.jpg'
+import TreasureBg_2 from '../images/background_treasure_2.jpg'
 import KiponAvatar from "../images/kipon_avatar.jpg"
 import RobotrixAvatar from "../images/robotrix_avatar.jpg"
 import TreasureAvatar from "../images/treasure_avatar.jpg"
@@ -10,7 +15,6 @@ import RobotrixScreenshot_1 from "../images/robotrix_1.jpg"
 import RobotrixScreenshot_2 from "../images/robotrix_2.jpg"
 import TreasureScreenshot_1 from "../images/treasure_1.jpg"
 import TreasureScreenshot_2 from "../images/treasure_2.jpg"
-import { PlatForms } from './Platforms_data'
 
 export const gamesData = {
     kipon: {
@@ -61,16 +65,26 @@ export const gamesData = {
                     about you and your services.”`,
                     reviewer: "Priya Gunga"
                 }
+            ],
+            content: {
+                title: "Challenge a Friend or Race Against the Clock as You Battle Through 20 Levels of Endless Fun",
+                text: `I'm a paragraph.
+                Click here to add your own text and edit me.
+                It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
+                I’m a great place for you to tell a story and let your users know a little more about you.`,
+                bg: KiponBg_2
+            },
+            platForm: [
+                {
+                    img: AppStore,
+                    alt: "App Store"
+                },
+                {
+                    img: GooglePlay,
+                    alt: "Google Play"
+                }
             ]
         },
-        footerContent: {
-            title: "Challenge a Friend or Race Against the Clock as You Battle Through 20 Levels of Endless Fun",
-            text: `I'm a paragraph.
-            Click here to add your own text and edit me.
-            It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
-            I’m a great place for you to tell a story and let your users know a little more about you.`
-        },
-        platForm: PlatForms
     },
     robotrix: {
         header: {
@@ -120,16 +134,26 @@ export const gamesData = {
                     about you and your services.”`,
                     reviewer: "Danni Lopez"
                 }
+            ],
+            content: {
+                title: "Open-world playability wherever you are",
+                text: `I'm a paragraph.
+                Click here to add your own text and edit me.
+                It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
+                I’m a great place for you to tell a story and let your users know a little more about you.`,
+                bg: RobotrixBg_2
+            },
+            platForm: [
+                {
+                    img: AppStore,
+                    alt: "App Store"
+                },
+                {
+                    img: GooglePlay,
+                    alt: "Google Play"
+                }
             ]
-        },
-        footerContent: {
-            title: "Open-world playability wherever you are",
-            text: `I'm a paragraph.
-            Click here to add your own text and edit me.
-            It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
-            I’m a great place for you to tell a story and let your users know a little more about you.`
-        },
-        platForm: PlatForms
+        }
     },
     treasure: {
         header: {
@@ -179,16 +203,26 @@ export const gamesData = {
                     about you and your services.”`,
                     reviewer: "Sofie Zacks"
                 }
+            ],
+            content: {
+                subTitle: "Play Against Other Players Worldwide",
+                title: "Set Sail On Adventures to Win Tokens and Unlock Rare Items",
+                text: `I'm a paragraph.
+                Click here to add your own text and edit me.
+                It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
+                I’m a great place for you to tell a story and let your users know a little more about you.`,
+                bg: TreasureBg_2
+            },
+            platForm: [
+                {
+                    img: AppStore,
+                    alt: "App Store"
+                },
+                {
+                    img: GooglePlay,
+                    alt: "Google Play"
+                }
             ]
-        },
-        footerContent: {
-            subTitle: "Play Against Other Players Worldwide",
-            title: "Set Sail On Adventures to Win Tokens and Unlock Rare Items",
-            text: `I'm a paragraph.
-            Click here to add your own text and edit me.
-            It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font.
-            I’m a great place for you to tell a story and let your users know a little more about you.`
-        },
-        platForm: PlatForms
+        }
     }
 }

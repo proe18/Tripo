@@ -1,0 +1,45 @@
+import { Reviews } from '../../components'
+import { AiFillStar } from 'react-icons/ai'
+
+const ReviewsContainer = ({ data }) => {
+    return (
+        <Reviews>
+            <Reviews.Wrapper>
+                <Reviews.Heading>
+                    <Reviews.Rating>
+                        <Reviews.Group>
+                            <Reviews.Icon>
+                                <AiFillStar />
+                            </Reviews.Icon>
+                            <Reviews.Text>{data.rating}</Reviews.Text>
+                        </Reviews.Group>
+                    </Reviews.Rating>
+                    <Reviews.Title>{data.title}</Reviews.Title>
+                </Reviews.Heading>
+                <Reviews.Group>
+                    {data.listReview.map((review, index) =>
+                        <Reviews.Box key={index}>
+                            <Reviews.Content>
+                                <Reviews.Text>{review.review}</Reviews.Text>
+                                <Reviews.Name>{review.reviewer}</Reviews.Name>
+                            </Reviews.Content>
+                        </Reviews.Box>
+                    )}
+                </Reviews.Group>
+            </Reviews.Wrapper>
+            <Reviews.Background bg={data.content.bg}>
+                <Reviews.Overlay>
+                    <Reviews.Content>
+                        {data.content?.subTitle && 
+                            <Reviews.SubTitle>{data.content.subTitle}</Reviews.SubTitle>
+                        }
+                        <Reviews.Title>{data.content.title}</Reviews.Title>
+                        <Reviews.Text>{data.content.text}</Reviews.Text>
+                    </Reviews.Content>
+                </Reviews.Overlay>
+            </Reviews.Background>
+        </Reviews>
+    )
+}
+
+export default ReviewsContainer

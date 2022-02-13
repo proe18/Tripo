@@ -13,6 +13,7 @@ const GamesPageProvider = ({ children }) => {
         window.addEventListener('resize', getHeightElement)
 
         return () => window.removeEventListener('resize', getHeightElement)
+        
     }, [])
 
     return (
