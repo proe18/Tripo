@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const ButtonStyled = styled.button`
+    width: 100%;
     height: 100%;
     max-height: 60px;
     line-height: 60px;
@@ -12,6 +13,11 @@ export const ButtonStyled = styled.button`
     border: none;
     font-family: "Roboto", sans-serif;
     border-radius: ${({ theme }) => theme.borderRadius.radius1};
+    will-change: transition;
+    transition: ease-in 0.3s;
+    -moz-transition: ease-in 0.3s;
+    -o-transition: ease-in 0.3s;
+    -webkit-transition: ease-in 0.3s;
 `
 
 export const ButtonLinkStyled = styled(Link)`

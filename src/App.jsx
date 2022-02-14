@@ -17,15 +17,15 @@ const App = () => {
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.ABOUT} element={<About />} />
-          <Route path={ROUTES.CAREERS} element={<Careers />}>
-            {[
+          <Route path={ROUTES.CAREERS} element={<Careers />}></Route>
+          <Route path={ROUTES.CONTACT} element={<Home />} />
+
+          {[
               ROUTES.MANAGER,
               ROUTES.TESTER,
               ROUTES.DESIGNER,
               ROUTES.DEVELOPER
             ].map((path, index) => <Route path={path} key={index} element={<Position />} />)}
-          </Route>
-          <Route path={ROUTES.CONTACT} element={<Home />} />
 
           {[
             ROUTES.KIPON,

@@ -14,7 +14,6 @@ export const theme = {
         bgColor: '#f6f4f0',
         bgPrimaryColor: 'rgba(218, 57, 43, 0.75)',
         bgSecondColor: 'rgba(39, 36, 67, 0.65)',
-        bgHoverFounder: 'rgba(8, 8, 8, 0.75)',
     },
     borderRadius: {
         radius1: '10px',
