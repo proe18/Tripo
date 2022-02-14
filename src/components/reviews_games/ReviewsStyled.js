@@ -1,10 +1,18 @@
 import styled from 'styled-components'
+import { Wrapper } from '../../GlobalStyles'
 
 export const Inner = styled.section`
     margin-top: 95px;
 
-    @media (max-width: 320px) {
+    @media (max-width: 640px) {
         margin-top: 50px;
+    }
+
+    @media (max-width: 440px) {
+        ${Wrapper} {
+            width: 100%;
+            max-width: 100%;
+        }
     }
 `
 
@@ -14,9 +22,8 @@ export const Group = styled.div`
     align-items: center;
     margin-top: 55px;
 
-    @media (max-width: 320px) {
+    @media (max-width: 840px) {
         display: block;
-        margin: 0;
     }
 `
 
@@ -54,13 +61,16 @@ export const Heading = styled.div`
         background-color: ${({ theme }) => theme.color.whiteColor};
     }
 
-    @media (max-width: 320px) {
-        flex-wrap: wrap;
-        flex-direction: column-reverse;
-
+    @media (max-width: 840px) {
+        justify-content: center;
         ${Group} {
             display: flex;
         }
+    }
+ 
+    @media (max-width: 600px) {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
     }
 `
 
@@ -89,9 +99,20 @@ export const Title = styled.h1`
     font-weight: 500;
     margin-left: 50px;
 
-    @media (max-width: 320px) {
-        margin: 0 0 30px;
+    @media (max-width: 540px) {
         font-size: 3rem;
+    }
+
+    @media (min-width: 541px) and (max-width: 580px) {
+        font-size: 3.5rem;
+    }
+
+    @media (min-width: 581px) and (max-width: 600px) {
+        font-size: 4rem;
+    }
+
+    @media (max-width: 600px) {
+        margin: 0 0 30px;
     }
 `
 
@@ -100,17 +121,25 @@ export const Box = styled.div`
     height: 100%;
     max-width: 440px;
     min-height: 357px;
+    padding-top: 95px;
     border: 1px solid #000;
-    display: flex;
-    align-items: center;
 
-    @media (max-width: 320px) {
+    @media (max-width: 840px) {
         border-top: 0;
         border-left: 0;
         border-right: 0;
         border-bottom: 1px solid #000;
         min-height: 200px;
-        margin-top: 30px;
+        padding-top: 40px;
+        margin: 0 auto;
+
+        &:nth-of-type(2) {
+            min-height: 250px;
+        }
+
+        &:last-of-type {
+            border: none;
+        }
     }
 `
 
@@ -119,8 +148,11 @@ export const Content = styled.div`
     max-width: 241px;
     margin: 0 auto;
 
-    @media (max-width: 320px) {
-        margin: 0;
+    @media (max-width: 640px) {
+        width: 85%;
+    }
+
+    @media (max-width: 840px) {
         max-width: 100%;
     }
 `
@@ -131,7 +163,7 @@ export const Name = styled.p`
     font-weight: 600;
     margin-top: 25px;
 
-    @media (max-width: 320px) {
+    @media (max-width: 640px) {
         font-size: 1.9rem;
     }
 `
@@ -141,26 +173,30 @@ export const Background = styled.div`
     height: 100%;
     max-height: 735px;
     margin-top: 100px;
-    background: ${({bg}) => `url(${bg})`} no-repeat;
+    background: ${({ bg }) => `url(${bg})`} no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
+
+    @media (max-width: 840px) {
+        margin: 0;
+    }
 `
 
 export const Overlay = styled.div`
     width: 100%;
     height: 100%;
     max-height: 735px;
-    background-color: ${({theme}) => theme.color.bgPrimaryColor};
+    background-color: ${({ theme }) => theme.color.bgPrimaryColor};
 
     ${Content} {
         width: 100%;
         max-width: 763px;
         text-align: center;
         padding: 185px 0;
-        color: ${({theme}) => theme.color.whiteColor};
+        color: ${({ theme }) => theme.color.whiteColor};
 
-        @media (max-width: 320px) {
+        @media (max-width: 640px) {
             width: 85%;
             margin: 0 auto;
             padding: 50px 0;
@@ -171,7 +207,7 @@ export const Overlay = styled.div`
         max-width: 602.1px;
         margin: 0 auto 20px;
 
-        @media (max-width: 320px) {
+        @media (max-width: 640px) {
             font-size: 2.6rem;
         }
     }
@@ -182,7 +218,7 @@ export const Overlay = styled.div`
         line-height: 3rem;
         margin: 0 auto;
 
-        @media (max-width: 320px) {
+        @media (max-width: 640px) {
             font-size: 1.6rem;
         }
     }
@@ -192,7 +228,7 @@ export const SubTitle = styled.h2`
     font-size: 2.1rem;
     font-family: 'Roboto', sans-serif;
 
-    @media (max-width: 320px) {
+    @media (max-width: 640px) {
         font-size: 1.8rem;
         margin-bottom: 8px;
     }
@@ -206,24 +242,35 @@ export const BoxPlatForms = styled.div`
     margin: 80px auto 0;
     padding: 45px 0;
     text-align: center;
-    border-radius: ${({theme}) => theme.borderRadius.radius2};
-    background-color: ${({theme}) => theme.color.whiteColor};
-    box-shadow: ${({theme}) => theme.shadow.boxShadow};
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
+    background-color: ${({ theme }) => theme.color.whiteColor};
+    box-shadow: ${({ theme }) => theme.shadow.boxShadow};
 
     ${Title} {
-        color: ${({theme}) => theme.color.textColor};
+        color: ${({ theme }) => theme.color.textColor};
         margin: 0 0 30px;
 
-        @media (max-width: 320px) {
+        @media (max-width: 400px) {
             margin: 0 0 5px;
         }
+
+        @media (min-width: 401px) and (max-width: 540px) {
+            font-size: 3.5rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        max-height: 144px;
+        padding: 35px 0;
     }
 
     @media (max-width: 320px) {
         max-width: 280px;
-        max-height: 144px;
+    }
+
+    @media (min-width: 321px) and (max-width: 640px) {
+        width: 90%;
         margin: 40px auto 0;
-        padding: 35px 0;
     }
 `
 
@@ -232,7 +279,7 @@ export const Wrap = styled.a`
     height: 100%;
     max-height: 45px;
 
-    @media (max-width: 320px) {
+    @media (max-width: 400px) {
         max-height: 35px;
     }
 `
@@ -248,7 +295,7 @@ export const Platforms = styled.div`
     ${Wrap}:first-of-type {
         max-width: 135px;
 
-        @media (max-width: 320px) {
+        @media (max-width: 400px) {
             max-width: 105px;
         }
     }
@@ -256,12 +303,12 @@ export const Platforms = styled.div`
     ${Wrap}:last-of-type {
         max-width: 152px;
 
-        @media (max-width: 320px) {
+        @media (max-width: 400px) {
             max-width: 117px;
         }
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 400px) {
         max-width: 232px;
     }
 `

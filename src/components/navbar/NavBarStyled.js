@@ -251,6 +251,10 @@ export const Icon = styled.div`
         
     }
 
+    @media (max-width: 280px) {
+        ${({ mobileMenu }) => mobileMenu && 'right: 5%;'}
+    }
+
     @media (min-width: 321px) and (max-width: 860px) {
         ${({ mobileMenu }) => mobileMenu && 'right: 5%;'}
     }
