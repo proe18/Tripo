@@ -1,4 +1,3 @@
-import { PlatForms } from './Platforms_data'
 import Kipon from '../images/kipon_avatar.jpg'
 import Robotrix from '../images/robotrix_avatar.jpg'
 import Treasure from '../images/treasure_avatar.jpg'
@@ -11,13 +10,24 @@ import OurGameImage from '../images/home_3.jpg'
 import JoinTeam_1Bg from '../images/background_home_2.jpg'
 import JoinTeam_2Bg from '../images/background_careers_3.jpg'
 import JoinTeamImage from '../images/home_4.jpg'
+import AppStore from "../images/app_store.jpg"
+import GooglePlay from "../images/google_play.jpg"
 import * as ROUTES from '../constants/routes'
 
 export const homeData = {
     header: {
         title: "Made to Be Played",
         text: "The Very Best in Mobile Gaming",
-        platForms: PlatForms,
+        platForms: [
+            {
+                img: AppStore,
+                alt: "App Store"
+            }, 
+            {
+                img: GooglePlay,
+                alt: "Google Play"
+            }
+        ],
         listGames: [
             {
                 title: "Kipon",
@@ -79,7 +89,16 @@ export const homeData = {
                 path: ROUTES.KIPON,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 ’m a great place for you to tell a story and let your users know a little more about you.`,
-                platForms: PlatForms
+                platForms: [
+                    {
+                        img: AppStore,
+                        alt: "App Store"
+                    }, 
+                    {
+                        img: GooglePlay,
+                        alt: "Google Play"
+                    }
+                ]
             },
             {
                 avatar: Robotrix,
@@ -88,7 +107,16 @@ export const homeData = {
                 path: ROUTES.ROBOTRIX,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 I’m a great place for you to tell a story and let your users know a little more about you.`,
-                platForms: PlatForms
+                platForms: [
+                    {
+                        img: AppStore,
+                        alt: "App Store"
+                    }, 
+                    {
+                        img: GooglePlay,
+                        alt: "Google Play"
+                    }
+                ]
             },
             {
                 avatar: Treasure,
@@ -97,7 +125,16 @@ export const homeData = {
                 path: ROUTES.TREASURE,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 I’m a great place for you to tell a story and let your users know a little more about you.`,
-                platForms: PlatForms
+                platForms: [
+                    {
+                        img: AppStore,
+                        alt: "App Store"
+                    }, 
+                    {
+                        img: GooglePlay,
+                        alt: "Google Play"
+                    }
+                ]
             }
         ],
         img: OurGameImage,

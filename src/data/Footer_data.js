@@ -1,4 +1,5 @@
-import { PlatForms } from './Platforms_data'
+import AppStore from "../images/app_store.jpg"
+import GooglePlay from "../images/google_play.jpg"
 import * as ROUTES from '../constants/routes'
 
 export const footerData = {
@@ -73,7 +74,16 @@ export const footerData = {
         },
         {
             title: 'Find Us On',
-            list: PlatForms
+            list: [
+                {
+                    img: AppStore,
+                    alt: "App Store"
+                }, 
+                {
+                    img: GooglePlay,
+                    alt: "Google Play"
+                }
+            ]
         }
     ],
     coppyRight: '© 2023 by Tripo.'

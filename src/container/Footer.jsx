@@ -24,22 +24,22 @@ const FooterContainer = ({ data }) => {
                                 </Footer.Link>
                             </Footer.Item>
                         )
-                    } else {
+                    }
+                    if (!item.path.includes('https://')) {
                         return (
                             <Footer.Item key={index}>
                                 <Footer.RouteLink to={item.path}>{item.title}</Footer.RouteLink>
                             </Footer.Item>
                         )
                     }
-                } else {
-                    return (
-                        <Footer.Item key={index}>
-                            <Footer.Link href={'/'}>
-                                <Footer.Image src={item.img} alt={item.alt} />
-                            </Footer.Link>
-                        </Footer.Item>
-                    )
-                }
+                } 
+                return (
+                    <Footer.Item key={index}>
+                        <Footer.Link href={'/'}>
+                            <Footer.Image src={item.img} alt={item.alt} />
+                        </Footer.Link>
+                    </Footer.Item>
+                )
             default: break
         }
     })

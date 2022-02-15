@@ -16,7 +16,7 @@ const NavBar = () => {
         handleClickMobileMenu,
         handleClickDropDown
     } = useContext(NavbarContext)
-
+    
     return (
         <Navbar.Container mobileMenu={mobileMenu}>
             <Logo mobileMenu={mobileMenu} />
@@ -62,7 +62,7 @@ const NavBar = () => {
                 </Navbar.Nav>
             </Navbar>
         </Navbar.Container>
-    );
+    )
 }
 
 export default NavBar;

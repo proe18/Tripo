@@ -21,11 +21,11 @@ const App = () => {
           <Route path={ROUTES.CONTACT} element={<Home />} />
 
           {[
-              ROUTES.MANAGER,
-              ROUTES.TESTER,
-              ROUTES.DESIGNER,
-              ROUTES.DEVELOPER
-            ].map((path, index) => <Route path={path} key={index} element={<Position />} />)}
+            ROUTES.MANAGER,
+            ROUTES.TESTER,
+            ROUTES.DESIGNER,
+            ROUTES.DEVELOPER
+          ].map((path, index) => <Route path={path} key={index} element={<Position />} />)}
 
           {[
             ROUTES.KIPON,

@@ -9,7 +9,7 @@ const NavbarProvider = ({ children }) => {
     //Handle show and hidden dropdown if device is PC
     const handleMouseEnter = () => setDropDown(window.innerWidth > 1280 && !dropDown)
     const handleMouseLeave = () => setDropDown(window.innerWidth > 1280 && !dropDown)
-    //Handle show and hidden mobile menu on mobile
+    //Handle show and hidden mobile menu
     const handleClickMobileMenu = () => {
         setMobileMenu(window.innerWidth <= 860 && !mobileMenu)
         setDropDown(false)
