@@ -5,7 +5,7 @@ import { jobPositionData } from '../data/JobPosition_data'
 import { footerData } from '../data/Footer_data'
 
 const Position = () => {
-    const location = useLocation()
+    const { pathname } = useLocation()
 
     const checkPath = (path) => {
         switch (path) {
@@ -21,7 +21,7 @@ const Position = () => {
         }
     }
 
-    const positionData = checkPath(location.pathname)
+    const positionData = checkPath(pathname)
 
     return (
         <>

@@ -1,7 +1,10 @@
+import { useContext } from 'react'
 import { Logo } from '../components'
 import { Footer } from '../components'
+import { GamesPageContext } from '../context/GamesPageContext'
 
 const FooterContainer = ({ data }) => {
+    const { isCloseGallery } = useContext(GamesPageContext)
     const renderList = (list) => list.map((item, index) => {
         switch (typeof item) {
             case 'string':
@@ -32,7 +35,7 @@ const FooterContainer = ({ data }) => {
                             </Footer.Item>
                         )
                     }
-                } 
+                }
                 return (
                     <Footer.Item key={index}>
                         <Footer.Link href={'/'}>
@@ -45,7 +48,7 @@ const FooterContainer = ({ data }) => {
     })
 
     return (
-        <Footer>
+        <Footer hideFooter={isCloseGallery}>
             <Footer.Wrapper>
                 <Footer.Heading>
                     <Logo />

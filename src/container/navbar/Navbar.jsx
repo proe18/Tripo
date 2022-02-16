@@ -6,6 +6,7 @@ import { Navbar } from '../../components'
 import { DropDown } from '../../container'
 import * as ROUTES from '../../constants/routes'
 import { NavbarContext } from '../../context/NavbarContext'
+import { GamesPageContext } from '../../context/GamesPageContext'
 
 const NavBar = () => {
     const {
@@ -16,9 +17,11 @@ const NavBar = () => {
         handleClickMobileMenu,
         handleClickDropDown
     } = useContext(NavbarContext)
-    
+
+    const { isCloseGallery } = useContext(GamesPageContext)
+
     return (
-        <Navbar.Container mobileMenu={mobileMenu}>
+        <Navbar.Container mobileMenu={mobileMenu} hideNavbar={isCloseGallery}>
             <Logo mobileMenu={mobileMenu} />
             <Navbar mobileMenu={mobileMenu}>
                 <Navbar.Icon

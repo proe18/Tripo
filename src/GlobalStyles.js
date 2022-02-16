@@ -41,8 +41,9 @@ export const GlobalStyles = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background-color: transparent;
-        color: #333333;
+        color: #000000;
         font-size: 10px;
+        scroll-behavior: smooth;
     }
 `
 

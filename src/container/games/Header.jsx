@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import { HeaderGames } from '../../components'
 import { GamesPageContext } from '../../context/GamesPageContext';
 
-const HeaderContainer = ({ data}) => {
-    const heightElement = useContext(GamesPageContext)
+const HeaderContainer = ({ data }) => {
+    const { heightElement, isCloseGallery } = useContext(GamesPageContext)
 
     return (
-        <HeaderGames>
+        <HeaderGames hideHeader={isCloseGallery}>
             <HeaderGames.Background bg={data.bg} >
                 <HeaderGames.Wrapper>
                     <HeaderGames.Box heightBox={heightElement}>

@@ -3,7 +3,9 @@ import { Link as ReactRouterLink } from 'react-router-dom'
 import { LogoStyled as Logo } from '../logo/LogoStyled'
 import { Image } from '../../GlobalStyles'
 
-export const Inner = styled.footer``
+export const Inner = styled.footer`
+    display: ${({hideFooter}) => hideFooter === false && 'none'};
+`
 
 export const Heading = styled.div`
     width: 100%;

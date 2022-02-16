@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import { Image } from '../../GlobalStyles'
 
 export const Inner = styled.section`
+    display: ${({hideScreenshots}) => hideScreenshots === false && 'none'};
+
     @media (max-width: 748px) {
         padding-top: ${({paddingTop}) => paddingTop && `${paddingTop - 35}px`};
     }

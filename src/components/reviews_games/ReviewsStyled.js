@@ -3,6 +3,7 @@ import { Wrapper } from '../../GlobalStyles'
 
 export const Inner = styled.section`
     margin-top: 95px;
+    display: ${({hideReviews}) => hideReviews === false && 'none'};
 
     @media (max-width: 640px) {
         margin-top: 50px;

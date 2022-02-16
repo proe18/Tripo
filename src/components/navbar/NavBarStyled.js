@@ -9,6 +9,8 @@ export const Container = styled.div`
     align-items: center;
     margin: 0 auto;
 
+    display: ${({hideNavbar}) => hideNavbar === false && 'none'};
+
     //Responsive mobile
     @media (max-width: 320px) {
         max-width: 280px;

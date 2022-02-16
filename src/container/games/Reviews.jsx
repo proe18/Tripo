@@ -1,9 +1,12 @@
 import { Reviews } from '../../components'
 import { AiFillStar } from 'react-icons/ai'
+import { useContext } from 'react'
+import { GamesPageContext } from '../../context/GamesPageContext'
 
 const ReviewsContainer = ({ data }) => {
+    const { isCloseGallery } = useContext(GamesPageContext)
     return (
-        <Reviews>
+        <Reviews hideReviews={isCloseGallery}>
             <Reviews.Wrapper>
                 <Reviews.Heading>
                     <Reviews.Rating>
@@ -43,7 +46,7 @@ const ReviewsContainer = ({ data }) => {
                 <Reviews.Platforms>
                     {data.content.platForms.map(platform =>
                         <Reviews.Wrap key={platform.alt} href={'/'}>
-                            <Reviews.Image src={platform.img} alt={platform.alt}/>
+                            <Reviews.Image src={platform.img} alt={platform.alt} />
                         </Reviews.Wrap>
                     )}
                 </Reviews.Platforms>

@@ -3,6 +3,7 @@ import { Image } from '../../GlobalStyles'
 
 export const Inner = styled.header`
     padding-top: 272px;
+    display: ${({hideHeader}) => hideHeader === false && 'none'};
 
     @media (max-width: 748px) {
         padding-top: 0;

@@ -1,12 +1,11 @@
 import { useLocation } from 'react-router-dom'
-import { Footer, HeaderGames, Reviews, Screenshots } from '../container'
+import { Footer, Gallery, HeaderGames, Reviews, Screenshots } from '../container'
 import * as ROUTES from '../constants/routes'
 import { gamesData } from '../data/Games_data'
 import { footerData } from '../data/Footer_data'
-import { GamesPageProvider } from '../context/GamesPageContext'
 
 const Games = () => {
-    const location = useLocation()
+    const { pathname } = useLocation()
 
     const checkPath = (path) => {
         switch (path) {
@@ -20,15 +19,16 @@ const Games = () => {
         }
     }
 
-    const gameData = checkPath(location.pathname)
+    const gameData = checkPath(pathname)
 
     return (
-        <GamesPageProvider>
+        <>
             <HeaderGames data={gameData.header} />
             <Screenshots data={gameData.screenshots} />
-            <Reviews data={gameData.reviews}/>
+            <Reviews data={gameData.reviews} />
+            <Gallery />
             <Footer data={footerData} />
-        </GamesPageProvider>
+        </>
     );
 }
 
