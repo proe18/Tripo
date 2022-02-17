@@ -56,6 +56,13 @@ const GamesPageProvider = ({ children }) => {
         handle.exit()
     }
 
+    const handleKeyDown = (key) => {
+        if (key === 'Escape') {
+            setIsCloseGallery(true)
+            setIsFullscreen(false)
+        }
+    }
+
     const handleFullscreen = () => {
         handle.active === false ? handle.enter() : handle.exit()
         setIsFullscreen(!isFullscreen)
@@ -87,7 +94,8 @@ const GamesPageProvider = ({ children }) => {
         handleCloseGallery,
         handleFullscreen,
         handlePre,
-        handleNext
+        handleNext,
+        handleKeyDown
     }
 
     return <GamesPageContext.Provider value={value}>{children}</GamesPageContext.Provider>
