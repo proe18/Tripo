@@ -9,6 +9,7 @@ export const Container = styled.div`
     border-radius: 20px;
     position: absolute;
     top: -265px;
+    left: 85px;
 `
 
 export const FormWrapper = styled.div`
@@ -70,15 +71,13 @@ export const Form = styled.form`
 
 export const ErrorWrap = styled.div`
     width: 100%;
-    max-width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
-    top: calc(100% + 5px);
-    border: 1px solid #000000;
-    border-radius: 5px;
-    overflow: hidden;
-    background-color: #ffff;
-    z-index: 10;
-    box-shadow: ${({theme}) => theme.shadow.errorsBoxShadow};
+    top: calc(100% + 6px);
+    color: red;
+    font-size: 2rem;
 `
 
 export const FormGroup = styled.div`
@@ -99,7 +98,7 @@ export const FormGroup = styled.div`
     }
 
     ${ErrorWrap} {
-        min-width: 180px;
+        min-width: 210px;
     }
 `
 
@@ -107,9 +106,10 @@ export const FormLabel = styled.label``
 
 export const ErrorMes = styled.span`
     width: 100%;
-    padding: 10px 5px;
-    display: block;
+    max-width: 100%;
+    display: inline-block;
     font-size: 1.32rem;
+    padding-left: 2px;
 `
 
 export const ButtonSubmit = styled.button`
@@ -131,5 +131,59 @@ export const ButtonSubmit = styled.button`
 
     &:hover {
         background-color: ${({theme}) => theme.color.primaryColor};
+    }
+`
+
+//SubscribeFormContainer
+export const SubscribeFormContainer = styled(Container)`
+    max-width: 388px;
+    min-height: unset;
+    max-height: 210px;
+    background-color: ${({theme}) => theme.color.primaryColor};
+    position: unset;
+    float: right;
+    margin-top: 192px;
+    margin-right: 85px;
+
+    ${FormHeading} {
+        color: #ffff;
+        margin-bottom: 20px;
+        
+        ${FormTitle} {
+            font-size: 2.1rem;
+        }
+    }
+
+    ${FormLabel} {
+        color: #ffff;
+        font-size: 1.6rem;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    ${FormWrap} {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 336px;
+
+        ${ErrorWrap} {
+            color: #ffff;
+        }
+
+        ${FormInput} {
+            max-width: 238px;
+            min-height: 60px !important;
+        }
+    }
+`
+
+export const ButtonJoin = styled(ButtonSubmit)`
+    max-width: 80px;
+    margin-top: 15px;
+    color: ${({theme}) => theme.color.textColor};
+    background-color: ${({theme}) => theme.color.secondColor};
+
+    &:hover {
+        background-color: #ffff;
     }
 `

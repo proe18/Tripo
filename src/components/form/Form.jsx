@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form'
+import { AiOutlineWarning } from 'react-icons/ai'
 import {
     Container,
+    SubscribeFormContainer,
     FormWrapper,
     FormGroup,
     FormHeading,
@@ -12,7 +14,8 @@ import {
     FormInput,
     ErrorWrap,
     ErrorMes,
-    ButtonSubmit
+    ButtonSubmit,
+    ButtonJoin
 } from './FormStyled'
 
 export const FormContainer = () => {
@@ -38,21 +41,25 @@ export const FormContainer = () => {
                             })} />
                             {errors.firstName?.type === "required" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
                                 </ErrorWrap>
                             }
                             {errors.firstName?.type === "minLength" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Tối thiểu 3 ký tự</ErrorMes>
                                 </ErrorWrap>
                             }
                             {errors.firstName?.type === "maxLength" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Tối đa 20 ký tự</ErrorMes>
                                 </ErrorWrap>
                             }
                             {errors.firstName?.type === "pattern" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Chỉ các ký tự trong bảng chữ cái</ErrorMes>
                                 </ErrorWrap>
                             }
@@ -67,21 +74,25 @@ export const FormContainer = () => {
                             })} />
                             {errors.lastName?.type === "required" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
                                 </ErrorWrap>
                             }
                             {errors.lastName?.type === "minLength" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Tối thiểu 3 ký tự</ErrorMes>
                                 </ErrorWrap>
                             }
                             {errors.lastName?.type === "maxLength" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Tối đa 20 ký tự</ErrorMes>
                                 </ErrorWrap>
                             }
                             {errors.lastName?.type === "pattern" &&
                                 <ErrorWrap>
+                                    <AiOutlineWarning />
                                     <ErrorMes>Chỉ các ký tự trong bảng chữ cái</ErrorMes>
                                 </ErrorWrap>
                             }
@@ -89,17 +100,19 @@ export const FormContainer = () => {
                     </FormGroup>
                     <FormWrap>
                         <FormLabel>Email *</FormLabel>
-                        <FormInput type={'email'} {...register('email', {
+                        <FormInput type={'text'} {...register('email', {
                             required: true,
                             pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                         })} />
                         {errors.email?.type === "required" &&
                             <ErrorWrap>
+                                <AiOutlineWarning />
                                 <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
                             </ErrorWrap>
                         }
                         {errors.email?.type === "pattern" &&
                             <ErrorWrap>
+                                <AiOutlineWarning />
                                 <ErrorMes>Email không hợp lệ</ErrorMes>
                             </ErrorWrap>
                         }
@@ -120,32 +133,34 @@ export const SubscribeForm = () => {
     const onSubmit = (data, e) => console.log(data, e)
 
     return (
-        <Container>
-            <FormGroup>
+        <SubscribeFormContainer>
+            <FormWrapper>
                 <FormHeading>
                     <FormTitle>Subscribe to Our Newsletter</FormTitle>
                 </FormHeading>
                 <Form onSubmit={handleSubmit(onSubmit)}>
+                    <FormLabel>Email *</FormLabel>
                     <FormWrap>
-                        <FormLabel>Email *</FormLabel>
                         <FormInput type={'email'} {...register('email', {
                             required: true,
                             pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                         })} />
                         {errors.email?.type === "required" &&
                             <ErrorWrap>
+                                <AiOutlineWarning />
                                 <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
                             </ErrorWrap>
                         }
                         {errors.email?.type === "pattern" &&
                             <ErrorWrap>
+                                <AiOutlineWarning />
                                 <ErrorMes>Email không hợp lệ</ErrorMes>
                             </ErrorWrap>
                         }
+                        <ButtonJoin>Join</ButtonJoin>
                     </FormWrap>
-                    <ButtonSubmit>Join</ButtonSubmit>
                 </Form>
-            </FormGroup>
-        </Container>
+            </FormWrapper>
+        </SubscribeFormContainer>
     )
 }

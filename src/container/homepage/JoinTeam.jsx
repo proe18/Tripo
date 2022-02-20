@@ -18,7 +18,7 @@ const JoinTeamContainer = ({ data }) => {
                 <JoinTeam.Wrapper>
                     <JoinTeam.Group>
                         <FormContainer />
-                        {/* <SubscribeForm /> */}
+                        <SubscribeForm />
                     </JoinTeam.Group>
                 </JoinTeam.Wrapper>
             </JoinTeam.Overlay>

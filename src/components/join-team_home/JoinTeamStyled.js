@@ -26,7 +26,7 @@ export const Inner = styled.section`
         max-height: 414px;
         position: absolute;
         bottom: 0;
-        right: 138px;
+        right: 38px;
 
         @media (max-width: 390.5px) {
             max-width: 240px;
@@ -128,9 +128,6 @@ export const Overlay = styled.div`
 
     ${Group} {
         max-height: 600px;
-        /* display: flex;
-        justify-content: space-around;
-        align-items: center; */
         position: relative;
     }
 `
