@@ -9,7 +9,8 @@ export const Inner = styled.section`
     position: relative;
 
     ${Wrapper} {
-        height: 747px;
+        height: 100%;
+        max-height: 747px;
         position: absolute;
         top: 0;
         left: 50%;
@@ -87,7 +88,7 @@ export const Background = styled.div`
         min-height: 747px;
     }
 
-    &:nth-last-of-type(2) {
+    &:nth-of-type(2) {
         min-height: 600px;
     }
 
@@ -104,13 +105,35 @@ export const Background = styled.div`
             min-height: 500px;
         }
 
-        &:nth-last-of-type(2) {
+        &:nth-of-type(2) {
             min-height: 847px;
         }
     }
 `
 
-export const Overlay = styled.div``
+export const Group = styled.div`
+    width: 100%;
+    height: 100%;
+    max-height: 747px;
+`
+
+export const Overlay = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 600px;
+    position: absolute;
+    top: 747px;
+    background-color: ${({theme}) => theme.color.bgSecondColor};
+
+    ${Group} {
+        max-height: 600px;
+        /* display: flex;
+        justify-content: space-around;
+        align-items: center; */
+        position: relative;
+    }
+`
 
 export const Heading = styled.div`
     width: 100%;

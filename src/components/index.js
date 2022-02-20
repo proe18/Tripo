@@ -19,4 +19,6 @@ export { default as ContentPosition } from './content_position'
 export { default as Gallery } from './gallery'
 export { default as Content } from './policy&terms'
 export { default as Footer } from './footer'
+
+export { FormContainer, SubscribeForm } from './form/Form'
 export { Button, ButtonLink } from './button'

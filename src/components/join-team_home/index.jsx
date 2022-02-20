@@ -1,5 +1,13 @@
 import { Image, Wrapper } from '../../GlobalStyles'
-import { Inner, Background, Heading, Title, Text, Overlay } from './JoinTeamStyled'
+import { 
+    Inner, 
+    Background, 
+    Heading, 
+    Title, 
+    Text, 
+    Overlay,
+    Group 
+} from './JoinTeamStyled'
 
 const JoinTeam = ({ children, ...restProps }) => {
     return (
@@ -16,6 +24,12 @@ JoinTeam.Background = function JoinTeamBackground({ children, ...restProps }) {
 JoinTeam.Wrapper = function JoinTeamWrapper({ children, ...restProps }) {
     return (
         <Wrapper {...restProps}>{children}</Wrapper>
+    )
+}
+
+JoinTeam.Group = function JoinTeamGroup({ children, ...restProps }) {
+    return (
+        <Group {...restProps}>{children}</Group>
     )
 }
 

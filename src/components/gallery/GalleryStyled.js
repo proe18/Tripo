@@ -61,12 +61,10 @@ export const Inner = styled.div`
             ${ButtonIcon} {
                 max-width: 60px;
                 max-height: 60px;
-
-                ${({hideButton}) => hideButton === false && `
-                    min-width: unset;
-                `};
+                min-width: ${({ hideButton }) => hideButton === false && 'unset'};
             }
         }
+        
     `}
 `
 

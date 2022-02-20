@@ -16,8 +16,7 @@ const GalleryContainer = () => {
         handlePre,
         handleNext,
         handleCloseGallery,
-        handleFullscreen,
-        handleKeyDown
+        handleFullscreen
     } = useContext(GamesPageContext)
 
     return (
@@ -26,7 +25,7 @@ const GalleryContainer = () => {
                 hideGallery={isCloseGallery}
                 fullscreen={isFullscreen}
                 tabIndex='0'
-                onKeyUp={({ key }) => handleKeyDown(key)}
+                onKeyDown={({ key }) => key === 'Escape' && handleCloseGallery()}
             >
                 <Gallery.Wrap>
                     <Gallery.Icons>
