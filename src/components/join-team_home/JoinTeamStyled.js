@@ -16,8 +16,8 @@ export const Inner = styled.section`
         left: 50%;
         transform: translateX(-50%);
 
-        @media (max-width: 699.5px) {
-            height: 500px;
+        @media (max-width: 940px) {
+            max-height: 500px;
         }
     }
 
@@ -38,37 +38,19 @@ export const Inner = styled.section`
             max-height: 230px;
         }
 
-        @media (min-width: 421px) and (max-width: 699.5px) {
+        @media (min-width: 421px) and (max-width: 1000px) {
             max-width: 300px;
-            max-height: 250px;
+            max-height: 260px;
         }
 
-        @media (min-width: 700px) and (max-width: 1000px) {
-            max-width: 260px;
-            max-height: 220px;
-        }
-
-        @media (min-width: 1001px) and (max-width: 1280px) {
-            max-width: 300px;
-            max-height: 250px;
-        }
-
-        @media (min-width: 1281px) and (max-width: 1300px) {
+        @media (min-width: 1001px) and (max-width: 1180px) {
             max-width: 350px;
             max-height: 300px;
         }
 
-        @media (max-width: 640px) {
-            right: 50%;
-            transform: translateX(50%);
-        }
-
-        @media (min-width: 700px) and (max-width: 1000px) {
-            right: 10px;
-        }
-
-        @media (min-width: 1001px) and (max-width: 1280px) {
-            right: 30px;
+        @media (max-width: 940px) {
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 
@@ -100,13 +82,13 @@ export const Background = styled.div`
         background-attachment: unset;
     }
 
-    @media (max-width: 699.5px) {
+    @media (max-width: 940px) {
         &:first-of-type {
             min-height: 500px;
         }
 
         &:nth-of-type(2) {
-            min-height: 847px;
+            min-height: 1165px;
         }
     }
 `
@@ -130,6 +112,11 @@ export const Overlay = styled.div`
         max-height: 600px;
         position: relative;
     }
+
+    @media (max-width: 940px) {
+        max-height: 1165px;
+        top: 500px;
+    }
 `
 
 export const Heading = styled.div`
@@ -150,7 +137,7 @@ export const Heading = styled.div`
             background-color: ${({ theme }) => theme.color.whiteColor};
         }
 
-        @media (max-width: 699.5px) {
+        @media (max-width: 940px) {
             max-width: 140px;
             max-height: 50px;
             line-height: 50px;
@@ -158,7 +145,7 @@ export const Heading = styled.div`
         }
     }
 
-    @media (max-width: 699.5px) {
+    @media (max-width: 940px) {
         top: 40px;
     }
 `

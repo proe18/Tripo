@@ -19,7 +19,7 @@ const GamesPageProvider = ({ children }) => {
 
     useEffect(() => {
         const getHeightElement = () => {
-            setHeightElement(document.getElementById('groupElement').offsetHeight)
+            setHeightElement(document.getElementById('groupElement')?.offsetHeight)
         }
 
         window.addEventListener('resize', getHeightElement)

@@ -10,12 +10,43 @@ export const Container = styled.div`
     position: absolute;
     top: -265px;
     left: 85px;
+
+    @media (max-width: 320px) {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    @media (max-width: 940px) {
+        position: unset;
+        min-height: 776px;
+    }
+
+    @media (min-width: 321px) and (max-width: 940px) {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 941px) and (max-width: 1280px) {
+        left: 0;
+    }
 `
 
 export const FormWrapper = styled.div`
     width: 100%;
     max-width: 350px;
     margin: 32px auto 0;
+
+    @media (max-width: 940px) {
+        margin: 40px auto 0;
+    }
+
+    @media (max-width: 320px) {
+        max-width: 240px;
+    }
+
+    @media (min-width: 321px) and (max-width: 1000px) {
+        width: 90%;
+    }
 `
 
 export const FormHeading = styled.div`
@@ -25,6 +56,11 @@ export const FormHeading = styled.div`
 
 export const FormTitle = styled.h1`
     font-size: 3.4rem;
+
+    @media (max-width: 940px) {
+        font-size: 2.3rem;
+        padding-top: 20px;
+    }
 `
 
 export const FormText = styled.p`
@@ -33,6 +69,11 @@ export const FormText = styled.p`
     margin: 18px 0 30px;
     font-size: 1.8rem;
     line-height: 2.7rem;
+
+    @media (max-width: 940px) {
+        font-size: 1.7rem;
+        margin: 10px 0 20px;
+    }
 `
 
 export const FormInput = styled.input`
@@ -46,6 +87,10 @@ export const FormInput = styled.input`
 
     &:hover, &:focus {
         border: 2px solid #000000;
+    }
+
+    @media (max-width: 940px) {
+        margin-top: 10px;
     }
 `
 
@@ -65,6 +110,10 @@ export const Form = styled.form`
 
         ${FormInput} {
             min-height: 100px;
+
+            @media (max-width: 940px) {
+                min-height: 160px;
+            }
         }
     }
 `
@@ -78,6 +127,10 @@ export const ErrorWrap = styled.div`
     top: calc(100% + 6px);
     color: red;
     font-size: 2rem;
+
+    @media (max-width: 1000px) {
+        top: calc(100% + 5px);
+    }
 `
 
 export const FormGroup = styled.div`
@@ -87,6 +140,10 @@ export const FormGroup = styled.div`
 
     ${FormWrap} {
         max-width: 165px;
+
+        @media (max-width: 940px) {
+            max-width: 100%;
+        }
     }
 
     ${FormWrap}:last-of-type {
@@ -99,6 +156,10 @@ export const FormGroup = styled.div`
 
     ${ErrorWrap} {
         min-width: 210px;
+    }
+
+    @media (max-width: 940px) {
+        display: block;
     }
 `
 
@@ -131,6 +192,12 @@ export const ButtonSubmit = styled.button`
 
     &:hover {
         background-color: ${({theme}) => theme.color.primaryColor};
+    }
+
+    @media (max-width: 1319px) {
+        &:hover {
+            background-color: ${({theme}) => theme.color.thirdColor};
+        }
     }
 `
 
@@ -173,7 +240,47 @@ export const SubscribeFormContainer = styled(Container)`
         ${FormInput} {
             max-width: 238px;
             min-height: 60px !important;
+            border: none;
         }
+    }
+
+    @media (max-width: 320px) {
+        max-width: 280px;
+    }
+
+    @media (min-width: 321px) and (max-width: 1000px) {
+        width: 90%;
+    }
+
+    @media (max-width: 940px) {
+        max-height: 270px;
+        margin: 40px auto 0;
+        float: unset;
+
+        ${FormWrapper} {
+            margin: 0 auto;
+
+            ${FormTitle} {
+                font-size: 1.8rem;
+                padding-top: 24px;
+            }
+        }
+
+        ${FormWrap} {
+            display: block;
+
+            ${FormInput} {
+                max-width: 100%;
+            }
+
+            ${ErrorWrap} {
+                top: calc(100% - 85px);
+            }
+        }
+    }
+
+    @media (min-width: 941px) and (max-width: 1280px) {
+        margin-right: 0;
     }
 `
 
@@ -185,5 +292,16 @@ export const ButtonJoin = styled(ButtonSubmit)`
 
     &:hover {
         background-color: #ffff;
+    }
+    
+    @media (max-width: 940px) {
+        max-width: 100%;
+        margin-top: 30px;
+    }
+
+    @media (max-width: 1319px) {
+        &:hover {
+            background-color: ${({theme}) => theme.color.secondColor};
+        }
     }
 `
