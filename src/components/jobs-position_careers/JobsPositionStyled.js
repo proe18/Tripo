@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Image, Wrapper } from '../../GlobalStyles'
 import CareersBG from '../../images/background_careers_3.jpg'
-import { ButtonLinkStyled as Button } from '../button/ButtonStyled'
+import { ButtonStyled as Button, ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
 
 export const Inner = styled.section`
     margin-top: 125px;
@@ -71,7 +71,7 @@ export const Position = styled.li`
     width: 100%;
     max-width: 250px;
 
-    ${Button} {
+    ${ButtonLink} {
         width: 100%;
         height: 100%;
         max-width: 190px;

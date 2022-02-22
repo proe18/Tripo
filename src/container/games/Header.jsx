@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { HeaderGames } from '../../components'
-import { GamesPageContext } from '../../context/GamesPageContext';
+import { GamesPageContext } from '../../context';
 
 const HeaderContainer = ({ data }) => {
     const { heightElement, isCloseGallery } = useContext(GamesPageContext)

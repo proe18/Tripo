@@ -1,6 +1,6 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 
-export const theme = {
+const theme = {
     color: {
         primaryColor: '#da392b',
         secondColor: '#fcff72',
@@ -28,6 +28,8 @@ export const theme = {
         caveat: 'Caveat, cursive'
     }
 }
+
+export const StyleProvider = ({ children }) => <ThemeProvider theme={theme}>{children}</ThemeProvider>
 
 export const GlobalStyles = createGlobalStyle`
     *, *:before, *:after {

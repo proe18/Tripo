@@ -2,7 +2,7 @@ import { GrClose } from "react-icons/gr"
 import { BsArrowsAngleExpand, BsArrowsAngleContract, BsChevronRight, BsChevronLeft } from "react-icons/bs"
 import { Gallery } from '../../components'
 import { useContext } from 'react'
-import { GamesPageContext } from '../../context/GamesPageContext'
+import { GamesPageContext } from '../../context'
 import { FullScreen } from 'react-full-screen'
 
 const GalleryContainer = () => {

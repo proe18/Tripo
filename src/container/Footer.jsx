@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Logo } from '../components'
 import { Footer } from '../components'
-import { GamesPageContext } from '../context/GamesPageContext'
+import { GamesPageContext } from '../context'
 
 const FooterContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GamesPageContext)

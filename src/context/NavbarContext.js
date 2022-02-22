@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext } from 'react';
+import { useEffect, useState, createContext } from 'react'
 
 const NavbarContext = createContext()
 
@@ -40,11 +40,7 @@ const NavbarProvider = ({ children }) => {
         handleClickDropDown
     }
 
-    return (
-        <NavbarContext.Provider value={value}>
-            {children}
-        </NavbarContext.Provider>
-    )
+    return <NavbarContext.Provider value={value}>{children}</NavbarContext.Provider>
 }
 
 export { NavbarProvider, NavbarContext }

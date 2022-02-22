@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Dropdown } from '../../components'
+import { NavbarContext } from '../../context'
 import * as ROUTES from '../../constants/routes'
-import { NavbarContext } from '../../context/NavbarContext'
 
 const DropDown = () => {
     const { handleClickMobileMenu } = useContext(NavbarContext)

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Screenshots } from '../../components'
-import { GamesPageContext } from '../../context/GamesPageContext'
+import { GamesPageContext } from '../../context'
 
 const ScreenshotsContainer = ({ data }) => {
     const { 

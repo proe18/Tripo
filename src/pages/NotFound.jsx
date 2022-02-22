@@ -1,6 +1,5 @@
-import { NotFoundPage, Container } from '../components/not-found/NotFoundStyled'
+import { NotFoundPage, Container, ButtonLink } from '../components'
 import * as ROUTES from '../constants/routes'
-import { ButtonLink } from '../components'
 
 const NotFound = () => {
     return (

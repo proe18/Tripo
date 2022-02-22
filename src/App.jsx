@@ -8,8 +8,8 @@ import { GlobalStyles, Pages } from './GlobalStyles'
 import { NavBar } from './container'
 import { About, Careers, Home, Games, Position, NotFound, PolicyAndTerms } from './pages'
 
-import ScrollToTop from './components/ScrollTo/ScrollToTop'
-import { NavbarContext } from './context/NavbarContext'
+import { ScrollToTop } from './components'
+import { NavbarContext } from './context'
 
 const App = () => {
   const { mobileMenu } = useContext(NavbarContext)

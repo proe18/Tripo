@@ -1,6 +1,10 @@
-import { ButtonLink, JobsPosition } from '../../components'
+import { useContext } from 'react'
+import { PositionFormContext } from '../../context'
+import { Button, ButtonLink, JobsPosition } from '../../components'
 
 const JobsPositionContainer = ({ data }) => {
+    const { handleCloseForm } = useContext(PositionFormContext)
+
     return (
         <JobsPosition>
             <JobsPosition.Wrapper>
@@ -27,7 +31,7 @@ const JobsPositionContainer = ({ data }) => {
                         <JobsPosition.Group>
                             <JobsPosition.SubTitle>{data.sendCV.subTitle}</JobsPosition.SubTitle>
                             <JobsPosition.Title>{data.sendCV.title}</JobsPosition.Title>
-                            <ButtonLink to={'/'}>{data.sendCV.button}</ButtonLink>
+                            <Button onClick={handleCloseForm}>{data.sendCV.button}</Button>
                         </JobsPosition.Group>
                     </JobsPosition.Overlay>
                 </JobsPosition.Send>

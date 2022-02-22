@@ -168,7 +168,6 @@ export const FormLabel = styled.label``
 export const ErrorMes = styled.span`
     width: 100%;
     max-width: 100%;
-    display: inline-block;
     font-size: 1.32rem;
     padding-left: 2px;
 `
@@ -178,6 +177,7 @@ export const ButtonSubmit = styled.button`
     height: 100%;
     min-height: 60px;
     font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
     color: #ffff;
     border: none;
     outline: none;
