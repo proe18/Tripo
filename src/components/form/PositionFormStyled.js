@@ -22,6 +22,7 @@ export const Container = styled.div`
     top: 0;
     right: 0;
     bottom: 0;
+    z-index: 99;
     scrollbar-width: none;
     -ms-overflow-style: none;
     background-color: ${({ theme }) => theme.color.thirdColor};
@@ -38,9 +39,17 @@ export const Container = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
+
+    @media (max-width: 600px) {
+        max-width: 100%;
+    }
 `
 
-export const FormGroup = styled.div``
+export const FormGroup = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+`
 
 export const FormWrapper = styled.div`
     width: 100%;
@@ -48,10 +57,12 @@ export const FormWrapper = styled.div`
     max-width: 500px;
     margin: 0 auto;
 
-    ${FormGroup} {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
+    @media (max-width: 320px) {
+        max-width: 280px;
+    }
+
+    @media (min-width: 321px) {
+        width: 90%;
     }
 `
 
@@ -63,35 +74,66 @@ export const FormHeading = styled.div`
 export const FormTitle = styled.h1`
     font-size: 3.4rem;
     margin-top: 42px;
+
+    @media (max-width: 519.5px) {
+        margin-top: 40px;
+    }
+
+    @media (max-width: 320px) {
+        font-size: 2.3rem;
+    }
+
+    @media (min-width: 321px) and (max-width: 420px) {
+        font-size: 2.8rem;
+    }
 `
 
 export const FormText = styled.p`
     font-size: 1.8rem;
     margin: 10px 0 40px;
+
+    @media (max-width: 519.5px) {
+        font-size: 1.7rem;
+        margin: 5px 0 30px;
+    }
 `
 
 export const FormIcon = styled.div`
     font-size: 3.5rem;
     cursor: pointer;
+    padding-top: 2px;
     color: ${({ theme }) => theme.color.whiteColor};
 
     path {
         stroke: ${({ theme }) => theme.color.whiteColor};
     }
+
+    @media (max-width: 320px) {
+        font-size: 2.5rem;
+    }
+
+    @media (min-width: 321px) and (max-width: 420px) {
+        font-size: 3rem;
+    }
 `
 
 export const FormWrap = styled.div`
     width: 100%;
+    max-width: 210px;
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
     margin-bottom: 30px;
+
+    @media (max-width: 519.5px) {
+        margin: 0 auto 20px;
+        max-width: 100%;
+    }
 `
 
 export const FormInput = styled.input`
     width: 100%;
     height: 100%;
-    max-width: 210px;
     min-height: 60px;
     margin-top: 15px;
     border-radius: 10px;
@@ -99,6 +141,10 @@ export const FormInput = styled.input`
 
     &:hover, &:focus {
         border: 2px solid #000000;
+    }
+
+    @media (max-width: 519.5px) {
+        max-width: 100%;
     }
 `
 
@@ -115,10 +161,15 @@ export const Form = styled.form`
 
     ${FormWrap}:nth-child(3), ${FormWrap}:nth-child(5) {
         width: 100%;
+        max-width: 100%;
         margin: 0 auto 30px;
 
         ${FormInput} {
             max-width: 100%;
+        }
+        
+        @media (max-width: 519.5px) {
+            margin: 0 auto 20px;
         }
     }
 
@@ -136,6 +187,22 @@ export const FormContainer = styled.div`
     max-width: 440px;
     margin: 0 auto;
     padding-top: 30px;
+
+    @media (max-width: 519.5px) {
+        padding-top: 20px;
+
+        ${FormGroup} {
+            display: block;
+        }
+    }
+
+    @media (max-width: 320px) {
+        max-width: 240px;
+    }
+
+    @media (min-width: 321px) {
+        width: 90%;
+    }
 `
 
 export const FormLabel = styled.label``
@@ -155,6 +222,16 @@ export const ErrorMes = styled.span`
     max-width: 100%;
     font-size: 1.32rem;
     padding-left: 2px;
+`
+
+export const FormButton = styled.div`
+    width: 100%;
+    height: 100%;
+
+    @media (min-width: 321px) and (max-width: 519.5px) {
+        width: 90%;
+        margin: 0 auto;
+    }
 `
 
 export const ButtonSubmit = styled.button`
@@ -180,5 +257,15 @@ export const ButtonSubmit = styled.button`
         border: 1px solid #2a2929;
         color: ${({ theme }) => theme.color.textColor};
         background-color: rgb(246, 244, 240);
+    }
+
+    @media (max-width: 600px) {
+        margin-bottom: 40px;
+
+        &:hover {
+            border: none;
+            color: ${({ theme }) => theme.color.whiteColor};
+            background-color: ${({ theme }) => theme.color.primaryColor};
+        }
     }
 `

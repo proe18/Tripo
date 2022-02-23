@@ -20,6 +20,7 @@ import {
     FormInput,
     ErrorWrap,
     ErrorMes,
+    FormButton,
     ButtonSubmit
 } from './PositionFormStyled'
 
@@ -207,7 +208,9 @@ const PositionForm = () => {
                                 <FormLabel>Any Comments</FormLabel>
                                 <FormInput type={'text'} />
                             </FormWrap>
-                            <ButtonSubmit>Submit</ButtonSubmit>
+                            <FormButton>
+                                <ButtonSubmit>Submit</ButtonSubmit>
+                            </FormButton>
                         </FormContainer>
                     </Form>
                 </FormWrapper>
