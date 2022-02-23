@@ -227,11 +227,6 @@ export const ErrorMes = styled.span`
 export const FormButton = styled.div`
     width: 100%;
     height: 100%;
-
-    @media (min-width: 321px) and (max-width: 519.5px) {
-        width: 90%;
-        margin: 0 auto;
-    }
 `
 
 export const ButtonSubmit = styled.button`

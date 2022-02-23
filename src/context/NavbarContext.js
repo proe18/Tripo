@@ -9,16 +9,18 @@ const NavbarProvider = ({ children }) => {
     //Handle show and hidden dropdown if device is PC
     const handleMouseEnter = () => setDropDown(window.innerWidth > 1280 && !dropDown)
     const handleMouseLeave = () => setDropDown(window.innerWidth > 1280 && !dropDown)
-    //Handle show and hidden mobile menu
+
+    //Handle show and hidden dropdown if device is mobile and tablet
+    const handleClickDropDown = () => setDropDown(window.innerWidth <= 1280 && !dropDown)
+
+    //Handle show and hidden for mobile menu
     const handleClickMobileMenu = () => {
         setMobileMenu(window.innerWidth <= 860 && !mobileMenu)
         setDropDown(false)
     }
-    //Handle show and hidden dropdown if device is mobile and tablet
-    const handleClickDropDown = () => setDropDown(window.innerWidth <= 1280 && !dropDown)
-    
+
+    //reset state when switching to PC  
     useEffect(() => {
-        //Handle Navbar when width > 860
         const handleNavbar = () => {
             if (window.innerWidth > 860) {
                 setMobileMenu(false)

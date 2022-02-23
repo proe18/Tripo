@@ -1,51 +1,30 @@
 import { useContext } from 'react'
-import { Logo } from '../components'
-import { Footer } from '../components'
+import { Logo, Footer } from '../components'
 import { GamesPageContext } from '../context'
 
 const FooterContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GamesPageContext)
-    const renderList = (list) => list.map((item, index) => {
+
+    const handleRenderList = item => {
         switch (typeof item) {
             case 'string':
-                return (
-                    <Footer.Item key={index}>
-                        <Footer.Text>{item}</Footer.Text>
-                    </Footer.Item>
-                )
+                return <Footer.Text>{item}</Footer.Text>
+
             case 'object':
                 if (item.path) {
                     if (item.path.includes('https://')) {
-                        return (
-                            <Footer.Item key={index}>
-                                <Footer.Link
-                                    href={item.path}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                >
-                                    {item.title}
-                                </Footer.Link>
-                            </Footer.Item>
-                        )
+                        return <Footer.Link href={item.path} target='_blank' rel='noreferrer'>{item.title}</Footer.Link>
                     }
-                    if (!item.path.includes('https://')) {
-                        return (
-                            <Footer.Item key={index}>
-                                <Footer.RouteLink to={item.path}>{item.title}</Footer.RouteLink>
-                            </Footer.Item>
-                        )
-                    }
+                    return <Footer.RouteLink to={item.path}>{item.title}</Footer.RouteLink>
                 }
                 return (
-                    <Footer.Item key={index}>
-                        <Footer.Link href={'/'}>
-                            <Footer.Image src={item.img} alt={item.alt} />
-                        </Footer.Link>
-                    </Footer.Item>
+                    <Footer.Link href={'/'}>
+                        <Footer.Image src={item.img} alt={item.alt} />
+                    </Footer.Link>
                 )
             default: break
         }
-    })
+    }
 
     return (
         <Footer hideFooter={isCloseGallery}>
@@ -58,7 +37,12 @@ const FooterContainer = ({ data }) => {
                     {data.nav.map(({ title, list }, index) =>
                         <Footer.NavList key={index}>
                             <Footer.ListTitle>{title}</Footer.ListTitle>
-                            <Footer.Wrap>{renderList(list)}</Footer.Wrap>
+                            <Footer.Wrap>{list.map((item, index) =>
+                                <Footer.Item key={index}>
+                                    {handleRenderList(item)}
+                                </Footer.Item>
+                            )}
+                            </Footer.Wrap>
                         </Footer.NavList>
                     )}
                 </Footer.Box>

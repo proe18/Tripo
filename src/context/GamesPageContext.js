@@ -17,6 +17,7 @@ const GamesPageProvider = ({ children }) => {
 
     const imageElements = document.querySelectorAll('#imageElement')
 
+    //reset height of box header section every time the site is resized on moblie and tablet
     useEffect(() => {
         const getHeightElement = () => {
             setHeightElement(document.getElementById('groupElement')?.offsetHeight)
@@ -25,16 +26,15 @@ const GamesPageProvider = ({ children }) => {
         window.addEventListener('resize', getHeightElement)
 
         return () => window.removeEventListener('resize', getHeightElement)
-
     }, [])
 
+    //reset state every time web page is changed 
     useEffect(() => {
         indexImage.current = undefined
         setImage()
         setIsPre(false)
         setIsNext(false)
     }, [pathname])
-
 
     const handleGallery = (image, index) => {
         indexImage.current = index
@@ -61,6 +61,7 @@ const GamesPageProvider = ({ children }) => {
         setIsFullscreen(!isFullscreen)
     }
 
+    //handle click button previous
     const handlePre = () => {
         if (indexImage.current > 0) indexImage.current = indexImage.current - 1
         setImage(imageElements[indexImage.current].src)
@@ -68,6 +69,7 @@ const GamesPageProvider = ({ children }) => {
         setIsNext(!isNext)
     }
 
+    //handle click button next
     const handleNext = () => {
         if (indexImage.current <= 0) indexImage.current = indexImage.current + 1
         setImage(imageElements[indexImage.current].src)
