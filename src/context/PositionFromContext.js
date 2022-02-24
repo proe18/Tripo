@@ -9,7 +9,7 @@ const PositionFormProvider = ({ children }) => {
 
     const value = {
         isCloseForm,
-        handleCloseForm
+        handleCloseForm,
     }
 
     return <PositionFormContext.Provider value={value}>{children}</PositionFormContext.Provider>

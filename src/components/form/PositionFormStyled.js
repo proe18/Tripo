@@ -205,6 +205,28 @@ export const FormContainer = styled.div`
     }
 `
 
+export const FormSelect = styled.select`
+    width: 100%;
+    height: 100%;
+    min-height: 60px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 1px solid #2a2929;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    color: ${({theme}) => theme.color.textColor};
+
+    @media (max-width: 519.5px) {
+        max-width: 100%;
+    }
+`
+
+export const FormOption = styled.option`
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    color: ${({theme}) => theme.color.textColor};
+`
+
 export const FormLabel = styled.label``
 
 export const ErrorWrap = styled.div`

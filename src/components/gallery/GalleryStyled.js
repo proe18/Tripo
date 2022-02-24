@@ -28,8 +28,13 @@ export const Control = styled(Icons)`
 `
 
 export const Inner = styled.div`
-    padding-top: 100px;
-    padding-bottom: 65px;
+    padding-top: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: ${({theme}) => theme.color.bgColor};
     display: ${({ hideGallery }) => hideGallery && 'none'};
 
     ${({ fullscreen }) => fullscreen === true && `
@@ -71,18 +76,21 @@ export const Inner = styled.div`
 export const Wrap = styled.div`
     width: 95%;
     height: 100%;
-    max-width: 100vw;
+    max-width: 100%;
     max-height: 100%;
-    margin: 0 auto;
+    margin: auto;
     position: relative;
 `
 
 export const Box = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     max-width: 1025px;
     max-height: 577px;
-    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
     ${({ scaleImage }) => scaleImage === true && `
         max-width: 100%;

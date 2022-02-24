@@ -38,7 +38,7 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
     }
     html, body {
-        height: 100%;
+        height: 100vh;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

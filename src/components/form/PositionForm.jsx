@@ -18,6 +18,8 @@ import {
     FormWrap,
     FormLabel,
     FormInput,
+    FormSelect,
+    FormOption,
     ErrorWrap,
     ErrorMes,
     FormButton,
@@ -25,7 +27,8 @@ import {
 } from './PositionFormStyled'
 
 const PositionForm = () => {
-    const { isCloseForm, handleCloseForm } = useContext(PositionFormContext)
+    const { isCloseForm, handleCloseForm} = useContext(PositionFormContext)
+    const defaultValue = {value: ''}
     const { register, formState: { errors }, handleSubmit } = useForm()
     const onSubmit = (data, e) => console.log(data, e)
 
@@ -162,7 +165,12 @@ const PositionForm = () => {
                             </FormGroup>
                             <FormWrap>
                                 <FormLabel>Position *</FormLabel>
-                                <FormInput type={'text'} {...register('position', { required: true })} />
+                                <FormSelect value={''} {...register('position', { required: true })}>
+                                    <FormOption value={'CommunityManager'}>Community Manager</FormOption>
+                                    <FormOption value={'QA Tester'}>QA Tester</FormOption>
+                                    <FormOption value={'Game Designer'}>Game Designer</FormOption>
+                                    <FormOption value={'Game Developer'}>Game Developer</FormOption>
+                                </FormSelect>
                                 {errors.position?.type === "required" &&
                                     <ErrorWrap>
                                         <AiOutlineWarning />
@@ -192,11 +200,10 @@ const PositionForm = () => {
                                 </FormWrap>
                                 <FormWrap>
                                     <FormLabel>LinkedIn URL</FormLabel>
-                                    <FormInput type={'text'} {...register('url', {
-                                        required: true,
+                                    <FormInput type={'text'} {...register('linkedurl', {
                                         pattern: /^(?:http(s)?:\/\/)?[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/gm
                                     })} />
-                                    {errors.url?.type === "pattern" &&
+                                    {errors.linkedurl?.type === "pattern" &&
                                         <ErrorWrap>
                                             <AiOutlineWarning />
                                             <ErrorMes>Vui lòng nhập URL</ErrorMes>
