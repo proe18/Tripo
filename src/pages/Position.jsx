@@ -11,13 +11,13 @@ const Position = () => {
 
     const checkPath = (path) => {
         switch (path) {
-            case ROUTES.MANAGER:
+            case `${ROUTES.CAREERS}/${ROUTES.MANAGER}`:
                 return jobPositionData.manager
-            case ROUTES.TESTER:
+            case `${ROUTES.CAREERS}/${ROUTES.TESTER}`:
                 return jobPositionData.tester
-            case ROUTES.DESIGNER:
+            case `${ROUTES.CAREERS}/${ROUTES.DESIGNER}`:
                 return jobPositionData.designer
-            case ROUTES.DEVELOPER:
+            case `${ROUTES.CAREERS}/${ROUTES.DEVELOPER}`:
                 return jobPositionData.developer
             default: break
         }

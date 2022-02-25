@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { Logo, Footer } from '../components'
-import { GamesPageContext } from '../context'
+import { GalleryContext } from '../context'
 
 const FooterContainer = ({ data }) => {
-    const { isCloseGallery } = useContext(GamesPageContext)
+    const { isCloseGallery } = useContext(GalleryContext)
 
     const handleRenderList = item => {
         switch (typeof item) {

@@ -147,7 +147,7 @@ export const Inner = styled.div`
     }
 `
 
-export const Box = styled.div`
+export const Slider = styled.div`
     width: 100%;
     height: 100%;
     max-width: 1025px;
@@ -228,7 +228,7 @@ export const Wrap = styled.div`
     @media (max-height: 640px) {
         max-width: 100%;
         max-height: 100%;
-        ${Box} {
+        ${Slider} {
             max-width: 100%;
             max-height: 100%;
 

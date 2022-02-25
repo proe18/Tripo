@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { NavLink as ReactRouerNavLink } from 'react-router-dom'
+import { NavLink as ReactNavLink } from 'react-router-dom'
 
 export const Container = styled.div`
     width: 100%;
@@ -134,7 +134,7 @@ export const Nav = styled.ul`
     }
 `
 
-export const Link = styled(ReactRouerNavLink)`
+export const Link = styled(ReactNavLink)`
     display: block;
     text-decoration: none;
     color: ${({ theme }) => theme.color.textColor};

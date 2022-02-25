@@ -1,5 +1,5 @@
 import { Image } from '../../GlobalStyles'
-import { Inner, Wrap, Icons, Control, ButtonIcon, Box } from './GalleryStyled'
+import { Inner, Wrap, Icons, Control, ButtonIcon, Slider } from './GalleryStyled'
 
 const Gallery = ({ children, ...restProps }) => {
     return (
@@ -31,9 +31,9 @@ Gallery.ButtonIcon = function GalleryButtonIcon({ children, ...restProps }) {
     )
 }
 
-Gallery.Box = function GalleryBox({ children, ...restProps }) {
+Gallery.Slider = function GallerySlider({ children, ...restProps }) {
     return (
-        <Box {...restProps}>{children}</Box>
+        <Slider {...restProps}>{children}</Slider>
     )
 }
 

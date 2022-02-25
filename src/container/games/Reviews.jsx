@@ -1,10 +1,11 @@
 import { Reviews } from '../../components'
 import { AiFillStar } from 'react-icons/ai'
 import { useContext } from 'react'
-import { GamesPageContext } from '../../context'
+import { GalleryContext } from '../../context'
 
 const ReviewsContainer = ({ data }) => {
-    const { isCloseGallery } = useContext(GamesPageContext)
+    const { isCloseGallery } = useContext(GalleryContext)
+    
     return (
         <Reviews hideReviews={isCloseGallery}>
             <Reviews.Wrapper>

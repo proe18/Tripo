@@ -2,7 +2,7 @@ import { GrClose } from "react-icons/gr"
 import { BsArrowsAngleExpand, BsArrowsAngleContract, BsChevronRight, BsChevronLeft } from "react-icons/bs"
 import { Gallery } from '../../components'
 import { useContext } from 'react'
-import { GamesPageContext } from '../../context'
+import { GalleryContext } from '../../context'
 import { FullScreen } from 'react-full-screen'
 
 const GalleryContainer = () => {
@@ -17,7 +17,7 @@ const GalleryContainer = () => {
         handleNext,
         handleCloseGallery,
         handleFullscreen
-    } = useContext(GamesPageContext)
+    } = useContext(GalleryContext)
 
     return (
         <FullScreen handle={handle}>
@@ -36,9 +36,9 @@ const GalleryContainer = () => {
                             <GrClose />
                         </Gallery.ButtonIcon>
                     </Gallery.Icons>
-                    <Gallery.Box scaleImage={isFullscreen}>
+                    <Gallery.Slider scaleImage={isFullscreen}>
                         <Gallery.Image src={image} alt='' />
-                    </Gallery.Box>
+                    </Gallery.Slider>
                     <Gallery.Control>
                         <Gallery.ButtonIcon onClick={handlePre} hideButton={isPre}>
                             {isPre && <BsChevronLeft />}

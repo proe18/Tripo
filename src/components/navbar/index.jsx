@@ -1,4 +1,13 @@
-import { Inner, Container, Nav, Item, Link, NavDropDown, Icon, DropDownIcon } from './NavBarStyled';
+import {
+    Inner,
+    Container,
+    Nav,
+    Item,
+    Link,
+    NavDropDown,
+    Icon,
+    DropDownIcon
+} from './NavBarStyled';
 
 const Navbar = ({ children, ...restProps }) => {
     return (
@@ -30,22 +39,22 @@ Navbar.Link = function NavbarLink({ children, ...restProps }) {
     )
 }
 
-Navbar.NavDropDown = function NavbarNavDropDown({ children, ...restProps }) {   
+Navbar.NavDropDown = function NavbarNavDropDown({ children, ...restProps }) {
     return (
         <NavDropDown {...restProps}>{children}</NavDropDown>
     )
 }
 
-Navbar.Icon = function NavbarIcon({children, ...restProps}) {
+Navbar.Icon = function NavbarIcon({ children, ...restProps }) {
     return (
         <Icon {...restProps}>{children}</Icon>
     )
 }
 
-Navbar.DropDownIcon = function NavbarDropDownIcon({children, ...restProps}) {
+Navbar.DropDownIcon = function NavbarDropDownIcon({ children, ...restProps }) {
     return (
         <DropDownIcon {...restProps}>{children}</DropDownIcon>
     )
 }
 
-export default Navbar;
+export default Navbar
