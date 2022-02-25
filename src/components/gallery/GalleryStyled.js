@@ -21,16 +21,41 @@ export const Icons = styled.div`
         }
     }
 
+    @media (max-height: 640px) {
+        ${ButtonIcon}:first-child {
+            display: none;
+        }
+    }
+
     @media (max-width: 500px) {
         ${ButtonIcon}:last-child {
-            display: block;
+            display: flex;
             margin-left: 85%;
+        }
+    }
+
+    @media (max-height: 640px) {
+        padding-right: 5%;
+
+        ${ButtonIcon}:last-child {
+            width: 100%;
+            height: 100%;
+            min-width: 60px;
+            min-height: 60px;
+            margin-left: 93%;
+            margin-top: 2.5%;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
         }
     }
 
     @media (min-width: 501px) and (max-width: 640px) {
         ${ButtonIcon}:last-child {
-            display: block;
+            display: flex;
             margin-left: 89%;
         }
     }
@@ -49,6 +74,10 @@ export const Control = styled(Icons)`
     }
 
     @media (max-width: 640px) {
+        display: none;
+    }
+
+    @media (max-height: 640px) {
         display: none;
     }
 
@@ -92,7 +121,7 @@ export const Inner = styled.div`
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: rgba(255, 255, 255, 0.4);
+                background-color: rgba(255, 255, 255, 0.6);
                 border-radius: 50%;
                 &:last-of-type {
                     margin-left: 100%;
@@ -112,18 +141,9 @@ export const Inner = styled.div`
     @media (max-width: 640px) {
         padding-top: 30px;
     }
-`
 
-export const Wrap = styled.div`
-    width: 100%;
-    height: 100%;
-    max-width: 95%;
-    max-height: 100%;
-    margin: auto;
-    position: relative;
-
-    @media (max-width: 640px) {
-        max-width: 100%;
+    @media (max-height: 640px) {
+        padding-top: 0;
     }
 `
 
@@ -190,5 +210,31 @@ export const Box = styled.div`
         max-width: 90%;
         max-height: 88%;
         margin-top: 20px;
+    }
+`
+
+export const Wrap = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 95%;
+    max-height: 100%;
+    margin: auto;
+    position: relative;
+
+    @media (max-width: 640px) {
+        max-width: 100%;
+    }
+
+    @media (max-height: 640px) {
+        max-width: 100%;
+        max-height: 100%;
+        ${Box} {
+            max-width: 100%;
+            max-height: 100%;
+
+            ${Image} {
+                transform: scale(1.1);  
+            }
+        }
     }
 `
