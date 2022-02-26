@@ -205,6 +205,7 @@ export const Item = styled.li`
 export const NavDropDown = styled.div`
     cursor: pointer;
     position: relative;
+    user-select: none;
 
     //Responsive mobile and tablet
     @media (max-width: 860px) {

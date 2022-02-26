@@ -24,4 +24,4 @@ export { default as PositionForm } from './form/PositionForm'
 
 export { FormContainer, SubscribeForm } from './form/Form'
 export { NotFoundPage, Container } from './not-found/NotFoundStyled'
-export { Button, ButtonLink } from './button'
+export { Button, ButtonLink, ButtonScrollToTop } from './button'

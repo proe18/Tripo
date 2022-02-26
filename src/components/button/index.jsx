@@ -1,4 +1,5 @@
-import { ButtonStyled, ButtonLinkStyled } from './ButtonStyled'
+import { BsFillTriangleFill } from 'react-icons/bs'
+import { ButtonStyled, ButtonLinkStyled, ButtonScrollStyled } from './ButtonStyled'
 
 const Button = ({ children, ...restProps }) => {
     return (
@@ -12,4 +13,14 @@ const ButtonLink = ({ children, to, ...restProps }) => {
     )
 }
 
-export { Button, ButtonLink }
+const ButtonScrollToTop = ({ ...restProps }) => {
+    const handleClick = () => window.scrollTo(0, 0)
+    
+    return (
+        <ButtonScrollStyled {...restProps} onClick={handleClick}>
+            <BsFillTriangleFill />
+        </ButtonScrollStyled>
+    )
+}
+
+export { Button, ButtonLink, ButtonScrollToTop }
