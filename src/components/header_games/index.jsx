@@ -1,3 +1,4 @@
+import {forwardRef} from 'react'
 import { Wrapper, Image } from '../../GlobalStyles'
 import {
     Inner,
@@ -38,11 +39,11 @@ Header.Box = function HeaderBox({ children, ...restProps }) {
     )
 }
 
-Header.Group = function HeaderGroup({ children, ...restProps }) {
+Header.Group = forwardRef(function HeaderGroup({ children, ...restProps }, ref) {
     return (
-        <Group {...restProps}>{children}</Group>
+        <Group {...restProps} ref={ref}>{children}</Group>
     )
-}
+})
 
 Header.Info = function HeaderInfo({ children, ...restProps }) {
     return (

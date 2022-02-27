@@ -1,6 +1,7 @@
 import Kipon from '../images/kipon_avatar.jpg'
 import Robotrix from '../images/robotrix_avatar.jpg'
 import Treasure from '../images/treasure_avatar.jpg'
+import HomeBg from '../images/background_home_1.jpg'
 import KiponBg from '../images/background_kipon_1.jpg'
 import RobotrixBg from '../images/background_robotrix_1.jpg'
 import TreasureBg from '../images/background_treasure_2.jpg'
@@ -18,6 +19,7 @@ export const homeData = {
     header: {
         title: "Made to Be Played",
         text: "The Very Best in Mobile Gaming",
+        bg: HomeBg,
         platForms: [
             {
                 img: AppStore,

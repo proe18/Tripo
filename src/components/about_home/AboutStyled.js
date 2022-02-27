@@ -4,11 +4,11 @@ import { ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
 export const Inner = styled.section`
     margin-top: 410px;
 
-    @media (max-width: 376px) {
+    /* @media (max-width: 376px) {
         margin-top: 1630px;
-    }
+    } */
 
-    @media (min-width: 377px) and (max-width: 540px) {
+    /* @media (min-width: 377px) and (max-width: 540px) {
         margin-top: 1700px;
     }
 
@@ -26,6 +26,14 @@ export const Inner = styled.section`
 
     @media (min-width: 1001px) and (max-width: 1319px) {
         margin-top: 750px;
+    } */
+    
+    @media (max-width: 320px) {
+        margin-top: ${({marginTop}) => `${marginTop - 30}px`}
+    }
+
+    @media (min-width: 321px) and (max-width: 1319px) {
+        margin-top: ${({marginTop}) => `${marginTop}px`}
     }
 `
 

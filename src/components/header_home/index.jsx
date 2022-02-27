@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Wrapper, PlatForms, Link, Image, } from '../../GlobalStyles'
 import {
     Background,
@@ -10,11 +11,11 @@ import {
     More
 } from './HeaderStyled'
 
-const Header = ({ children, ...restProps }) => {
+const Header = forwardRef(({ children, ...restProps }, ref) => {
     return (
-        <Background {...restProps}>{children}</Background>
+        <Background {...restProps} ref={ref}>{children}</Background>
     )
-}
+})
 
 Header.Wrapper = function HeaderWrapper({ children, ...restProps }) {
     return (
@@ -58,11 +59,11 @@ Header.Image = function HeaderImage({ ...restProps }) {
     )
 }
 
-Header.Games = function HeaderGames({ children, ...restProps }) {
+Header.Games = forwardRef(function HeaderGames({ children, ...restProps }, ref) {
     return (
-        <Games {...restProps}>{children}</Games>
+        <Games {...restProps} ref={ref}>{children}</Games>
     )
-}
+})
 
 Header.Game = function HeaderGame({ children, ...restProps }) {
     return (

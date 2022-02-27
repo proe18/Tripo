@@ -1,13 +1,12 @@
 import styled from 'styled-components'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ReactLink } from 'react-router-dom'
 import { Image, PlatForms, Link } from '../../GlobalStyles'
-import BackGround from '../../images/background_home_1.jpg'
 
 export const Background = styled.header`
     width: 100%;
     height: 100%;
     max-height: 800px;
-    background: url(${BackGround}) no-repeat;
+    background: ${({bg}) => `url(${bg})`} no-repeat;
     background-size: cover;
 
     @media (max-width: 420px) {
@@ -139,24 +138,14 @@ export const Games = styled.div`
         flex-wrap: wrap;
     }
 
+    @media (max-width: 768px) {
+        margin-top: 0;
+        padding-top: ${({marginTop}) => `${(marginTop / 5)}px`};
+    }
+
     @media (max-width: 320px) {
-        margin-top: 85px;
-    }
-
-    @media (min-width: 321px) and (max-width: 420px) {
-        margin-top: 55px;
-    }
-
-    @media (min-width: 421px) and (max-width: 450.5px) {
-        margin-top: 205px;
-    }
-
-    @media (min-width: 451px) and (max-width: 528px) {
-        margin-top: 175px;
-    }
-
-    @media (min-width: 641px) and (max-width: 768px) {
-        margin-top: 195px;
+        margin-top: 0;
+        padding-top: 85px;
     }
 
     @media (min-width: 769px) and (max-width: 1000px) {
@@ -193,7 +182,7 @@ export const Overlay = styled.div`
     -webkit-transition: background-image ease-out 1.5s;
 `
 
-export const Game = styled(ReactRouterLink)`
+export const Game = styled(ReactLink)`
     width: 100%;
     height: 100%;
     max-width: 300px;

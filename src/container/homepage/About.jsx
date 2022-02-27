@@ -1,8 +1,12 @@
+import { useContext } from 'react'
 import { About, ButtonLink } from '../../components'
+import { HomePageContext } from '../../context'
 
 const AboutContainer = ({ data }) => {
+    const { marginAbout } = useContext(HomePageContext)
+
     return (
-        <About>
+        <About marginTop={marginAbout}>
             <About.Wrapper>
                 <About.Heading>
                     <About.SubTitle>{data.subTitle}</About.SubTitle>

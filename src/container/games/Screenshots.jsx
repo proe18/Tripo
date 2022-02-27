@@ -3,7 +3,7 @@ import { Screenshots } from '../../components'
 import { GalleryContext, GamesPageContext } from '../../context'
 
 const ScreenshotsContainer = ({ data }) => {
-    const heightElement = useContext(GamesPageContext)
+    const { heightElement } = useContext(GamesPageContext)
     const { isCloseGallery, handleGallery } = useContext(GalleryContext)
 
     return (

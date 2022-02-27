@@ -22,6 +22,10 @@ export const Icons = styled.div`
     }
 
     @media (max-height: 640px) {
+        padding-top: 0;
+    }
+
+    @media (max-height: 640px) {
         ${ButtonIcon}:first-child {
             display: none;
         }
@@ -177,6 +181,16 @@ export const Slider = styled.div`
         margin-top: 20px;
     }
 
+    @media (max-height: 320px) {        
+        ${Image} {
+            object-fit: cover;
+        }
+    }
+
+    @media (max-height: 400px) {
+        margin-top: 0;
+    }
+
     @media (max-width: 320px) {
         max-width: 100%;
         max-height: 50%;
@@ -202,7 +216,7 @@ export const Slider = styled.div`
 
     @media (min-width: 861px) and (max-width: 1024px) {
         max-width: 90%;
-        max-height: 83%;
+        max-height: 80%;
         margin-top: 20px;
     }
 

@@ -1,9 +1,13 @@
+import { useContext } from 'react'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 import { HeaderHome } from '../../components'
+import { HomePageContext } from '../../context'
 
-const HeaderContainer = ({data}) => {
+const HeaderContainer = ({ data }) => {
+    const { headerElement, marginGamesElement, gamesElement } = useContext(HomePageContext)
+
     return (
-        <HeaderHome>
+        <HeaderHome bg={data.bg} ref={headerElement}>
             <HeaderHome.Wrapper>
                 <HeaderHome.Heading>
                     <HeaderHome.Title>{data.title}</HeaderHome.Title>
@@ -19,7 +23,7 @@ const HeaderContainer = ({data}) => {
                         )}
                     </HeaderHome.PlatForms>
                 </HeaderHome.Heading>
-                <HeaderHome.Games>
+                <HeaderHome.Games marginTop={marginGamesElement} ref={gamesElement}>
                     {data.listGames.map(game =>
                         <HeaderHome.Game key={game.title} to={game.path}>
                             <HeaderHome.Image src={game.img} alt='GameImage' />
