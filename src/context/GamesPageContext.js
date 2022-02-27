@@ -5,14 +5,13 @@ const GamesPageContext = createContext()
 
 const GamesPageProvider = ({ children }) => {
     const { pathname } = useLocation()
-    const groupRef = useRef('group')
+    const groupElement = useRef('group')
     const [heightElement, setHeightElement] = useState(0)
-    const getHeightElement = () => setHeightElement(groupRef.current.offsetHeight)
 
-    //set heigth of box header section when the first render
+    //set heigth of box header section
+    const getHeightElement = () => setHeightElement(groupElement.current.offsetHeight)
+
     useLayoutEffect(getHeightElement, [pathname])
-
-    //set height of box header section every time the site is resized on moblie and tablet
     useEffect(() => {
         window.addEventListener('resize', getHeightElement)
 
@@ -20,7 +19,7 @@ const GamesPageProvider = ({ children }) => {
     }, [])
 
     const value = {
-        groupRef,
+        groupElement,
         heightElement
     }
 

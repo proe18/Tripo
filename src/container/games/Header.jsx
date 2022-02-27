@@ -3,7 +3,7 @@ import { HeaderGames } from '../../components'
 import { GalleryContext, GamesPageContext } from '../../context';
 
 const HeaderContainer = ({ data }) => {
-    const {heightElement, groupRef} = useContext(GamesPageContext)
+    const {heightElement, groupElement} = useContext(GamesPageContext)
     const { isCloseGallery } = useContext(GalleryContext)
 
     return (
@@ -11,7 +11,7 @@ const HeaderContainer = ({ data }) => {
             <HeaderGames.Background bg={data.bg} >
                 <HeaderGames.Wrapper>
                     <HeaderGames.Box heightBox={heightElement}>
-                        <HeaderGames.Group ref={groupRef}>
+                        <HeaderGames.Group ref={groupElement}>
                             <HeaderGames.Info>
                                 <HeaderGames.Wrap>
                                     <HeaderGames.Image src={data.avatar} alt={data.alt} />

@@ -3,37 +3,34 @@ import { ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
 
 export const Inner = styled.section`
     margin-top: 410px;
-
-    /* @media (max-width: 376px) {
-        margin-top: 1630px;
-    } */
-
-    /* @media (min-width: 377px) and (max-width: 540px) {
-        margin-top: 1700px;
-    }
-
-    @media (min-width: 541px) and (max-width: 680px) {
-        margin-top: 1780px;
-    }
-
-    @media (min-width: 681px) and (max-width: 768px) {
-        margin-top: 900px;
-    }
-
-    @media (min-width: 769px) and (max-width: 1000px) {
-        margin-top: 800px;
-    }
-
-    @media (min-width: 1001px) and (max-width: 1319px) {
-        margin-top: 750px;
-    } */
     
     @media (max-width: 320px) {
         margin-top: ${({marginTop}) => `${marginTop - 30}px`}
     }
 
-    @media (min-width: 321px) and (max-width: 1319px) {
+    @media (min-width: 321px) and (max-width: 420px) {
         margin-top: ${({marginTop}) => `${marginTop}px`}
+    }
+
+    @media (min-width: 421px) and (max-width: 450.5px) {
+        margin-top: ${({marginTop}) => `${marginTop - 150}px`}
+    }
+
+    @media (min-width: 451px) and (max-width: 528px),
+    (min-width: 641px) and (max-width: 768px) {
+        margin-top: ${({marginTop}) => `${marginTop - 130}px`}
+    }
+
+    @media (min-width: 529px) and (max-width: 640px) {
+        margin-top: ${({marginTop}) => `${marginTop - 175}px`}
+    }
+
+    @media (min-width: 769px) and (max-width: 1319px) {
+        margin-top: ${({marginTop}) => `${marginTop - 230}px`}
+    }
+
+    @media (min-width: 1001px) and (max-width: 1319px) {
+        margin-top: ${({marginTop}) => `${marginTop - 115}px`}
     }
 `
 

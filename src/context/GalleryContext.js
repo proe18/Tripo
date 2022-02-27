@@ -16,7 +16,7 @@ const GalleryProvider = ({ children }) => {
 
     const imageElements = document.querySelectorAll('#imageElement')
 
-    //reset state every time web page is changed 
+    //reset state
     useEffect(() => {
         indexImage.current = undefined
         setImage()

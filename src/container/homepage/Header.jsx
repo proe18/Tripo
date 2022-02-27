@@ -4,7 +4,7 @@ import { HeaderHome } from '../../components'
 import { HomePageContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
-    const { headerElement, marginGamesElement, gamesElement } = useContext(HomePageContext)
+    const { headerElement, marginGames, gamesElement } = useContext(HomePageContext)
 
     return (
         <HeaderHome bg={data.bg} ref={headerElement}>
@@ -23,7 +23,7 @@ const HeaderContainer = ({ data }) => {
                         )}
                     </HeaderHome.PlatForms>
                 </HeaderHome.Heading>
-                <HeaderHome.Games marginTop={marginGamesElement} ref={gamesElement}>
+                <HeaderHome.Games marginTop={marginGames} ref={gamesElement}>
                     {data.listGames.map(game =>
                         <HeaderHome.Game key={game.title} to={game.path}>
                             <HeaderHome.Image src={game.img} alt='GameImage' />

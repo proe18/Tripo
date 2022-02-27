@@ -7,17 +7,16 @@ const HomePageProvider = ({ children }) => {
     const { pathname } = useLocation()
     const headerElement = useRef('header')
     const gamesElement = useRef('games')
-    const [marginGamesElement, setMarginGamesElement] = useState(0)
+    const [marginGames, setMarginGames] = useState(0)
     const [marginAbout, setMarginAbout] = useState(0)
+
+    //set heigth of games element
     const getHeightElement = () => {
-        setMarginGamesElement(headerElement.current.offsetHeight)
+        setMarginGames(headerElement.current.offsetHeight)
         setMarginAbout(gamesElement.current.offsetHeight)
     }
-
-    //set heigth of games element when the first render
-    useLayoutEffect(getHeightElement, [pathname])
-
-    //set height of games element every time the site is resized on moblie and tablet
+    
+    useLayoutEffect(getHeightElement, [pathname, marginGames])
     useEffect(() => {
         window.addEventListener('resize', getHeightElement)
 
@@ -27,7 +26,7 @@ const HomePageProvider = ({ children }) => {
     const value = {
         headerElement,
         gamesElement,
-        marginGamesElement,
+        marginGames,
         marginAbout
     }
 

@@ -91,8 +91,12 @@ export const Title = styled.h1`
         font-size: 5.5rem;
     }
 
-    @media (min-width: 641px) and (max-width: 770px) {
+    @media (min-width: 641px) and (max-width: 673.8px) {
         font-size: 6rem;
+    }
+    
+    @media (min-width: 674px) and (max-width: 770px) {
+        font-size: 7rem;
     }
 `
 
@@ -138,18 +142,33 @@ export const Games = styled.div`
         flex-wrap: wrap;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
         margin-top: 0;
-        padding-top: ${({marginTop}) => `${(marginTop / 5)}px`};
     }
 
     @media (max-width: 320px) {
-        margin-top: 0;
         padding-top: 85px;
     }
 
-    @media (min-width: 769px) and (max-width: 1000px) {
-        margin-top: 130px;
+    @media (min-width: 321px) and (max-width: 420px), 
+    (min-width: 681px) and (max-width: 1000px) {
+        padding-top: ${({marginTop}) => `${(marginTop / 5)}px`};
+    }
+
+    @media (min-width: 421px) and (max-width: 450px) {
+        padding-top: ${({marginTop}) => `${(marginTop / 2.2)}px`};
+    }
+
+    @media (min-width: 451px) and (max-width: 528px) {
+        padding-top: ${({marginTop}) => `${(marginTop / 2.5)}px`};
+    }
+
+    @media (min-width: 529px) and (max-width: 640px) {
+        padding-top: ${({marginTop}) => `${(marginTop / 2)}px`};
+    }
+
+    @media (min-width: 641px) and (max-width: 680px) {
+        padding-top: ${({marginTop}) => `${(marginTop / 2.8)}px`};
     }
 
     @media (min-width: 1001px) and (max-width: 1024px) {
