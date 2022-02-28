@@ -1,5 +1,6 @@
+import { forwardRef } from 'react/cjs/react.development'
 import { Image } from '../../GlobalStyles'
-import { Inner, Wrap, Icons, Control, ButtonIcon, Slider } from './GalleryStyled'
+import { Inner, Wrap, Icons, Control, ButtonIcon, Slide, Slider } from './GalleryStyled'
 
 const Gallery = ({ children, ...restProps }) => {
     return (
@@ -31,9 +32,15 @@ Gallery.ButtonIcon = function GalleryButtonIcon({ children, ...restProps }) {
     )
 }
 
-Gallery.Slider = function GallerySlider({ children, ...restProps }) {
+Gallery.Slider = forwardRef(function GallerySlider({ children, ...restProps }, ref) {
     return (
-        <Slider {...restProps}>{children}</Slider>
+        <Slider {...restProps} ref={ref}>{children}</Slider>
+    )
+})
+
+Gallery.Slide = function GallerySlide({ children, ...restProps }) {
+    return (
+        <Slide {...restProps}>{children}</Slide>
     )
 }
 

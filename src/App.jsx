@@ -14,11 +14,11 @@ import { NavbarContext } from './context'
 const App = () => {
     const { pathname } = useLocation()
     const { mobileMenu } = useContext(NavbarContext)
-    const [showButtonScroll, setShowButtonScroll] = useState(window.innerWidth <= 640 && window.scrollY > 680)
+    const [showButtonScroll, setShowButtonScroll] = useState(window.innerWidth <= 640 && window.scrollY > 580)
 
     useLayoutEffect(() => {
         const handleShowButtonScroll = () => {
-            if (window.innerWidth > 640 || window.scrollY < 680) {
+            if (window.innerWidth > 640 || window.scrollY < 580) {
                 setShowButtonScroll(false)
             } else {
                 setShowButtonScroll(true)
@@ -66,7 +66,7 @@ const App = () => {
 
                         <Route path='*' element={<NotFound />} />
                     </Routes>
-                    <ButtonScrollToTop hideButton={showButtonScroll}/>
+                    <ButtonScrollToTop hideButton={showButtonScroll} />
                 </Pages>
             </ScrollToTop>
         </>

@@ -27,7 +27,7 @@ const Games = () => {
             <HeaderGames data={gameData.header} />
             <Screenshots data={gameData.screenshots} />
             <Reviews data={gameData.reviews} />
-            <Gallery />
+            <Gallery data={gameData.screenshots}/>
             <Footer data={footerData} />
         </GamesPageProvider>
     );

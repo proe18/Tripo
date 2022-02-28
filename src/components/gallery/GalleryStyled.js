@@ -40,6 +40,7 @@ export const Icons = styled.div`
 
     @media (max-height: 640px) {
         padding-right: 5%;
+        position: absolute;
 
         ${ButtonIcon}:last-child {
             width: 100%;
@@ -156,12 +157,15 @@ export const Slider = styled.div`
     height: 100%;
     max-width: 1025px;
     max-height: 577px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    ${({ scaleImage }) => scaleImage === true && `
+    margin: 0 auto;
+    transform: translateX(0);
+    will-change: transition;
+    transition: ease-in 0.3s;
+    -moz-transition: ease-in 0.3s;
+    -o-transition: ease-in 0.3s;
+    -webkit-transition: ease-in 0.3s;
+    
+    ${({ scaleImage }) => scaleImage && `
         max-width: 100%;
         max-height: 100%;
 
@@ -170,21 +174,18 @@ export const Slider = styled.div`
         }
     `}
 
+    @media (max-height: 640px) {
+        max-width: 100%;
+        max-height: 100%;
+        transform: ${({slidePosition}) => `translateX(${slidePosition}px)`};
+    }
+
     @media (max-width: 1280px) {
-        ${Image} {
-            object-fit: fill;
-        }
+        margin-top: 20px;
     }
 
     @media (min-width: 321px) and (max-width: 640px) {
         max-width: 100%;
-        margin-top: 20px;
-    }
-
-    @media (max-height: 320px) {        
-        ${Image} {
-            object-fit: cover;
-        }
     }
 
     @media (max-height: 400px) {
@@ -217,13 +218,26 @@ export const Slider = styled.div`
     @media (min-width: 861px) and (max-width: 1024px) {
         max-width: 90%;
         max-height: 80%;
-        margin-top: 20px;
     }
 
     @media (min-width: 1025px) and (max-width: 1280px) {
         max-width: 90%;
         max-height: 88%;
-        margin-top: 20px;
+    }
+`
+
+export const Slide = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (max-width: 1280px) {
+        ${Image} {
+            object-fit: fill;
+        }
     }
 `
 
@@ -242,7 +256,7 @@ export const Wrap = styled.div`
     @media (max-height: 640px) {
         max-width: 100%;
         max-height: 100%;
-        ${Slider} {
+        ${Slide} {
             max-width: 100%;
             max-height: 100%;
 

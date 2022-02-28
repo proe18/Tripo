@@ -4,16 +4,16 @@ import { GalleryContext, GamesPageContext } from '../../context'
 
 const ScreenshotsContainer = ({ data }) => {
     const { heightElement } = useContext(GamesPageContext)
-    const { isCloseGallery, handleGallery } = useContext(GalleryContext)
+    const { isCloseGallery, handleGallery, groupImage } = useContext(GalleryContext)
 
     return (
         <Screenshots paddingTop={heightElement} hideScreenshots={isCloseGallery}>
             <Screenshots.Wrapper>
                 <Screenshots.Title>{data.title}</Screenshots.Title>
-                <Screenshots.Group>
+                <Screenshots.Group ref={groupImage}>
                     {data.listImage.map((image, index) =>
                         <Screenshots.Wrap key={index} onClick={() => handleGallery(image.img, index)}>
-                            <Screenshots.Image src={image.img} alt={image.alt} id={'imageElement'} />
+                            <Screenshots.Image src={image.img} alt={image.alt} />
                         </Screenshots.Wrap>
                     )}
                 </Screenshots.Group>

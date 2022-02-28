@@ -7,14 +7,19 @@ const GalleryContext = createContext()
 const GalleryProvider = ({ children }) => {
     const { pathname } = useLocation()
     const indexImage = useRef()
+    const groupImage = useRef('groupImage')
+    const sliderElement = useRef('slider')
+    const isDragging = useRef(false)
+    const startPosition = useRef(0)
+    const preTranslate = useRef(0)
+    const currentTranslate = useRef(0)
     const [image, setImage] = useState()
+    const [slidePosition, setSlidePosition] = useState(0)
     const [isCloseGallery, setIsCloseGallery] = useState(true)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const [isPre, setIsPre] = useState(false)
     const [isNext, setIsNext] = useState(false)
     const handle = useFullScreenHandle()
-
-    const imageElements = document.querySelectorAll('#imageElement')
 
     //reset state
     useEffect(() => {
@@ -44,15 +49,10 @@ const GalleryProvider = ({ children }) => {
         handle.exit()
     }
 
-    const handleFullscreen = () => {
-        handle.active === false ? handle.enter() : handle.exit()
-        setIsFullscreen(!isFullscreen)
-    }
-
     //handle click button previous
     const handlePre = () => {
         if (indexImage.current > 0) indexImage.current = indexImage.current - 1
-        setImage(imageElements[indexImage.current].src)
+        setImage(groupImage.current.childNodes[indexImage.current].childNodes[0].src)
         setIsPre(!isPre)
         setIsNext(!isNext)
     }
@@ -60,23 +60,60 @@ const GalleryProvider = ({ children }) => {
     //handle click button next
     const handleNext = () => {
         if (indexImage.current <= 0) indexImage.current = indexImage.current + 1
-        setImage(imageElements[indexImage.current].src)
+        setImage(groupImage.current.childNodes[indexImage.current].childNodes[0].src)
         setIsPre(!isPre)
         setIsNext(!isNext)
     }
+    //--------------------------------------------------------------------
+
+    //handle full screen 
+    const handleFullscreen = () => {
+        handle.active === false ? handle.enter() : handle.exit()
+        setIsFullscreen(!isFullscreen)
+    }
+    //--------------------------------------------------------------------
+
+    //handle event touch on mobile device
+    const getPoitionX = touches => {
+        return touches[0].clientX
+    }
+
+    const handleTouchStart = touches => {
+        startPosition.current = getPoitionX(touches)
+        isDragging.current = true
+    }
+
+    const handleTouchMove = touches => {
+        if (isDragging.current) {
+            const currentPosition = getPoitionX(touches)
+            currentTranslate.current = preTranslate.current + currentPosition - startPosition.current
+            setSlidePosition(currentTranslate.current)
+        }
+    }
+
+    const handleTouchEnd = () => {
+        isDragging.current = false
+    }
+    //--------------------------------------------------------------------
 
     const value = {
         image,
+        sliderElement,
+        groupImage,
         isPre,
         isNext,
         isCloseGallery,
         isFullscreen,
         handle,
+        slidePosition,
         handleGallery,
         handleCloseGallery,
         handleFullscreen,
         handlePre,
-        handleNext
+        handleNext,
+        handleTouchStart,
+        handleTouchMove,
+        handleTouchEnd
     }
 
     return <GalleryContext.Provider value={value}>{children}</GalleryContext.Provider>

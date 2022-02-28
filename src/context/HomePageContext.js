@@ -10,7 +10,7 @@ const HomePageProvider = ({ children }) => {
     const [marginGames, setMarginGames] = useState(0)
     const [marginAbout, setMarginAbout] = useState(0)
 
-    //set heigth of games element
+    //set margin for games element and about element
     const getHeightElement = () => {
         setMarginGames(headerElement.current.offsetHeight)
         setMarginAbout(gamesElement.current.offsetHeight)

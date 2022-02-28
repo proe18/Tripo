@@ -1,3 +1,4 @@
+import { forwardRef } from 'react/cjs/react.development'
 import { Wrapper, Image } from '../../GlobalStyles'
 import { Inner, Title, Group, Wrap } from './ScreenshotsStyled'
 
@@ -19,11 +20,11 @@ Screenshots.Title = function ScreenshotsTitle({ children, ...restProps }) {
     )
 }
 
-Screenshots.Group = function ScreenshotsGroup({ children, ...restProps }) {
+Screenshots.Group = forwardRef(function ScreenshotsGroup({ children, ...restProps }, ref) {
     return (
-        <Group {...restProps}>{children}</Group>
+        <Group {...restProps} ref={ref}>{children}</Group>
     )
-}
+})
 
 Screenshots.Wrap = function ScreenshotsWrap({ children, ...restProps }) {
     return (

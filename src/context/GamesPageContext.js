@@ -8,7 +8,7 @@ const GamesPageProvider = ({ children }) => {
     const groupElement = useRef('group')
     const [heightElement, setHeightElement] = useState(0)
 
-    //set heigth of box header section
+    //set heigth for box header section
     const getHeightElement = () => setHeightElement(groupElement.current.offsetHeight)
 
     useLayoutEffect(getHeightElement, [pathname])

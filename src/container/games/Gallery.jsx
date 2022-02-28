@@ -1,22 +1,27 @@
+import { useContext } from 'react'
+import { FullScreen } from 'react-full-screen'
 import { GrClose } from "react-icons/gr"
 import { BsArrowsAngleExpand, BsArrowsAngleContract, BsChevronRight, BsChevronLeft } from "react-icons/bs"
 import { Gallery } from '../../components'
-import { useContext } from 'react'
 import { GalleryContext } from '../../context'
-import { FullScreen } from 'react-full-screen'
 
-const GalleryContainer = () => {
+const GalleryContainer = ({ data }) => {
     const {
         image,
+        sliderElement,
         isPre,
         isNext,
         isCloseGallery,
         isFullscreen,
+        slidePosition,
         handle,
         handlePre,
         handleNext,
         handleCloseGallery,
-        handleFullscreen
+        handleFullscreen,
+        handleTouchStart,
+        handleTouchMove,
+        handleTouchEnd
     } = useContext(GalleryContext)
 
     return (
@@ -36,8 +41,29 @@ const GalleryContainer = () => {
                             <GrClose />
                         </Gallery.ButtonIcon>
                     </Gallery.Icons>
-                    <Gallery.Slider scaleImage={isFullscreen}>
-                        <Gallery.Image src={image} alt='' />
+                    <Gallery.Slider
+                        ref={sliderElement}
+                        scaleImage={isFullscreen}
+                        slidePosition={slidePosition}
+                        onTouchStart={({ touches }) => handleTouchStart(touches)}
+                        onTouchMove={({ touches }) => handleTouchMove(touches)}
+                        onTouchEnd={handleTouchEnd}
+                        onDragStart={e => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            return false
+                        }}
+                    >
+                        {(window.innerHeight > 640 && window.innerWidth > 640)
+                            ? <Gallery.Slide>
+                                <Gallery.Image src={image} alt='' />
+                            </Gallery.Slide>
+                            : data.listImage.map((image, index) =>
+                                <Gallery.Slide key={index}>
+                                    <Gallery.Image src={image.img} alt='' />
+                                </Gallery.Slide>
+                            )
+                        }
                     </Gallery.Slider>
                     <Gallery.Control>
                         <Gallery.ButtonIcon onClick={handlePre} hideButton={isPre}>
