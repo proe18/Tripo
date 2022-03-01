@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Image } from '../../GlobalStyles'
 
 export const ButtonIcon = styled.div`
@@ -99,6 +99,99 @@ export const Control = styled(Icons)`
     }
 `
 
+export const Slider = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 1025px;
+    max-height: 577px;
+    margin: 0 auto;
+    
+    ${({ scaleImage }) => scaleImage && css`
+        max-width: 100%;
+        max-height: 100%;
+
+        ${Image} {
+            transform: scale(1.1);  
+        }
+    `}
+
+    @media (max-height: 640px), (max-width: 640px) {
+        max-height: 100vh;
+        width: unset;
+        max-width: unset;
+        overflow: hidden;
+        display: inline-flex;
+        user-select: none;
+        will-change: transition, transform;
+        transition: transform ease-out 0.5s;
+        -moz-transition: transform ease-out 0.5s;
+        -o-transition: transform ease-out 0.5s;
+        -webkit-transition: transform ease-out 0.5s;
+        transform: ${({slidePosition}) => `translateX(${slidePosition}px)`};
+    }
+
+    @media (min-width: 641px) and (min-height: 641px) {
+        transition: none;
+    }
+
+    @media (max-width: 1280px) {
+        margin-top: 20px;
+    }
+    
+    @media (max-height: 640px) {
+        margin-top: 0;
+    }
+
+    /* @media (min-width: 641px) and (max-width: 740px) {
+        max-width: 80%;
+        max-height: 65%;
+    } */
+
+    @media (min-width: 741px) and (max-width: 860px) {
+        max-width: 85%;
+        max-height: 72%;
+    }
+
+    @media (min-width: 861px) and (max-width: 1024px) {
+        max-width: 90%;
+        max-height: 80%;
+    }
+
+    @media (min-width: 1025px) and (max-width: 1280px) {
+        max-width: 90%;
+        max-height: 88%;
+    }
+`
+
+export const Slide = styled.div`
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media (max-width: 640px), (max-height: 640px) {
+        max-height: 100vh;
+        width: 100vw;
+        display: flex;
+        transform: none;
+        top: 0;
+        left: 0;
+
+        ${Image} {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    @media (max-width: 1280px) {
+        ${Image} {
+            object-fit: fill;
+        }
+    }
+`
+
 export const Inner = styled.div`
     padding-top: 60px;
     position: fixed;
@@ -109,7 +202,7 @@ export const Inner = styled.div`
     background-color: ${({ theme }) => theme.color.bgColor};
     display: ${({ hideGallery }) => hideGallery && 'none'};
 
-    ${({ fullscreen }) => fullscreen === true && `
+    ${({ fullscreen }) => fullscreen && css`
         padding-top: 40px;
 
         ${Icons} {
@@ -141,6 +234,10 @@ export const Inner = styled.div`
                 min-width: ${({ hideButton }) => hideButton === false && 'unset'};
             }
         }
+
+        ${Slider} {
+            transition: none;
+        }
     `}
 
     @media (max-width: 640px) {
@@ -152,95 +249,6 @@ export const Inner = styled.div`
     }
 `
 
-export const Slider = styled.div`
-    width: 100%;
-    height: 100%;
-    max-width: 1025px;
-    max-height: 577px;
-    margin: 0 auto;
-    transform: translateX(0);
-    will-change: transition;
-    transition: ease-in 0.3s;
-    -moz-transition: ease-in 0.3s;
-    -o-transition: ease-in 0.3s;
-    -webkit-transition: ease-in 0.3s;
-    
-    ${({ scaleImage }) => scaleImage && `
-        max-width: 100%;
-        max-height: 100%;
-
-        ${Image} {
-            transform: scale(1.1);  
-        }
-    `}
-
-    @media (max-height: 640px) {
-        max-width: 100%;
-        max-height: 100%;
-        transform: ${({slidePosition}) => `translateX(${slidePosition}px)`};
-    }
-
-    @media (max-width: 1280px) {
-        margin-top: 20px;
-    }
-
-    @media (min-width: 321px) and (max-width: 640px) {
-        max-width: 100%;
-    }
-
-    @media (max-height: 400px) {
-        margin-top: 0;
-    }
-
-    @media (max-width: 320px) {
-        max-width: 100%;
-        max-height: 50%;
-    }
-
-    @media (min-width: 321px) and (max-width: 420px) {
-        max-height: 53%;
-    }
-
-    @media (min-width: 421px) and (max-width: 640px) {
-        max-height: 66.5%;
-    }
-
-    @media (min-width: 641px) and (max-width: 740px) {
-        max-width: 80%;
-        max-height: 65%;
-    }
-
-    @media (min-width: 741px) and (max-width: 860px) {
-        max-width: 85%;
-        max-height: 72%;
-    }
-
-    @media (min-width: 861px) and (max-width: 1024px) {
-        max-width: 90%;
-        max-height: 80%;
-    }
-
-    @media (min-width: 1025px) and (max-width: 1280px) {
-        max-width: 90%;
-        max-height: 88%;
-    }
-`
-
-export const Slide = styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    @media (max-width: 1280px) {
-        ${Image} {
-            object-fit: fill;
-        }
-    }
-`
-
 export const Wrap = styled.div`
     width: 100%;
     height: 100%;
@@ -249,20 +257,13 @@ export const Wrap = styled.div`
     margin: auto;
     position: relative;
 
-    @media (max-width: 640px) {
-        max-width: 100%;
-    }
-
     @media (max-height: 640px) {
         max-width: 100%;
         max-height: 100%;
-        ${Slide} {
-            max-width: 100%;
-            max-height: 100%;
+    }
 
-            ${Image} {
-                transform: scale(1.1);  
-            }
-        }
+    @media (max-width: 640px) {
+        max-width: 100%;
+        max-height: 50%;
     }
 `

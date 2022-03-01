@@ -9,11 +9,12 @@ import { NavBar } from './container'
 import { About, Careers, Home, Games, Position, NotFound, PolicyAndTerms } from './pages'
 
 import { ButtonScrollToTop, ScrollToTop } from './components'
-import { NavbarContext } from './context'
+import { GalleryContext, NavbarContext } from './context'
 
 const App = () => {
     const { pathname } = useLocation()
     const { mobileMenu } = useContext(NavbarContext)
+    const { isCloseGallery } = useContext(GalleryContext)
     const [showButtonScroll, setShowButtonScroll] = useState(window.innerWidth <= 640 && window.scrollY > 580)
 
     useLayoutEffect(() => {
@@ -66,7 +67,7 @@ const App = () => {
 
                         <Route path='*' element={<NotFound />} />
                     </Routes>
-                    <ButtonScrollToTop hideButton={showButtonScroll} />
+                    {isCloseGallery && <ButtonScrollToTop hideButton={showButtonScroll} />}
                 </Pages>
             </ScrollToTop>
         </>

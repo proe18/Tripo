@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { NavLink as ReactNavLink } from 'react-router-dom'
 
 export const Container = styled.div`
@@ -20,7 +20,7 @@ export const Container = styled.div`
     @media (max-width: 860px) {
         width: 90%;
         align-items: flex-start;
-        ${({ mobileMenu }) => mobileMenu && `width: 100vw;`}
+        width: ${({ mobileMenu }) => mobileMenu && '100vw'};
     }
 
     @media (min-width: 861px) and (max-width: 1319px) {
@@ -37,11 +37,11 @@ export const Inner = styled.div`
     //Responsive mobile and tablet
     @media (min-width: 641px) and (max-width: 860px) {
         ${({ mobileMenu }) => mobileMenu
-        ? `
+        ? css`
             width: 100vw;
             height: 100vh;
         `
-        : `
+        : css`
             max-width: 60px;
             min-height: 60px;
         `}
@@ -55,11 +55,11 @@ export const Inner = styled.div`
     //Mobile device
     @media (max-width: 640px) {
         ${({ mobileMenu }) => mobileMenu
-        ? `
+        ? css`
             width: 100vw;
             height: 100vh;
         `
-        : `
+        : css`
             max-width: 50px;
             min-height: 50px;
         `}
@@ -153,7 +153,7 @@ export const Item = styled.li`
     max-height: 60px;
     line-height: 60px;
     cursor: pointer;
-    ${({ mobileMenu }) => !mobileMenu && `
+    ${({ mobileMenu }) => !mobileMenu && css`
         text-align: center;
         transition: all linear 0.28s;
     `}
@@ -192,13 +192,14 @@ export const Item = styled.li`
     @media (max-width: 640px) {
         line-height: 40px;
         max-height: 40px;
-        ${({ dropDown }) => dropDown && `max-height: 200px;`}
+        max-height: ${({ dropDown }) => dropDown && '200px'};
     }
 
     @media (min-width: 641px) and (max-width: 860px) {
         line-height: 50px;
         max-height: 50px;
-        ${({ dropDown }) => dropDown && `max-height: 210px;`}
+        max-height: ${({ dropDown }) => dropDown && '210px'};
+
     }
 `
 
@@ -254,12 +255,9 @@ export const Icon = styled.div`
         
     }
 
-    @media (max-width: 280px) {
-        ${({ mobileMenu }) => mobileMenu && 'right: 5%;'}
-    }
-
-    @media (min-width: 321px) and (max-width: 860px) {
-        ${({ mobileMenu }) => mobileMenu && 'right: 5%;'}
+    @media (max-width: 280px), 
+    (min-width: 321px) and (max-width: 860px) {
+        right: ${({ mobileMenu }) => mobileMenu && '5%'};
     }
 
     //Hidden icon navbar

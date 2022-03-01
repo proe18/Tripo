@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const PositionFormContainer = styled.section``
 
 export const Modal = styled.div`
-    ${({ hideModal }) => !hideModal && `
+    ${({ hideModal }) => !hideModal && css`
         position: fixed;
         top: 0;
         left: 0;
@@ -31,7 +31,7 @@ export const Container = styled.div`
     transform: translateX(600px);
     opacity: 0;
     
-    ${({ hideForm }) => !hideForm && `
+    ${({ hideForm }) => !hideForm && css`
         transform: translateX(0);
         opacity: 1;
     `}
