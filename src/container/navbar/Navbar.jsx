@@ -5,8 +5,7 @@ import { Logo } from '../../components'
 import { Navbar } from '../../components'
 import { DropDown } from '../../container'
 import * as ROUTES from '../../constants/routes'
-import { NavbarContext } from '../../context'
-import { GalleryContext } from '../../context'
+import { NavbarContext, GalleryContext } from '../../context'
 
 const NavBar = () => {
     const {

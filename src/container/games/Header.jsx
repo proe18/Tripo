@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { useContext } from 'react'
 import { HeaderGames } from '../../components'
-import { GalleryContext, GamesPageContext } from '../../context';
+import { GalleryContext, GamesPageContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
-    const {heightElement, groupElement} = useContext(GamesPageContext)
+    const { heightElement, groupElement } = useContext(GamesPageContext)
     const { isCloseGallery } = useContext(GalleryContext)
 
     return (

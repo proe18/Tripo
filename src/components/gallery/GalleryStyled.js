@@ -120,7 +120,6 @@ export const Slider = styled.div`
         max-height: 100vh;
         width: unset;
         max-width: unset;
-        overflow: hidden;
         display: inline-flex;
     }
 

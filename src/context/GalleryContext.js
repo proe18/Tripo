@@ -8,7 +8,8 @@ const GalleryProvider = ({ children }) => {
     //variables to handle gallery
     const { pathname } = useLocation()
     const indexImage = useRef()
-    
+    // const [isMobile, setIsMobile] = useState(false)
+
     //variables to handle click event
     const groupImage = useRef('groupImage')
     const [image, setImage] = useState()
@@ -24,17 +25,16 @@ const GalleryProvider = ({ children }) => {
     const translate = useRef(0)
     const [slidePosition, setSlidePosition] = useState(0)
     //--------------------------------------------------------
-    
+
     //variables to handle fullscreen
     const [isFullscreen, setIsFullscreen] = useState(false)
     const handle = useFullScreenHandle()
     //--------------------------------------------------------
 
     //--------------------------------------------------------
-
     //handle gallery
     const getPoitionX = touches => touches[0].clientX
-    
+
     const setPositionByIndex = useCallback(() => {
         translate.current = indexImage.current * -window.innerWidth
         setSlidePosition(translate.current)
@@ -93,13 +93,6 @@ const GalleryProvider = ({ children }) => {
     }
     //--------------------------------------------------------------------
 
-    //handle full screen 
-    const handleFullscreen = () => {
-        handle.active === false ? handle.enter() : handle.exit()
-        setIsFullscreen(!isFullscreen)
-    }
-    //--------------------------------------------------------------------
-
     //handle touch event
     const handleTouchStart = touches => {
         startPosition.current = getPoitionX(touches)
@@ -116,9 +109,34 @@ const GalleryProvider = ({ children }) => {
     const handleTouchEnd = () => {
         isDragging.current = false
         const movedBy = position.current
-        if (movedBy < -100 && indexImage.current < groupImage.current.childNodes.length - 1) indexImage.current += 1 
-        if (movedBy > 100 && indexImage.current > 0) indexImage.current -= 1 
+        if (movedBy < -100 && indexImage.current < groupImage.current.childNodes.length - 1) indexImage.current += 1
+        if (movedBy > 100 && indexImage.current > 0) indexImage.current -= 1
         setPositionByIndex()
+        console.log(movedBy);
+        console.log(indexImage.current);
+    }
+    //--------------------------------------------------------------------
+
+    //set width for slide if window resize
+    useEffect(() => {
+        const handleResize = () => {
+            setPositionByIndex()
+            // setIsMobile(
+            //     (window.innerHeight <= 640 && window.innerWidth <= 640)
+            //     || window.innerHeight <= 640
+            //     || window.innerWidth <= 640
+            // )
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [setPositionByIndex])
+    //--------------------------------------------------------------------
+
+    //handle full screen 
+    const handleFullscreen = () => {
+        handle.active === false ? handle.enter() : handle.exit()
+        setIsFullscreen(!isFullscreen)
     }
     //--------------------------------------------------------------------
 
@@ -127,6 +145,7 @@ const GalleryProvider = ({ children }) => {
     const value = {
         image,
         groupImage,
+        // isMobile,
         isPre,
         isNext,
         isCloseGallery,

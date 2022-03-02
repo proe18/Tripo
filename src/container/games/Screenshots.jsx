@@ -4,7 +4,7 @@ import { GalleryContext, GamesPageContext } from '../../context'
 
 const ScreenshotsContainer = ({ data }) => {
     const { heightElement } = useContext(GamesPageContext)
-    const { isCloseGallery, handleGallery, groupImage } = useContext(GalleryContext)
+    const { groupImage, isCloseGallery, handleGallery } = useContext(GalleryContext)
 
     return (
         <Screenshots paddingTop={heightElement} hideScreenshots={isCloseGallery}>

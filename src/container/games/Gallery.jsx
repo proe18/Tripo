@@ -10,6 +10,7 @@ const GalleryContainer = ({ data }) => {
         image,
         isPre,
         isNext,
+        // isMobile,
         isCloseGallery,
         isFullscreen,
         slidePosition,
@@ -22,6 +23,7 @@ const GalleryContainer = ({ data }) => {
         handleTouchMove,
         handleTouchEnd
     } = useContext(GalleryContext)
+    console.log(slidePosition);
 
     return (
         <FullScreen handle={handle}>
