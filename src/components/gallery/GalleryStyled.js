@@ -116,19 +116,17 @@ export const Slider = styled.div`
     `}
 
     @media (max-height: 640px), (max-width: 640px) {
+        height: 100%;
         max-height: 100vh;
         width: unset;
         max-width: unset;
         overflow: hidden;
         display: inline-flex;
-        user-select: none;
-        will-change: transition, transform;
-        transition: transform ease-out 0.5s;
-        -moz-transition: transform ease-out 0.5s;
-        -o-transition: transform ease-out 0.5s;
-        -webkit-transition: transform ease-out 0.5s;
-        transform: ${({slidePosition}) => `translateX(${slidePosition}px)`};
     }
+
+    /* @media (max-height: 640px) and (max-width: 640px) {
+        height: 100vh;
+    } */
 
     @media (min-width: 641px) and (min-height: 641px) {
         transition: none;
@@ -147,7 +145,7 @@ export const Slider = styled.div`
         max-height: 65%;
     } */
 
-    @media (min-width: 741px) and (max-width: 860px) {
+    /* @media (min-width: 741px) and (max-width: 860px) {
         max-width: 85%;
         max-height: 72%;
     }
@@ -160,7 +158,7 @@ export const Slider = styled.div`
     @media (min-width: 1025px) and (max-width: 1280px) {
         max-width: 90%;
         max-height: 88%;
-    }
+    } */
 `
 
 export const Slide = styled.div`
@@ -178,6 +176,13 @@ export const Slide = styled.div`
         transform: none;
         top: 0;
         left: 0;
+        transform: ${({slidePosition}) => `translateX(${slidePosition}px)`};
+        user-select: none;
+        will-change: transition, transform;
+        transition: transform ease-out 0.5s;
+        -moz-transition: transform ease-out 0.5s;
+        -o-transition: transform ease-out 0.5s;
+        -webkit-transition: transform ease-out 0.5s;
 
         ${Image} {
             max-width: 100%;

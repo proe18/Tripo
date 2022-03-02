@@ -8,7 +8,6 @@ import { GalleryContext } from '../../context'
 const GalleryContainer = ({ data }) => {
     const {
         image,
-        sliderElement,
         isPre,
         isNext,
         isCloseGallery,
@@ -42,9 +41,7 @@ const GalleryContainer = ({ data }) => {
                         </Gallery.ButtonIcon>
                     </Gallery.Icons>
                     <Gallery.Slider
-                        ref={sliderElement}
                         scaleImage={isFullscreen}
-                        slidePosition={slidePosition}
                         onTouchStart={({ touches }) => handleTouchStart(touches)}
                         onTouchMove={({ touches }) => handleTouchMove(touches)}
                         onTouchEnd={handleTouchEnd}
@@ -59,7 +56,7 @@ const GalleryContainer = ({ data }) => {
                                 <Gallery.Image src={image} alt='' />
                             </Gallery.Slide>
                             : data.listImage.map((image, index) =>
-                                <Gallery.Slide key={index}>
+                                <Gallery.Slide key={index} slidePosition={slidePosition}>
                                     <Gallery.Image src={image.img} alt='' />
                                 </Gallery.Slide>
                             )

@@ -18,12 +18,10 @@ const GalleryProvider = ({ children }) => {
     //--------------------------------------------------------
 
     //variables to handle touch event
-    const sliderElement = useRef('slider')
     const isDragging = useRef(false)
     const startPosition = useRef(0)
-    const preTranslate = useRef(0)
-    const currentTranslate = useRef(0)
-    // const [sliderWidth, setSliderWidth] = useState(0)
+    const position = useRef(0)
+    const translate = useRef(0)
     const [slidePosition, setSlidePosition] = useState(0)
     //--------------------------------------------------------
     
@@ -34,43 +32,52 @@ const GalleryProvider = ({ children }) => {
 
     //--------------------------------------------------------
 
-    //reset state
+    //handle gallery
+    const getPoitionX = touches => touches[0].clientX
+    
+    const setPositionByIndex = useCallback(() => {
+        translate.current = indexImage.current * -window.innerWidth
+        setSlidePosition(translate.current)
+    }, [])
+
+    //reset states and variables
     useEffect(() => {
         indexImage.current = undefined
         startPosition.current = 0
-        currentTranslate.current = 0
-        preTranslate.current = 0
+        translate.current = 0
+        position.current = 0
         setImage()
         setIsPre(false)
         setIsNext(false)
     }, [pathname])
 
-    //handle open gallery and set state
+    //handle open gallery and set states
     const handleGallery = (image, index) => {
         indexImage.current = index
         setImage(image)
+        setPositionByIndex()
         setIsCloseGallery(!isCloseGallery)
         if (index === 0) {
             setIsPre(false)
             setIsNext(true)
         }
-        if (index === 1) {
+        if (index === groupImage.current.childNodes.length - 1) {
             setIsPre(true)
             setIsNext(false)
         }
     }
 
-    //handle close gallery and reset state
+    //handle close gallery, reset states and variables
     const handleCloseGallery = () => {
         startPosition.current = 0
-        currentTranslate.current = 0
-        preTranslate.current = 0
+        translate.current = 0
+        position.current = 0
         setIsCloseGallery(true)
         setIsFullscreen(false)
         handle.exit()
     }
 
-    //handle click button previous
+    //handle click event
     const handlePre = () => {
         if (indexImage.current > 0) indexImage.current -= 1
         setImage(groupImage.current.childNodes[indexImage.current].childNodes[0].src)
@@ -78,9 +85,8 @@ const GalleryProvider = ({ children }) => {
         setIsNext(!isNext)
     }
 
-    //handle click button next
     const handleNext = () => {
-        if (indexImage.current <= 0) indexImage.current += 1
+        if (indexImage.current < groupImage.current.childNodes.length - 1) indexImage.current += 1
         setImage(groupImage.current.childNodes[indexImage.current].childNodes[0].src)
         setIsPre(!isPre)
         setIsNext(!isNext)
@@ -94,18 +100,7 @@ const GalleryProvider = ({ children }) => {
     }
     //--------------------------------------------------------------------
 
-    //handle event touch on mobile device
-    const getPoitionX = touches => touches[0].clientX
-    // const getSliderWidth = (ref) => ref.current.clientWidth
-    
-    const setPositionByIndex = useCallback(() => {
-        currentTranslate.current = indexImage.current * -window.innerWidth
-        preTranslate.current = currentTranslate.current
-        setSlidePosition(currentTranslate.current)
-        console.log('pre translate: ', preTranslate.current);
-        console.log('current translate: ', currentTranslate.current);
-    }, [])
-
+    //handle touch event
     const handleTouchStart = touches => {
         startPosition.current = getPoitionX(touches)
         isDragging.current = true
@@ -114,23 +109,23 @@ const GalleryProvider = ({ children }) => {
     const handleTouchMove = touches => {
         if (isDragging.current) {
             const currentPosition = getPoitionX(touches)
-            currentTranslate.current = preTranslate.current + currentPosition - startPosition.current
-            setSlidePosition(currentTranslate.current)
+            position.current = currentPosition - startPosition.current
         }
     }
 
     const handleTouchEnd = () => {
         isDragging.current = false
-        const movedBy = currentTranslate.current - preTranslate.current
-        if (movedBy < -100 && indexImage.current <= 0) indexImage.current += 1 
+        const movedBy = position.current
+        if (movedBy < -100 && indexImage.current < groupImage.current.childNodes.length - 1) indexImage.current += 1 
         if (movedBy > 100 && indexImage.current > 0) indexImage.current -= 1 
         setPositionByIndex()
     }
     //--------------------------------------------------------------------
 
+    //--------------------------------------------------------------------
+
     const value = {
         image,
-        sliderElement,
         groupImage,
         isPre,
         isNext,

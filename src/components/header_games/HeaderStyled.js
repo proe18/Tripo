@@ -32,7 +32,7 @@ export const Box = styled.div`
     width: 100%;
     height: 100%;
     max-width: 672px;
-    max-height: 618px;
+    max-height: ${({heightBox}) => heightBox && `${heightBox}px`};
     position: absolute;
     top: -160px;
     border-radius: ${({theme}) => theme.borderRadius.radius2};
