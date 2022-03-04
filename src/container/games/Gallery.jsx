@@ -10,7 +10,7 @@ const GalleryContainer = ({ data }) => {
         image,
         isPre,
         isNext,
-        // isMobile,
+        isMobile,
         isCloseGallery,
         isFullscreen,
         slidePosition,
@@ -23,13 +23,13 @@ const GalleryContainer = ({ data }) => {
         handleTouchMove,
         handleTouchEnd
     } = useContext(GalleryContext)
-    console.log(slidePosition);
 
     return (
         <FullScreen handle={handle}>
             <Gallery
                 hideGallery={isCloseGallery}
                 fullscreen={isFullscreen}
+                hideButton={isPre}
                 tabIndex='0'
                 onKeyDown={({ key }) => key === 'Escape' && handleCloseGallery()}
             >
@@ -53,7 +53,7 @@ const GalleryContainer = ({ data }) => {
                             return false
                         }}
                     >
-                        {(window.innerHeight > 640 && window.innerWidth > 640)
+                        {isMobile === false
                             ? <Gallery.Slide>
                                 <Gallery.Image src={image} alt='' />
                             </Gallery.Slide>
@@ -64,13 +64,15 @@ const GalleryContainer = ({ data }) => {
                             )
                         }
                     </Gallery.Slider>
-                    <Gallery.Control>
-                        <Gallery.ButtonIcon onClick={handlePre} hideButton={isPre}>
-                            {isPre && <BsChevronLeft />}
-                        </Gallery.ButtonIcon>
-                        <Gallery.ButtonIcon onClick={handleNext} hideButton={isNext}>
-                            {isNext && <BsChevronRight />}
-                        </Gallery.ButtonIcon>
+                    <Gallery.Control hideButton={isPre}>
+
+                        {isPre && <Gallery.ButtonIcon onClick={handlePre}>
+                            <BsChevronLeft />
+                        </Gallery.ButtonIcon>}
+
+                        {isNext && <Gallery.ButtonIcon onClick={handleNext}>
+                            <BsChevronRight />
+                        </Gallery.ButtonIcon>}
                     </Gallery.Control>
                 </Gallery.Wrap>
             </Gallery>

@@ -8,7 +8,7 @@ const GalleryProvider = ({ children }) => {
     //variables to handle gallery
     const { pathname } = useLocation()
     const indexImage = useRef()
-    // const [isMobile, setIsMobile] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
 
     //variables to handle click event
     const groupImage = useRef('groupImage')
@@ -57,6 +57,11 @@ const GalleryProvider = ({ children }) => {
         setImage(image)
         setPositionByIndex()
         setIsCloseGallery(!isCloseGallery)
+        setIsMobile(
+            (window.innerHeight <= 640 && window.innerWidth <= 640)
+            || window.innerHeight <= 640
+            || window.innerWidth <= 640
+        )
         if (index === 0) {
             setIsPre(false)
             setIsNext(true)
@@ -112,8 +117,6 @@ const GalleryProvider = ({ children }) => {
         if (movedBy < -100 && indexImage.current < groupImage.current.childNodes.length - 1) indexImage.current += 1
         if (movedBy > 100 && indexImage.current > 0) indexImage.current -= 1
         setPositionByIndex()
-        console.log(movedBy);
-        console.log(indexImage.current);
     }
     //--------------------------------------------------------------------
 
@@ -121,11 +124,11 @@ const GalleryProvider = ({ children }) => {
     useEffect(() => {
         const handleResize = () => {
             setPositionByIndex()
-            // setIsMobile(
-            //     (window.innerHeight <= 640 && window.innerWidth <= 640)
-            //     || window.innerHeight <= 640
-            //     || window.innerWidth <= 640
-            // )
+            setIsMobile(
+                (window.innerHeight <= 640 && window.innerWidth <= 640)
+                || window.innerHeight <= 640
+                || window.innerWidth <= 640
+            )
         }
 
         window.addEventListener('resize', handleResize)
@@ -145,7 +148,7 @@ const GalleryProvider = ({ children }) => {
     const value = {
         image,
         groupImage,
-        // isMobile,
+        isMobile,
         isPre,
         isNext,
         isCloseGallery,
