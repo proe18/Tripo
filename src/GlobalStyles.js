@@ -52,7 +52,6 @@ export const GlobalStyles = createGlobalStyle`
 export const Pages = styled.div`
     width: 100%;
     height: 100%;
-    margin-top: -60px;
     background-color: ${theme.color.bgColor};
 
     @media (max-width: 860px) {

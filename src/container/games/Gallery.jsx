@@ -65,14 +65,16 @@ const GalleryContainer = ({ data }) => {
                         }
                     </Gallery.Slider>
                     <Gallery.Control hideButton={isPre}>
-
-                        {isPre && <Gallery.ButtonIcon onClick={handlePre}>
-                            <BsChevronLeft />
-                        </Gallery.ButtonIcon>}
-
-                        {isNext && <Gallery.ButtonIcon onClick={handleNext}>
-                            <BsChevronRight />
-                        </Gallery.ButtonIcon>}
+                        {isPre &&
+                            <Gallery.ButtonIcon onClick={handlePre}>
+                                <BsChevronLeft />
+                            </Gallery.ButtonIcon>
+                        }
+                        {isNext &&
+                            <Gallery.ButtonIcon onClick={handleNext}>
+                                <BsChevronRight />
+                            </Gallery.ButtonIcon>
+                        }
                     </Gallery.Control>
                 </Gallery.Wrap>
             </Gallery>

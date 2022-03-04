@@ -11,6 +11,7 @@ const NavBar = () => {
     const {
         mobileMenu,
         dropDown,
+        navbarFixed,
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
@@ -20,7 +21,11 @@ const NavBar = () => {
     const { isCloseGallery } = useContext(GalleryContext)
 
     return (
-        <Navbar.Container mobileMenu={mobileMenu} hideNavbar={isCloseGallery}>
+        <Navbar.Container
+            mobileMenu={mobileMenu}
+            hideNavbar={isCloseGallery}
+            navbarFixed={navbarFixed}
+        >
             <Logo mobileMenu={mobileMenu} />
             <Navbar mobileMenu={mobileMenu}>
                 <Navbar.Icon

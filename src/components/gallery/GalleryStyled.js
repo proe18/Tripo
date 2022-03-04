@@ -19,6 +19,7 @@ export const Icons = styled.div`
     ${ButtonIcon}:first-child, ${ButtonIcon}:last-child {
         width: 60px;
         height: 60px;
+        padding: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -80,17 +81,13 @@ export const Control = styled(Icons)`
 
     ${({ hideButton }) => hideButton
         ? css`
-            ${ButtonIcon} {
-                &:first-of-type {
-                    margin-right: 100%;
-                }
+            ${ButtonIcon}:first-of-type {
+                margin-right: 100%;
             }`
 
         : css`
-            ${ButtonIcon} {
-                &:last-of-type {
-                    margin-left: 100%;
-                }
+            ${ButtonIcon}:last-of-type {
+                margin-left: 100%;
             }`
     }
 

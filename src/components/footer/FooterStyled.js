@@ -4,7 +4,7 @@ import { LogoStyled as Logo } from '../logo/LogoStyled'
 import { Image } from '../../GlobalStyles'
 
 export const Inner = styled.footer`
-    display: ${({hideFooter}) => hideFooter === false && 'none'};
+    opacity: ${({hideFooter}) => hideFooter === false ? 0 : 1};
 `
 
 export const Heading = styled.div`

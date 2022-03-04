@@ -7,9 +7,12 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-
-    display: ${({hideNavbar}) => hideNavbar === false && 'none'};
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: ${({hideNavbar, navbarFixed}) => (!hideNavbar || !navbarFixed) ? 0 : 1};
 
     //Responsive mobile
     @media (max-width: 320px) {

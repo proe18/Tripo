@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Image } from '../../GlobalStyles'
 
 export const Inner = styled.section`
-    display: ${({hideScreenshots}) => hideScreenshots === false && 'none'};
+    opacity: ${({hideScreenshots}) => hideScreenshots === false ? 0 : 1};
 
     @media (max-width: 748px) {
         padding-top: ${({paddingTop}) => paddingTop && `${paddingTop - 35}px`};

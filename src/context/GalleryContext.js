@@ -35,6 +35,14 @@ const GalleryProvider = ({ children }) => {
     //handle gallery
     const getPoitionX = touches => touches[0].clientX
 
+    const getElement = useCallback(index => {
+        if (index || index === 0) {
+            return groupImage.current.childNodes[index]
+        } else {
+            return groupImage.current.childNodes
+        }
+    }, [])
+
     const setPositionByIndex = useCallback(() => {
         translate.current = indexImage.current * -window.innerWidth
         setSlidePosition(translate.current)
@@ -66,7 +74,7 @@ const GalleryProvider = ({ children }) => {
             setIsPre(false)
             setIsNext(true)
         }
-        if (index === groupImage.current.childNodes.length - 1) {
+        if (index === getElement().length - 1) {
             setIsPre(true)
             setIsNext(false)
         }
@@ -85,14 +93,14 @@ const GalleryProvider = ({ children }) => {
     //handle click event
     const handlePre = () => {
         if (indexImage.current > 0) indexImage.current -= 1
-        setImage(groupImage.current.childNodes[indexImage.current].childNodes[0].src)
+        setImage(getElement(indexImage.current).childNodes[0].src)
         setIsPre(!isPre)
         setIsNext(!isNext)
     }
 
     const handleNext = () => {
-        if (indexImage.current < groupImage.current.childNodes.length - 1) indexImage.current += 1
-        setImage(groupImage.current.childNodes[indexImage.current].childNodes[0].src)
+        if (indexImage.current < getElement().length - 1) indexImage.current += 1
+        setImage(getElement(indexImage.current).childNodes[0].src)
         setIsPre(!isPre)
         setIsNext(!isNext)
     }
@@ -114,7 +122,7 @@ const GalleryProvider = ({ children }) => {
     const handleTouchEnd = () => {
         isDragging.current = false
         const movedBy = position.current
-        if (movedBy < -100 && indexImage.current < groupImage.current.childNodes.length - 1) indexImage.current += 1
+        if (movedBy < -100 && indexImage.current < getElement().length - 1) indexImage.current += 1
         if (movedBy > 100 && indexImage.current > 0) indexImage.current -= 1
         setPositionByIndex()
     }
