@@ -10,7 +10,7 @@ const GalleryContainer = ({ data }) => {
         image,
         isPre,
         isNext,
-        isMobile,
+        isMobileGallery,
         isCloseGallery,
         isFullscreen,
         slidePosition,
@@ -53,7 +53,7 @@ const GalleryContainer = ({ data }) => {
                             return false
                         }}
                     >
-                        {isMobile === false
+                        {isMobileGallery === false
                             ? <Gallery.Slide>
                                 <Gallery.Image src={image} alt='' />
                             </Gallery.Slide>

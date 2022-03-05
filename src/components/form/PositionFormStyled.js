@@ -27,7 +27,10 @@ export const Container = styled.div`
     -ms-overflow-style: none;
     background-color: ${({ theme }) => theme.color.thirdColor};
     will-change: transform, transition, opacity;
-    transition: ease-out 0.36s;
+    transition: ease-in-out 0.36s;
+    -moz-transition: ease-in-out 0.36s;
+    -o-transition: ease-in-out 0.36s;
+    -webkit-transition: ease-in-out 0.36s;
     transform: translateX(600px);
     opacity: 0;
     

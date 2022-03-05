@@ -13,11 +13,9 @@ const ButtonLink = ({ children, to, ...restProps }) => {
     )
 }
 
-const ButtonScrollToTop = ({ ...restProps }) => {
-    const handleClick = () => window.scrollTo(0, 0)
-    
+const ButtonScrollToTop = ({ ...restProps }) => {    
     return (
-        <ButtonScrollStyled {...restProps} onClick={handleClick}>
+        <ButtonScrollStyled {...restProps}>
             <BsFillTriangleFill />
         </ButtonScrollStyled>
     )

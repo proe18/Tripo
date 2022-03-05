@@ -11,6 +11,7 @@ const NavBar = () => {
     const {
         mobileMenu,
         dropDown,
+        isMobile,
         navbarFixed,
         handleMouseEnter,
         handleMouseLeave,
@@ -25,6 +26,7 @@ const NavBar = () => {
             mobileMenu={mobileMenu}
             hideNavbar={isCloseGallery}
             navbarFixed={navbarFixed}
+            marginTop={isMobile}
         >
             <Logo mobileMenu={mobileMenu} />
             <Navbar mobileMenu={mobileMenu}>

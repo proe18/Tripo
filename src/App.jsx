@@ -5,33 +5,27 @@ import * as ROUTES from './constants/routes'
 
 import { GlobalStyles, Pages } from './GlobalStyles'
 
-import { NavBar } from './container'
 import { About, Careers, Home, Games, Position, NotFound, PolicyAndTerms } from './pages'
 
+import { NavBar } from './container'
 import { ButtonScrollToTop, ScrollToTop } from './components'
 import { GalleryContext, NavbarContext } from './context'
 
 const App = () => {
     const { pathname } = useLocation()
-    const { mobileMenu } = useContext(NavbarContext)
+    const { mobileMenu, isMobile } = useContext(NavbarContext)
     const { isCloseGallery } = useContext(GalleryContext)
-    const [showButtonScroll, setShowButtonScroll] = useState(window.innerWidth <= 640 && window.scrollY > 580)
+    const [showButtonScroll, setShowButtonScroll] = useState(false)
 
     useLayoutEffect(() => {
-        const handleShowButtonScroll = () => {
-            if (window.innerWidth > 640 || window.scrollY < 580) {
-                setShowButtonScroll(false)
-            } else {
-                setShowButtonScroll(true)
-            }
-        }
+        const handleShowButtonScroll = () => setShowButtonScroll(window.innerWidth <= 860 && window.scrollY > 580)
 
         window.addEventListener('resize', handleShowButtonScroll)
         window.addEventListener('scroll', handleShowButtonScroll)
 
         return () => {
             window.removeEventListener('resize', handleShowButtonScroll)
-            window.addEventListener('scroll', handleShowButtonScroll)
+            window.removeEventListener('scroll', handleShowButtonScroll)
         }
     }, [pathname])
 
@@ -40,7 +34,7 @@ const App = () => {
             <ScrollToTop>
                 <GlobalStyles />
                 <NavBar />
-                <Pages mobileMenu={mobileMenu}>
+                <Pages mobileMenu={mobileMenu} positionFixed={isMobile}>
                     <Routes>
                         <Route path={ROUTES.HOME} element={<Home />} />
                         <Route path={ROUTES.ABOUT} element={<About />} />
@@ -67,11 +61,11 @@ const App = () => {
 
                         <Route path='*' element={<NotFound />} />
                     </Routes>
-                    {isCloseGallery && <ButtonScrollToTop hideButton={showButtonScroll} />}
+                    {isCloseGallery && <ButtonScrollToTop onClick={() => window.scrollTo(0, 0)} hideButton={showButtonScroll} />}
                 </Pages>
             </ScrollToTop>
         </>
     )
 }
 
-export default App;
+export default App

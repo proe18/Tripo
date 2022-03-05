@@ -52,10 +52,16 @@ export const GlobalStyles = createGlobalStyle`
 export const Pages = styled.div`
     width: 100%;
     height: 100%;
+    margin-top: ${({positionFixed}) => positionFixed && '-60px'};
     background-color: ${theme.color.bgColor};
 
     @media (max-width: 860px) {
-        display: ${({ mobileMenu }) => mobileMenu && 'none'};
+        opacity: ${({ mobileMenu }) => mobileMenu ? 0 : 1};
+        will-change: transition;
+        transition: opacity ease-out 0.3s;
+        -moz-transition: opacity ease-in-out 0.3s;
+        -o-transition: opacity ease-in-out 0.3s;
+        -webkit-transition: opacity ease-in-out 0.3s;
     }
 `
 

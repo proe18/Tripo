@@ -7,12 +7,22 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    opacity: ${({hideNavbar, navbarFixed}) => (!hideNavbar || !navbarFixed) ? 0 : 1};
+    ${({ marginTop }) => marginTop
+        ? css`margin: 0 auto;`
+        : css`
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        `
+    }
+    opacity: ${({ hideNavbar, navbarFixed }) => (!hideNavbar || !navbarFixed) ? 0 : 1};
+    will-change: transition;
+    transition: opacity ease-out 0.3s;
+    -moz-transition: opacity ease-in-out 0.3s;
+    -o-transition: opacity ease-in-out 0.3s;
+    -webkit-transition: opacity ease-in-out 0.3s;
 
     //Responsive mobile
     @media (max-width: 320px) {

@@ -47,6 +47,9 @@ export const Item = styled.li`
     background-color: ${({ theme }) => theme.color.whiteColor};
     will-change: transition;
     transition: ease-in-out 0.3s;
+    -moz-transition: ease-in-out 0.3s;
+    -o-transition: ease-in-out 0.3s;
+    -webkit-transition: ease-in-out 0.3s;
 
     ${Link} {
         padding: 6px 0;

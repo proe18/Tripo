@@ -8,10 +8,10 @@ const GalleryProvider = ({ children }) => {
     //variables to handle gallery
     const { pathname } = useLocation()
     const indexImage = useRef()
-    const [isMobile, setIsMobile] = useState(false)
+    const [isMobileGallery, setIsMobileGallery] = useState(false)
 
     //variables to handle click event
-    const groupImage = useRef('groupImage')
+    const groupImage = useRef('group-image')
     const [image, setImage] = useState()
     const [isCloseGallery, setIsCloseGallery] = useState(true)
     const [isPre, setIsPre] = useState(false)
@@ -65,7 +65,7 @@ const GalleryProvider = ({ children }) => {
         setImage(image)
         setPositionByIndex()
         setIsCloseGallery(!isCloseGallery)
-        setIsMobile(
+        setIsMobileGallery(
             (window.innerHeight <= 640 && window.innerWidth <= 640)
             || window.innerHeight <= 640
             || window.innerWidth <= 640
@@ -132,7 +132,7 @@ const GalleryProvider = ({ children }) => {
     useEffect(() => {
         const handleResize = () => {
             setPositionByIndex()
-            setIsMobile(
+            setIsMobileGallery(
                 (window.innerHeight <= 640 && window.innerWidth <= 640)
                 || window.innerHeight <= 640
                 || window.innerWidth <= 640
@@ -156,7 +156,7 @@ const GalleryProvider = ({ children }) => {
     const value = {
         image,
         groupImage,
-        isMobile,
+        isMobileGallery,
         isPre,
         isNext,
         isCloseGallery,
