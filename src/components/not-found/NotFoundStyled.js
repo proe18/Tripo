@@ -8,7 +8,11 @@ export const NotFoundPage = styled.div`
     min-height: 100vh;
     position: relative;
     background-color: #ffff;
-    margin-top: 60px;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    z-index: 999;
 `
 
 export const Container = styled.div`
@@ -19,10 +23,14 @@ export const Container = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
 
-    @media (max-width: 860px) {
+    @media (max-width: 640px) {
         width: 100%;
-        height: 75%;
-        margin: auto;
+        height: 50%;
+        margin: 0 auto;
+    }
+
+    @media (max-height: 420px) {
+        width: 100%;
     }
 
     ${Button} {
@@ -40,6 +48,11 @@ export const Container = styled.div`
             max-width: 150px;
             font-size: 1.4rem;
         }
+
+        @media (max-height: 420px) {
+            max-width: 150px;
+            font-size: 1.4rem;
+        }
     }
 
     p:first-child {
@@ -49,6 +62,18 @@ export const Container = styled.div`
 
         @media (max-width: 860px) {
             font-size: 10rem;
+        }
+
+        @media (min-height: 321px) and (max-height: 420px) {
+            font-size: 10rem;
+        }
+
+        @media (min-height: 281px) and (max-height: 320px) {
+            font-size: 8rem;
+        }
+
+        @media (max-height: 280px) {
+            font-size: 6rem;
         }
     }
 
@@ -60,6 +85,10 @@ export const Container = styled.div`
         @media (max-width: 860px) {
             font-size: 2.1rem;
         }
+
+        @media (max-height: 420px) {
+            font-size: 2.1rem;
+        }
     }
 
     p:nth-last-child(2) {
@@ -69,6 +98,14 @@ export const Container = styled.div`
 
         @media (max-width: 860px) {
             font-size: 1.6rem;
+        }
+
+        @media (max-height: 420px) {
+            font-size: 1.6rem;
+        }
+        
+        @media (max-height: 280px) {
+            font-size: 1.4rem;
         }
     }
 `

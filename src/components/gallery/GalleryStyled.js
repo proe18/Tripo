@@ -182,6 +182,9 @@ export const Slide = styled.div`
         left: 0;
         transform: ${({ slidePosition }) => `translateX(${slidePosition}px)`};
         user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
         will-change: transition, transform;
         transition: transform ease-out 0.5s;
         -moz-transition: transform ease-out 0.5s;

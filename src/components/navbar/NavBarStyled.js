@@ -17,7 +17,8 @@ export const Container = styled.div`
             z-index: 10;
         `
     }
-    opacity: ${({ hideNavbar, navbarFixed }) => (!hideNavbar || !navbarFixed) ? 0 : 1};
+    display: ${({ hideNavbar }) => !hideNavbar && 'none'};
+    opacity: ${({ navBar }) => !navBar ? 0 : 1};
     will-change: transition;
     transition: opacity ease-out 0.3s;
     -moz-transition: opacity ease-in-out 0.3s;
@@ -220,6 +221,9 @@ export const NavDropDown = styled.div`
     cursor: pointer;
     position: relative;
     user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 
     //Responsive mobile and tablet
     @media (max-width: 860px) {
