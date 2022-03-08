@@ -5,14 +5,16 @@ import { Logo } from '../../components'
 import { Navbar } from '../../components'
 import { DropDown } from '../../container'
 import * as ROUTES from '../../constants/routes'
-import { NavbarContext, GalleryContext } from '../../context'
+import { NavbarContext, GalleryContext, ScrollToPositionContext } from '../../context'
+import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
+    const navigate = useNavigate()
     const {
         mobileMenu,
         dropDown,
         isMobile,
-        navBar,
+        navBarFixed,
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
@@ -20,12 +22,13 @@ const NavBar = () => {
     } = useContext(NavbarContext)
 
     const { isCloseGallery } = useContext(GalleryContext)
+    const handlePosition = useContext(ScrollToPositionContext)
 
     return (
         <Navbar.Container
             mobileMenu={mobileMenu}
             hideNavbar={isCloseGallery}
-            navBar={navBar}
+            navBar={navBarFixed}
             marginTop={isMobile}
         >
             <Logo mobileMenu={mobileMenu} />
@@ -65,8 +68,14 @@ const NavBar = () => {
                     <Navbar.Item onClick={handleClickMobileMenu}>
                         <Navbar.Link to={ROUTES.ABOUT}>About</Navbar.Link>
                     </Navbar.Item>
-                    <Navbar.Item onClick={handleClickMobileMenu}>
-                        <Navbar.Link to={ROUTES.CONTACT}>Contact</Navbar.Link>
+                    <Navbar.Item
+                        onClick={() => {
+                            handleClickMobileMenu()
+                            handlePosition(4315)
+                            navigate(ROUTES.HOME)
+                        }}
+                    >
+                        <span>Contact</span>
                     </Navbar.Item>
                 </Navbar.Nav>
             </Navbar>

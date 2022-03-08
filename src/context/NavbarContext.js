@@ -5,7 +5,7 @@ const NavbarContext = createContext()
 const NavbarProvider = ({ children }) => {
     const [dropDown, setDropDown] = useState(false)
     const [mobileMenu, setMobileMenu] = useState(false)
-    const [navBar, setNavBar] = useState(true)
+    const [navBarFixed, setNavBarFixed] = useState(true)
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 860)
     const currentPosition = useRef(0)
 
@@ -30,13 +30,13 @@ const NavbarProvider = ({ children }) => {
                 setMobileMenu(false)
                 setDropDown(false)
             }
-            setNavBar(true)
+            setNavBarFixed(true)
         }
 
         const handleScroll = () => {
             if (window.scrollY > 0 && window.innerWidth > 860) {
                 currentPosition.current = window.scrollY
-                setNavBar(true)
+                setNavBarFixed(true)
             }
         }
 
@@ -45,7 +45,7 @@ const NavbarProvider = ({ children }) => {
             if (
                 (window.scrollY > 0 && window.innerWidth > 860) && 
                 (prePosition === currentPosition.current && dropDown === false)
-            ) setNavBar(false)
+            ) setNavBarFixed(false)
         }, 3500)
 
         window.addEventListener('resize', handleResize)
@@ -62,7 +62,7 @@ const NavbarProvider = ({ children }) => {
         mobileMenu,
         dropDown,
         isMobile,
-        navBar,
+        navBarFixed,
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,

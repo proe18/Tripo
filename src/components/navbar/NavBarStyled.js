@@ -154,7 +154,10 @@ export const Link = styled(ReactNavLink)`
     color: ${({ theme }) => theme.color.textColor};
     will-change: transition;
     transition: all linear 0.28s;
-
+    -moz-transition: all ease-in-out 0.28s;
+    -o-transition: all ease-in-out 0.28s;
+    -webkit-transition: all ease-in-out 0.28s;
+    
     @media (max-width: 860px) {
         padding-left: 30px;
         transition: none;
@@ -167,9 +170,29 @@ export const Item = styled.li`
     max-height: 60px;
     line-height: 60px;
     cursor: pointer;
+
+    span {
+        will-change: transition;
+        transition: all linear 0.28s;
+        -moz-transition: all ease-in-out 0.28s;
+        -o-transition: all ease-in-out 0.28s;
+        -webkit-transition: all ease-in-out 0.28s;
+
+        &:last-child {
+            @media (max-width: 860px) {
+                padding-left: 30px;
+                transition: none;
+            }
+        }
+    }
+
     ${({ mobileMenu }) => !mobileMenu && css`
         text-align: center;
+        will-change: transition;
         transition: all linear 0.28s;
+        -moz-transition: all ease-in-out 0.28s;
+        -o-transition: all ease-in-out 0.28s;
+        -webkit-transition: all ease-in-out 0.28s;
     `}
 
     ${Link}.active {
@@ -182,6 +205,10 @@ export const Item = styled.li`
     }
     
     &:hover:not(:nth-child(2)) ${Link} {
+        color: ${({ theme }) => theme.color.whiteColor};
+    }
+
+    &:last-child:hover span {
         color: ${({ theme }) => theme.color.whiteColor};
     }
 
@@ -213,7 +240,6 @@ export const Item = styled.li`
         line-height: 50px;
         max-height: 50px;
         max-height: ${({ dropDown }) => dropDown && '210px'};
-
     }
 `
 
@@ -250,6 +276,9 @@ export const Icon = styled.div`
         color: ${({ theme, mobileMenu }) => mobileMenu && theme.color.whiteColor};
         will-change: transition;
         transition: all 0.3s linear;
+        -moz-transition: all ease-in-out 0.3s;
+        -o-transition: all ease-in-out 0.3s;
+        -webkit-transition: all ease-in-out 0.3s;
     }
 
     //Mobile device

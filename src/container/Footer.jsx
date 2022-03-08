@@ -6,7 +6,7 @@ const FooterContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GalleryContext)
     const handlePosition = useContext(ScrollToPositionContext)
 
-    const handleFunctionOnClick = title => {
+    const handleOnClick = title => {
         switch (title) {
             case 'Games':
                 return () => handlePosition(2247)
@@ -26,7 +26,7 @@ const FooterContainer = ({ data }) => {
                     if (item.path.includes('https://')) {
                         return <Footer.Link href={item.path} target='_blank' rel='noreferrer'>{item.title}</Footer.Link>
                     }
-                    return <Footer.RouteLink to={item.path} onClick={handleFunctionOnClick(item.title)}>{item.title}</Footer.RouteLink>
+                    return <Footer.RouteLink to={item.path} onClick={handleOnClick(item.title)}>{item.title}</Footer.RouteLink>
                 }
                 return (
                     <Footer.Link href={'/'}>

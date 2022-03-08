@@ -45,7 +45,6 @@ const App = () => {
                             ROUTES.DEVELOPER
                         ].map((path, index) => <Route path={path} key={index} element={<Position />} />)}
                     </Route>
-                    <Route path={ROUTES.CONTACT} element={<Home />} />
 
                     {[
                         ROUTES.KIPON,

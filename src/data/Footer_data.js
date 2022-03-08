@@ -31,7 +31,7 @@ export const footerData = {
                 },
                 {
                     title: "Contact",
-                    path: ROUTES.CONTACT
+                    path: ROUTES.HOME
                 },
                 {
                     title: "Privacy Policy",
