@@ -22,7 +22,7 @@ const NavBar = () => {
         handleClickDropDown
     } = useContext(NavbarContext)
     const { isCloseGallery } = useContext(GalleryContext)
-    const { handlePosition, isActive, setIsActive } = useContext(ScrollToPositionContext)
+    const { handlePosition, isActive } = useContext(ScrollToPositionContext)
 
     return (
         <Navbar.Container
@@ -50,7 +50,6 @@ const NavBar = () => {
                         }}
                     >
                         <span>Home</span>
-                        {/* <Navbar.Link to={ROUTES.HOME}>Home</Navbar.Link> */}
                     </Navbar.Item>
                     <Navbar.Item
                         dropDown={dropDown}
@@ -70,16 +69,20 @@ const NavBar = () => {
                         </Navbar.NavDropDown>
                         {dropDown && <DropDown />}
                     </Navbar.Item>
-                    <Navbar.Item onClick={() => {
-                        handleClickMobileMenu()
-                        setIsActive(undefined)
-                    }}>
+                    <Navbar.Item
+                        onClick={() => {
+                            handleClickMobileMenu()
+                            handlePosition(0)
+                        }}
+                    >
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>
                     </Navbar.Item>
-                    <Navbar.Item onClick={() => {
-                        handleClickMobileMenu()
-                        setIsActive(undefined)
-                    }}>
+                    <Navbar.Item
+                        onClick={() => {
+                            handleClickMobileMenu()
+                            handlePosition(0)
+                        }}
+                    >
                         <Navbar.Link to={ROUTES.ABOUT}>About</Navbar.Link>
                     </Navbar.Item>
                     <Navbar.Item

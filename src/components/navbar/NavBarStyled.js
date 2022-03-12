@@ -257,19 +257,6 @@ export const Item = styled.li`
                 background-color: ${({ theme }) => theme.color.whiteColor};
             }
         `}
-
-        /* ${({active}) => !active 
-            ? css`
-                &:first-child span {
-                    color: ${({ theme }) => theme.color.primaryColor};
-                    background-color: ${({ theme }) => theme.color.whiteColor};
-                }`
-            : css`
-                &:last-child span {
-                    color: ${({ theme }) => theme.color.primaryColor};
-                    background-color: ${({ theme }) => theme.color.whiteColor};
-                }`
-        } */
     }
 
     @media (max-width: 640px) {

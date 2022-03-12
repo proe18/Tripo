@@ -11,28 +11,32 @@ const ScrollToPositionProvider = ({ children }) => {
     const scrollPosition = position.current
 
     const handlePosition = number => {
-        setIsActive(number === 4356)
+        switch (number) {
+            case 4356:
+                setIsActive(true)
+                break
+            case 2247:
+                setIsActive(false)
+                break
+            default:
+                setIsActive(undefined)
+                break
+        }
         position.current = number
-        console.log(position.current);
     }
-    // console.log(isActive);
+
     useEffect(() => {
         window.scrollTo(0, scrollPosition)
-        if (scrollPosition > 0) {
-            position.current = 0
-        }
+        
+        const timerID = setInterval(() => {
+            if (pathname === ROUTES.HOME) setIsActive(window.scrollY >= 4356)
+        }, 800)
 
         const handleReload = () => {
             if (pathname === ROUTES.HOME) setIsActive(false)
+            window.scrollTo(0, 0)
             position.current = 0
         }
-        
-        const timerID = setInterval(() => {
-            if (pathname === ROUTES.HOME) {
-                window.scrollY < 4356 ? setIsActive(false) : setIsActive(true)
-            }
-        }, 800)
-        console.log(position.current);
 
         window.addEventListener('load', handleReload)
 
@@ -44,7 +48,6 @@ const ScrollToPositionProvider = ({ children }) => {
 
     const value = {
         isActive,
-        setIsActive,
         handlePosition
     }
 
