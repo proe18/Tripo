@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
     const navigate = useNavigate()
+
     const {
         mobileMenu,
         dropDown,
@@ -20,9 +21,8 @@ const NavBar = () => {
         handleClickMobileMenu,
         handleClickDropDown
     } = useContext(NavbarContext)
-
     const { isCloseGallery } = useContext(GalleryContext)
-    const handlePosition = useContext(ScrollToPositionContext)
+    const { handlePosition, isActive, setIsActive } = useContext(ScrollToPositionContext)
 
     return (
         <Navbar.Container
@@ -41,8 +41,16 @@ const NavBar = () => {
                 </Navbar.Icon>
 
                 <Navbar.Nav mobileMenu={mobileMenu}>
-                    <Navbar.Item onClick={handleClickMobileMenu}>
-                        <Navbar.Link to={ROUTES.HOME}>Home</Navbar.Link>
+                    <Navbar.Item
+                        active={isActive}
+                        onClick={() => {
+                            handleClickMobileMenu()
+                            handlePosition(0)
+                            navigate(ROUTES.HOME)
+                        }}
+                    >
+                        <span>Home</span>
+                        {/* <Navbar.Link to={ROUTES.HOME}>Home</Navbar.Link> */}
                     </Navbar.Item>
                     <Navbar.Item
                         dropDown={dropDown}
@@ -62,16 +70,23 @@ const NavBar = () => {
                         </Navbar.NavDropDown>
                         {dropDown && <DropDown />}
                     </Navbar.Item>
-                    <Navbar.Item onClick={handleClickMobileMenu}>
+                    <Navbar.Item onClick={() => {
+                        handleClickMobileMenu()
+                        setIsActive(undefined)
+                    }}>
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>
                     </Navbar.Item>
-                    <Navbar.Item onClick={handleClickMobileMenu}>
+                    <Navbar.Item onClick={() => {
+                        handleClickMobileMenu()
+                        setIsActive(undefined)
+                    }}>
                         <Navbar.Link to={ROUTES.ABOUT}>About</Navbar.Link>
                     </Navbar.Item>
                     <Navbar.Item
+                        active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handlePosition(4315)
+                            handlePosition(4356)
                             navigate(ROUTES.HOME)
                         }}
                     >

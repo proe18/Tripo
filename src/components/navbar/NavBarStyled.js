@@ -172,6 +172,7 @@ export const Item = styled.li`
     cursor: pointer;
 
     span {
+        display: block;
         will-change: transition;
         transition: all linear 0.28s;
         -moz-transition: all ease-in-out 0.28s;
@@ -200,6 +201,20 @@ export const Item = styled.li`
         background-color: ${({ theme }) => theme.color.primaryColor};
     }
 
+    ${({active}) => active === false && css`
+        &:first-child span {
+            color: ${({ theme }) => theme.color.whiteColor};
+            background-color: ${({ theme }) => theme.color.primaryColor};
+        }
+    `}
+
+    ${({active}) => active === true && css`
+        &:last-child span {
+            color: ${({ theme }) => theme.color.whiteColor};
+            background-color: ${({ theme }) => theme.color.primaryColor};
+        }
+    `}
+
     &:hover:not(:nth-child(2)) {
         background-color: ${({ theme }) => theme.color.primaryColor};
     }
@@ -208,7 +223,7 @@ export const Item = styled.li`
         color: ${({ theme }) => theme.color.whiteColor};
     }
 
-    &:last-child:hover span {
+    &:last-child:hover span, &:first-child:hover span {
         color: ${({ theme }) => theme.color.whiteColor};
     }
 
@@ -228,6 +243,33 @@ export const Item = styled.li`
             color: ${({ theme }) => theme.color.primaryColor};
             background-color: ${({ theme }) => theme.color.whiteColor};
         }
+
+        ${({active}) => active === false && css`
+            &:first-child span {
+                color: ${({ theme }) => theme.color.primaryColor};
+                background-color: ${({ theme }) => theme.color.whiteColor};
+            }
+        `}
+
+        ${({active}) => active === true && css`
+            &:last-child span {
+                color: ${({ theme }) => theme.color.primaryColor};
+                background-color: ${({ theme }) => theme.color.whiteColor};
+            }
+        `}
+
+        /* ${({active}) => !active 
+            ? css`
+                &:first-child span {
+                    color: ${({ theme }) => theme.color.primaryColor};
+                    background-color: ${({ theme }) => theme.color.whiteColor};
+                }`
+            : css`
+                &:last-child span {
+                    color: ${({ theme }) => theme.color.primaryColor};
+                    background-color: ${({ theme }) => theme.color.whiteColor};
+                }`
+        } */
     }
 
     @media (max-width: 640px) {
