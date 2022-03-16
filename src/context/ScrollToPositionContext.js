@@ -8,7 +8,6 @@ const ScrollToPositionProvider = ({ children }) => {
     const { pathname } = useLocation()
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
     const [isEqual, setIsEqual] = useState(false)
-    const [isScroll, setIsScroll] = useState(false)
     const listGameElement = useRef('listGame')
     const contactElement = useRef('contact')
     const paramRef = useRef()
@@ -23,60 +22,48 @@ const ScrollToPositionProvider = ({ children }) => {
         }
     }, [])
 
-    const handlePosition = param => {
+    const handleScroll = param => {
         if (param) {
-            setIsScroll(true)
             if (param === 'Games') setIsActive(false)
             if (param === 'Contact') setIsActive(true)
             paramRef.current = param
             setIsEqual(param === paramRef.current)
         }
-        setIsScroll(false)
-        setIsActive(undefined)
+        if (!param) setIsActive(undefined)
     }
 
     useEffect(() => {
+        if (pathname !== ROUTES.HOME) setIsActive(undefined)
+
         if (paramRef.current) {
             const element = getElement(paramRef.current)
-            if (pathname === ROUTES.HOME && isEqual === true) {
+            if (pathname === ROUTES.HOME && isEqual) {
                 timerID2.current = setTimeout(() => {
                     const position = element?.getBoundingClientRect().top + window.scrollY
                     window.scrollTo(0, Math.floor(position))
                     setIsEqual(false)
-                }, 100)
+                }, 50)
             }
         }
-        
-        if (pathname !== ROUTES.HOME) setIsActive(undefined)
 
         return () => clearTimeout(timerID2.current)
     }, [pathname, isEqual, getElement])
 
     useEffect(() => {
-        //scroll page when 'position' change
-        if (window.scrollY !== 0 && !isScroll) window.scrollTo(0, 0)
-
-        const handleReload = () => {
-            if (window.scrollY !== 0) window.scrollTo(0, 0)
-        }
-
         const timerID = setInterval(() => {
             if (pathname === ROUTES.HOME) setIsActive(window.scrollY >= 4356)
         }, 800)
 
-        window.addEventListener('load', handleReload)
+        if (window.scrollY !== 0) window.scrollTo(0, 0)
 
-        return () => {
-            window.removeEventListener('load', handleReload)
-            clearInterval(timerID)
-        }
-    }, [pathname, isScroll])
+        return () => clearInterval(timerID)
+    }, [pathname])
 
     const value = {
         isActive,
         listGameElement,
         contactElement,
-        handlePosition
+        handleScroll
     }
 
     return <ScrollToPositionContext.Provider value={value}>{children}</ScrollToPositionContext.Provider>

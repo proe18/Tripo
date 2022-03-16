@@ -22,7 +22,7 @@ const NavBar = () => {
         handleClickDropDown
     } = useContext(NavbarContext)
     const { isCloseGallery } = useContext(GalleryContext)
-    const { handlePosition, isActive } = useContext(ScrollToPositionContext)
+    const { handleScroll, isActive } = useContext(ScrollToPositionContext)
 
     return (
         <Navbar.Container
@@ -79,7 +79,7 @@ const NavBar = () => {
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handlePosition('Contact')
+                            handleScroll('Contact')
                             navigate(ROUTES.HOME)
                         }}
                     >

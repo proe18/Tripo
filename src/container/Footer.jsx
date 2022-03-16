@@ -4,16 +4,16 @@ import { GalleryContext, ScrollToPositionContext } from '../context'
 
 const FooterContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GalleryContext)
-    const { handlePosition } = useContext(ScrollToPositionContext)
+    const { handleScroll } = useContext(ScrollToPositionContext)
 
     const handleOnClick = title => {
         switch (title) {
             case 'Games':
-                return () => handlePosition('Games')
+                return () => handleScroll('Games')
             case 'Contact':
-                return () => handlePosition('Contact')
+                return () => handleScroll('Contact')
             default:
-                return () => handlePosition()
+                return () => handleScroll()
         }
     }
 
