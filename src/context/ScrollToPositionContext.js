@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, createContext } from 'react'
+import { useEffect, useRef, useState, useCallback, createContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 
@@ -8,35 +8,54 @@ const ScrollToPositionProvider = ({ children }) => {
     const { pathname } = useLocation()
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
     const [isEqual, setIsEqual] = useState(false)
-    const scrollToPosition = useRef(0)
-    const positionScroll = scrollToPosition.current
+    const [isScroll, setIsScroll] = useState(false)
+    const listGameElement = useRef('listGame')
+    const contactElement = useRef('contact')
+    const paramRef = useRef()
+    const timerID2 = useRef(0)
 
-    const handlePosition = number => {
-        switch (number) {
-            case 4356:
-                setIsActive(true)
-                break
-            case 2247:
-                setIsActive(false)
-                break
-            default:
-                setIsActive(undefined)
-                break
+    const getElement = useCallback(el => {
+        if (el === 'Games') {
+            return listGameElement.current
         }
-        setIsEqual(number === scrollToPosition.current)
-        scrollToPosition.current = number
+        if (el === 'Contact') {
+            return contactElement.current
+        }
+    }, [])
+
+    const handlePosition = param => {
+        if (param) {
+            setIsScroll(true)
+            if (param === 'Games') setIsActive(false)
+            if (param === 'Contact') setIsActive(true)
+            paramRef.current = param
+            setIsEqual(param === paramRef.current)
+        }
+        setIsScroll(false)
+        setIsActive(undefined)
     }
 
     useEffect(() => {
-        //scroll page when 'positionScroll' don't change
-        if (isEqual && window.scrollY !== positionScroll) {
-            window.scrollTo(0, positionScroll)
-            setIsEqual(false)
+        if (paramRef.current) {
+            const element = getElement(paramRef.current)
+            if (pathname === ROUTES.HOME && isEqual === true) {
+                timerID2.current = setTimeout(() => {
+                    const position = element?.getBoundingClientRect().top + window.scrollY
+                    window.scrollTo(0, Math.floor(position))
+                    setIsEqual(false)
+                }, 100)
+            }
         }
-
-        //scroll page when 'positionScroll' change
-        window.scrollTo(0, positionScroll)
         
+        if (pathname !== ROUTES.HOME) setIsActive(undefined)
+
+        return () => clearTimeout(timerID2.current)
+    }, [pathname, isEqual, getElement])
+
+    useEffect(() => {
+        //scroll page when 'position' change
+        if (window.scrollY !== 0 && !isScroll) window.scrollTo(0, 0)
+
         const handleReload = () => {
             if (window.scrollY !== 0) window.scrollTo(0, 0)
         }
@@ -51,10 +70,12 @@ const ScrollToPositionProvider = ({ children }) => {
             window.removeEventListener('load', handleReload)
             clearInterval(timerID)
         }
-    }, [pathname, isEqual, positionScroll])
+    }, [pathname, isScroll])
 
     const value = {
         isActive,
+        listGameElement,
+        contactElement,
         handlePosition
     }
 

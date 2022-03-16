@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Wrapper, Image, Link, PlatForms } from '../../GlobalStyles'
 import {
     Inner,
@@ -12,11 +13,11 @@ import {
     Description
 } from './OurGamesStyled'
 
-const OurGames = ({ children, ...restProps }) => {
+const OurGames = forwardRef(({ children, ...restProps }, ref) => {
     return (
-        <Inner {...restProps}>{children}</Inner>
+        <Inner {...restProps} ref={ref}>{children}</Inner>
     )
-}
+})
 
 OurGames.Background = function OurGamesBackground({children, ...restProps}) {
     return (

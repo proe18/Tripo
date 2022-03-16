@@ -64,13 +64,14 @@ export const ButtonScrollStyled = styled.button`
     bottom: 60px;
     right: 35px;
     display: flex;
+    visibility: ${({hideButton}) => hideButton ? 'visible' : 'hidden'};
     opacity: ${({hideButton}) => hideButton ? 1 : 0};
     font-size: 1.8rem;
     justify-content: center;
     align-items: center;
     color: ${({theme}) => theme.color.whiteColor};
     background-color: ${({theme}) => theme.color.primaryColor};
-    will-change: transition;
+    will-change: transition, visibility, opacity;
     transition: ease-in-out 0.3s;
     -moz-transition: ease-in-out 0.3s;
     -o-transition: ease-in-out 0.3s;

@@ -9,11 +9,11 @@ const FooterContainer = ({ data }) => {
     const handleOnClick = title => {
         switch (title) {
             case 'Games':
-                return () => handlePosition(2247)
+                return () => handlePosition('Games')
             case 'Contact':
-                return () => handlePosition(4356)
+                return () => handlePosition('Contact')
             default:
-                return () => handlePosition(0)
+                return () => handlePosition()
         }
     }
 
@@ -46,15 +46,15 @@ const FooterContainer = ({ data }) => {
                 </Footer.Heading>
                 <Footer.Box>
                     {data.nav.map(({ title, list }, index) =>
-                        <Footer.NavList key={index}>
+                        <Footer.Wrap key={index}>
                             <Footer.ListTitle>{title}</Footer.ListTitle>
-                            <Footer.Wrap>{list.map((item, index) =>
+                            <Footer.NavList>{list.map((item, index) =>
                                 <Footer.Item key={index}>
                                     {handleRenderList(item)}
                                 </Footer.Item>
                             )}
-                            </Footer.Wrap>
-                        </Footer.NavList>
+                            </Footer.NavList>
+                        </Footer.Wrap>
                     )}
                 </Footer.Box>
                 <Footer.CoppyRight>

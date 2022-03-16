@@ -76,9 +76,9 @@ export const ListTitle = styled.h1`
     }
 `
 
-export const Wrap = styled.div``
+export const NavList = styled.ul``
 
-export const NavList = styled.ul`
+export const Wrap = styled.div`
     list-style: none;
     padding: 60px 0;
     
@@ -124,7 +124,7 @@ export const NavList = styled.ul`
         &:last-of-type {
             min-width: 250px;
 
-            ${Wrap} {
+            ${NavList} {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;

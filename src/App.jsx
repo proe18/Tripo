@@ -59,7 +59,12 @@ const App = () => {
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
-                {isCloseGallery && <ButtonScrollToTop onClick={() => window.scrollTo(0, 0)} hideButton={showButtonScroll} />}
+                {isCloseGallery &&
+                    <ButtonScrollToTop
+                        onClick={() => window.scrollTo(0, 0)}
+                        hideButton={showButtonScroll}
+                    />
+                }
             </Pages>
         </>
     )

@@ -45,8 +45,8 @@ const NavBar = () => {
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handlePosition(0)
                             navigate(ROUTES.HOME)
+                            if (window.scrollY !== 0) window.scrollTo(0, 0)
                         }}
                     >
                         <span>Home</span>
@@ -69,27 +69,17 @@ const NavBar = () => {
                         </Navbar.NavDropDown>
                         {dropDown && <DropDown />}
                     </Navbar.Item>
-                    <Navbar.Item
-                        onClick={() => {
-                            handleClickMobileMenu()
-                            handlePosition(0)
-                        }}
-                    >
+                    <Navbar.Item onClick={handleClickMobileMenu}>
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>
                     </Navbar.Item>
-                    <Navbar.Item
-                        onClick={() => {
-                            handleClickMobileMenu()
-                            handlePosition(0)
-                        }}
-                    >
+                    <Navbar.Item onClick={handleClickMobileMenu}>
                         <Navbar.Link to={ROUTES.ABOUT}>About</Navbar.Link>
                     </Navbar.Item>
                     <Navbar.Item
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handlePosition(4356)
+                            handlePosition('Contact')
                             navigate(ROUTES.HOME)
                         }}
                     >
