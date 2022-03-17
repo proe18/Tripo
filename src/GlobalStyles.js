@@ -45,7 +45,6 @@ export const GlobalStyles = createGlobalStyle`
         background-color: transparent;
         color: #000000;
         font-size: 10px;
-        scroll-behavior: smooth;
     }
 `
 

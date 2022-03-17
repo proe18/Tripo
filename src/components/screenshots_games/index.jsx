@@ -1,4 +1,4 @@
-import { forwardRef } from 'react/cjs/react.development'
+import { forwardRef } from 'react'
 import { Wrapper, Image } from '../../GlobalStyles'
 import { Inner, Title, Group, Wrap } from './ScreenshotsStyled'
 

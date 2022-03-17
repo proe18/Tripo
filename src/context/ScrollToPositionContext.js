@@ -40,11 +40,17 @@ const ScrollToPositionProvider = ({ children }) => {
         }
 
         if (pathname === ROUTES.HOME) {
-            timerID1.current = setInterval(() => setIsActive(window.scrollY >= 4296), 800)
+            timerID1.current = setInterval(() => setIsActive(window.scrollY >= 4296), 300)
         }
 
         const handleReload = () => {
-            if (window.scrollY > 0) window.scrollTo(0, 0)
+            if (window.scrollY > 0) {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                })
+            }
         }
 
         window.addEventListener('load', handleReload)
@@ -54,30 +60,32 @@ const ScrollToPositionProvider = ({ children }) => {
             clearInterval(timerID1.current)
         }
     }, [pathname, isEqual])
-    //=========================================================================
+    //--------------------------------------------------------------------
 
     //scroll the page with parameter
     useEffect(() => {
         if (paramRef.current) {
             const element = getElement(paramRef.current)
-            if (pathname === ROUTES.HOME && isEqualParam) {
+            if ((pathname === ROUTES.HOME && isEqualParam)) {
+                window.scrollTo(0, 0)
                 timerID2.current = setTimeout(() => {
                     const position = element?.getBoundingClientRect().top + window.scrollY
-                    if (paramRef.current === 'Games') {
-                        window.scrollTo(0, Math.floor(position - 90))
-                        setIsEqualParam(false)
+                    const options = {
+                        left: 0,
+                        top: paramRef.current === 'Games'
+                            ? Math.floor(position - 90)
+                            : Math.floor(position - 60),
+                        behavior: 'smooth'
                     }
-                    if (paramRef.current === 'Contact') {
-                        window.scrollTo(0, Math.floor(position - 60))
-                        setIsEqualParam(false)
-                    }
-                }, 50)
+                    window.scrollTo(options)
+                    setIsEqualParam(false)
+                }, 500)
             }
         }
 
         return () => clearTimeout(timerID2.current)
     }, [pathname, isEqualParam, getElement])
-    //=========================================================================
+    //--------------------------------------------------------------------
 
     const value = {
         isActive,

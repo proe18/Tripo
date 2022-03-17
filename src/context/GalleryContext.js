@@ -32,6 +32,7 @@ const GalleryProvider = ({ children }) => {
     //--------------------------------------------------------
 
     //--------------------------------------------------------
+
     //handle gallery
     const getPoitionX = touches => touches[0].clientX
 
@@ -48,7 +49,7 @@ const GalleryProvider = ({ children }) => {
         setSlidePosition(translate.current)
     }, [])
 
-    //reset states and variables
+    //reset states and variables when switch the page
     useEffect(() => {
         indexImage.current = undefined
         startPosition.current = 0
