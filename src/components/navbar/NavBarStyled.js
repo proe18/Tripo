@@ -4,7 +4,7 @@ import { NavLink as ReactNavLink } from 'react-router-dom'
 export const Container = styled.div`
     width: 100%;
     max-width: 1320px;
-    display: flex;
+    display: ${({ hideNavbar }) => hideNavbar ? 'flex' : 'none'};
     justify-content: space-between;
     align-items: center;
     ${({ marginTop }) => marginTop
@@ -17,9 +17,10 @@ export const Container = styled.div`
             z-index: 10;
         `
     }
-    display: ${({ hideNavbar }) => !hideNavbar && 'none'};
     opacity: ${({ navBar }) => !navBar ? 0 : 1};
-    will-change: transition;
+    visibility: ${({ navBar }) => !navBar ? 'hidden' : 'visible'};
+    z-index: ${({ navBar }) => !navBar ? 0 : 99};
+    will-change: transition, visibility;
     transition: opacity ease-out 0.3s;
     -moz-transition: opacity ease-in-out 0.3s;
     -o-transition: opacity ease-in-out 0.3s;

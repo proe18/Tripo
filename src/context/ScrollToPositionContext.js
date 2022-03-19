@@ -7,11 +7,12 @@ const ScrollToPositionContext = createContext()
 const ScrollToPositionProvider = ({ children }) => {
     const { pathname } = useLocation()
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
-    const [isEqualParam, setIsEqualParam] = useState(false)
     const [isEqual, setIsEqual] = useState(false)
+    const [isParam, setIsParam] = useState(false)
     const listGameElement = useRef('listGame')
     const contactElement = useRef('contact')
     const paramRef = useRef('')
+    const pathRoute = useRef(pathname)
     const timerID1 = useRef(0)
     const timerID2 = useRef(0)
 
@@ -22,21 +23,42 @@ const ScrollToPositionProvider = ({ children }) => {
 
     const handleScroll = param => {
         if (param) {
+            setIsParam(true)
             if (param === 'Games') setIsActive(false)
             if (param === 'Contact') setIsActive(true)
             paramRef.current = param
-            setIsEqualParam(param === paramRef.current)
         } else {
             setIsActive(undefined)
             setIsEqual(true)
         }
+        pathRoute.current = pathname
     }
 
-    //scroll the page without parameters
     useEffect(() => {
+        //scroll the page without parameter
         if (window.scrollY > 0 && isEqual) {
             window.scrollTo(0, 0)
             setIsEqual(false)
+        }
+
+        //scroll the page with parameter
+        if (pathname === ROUTES.HOME && isParam) {
+            // console.log(pathRoute.current);
+            if (pathRoute.current !== pathname) window.scrollTo(0, 0)
+
+            timerID2.current = setTimeout(() => {
+                const element = getElement(paramRef.current)
+                const position = element?.getBoundingClientRect().top + window.scrollY
+                const options = {
+                    left: 0,
+                    top: paramRef.current === 'Games'
+                        ? Math.floor(position - 90)
+                        : Math.floor(position - 60),
+                    behavior: 'smooth'
+                }
+                window.scrollTo(options)
+                setIsParam(false)
+            }, 500)
         }
 
         if (pathname === ROUTES.HOME) {
@@ -58,34 +80,9 @@ const ScrollToPositionProvider = ({ children }) => {
         return () => {
             window.removeEventListener('load', handleReload)
             clearInterval(timerID1.current)
+            clearTimeout(timerID2.current)
         }
-    }, [pathname, isEqual])
-    //--------------------------------------------------------------------
-
-    //scroll the page with parameter
-    useEffect(() => {
-        if (paramRef.current) {
-            const element = getElement(paramRef.current)
-            if ((pathname === ROUTES.HOME && isEqualParam)) {
-                window.scrollTo(0, 0)
-                timerID2.current = setTimeout(() => {
-                    const position = element?.getBoundingClientRect().top + window.scrollY
-                    const options = {
-                        left: 0,
-                        top: paramRef.current === 'Games'
-                            ? Math.floor(position - 90)
-                            : Math.floor(position - 60),
-                        behavior: 'smooth'
-                    }
-                    window.scrollTo(options)
-                    setIsEqualParam(false)
-                }, 500)
-            }
-        }
-
-        return () => clearTimeout(timerID2.current)
-    }, [pathname, isEqualParam, getElement])
-    //--------------------------------------------------------------------
+    }, [pathname, isEqual, isParam, getElement])
 
     const value = {
         isActive,

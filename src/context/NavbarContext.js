@@ -34,7 +34,7 @@ const NavbarProvider = ({ children }) => {
         }
 
         const handleScroll = () => {
-            if (window.scrollY > 0 && window.innerWidth > 860) {
+            if (window.scrollY >= 0 && window.innerWidth > 860) {
                 currentPosition.current = window.scrollY
                 setNavBarFixed(true)
             }
