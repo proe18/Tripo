@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { Logo, Footer } from '../components'
-import { GalleryContext, ScrollToPositionContext } from '../context'
+import { GalleryContext, ScrollContext } from '../context'
 
 const FooterContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GalleryContext)
-    const { handleScroll } = useContext(ScrollToPositionContext)
+    const { handleScroll } = useContext(ScrollContext)
 
     const handleOnClick = title => {
         switch (title) {

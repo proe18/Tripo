@@ -2,9 +2,9 @@ import { useEffect, useRef, useState, useCallback, createContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 
-const ScrollToPositionContext = createContext()
+const ScrollContext = createContext()
 
-const ScrollToPositionProvider = ({ children }) => {
+const ScrollProvider = ({ children }) => {
     const { pathname } = useLocation()
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
     const [isEqual, setIsEqual] = useState(false)
@@ -31,6 +31,7 @@ const ScrollToPositionProvider = ({ children }) => {
             setIsActive(undefined)
             setIsEqual(true)
         }
+        setIsShow(false)
         pathRoute.current = pathname
     }
 
@@ -84,14 +85,43 @@ const ScrollToPositionProvider = ({ children }) => {
         }
     }, [pathname, isEqual, isParam, getElement])
 
+    const [isShow, setIsShow] = useState(false)
+    const [translateElement, setTranslateElement] = useState(0)
+    const headingElement = useRef('heading')
+    // const timerID = useRef()
+
+    const getTranslateElement = useCallback(el => {
+        if (typeof el === 'object') {
+            return Math.floor(el?.getBoundingClientRect().left + el?.offsetWidth)
+        }
+    }, [])
+
+    useEffect(() => {
+        const timerID = setTimeout(() => setIsShow(true), 500)
+        const translateLeft = getTranslateElement(headingElement.current)
+        setTranslateElement(translateLeft)
+        // const handleScroll = () => { }
+
+        // window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            // window.removeEventListener('scroll', handleScroll)
+            clearTimeout(timerID)
+        }
+
+    }, [pathname, getTranslateElement])
+
     const value = {
         isActive,
         listGameElement,
         contactElement,
+        headingElement,
+        isShow,
+        translateElement,
         handleScroll
     }
 
-    return <ScrollToPositionContext.Provider value={value}>{children}</ScrollToPositionContext.Provider>
+    return <ScrollContext.Provider value={value}>{children}</ScrollContext.Provider>
 }
 
-export { ScrollToPositionContext, ScrollToPositionProvider }
+export { ScrollContext, ScrollProvider }

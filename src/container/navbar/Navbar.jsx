@@ -5,7 +5,7 @@ import { Logo } from '../../components'
 import { Navbar } from '../../components'
 import { DropDown } from '../../container'
 import * as ROUTES from '../../constants/routes'
-import { NavbarContext, GalleryContext, ScrollToPositionContext } from '../../context'
+import { NavbarContext, GalleryContext, ScrollContext } from '../../context'
 import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
@@ -22,7 +22,7 @@ const NavBar = () => {
         handleClickDropDown
     } = useContext(NavbarContext)
     const { isCloseGallery } = useContext(GalleryContext)
-    const { handleScroll, isActive } = useContext(ScrollToPositionContext)
+    const { handleScroll, isActive } = useContext(ScrollContext)
 
     return (
         <Navbar.Container

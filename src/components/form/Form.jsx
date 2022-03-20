@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ScrollToPositionContext } from '../../context'
+import { ScrollContext } from '../../context'
 import { useForm } from 'react-hook-form'
 import { AiOutlineWarning } from 'react-icons/ai'
 import {
@@ -21,7 +21,7 @@ import {
 } from './FormStyled'
 
 export const FormContainer = () => {
-    const { contactElement } = useContext(ScrollToPositionContext)
+    const { contactElement } = useContext(ScrollContext)
     const { register, formState: { errors }, handleSubmit } = useForm()
     const onSubmit = (data, e) => console.log(data, e)
 

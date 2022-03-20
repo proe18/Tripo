@@ -6,7 +6,7 @@ export const Background = styled.header`
     width: 100%;
     height: 100%;
     max-height: 800px;
-    background: ${({bg}) => `url(${bg})`} no-repeat;
+    background: ${({ bg }) => `url(${bg})`} no-repeat;
     background-size: cover;
 
     @media (max-width: 420px) {
@@ -37,6 +37,12 @@ export const Background = styled.header`
 export const Heading = styled.div`
     padding-top: 185px;
     color: ${({ theme }) => theme.color.textColor};
+    will-change: opacity transition;
+    opacity: ${({ animationHeading }) => animationHeading ? 1 : 0};
+    transition: opacity linear 2s;
+    -moz-transition: opacity linear 2s;
+    -o-transition: opacity linear 2s;
+    -webkit-transition: opacity linear 2s;
 
     @media (max-width: 450.5px) {
         padding-top: 70px;
@@ -152,23 +158,23 @@ export const Games = styled.div`
 
     @media (min-width: 321px) and (max-width: 420px), 
     (min-width: 681px) and (max-width: 1000px) {
-        padding-top: ${({marginTop}) => `${(marginTop / 5)}px`};
+        padding-top: ${({ marginTop }) => `${(marginTop / 5)}px`};
     }
 
     @media (min-width: 421px) and (max-width: 450px) {
-        padding-top: ${({marginTop}) => `${(marginTop / 2.2)}px`};
+        padding-top: ${({ marginTop }) => `${(marginTop / 2.2)}px`};
     }
 
     @media (min-width: 451px) and (max-width: 528px) {
-        padding-top: ${({marginTop}) => `${(marginTop / 2.5)}px`};
+        padding-top: ${({ marginTop }) => `${(marginTop / 2.5)}px`};
     }
 
     @media (min-width: 529px) and (max-width: 640px) {
-        padding-top: ${({marginTop}) => `${(marginTop / 2)}px`};
+        padding-top: ${({ marginTop }) => `${(marginTop / 2)}px`};
     }
 
     @media (min-width: 641px) and (max-width: 680px) {
-        padding-top: ${({marginTop}) => `${(marginTop / 2.8)}px`};
+        padding-top: ${({ marginTop }) => `${(marginTop / 2.8)}px`};
     }
 
     @media (min-width: 1001px) and (max-width: 1024px) {

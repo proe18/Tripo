@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { OurGames } from '../../components'
-import { ScrollToPositionContext } from '../../context'
+import { ScrollContext } from '../../context'
 
 const OurGamesContainer = ({ data }) => {
-    const { listGameElement } = useContext(ScrollToPositionContext)
+    const { listGameElement } = useContext(ScrollContext)
 
     return (
         <OurGames ref={listGameElement}>

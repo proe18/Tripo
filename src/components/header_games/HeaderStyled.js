@@ -38,6 +38,12 @@ export const Box = styled.div`
     border-radius: ${({theme}) => theme.borderRadius.radius2};
     background-color: ${({theme}) => theme.color.whiteColor};
     box-shadow: ${({theme}) => theme.shadow.boxShadow};
+    will-change: opacity transition;
+    opacity: ${({ animationBox }) => animationBox ? 1 : 0};
+    transition: opacity linear 2s;
+    -moz-transition: opacity linear 2s;
+    -o-transition: opacity linear 2s;
+    -webkit-transition: opacity linear 2s;
 
     @media (max-width: 748px) {
         width: 87.5%;

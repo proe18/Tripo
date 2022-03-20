@@ -1,16 +1,17 @@
 import { useContext } from 'react'
 import { HeaderGames } from '../../components'
-import { GalleryContext, GamesPageContext } from '../../context'
+import { GalleryContext, GamesPageContext, ScrollContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
     const { heightElement, groupElement } = useContext(GamesPageContext)
     const { isCloseGallery } = useContext(GalleryContext)
+    const { isShow } = useContext(ScrollContext)
 
     return (
         <HeaderGames hideHeader={isCloseGallery}>
             <HeaderGames.Background bg={data.bg} >
                 <HeaderGames.Wrapper>
-                    <HeaderGames.Box heightBox={heightElement}>
+                    <HeaderGames.Box heightBox={heightElement} animationBox={isShow}>
                         <HeaderGames.Group ref={groupElement}>
                             <HeaderGames.Info>
                                 <HeaderGames.Wrap>

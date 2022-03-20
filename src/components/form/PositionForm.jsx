@@ -28,7 +28,6 @@ import {
 
 const PositionForm = () => {
     const { isCloseForm, handleCloseForm} = useContext(PositionFormContext)
-    const defaultValue = {value: ''}
     const { register, formState: { errors }, handleSubmit } = useForm()
     const onSubmit = (data, e) => console.log(data, e)
 

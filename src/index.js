@@ -1,14 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { NavbarProvider, GalleryProvider, ScrollToPositionProvider } from './context'
+import {
+    NavbarProvider,
+    GalleryProvider,
+    ScrollProvider
+} from './context'
 import { StyleProvider } from './GlobalStyles'
 import App from './App'
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <ScrollToPositionProvider>
+            <ScrollProvider>
                 <NavbarProvider>
                     <GalleryProvider>
                         <StyleProvider>
@@ -16,7 +20,7 @@ ReactDOM.render(
                         </StyleProvider>
                     </GalleryProvider>
                 </NavbarProvider>
-            </ScrollToPositionProvider>
+            </ScrollProvider>
         </Router>
     </React.StrictMode>,
     document.getElementById('root')

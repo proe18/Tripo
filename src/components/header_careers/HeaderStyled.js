@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Inner = styled.header`
     padding-top: 162px;
@@ -13,6 +13,17 @@ export const Heading = styled.div`
     max-width: 564px;
     font-family: 'Roboto', sans-serif;
     color: ${({ theme }) => theme.color.textColor};
+    will-change: opacity, transition, transform;
+    transform: translateX(${({ translateElement }) => `${-translateElement}px`});
+    opacity: 0;
+    ${({ animationHeading }) => animationHeading && css`
+        transform: translateX(0);
+        opacity: 1;
+    `}
+    transition: all linear 1.4s;
+    -moz-transition: all linear 1.4s;
+    -o-transition: all linear 1.4s;
+    -webkit-transition: all linear 1.4s;
 `
 
 export const SubTitle = styled.h2`

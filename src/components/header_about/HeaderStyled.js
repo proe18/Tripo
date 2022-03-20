@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Inner = styled.header`
     padding-top: 162px;
@@ -12,7 +12,18 @@ export const Heading = styled.div`
     width: 100%;
     height: 100%;
     max-width: 770px;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
+    will-change: opacity, transition, transform;
+    transform: translateX(${({ translateElement }) => `${-translateElement}px`});
+    opacity: 0;
+    ${({ animationHeading }) => animationHeading && css`
+        transform: translateX(0);
+        opacity: 1;
+    `}
+    transition: all linear 1.4s;
+    -moz-transition: all linear 1.4s;
+    -o-transition: all linear 1.4s;
+    -webkit-transition: all linear 1.4s;
 `
 
 export const SubTitle = styled.h2`
@@ -43,7 +54,7 @@ export const Group = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: ${({theme}) => theme.color.primaryColor};
+    background-color: ${({ theme }) => theme.color.primaryColor};
 
     @media (max-width: 1000px) {
         margin-top: 50px;
@@ -84,7 +95,7 @@ export const Content = styled.div`
     width: 100%;
     max-width: 467px;
     margin: auto;
-    color: ${({theme}) => theme.color.whiteColor};
+    color: ${({ theme }) => theme.color.whiteColor};
 
     ${Text}:not(:last-of-type) {
         margin-bottom: 30px;
@@ -92,7 +103,7 @@ export const Content = styled.div`
 
     @media (max-width: 1000px) {
         padding: 40px 0;
-        background-color: ${({theme}) => theme.color.primaryColor};
+        background-color: ${({ theme }) => theme.color.primaryColor};
     }
 
     @media (max-width: 1150px) {
