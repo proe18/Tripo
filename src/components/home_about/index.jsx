@@ -1,12 +1,12 @@
-import { Wrapper } from '../../GlobalStyles'
+import { forwardRef } from 'react'
+import { Wrapper, Image } from '../../GlobalStyles'
 import {
     Inner,
     Heading,
     Title,
     Text,
     SubTitle,
-    Wrap,
-    Image
+    Wrap
 } from './AboutStyled'
 
 const About = ({ children, ...restProps }) => {
@@ -21,11 +21,11 @@ About.Wrapper = function AboutWrapper({ children, ...restProps }) {
     )
 }
 
-About.Heading = function AboutHeading({ children, ...restProps }) {
+About.Heading = forwardRef(function AboutHeading({ children, ...restProps }, ref) {
     return (
-        <Heading {...restProps}>{children}</Heading>
+        <Heading {...restProps} ref={ref}>{children}</Heading>
     )
-}
+})
 
 About.Title = function AboutTitle({ children, ...restProps }) {
     return (
@@ -45,15 +45,15 @@ About.Text = function AboutText({ children, ...restProps }) {
     )
 }
 
-About.Wrap = function AboutWrap({ children, ...restProps }) {
+About.Wrap = forwardRef(function AboutWrap({ children, ...restProps }, ref) {
     return (
-        <Wrap {...restProps}>{children}</Wrap>
+        <Wrap {...restProps} ref={ref}>{children}</Wrap>
     )
-}
+})
 
 About.Image = function AboutImage({ ...restProps }) {
     return (
-        <Image {...restProps} />
+        <Image {...restProps}/>
     )
 }
 

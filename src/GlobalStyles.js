@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import styled, { css, createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const theme = {
     color: {
@@ -45,13 +45,23 @@ export const GlobalStyles = createGlobalStyle`
         background-color: transparent;
         color: #000000;
         font-size: 10px;
+        ${({ mobileMenu }) => mobileMenu
+            && css`
+                overflow-y: hidden;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            `
+        }
     }
 `
 
 export const Pages = styled.div`
     width: 100%;
     height: 100%;
-    margin-top: ${({positionFixed}) => positionFixed && '-60px'};
+    margin-top: ${({ positionFixed }) => positionFixed && '-60px'};
     background-color: ${theme.color.bgColor};
 
     @media (max-width: 860px) {

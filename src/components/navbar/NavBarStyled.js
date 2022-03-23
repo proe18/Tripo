@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { NavLink as ReactNavLink } from 'react-router-dom'
 
 export const Container = styled.div`
@@ -35,7 +35,17 @@ export const Container = styled.div`
     @media (max-width: 860px) {
         width: 90%;
         align-items: flex-start;
-        width: ${({ mobileMenu }) => mobileMenu && '100vw'};
+        ${({ mobileMenu }) => mobileMenu
+            && css`
+                    width: 100vw;
+                    height: 100vh;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                `
+        }
     }
 
     @media (min-width: 861px) and (max-width: 1319px) {
@@ -49,53 +59,44 @@ export const Inner = styled.div`
     display: flex;
     justify-content: flex-end;
 
-    //Responsive mobile and tablet
-    @media (min-width: 641px) and (max-width: 860px) {
-        ${({ mobileMenu }) => mobileMenu
-        ? css`
-            width: 100vw;
-            height: 100vh;
-        `
-        : css`
-            max-width: 60px;
-            min-height: 60px;
-        `}
+    @media (max-width: 860px) {
         border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
         border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
         position: relative;
-        z-index: 10;
         background-color: ${({ theme }) => theme.color.whiteColor};
+    }
+
+    //Responsive mobile and tablet
+    @media (min-width: 641px) and (max-width: 860px) {
+        ${({ mobileMenu }) => !mobileMenu
+            && css`
+                max-width: 60px;
+                min-height: 60px;
+            `
+        }
     }
     
     //Mobile device
     @media (max-width: 640px) {
-        ${({ mobileMenu }) => mobileMenu
-        ? css`
-            width: 100vw;
-            height: 100vh;
-        `
-        : css`
-            max-width: 50px;
-            min-height: 50px;
-        `}
-        border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
-        border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
-        position: relative;
-        z-index: 10;
-        background-color: ${({ theme }) => theme.color.whiteColor};
+        ${({ mobileMenu }) => !mobileMenu
+            && css`
+                max-width: 50px;
+                min-height: 50px;
+            `
+        }
     }
 `
 //======= ANIMATION KEYFRAMES OF NAV ========
-const slipDown = keyframes`
-    0% {
-        transform: translateY(-150%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-`
+// const slipDown = keyframes`
+//     0% {
+//         transform: translateY(-150%);
+//         opacity: 0;
+//     }
+//     100% {
+//         transform: translateY(0);
+//         opacity: 1;
+//     }
+// `
 //============================================
 
 export const Nav = styled.ul`
@@ -121,31 +122,33 @@ export const Nav = styled.ul`
         max-height: 100vh;
         position: absolute;
         top: 0;
-        display: ${({ mobileMenu }) => !mobileMenu && 'none'};
+        display: ${({ mobileMenu }) => mobileMenu ? 'flex' : 'none'};
         flex-direction: column;
         justify-content: flex-start;
         box-shadow: none;
+        will-change: transform, transition;
+        transform: translateY(-80%);
+        opacity: 0;
+        ${({ mobileMenu }) => mobileMenu && css`
+            transform: translateY(0);
+            opacity: 1;
+        `}
+        transition: transform linear 0.8s;
     }
 
     @media (max-width: 420px) {
         font-size: 2rem;
         margin-top: ${({ mobileMenu }) => mobileMenu && '55px'};
-        will-change: animation;
-        animation: 1s linear ${({ mobileMenu }) => mobileMenu && slipDown};
     }
 
     @media (min-width: 421px) and (max-width: 640px) {
         font-size: 2.2rem;
         margin-top: ${({ mobileMenu }) => mobileMenu && '55px'};
-        will-change: animation;
-        animation: 0.85s linear ${({ mobileMenu }) => mobileMenu && slipDown};
     }
 
     @media (min-width: 641px) and (max-width: 860px) {
         font-size: 2.4rem;
         margin-top: ${({ mobileMenu }) => mobileMenu && '65px'};
-        will-change: animation;
-        animation: 0.8s linear ${({ mobileMenu }) => mobileMenu && slipDown};
     }
 `
 
@@ -202,14 +205,14 @@ export const Item = styled.li`
         background-color: ${({ theme }) => theme.color.primaryColor};
     }
 
-    ${({active}) => active === false && css`
+    ${({ active }) => active === false && css`
         &:first-child span {
             color: ${({ theme }) => theme.color.whiteColor};
             background-color: ${({ theme }) => theme.color.primaryColor};
         }
     `}
 
-    ${({active}) => active === true && css`
+    ${({ active }) => active === true && css`
         &:last-child span {
             color: ${({ theme }) => theme.color.whiteColor};
             background-color: ${({ theme }) => theme.color.primaryColor};
@@ -245,14 +248,14 @@ export const Item = styled.li`
             background-color: ${({ theme }) => theme.color.whiteColor};
         }
 
-        ${({active}) => active === false && css`
+        ${({ active }) => active === false && css`
             &:first-child span {
                 color: ${({ theme }) => theme.color.primaryColor};
                 background-color: ${({ theme }) => theme.color.whiteColor};
             }
         `}
 
-        ${({active}) => active === true && css`
+        ${({ active }) => active === true && css`
             &:last-child span {
                 color: ${({ theme }) => theme.color.primaryColor};
                 background-color: ${({ theme }) => theme.color.whiteColor};

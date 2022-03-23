@@ -3,16 +3,20 @@ import { OurGames } from '../../components'
 import { ScrollContext } from '../../context'
 
 const OurGamesContainer = ({ data }) => {
-    const { listGameElement } = useContext(ScrollContext)
+    const { 
+        listGameElement, 
+        homeOurGamesHeading,
+        homeOurGamesContent 
+    } = useContext(ScrollContext)
 
     return (
         <OurGames ref={listGameElement}>
             <OurGames.Wrapper>
-                <OurGames.Heading>
+                <OurGames.Heading ref={homeOurGamesHeading}>
                     <OurGames.Title>{data.title}</OurGames.Title>
                     <OurGames.Text>{data.text}</OurGames.Text>
                 </OurGames.Heading>
-                <OurGames.Background>
+                <OurGames.Background ref={homeOurGamesContent}>
                     {data.games.map((game, index) =>
                         <OurGames.Game key={index}>
                             <OurGames.Heading>

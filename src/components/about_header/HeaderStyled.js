@@ -14,16 +14,16 @@ export const Heading = styled.div`
     max-width: 770px;
     color: ${({ theme }) => theme.color.textColor};
     will-change: opacity, transition, transform;
-    transform: translateX(${({ translateElement }) => `${-translateElement}px`});
+    transform: translateX(-150px);
     opacity: 0;
     ${({ animationHeading }) => animationHeading && css`
         transform: translateX(0);
         opacity: 1;
     `}
-    transition: all linear 1.4s;
-    -moz-transition: all linear 1.4s;
-    -o-transition: all linear 1.4s;
-    -webkit-transition: all linear 1.4s;
+    transition: all linear 0.5s;
+    -moz-transition: all linear 0.5s;
+    -o-transition: all linear 0.5s;
+    -webkit-transition: all linear 0.5s;
 `
 
 export const SubTitle = styled.h2`

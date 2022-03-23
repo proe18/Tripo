@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Image, Wrapper } from '../../GlobalStyles'
 import { 
     Inner, 
@@ -33,11 +34,11 @@ JoinTeam.Group = function JoinTeamGroup({ children, ...restProps }) {
     )
 }
 
-JoinTeam.Heading = function JoinTeamHeading({ children, ...restProps }) {
+JoinTeam.Heading = forwardRef(function JoinTeamHeading({ children, ...restProps }, ref) {
     return (
-        <Heading {...restProps}>{children}</Heading>
+        <Heading {...restProps} ref={ref}>{children}</Heading>
     )
-}
+})
 
 JoinTeam.Title = function JoinTeamTitle({ children, ...restProps }) {
     return (
@@ -51,11 +52,11 @@ JoinTeam.Text = function JoinTeamText({ children, ...restProps }) {
     )
 }
 
-JoinTeam.Image = function JoinTeamImage({ ...restProps }) {
+JoinTeam.Image = forwardRef(function JoinTeamImage({ ...restProps }, ref) {
     return (
-        <Image {...restProps} />
+        <Image {...restProps} ref={ref}/>
     )
-}
+})
 
 JoinTeam.Overlay = function JoinTeamOverlay({children, ...restProps}) {
     return (

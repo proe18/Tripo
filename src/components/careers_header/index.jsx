@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+// import { forwardRef } from 'react'
 import { Wrapper } from '../../GlobalStyles'
 import { Inner, Heading, SubTitle, Title, Text } from './HeaderStyled'
 
@@ -14,11 +14,11 @@ Header.Wrapper = function HeaderWrapper({ children, ...restProps }) {
     )
 }
 
-Header.Heading = forwardRef(function HeaderHeading({ children, ...restProps }, ref) {
+Header.Heading = function HeaderHeading({ children, ...restProps }) {
     return (
-        <Heading {...restProps} ref={ref}>{children}</Heading>
+        <Heading {...restProps}>{children}</Heading>
     )
-})
+}
 
 Header.SubTitle = function HeaderSubTitle({ children, ...restProps }) {
     return (

@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom'
-import { Footer, Content } from '../container'
+import { Content } from '../container'
 import * as ROUTES from '../constants/routes'
-import { footerData } from '../data/Footer_data'
 import { policyAndTermsData } from '../data/PolicyAndTerms_data'
 
 const PolicyAndTerms = () => {
@@ -19,12 +18,7 @@ const PolicyAndTerms = () => {
 
     const contentData = checkPath(location.pathname)
 
-    return (
-        <>
-            <Content data={contentData} />
-            <Footer data={footerData} />
-        </>
-    )
+    return <Content data={contentData} />
 }
 
 export default PolicyAndTerms

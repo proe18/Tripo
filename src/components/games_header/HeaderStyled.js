@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Image } from '../../GlobalStyles'
 
 export const Inner = styled.header`
     padding-top: 272px;
-    opacity: ${({hideHeader}) => hideHeader === false ? 0 : 1};
+    opacity: ${({ hideHeader }) => hideHeader === false ? 0 : 1};
 
     @media (max-width: 748px) {
         padding-top: 0;
@@ -15,7 +15,7 @@ export const Background = styled.div`
     height: 100%;
     min-height: 687px;
     position: relative;
-    background: ${({bg}) => `url(${bg})`} no-repeat;
+    background: ${({ bg }) => `url(${bg})`} no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
@@ -32,23 +32,28 @@ export const Box = styled.div`
     width: 100%;
     height: 100%;
     max-width: 672px;
-    max-height: ${({heightBox}) => heightBox && `${heightBox}px`};
+    max-height: ${({ heightBox }) => heightBox && `${heightBox}px`};
     position: absolute;
     top: -160px;
-    border-radius: ${({theme}) => theme.borderRadius.radius2};
-    background-color: ${({theme}) => theme.color.whiteColor};
-    box-shadow: ${({theme}) => theme.shadow.boxShadow};
-    will-change: opacity transition;
-    opacity: ${({ animationBox }) => animationBox ? 1 : 0};
-    transition: opacity linear 2s;
-    -moz-transition: opacity linear 2s;
-    -o-transition: opacity linear 2s;
-    -webkit-transition: opacity linear 2s;
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
+    background-color: ${({ theme }) => theme.color.whiteColor};
+    box-shadow: ${({ theme }) => theme.shadow.boxShadow};
+    will-change: opacity, transition, transform;
+    transform: translateX(-150px);
+    opacity: 0;
+    ${({ animationBox }) => animationBox && css`
+        transform: translateX(0);
+        opacity: 1;
+    `}
+    transition: all linear 0.5s;
+    -moz-transition: all linear 0.5s;
+    -o-transition: all linear 0.5s;
+    -webkit-transition: all linear 0.5s;
 
     @media (max-width: 748px) {
         width: 87.5%;
         top: 230px;
-        min-height: ${({heightBox}) => heightBox && `${heightBox}px`};
+        min-height: ${({ heightBox }) => heightBox && `${heightBox}px`};
     }
 `
 
@@ -57,7 +62,7 @@ export const Group = styled.div`
     max-width: 568px;
     margin: 0 auto;
     padding: 51.5px 0;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
 
     @media (max-width: 748px) {
         width: 85%;
@@ -79,13 +84,13 @@ export const Wrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: ${({theme}) => theme.borderRadius.radius2};
-    box-shadow: ${({theme}) => theme.shadow.boxShadow};
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
+    box-shadow: ${({ theme }) => theme.shadow.boxShadow};
 
     ${Image} {
         max-width: 78px;
         max-height: 78px;
-        border-radius: ${({theme}) => theme.borderRadius.radius2};
+        border-radius: ${({ theme }) => theme.borderRadius.radius2};
     }
 
     @media (max-width: 640px) {

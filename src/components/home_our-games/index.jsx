@@ -19,11 +19,11 @@ const OurGames = forwardRef(({ children, ...restProps }, ref) => {
     )
 })
 
-OurGames.Background = function OurGamesBackground({children, ...restProps}) {
+OurGames.Background = forwardRef(function OurGamesBackground({children, ...restProps}, ref) {
     return (
-        <Background {...restProps}>{children}</Background>
+        <Background {...restProps} ref={ref}>{children}</Background>
     )
-}
+})
 
 OurGames.Wrapper = function OurGamesWrapper({ children, ...restProps }) {
     return (
@@ -31,11 +31,11 @@ OurGames.Wrapper = function OurGamesWrapper({ children, ...restProps }) {
     )
 }
 
-OurGames.Heading = function OurGamesHeading({ children, ...restProps }) {
+OurGames.Heading = forwardRef(function OurGamesHeading({ children, ...restProps }, ref) {
     return (
-        <Heading {...restProps}>{children}</Heading>
+        <Heading {...restProps} ref={ref}>{children}</Heading>
     )
-}
+})
 
 OurGames.Title = function OurGamesTitle({ children, ...restProps }) {
     return (

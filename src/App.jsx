@@ -7,7 +7,8 @@ import { GlobalStyles, Pages } from './GlobalStyles'
 
 import { About, Careers, Home, Games, Position, NotFound, PolicyAndTerms } from './pages'
 
-import { NavBar } from './container'
+import { footerData } from './data/Footer_data'
+import { NavBar, Footer } from './container'
 import { ButtonScrollToTop } from './components'
 import { GalleryContext, NavbarContext } from './context'
 
@@ -31,7 +32,7 @@ const App = () => {
 
     return (
         <>
-            <GlobalStyles />
+            <GlobalStyles mobileMenu={mobileMenu}/>
             <NavBar />
             <Pages mobileMenu={mobileMenu} positionFixed={isMobile}>
                 <Routes>
@@ -59,6 +60,7 @@ const App = () => {
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
+                <Footer data={footerData} />
                 {isCloseGallery &&
                     <ButtonScrollToTop
                         onClick={() => window.scrollTo(0, 0)}

@@ -31,7 +31,7 @@ const ScrollProvider = ({ children }) => {
             setIsActive(undefined)
             setIsEqual(true)
         }
-        setIsShow(false)
+        if (pathname !== ROUTES.HOME) setIsShow(false)
         pathRoute.current = pathname
     }
 
@@ -86,38 +86,68 @@ const ScrollProvider = ({ children }) => {
     }, [pathname, isEqual, isParam, getElement])
 
     const [isShow, setIsShow] = useState(false)
-    const [translateElement, setTranslateElement] = useState(0)
-    const headingElement = useRef('heading')
-    // const timerID = useRef()
+    // const [isShowElements, setIsShowElements] = useState(false)
+    const homeAboutHeading = useRef('home-about-heading')
+    const homeOurGamesHeading = useRef('home-ourgames-heading')
+    const homeOurGamesContent = useRef('home-ourgames-content')
+    const homeJoinTeamHeading = useRef('home-jointeam-heading')
+    const imageAbout = useRef('image-about')
+    const imageJoinTeam = useRef('image-joinTeam')
+    const topHomeElements = useRef([])
+    const activeHomeElement = useRef({})
 
-    const getTranslateElement = useCallback(el => {
-        if (typeof el === 'object') {
-            return Math.floor(el?.getBoundingClientRect().left + el?.offsetWidth)
+    const getTopElements = useCallback(elements => {
+        if (typeof elements === 'object') {
+            return elements?.map(el => Math.floor(el?.getBoundingClientRect().top + window.scrollY))
         }
     }, [])
+    // console.log(isShow);
 
     useEffect(() => {
-        const timerID = setTimeout(() => setIsShow(true), 500)
-        const translateLeft = getTranslateElement(headingElement.current)
-        setTranslateElement(translateLeft)
-        // const handleScroll = () => { }
+        const timerID = setTimeout(() => {
+            setIsShow(true)
+            const homeElements = [
+                homeAboutHeading.current,
+                imageAbout.current,
+                homeOurGamesHeading.current,
+                homeOurGamesContent.current,
+                homeJoinTeamHeading.current,
+                imageJoinTeam.current
+            ]
+            topHomeElements.current = getTopElements(homeElements)
+            // console.log(topHomeElements.current);
+        }, 500)
 
-        // window.addEventListener('scroll', handleScroll)
+        const handleScroll = () => {
+            topHomeElements.current.forEach((top, index) => {
+                let topElement = top - 200
+                if (window.scrollY >= topElement) {
+                    // Object.assign(activeHomeElement.current, {[index]: true})
+                }
+            })
+        }
+
+        window.addEventListener('scroll', handleScroll)
 
         return () => {
-            // window.removeEventListener('scroll', handleScroll)
+            window.removeEventListener('scroll', handleScroll)
             clearTimeout(timerID)
         }
 
-    }, [pathname, getTranslateElement])
+    }, [pathname, getTopElements])
 
     const value = {
         isActive,
         listGameElement,
         contactElement,
-        headingElement,
+        homeAboutHeading,
+        homeOurGamesHeading,
+        homeOurGamesContent,
+        homeJoinTeamHeading,
+        imageAbout,
+        imageJoinTeam,
         isShow,
-        translateElement,
+        activeHomeElement,
         handleScroll
     }
 

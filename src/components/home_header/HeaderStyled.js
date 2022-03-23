@@ -37,7 +37,7 @@ export const Background = styled.header`
 export const Heading = styled.div`
     padding-top: 185px;
     color: ${({ theme }) => theme.color.textColor};
-    will-change: opacity transition;
+    will-change: opacity, transition;
     opacity: ${({ animationHeading }) => animationHeading ? 1 : 0};
     transition: opacity linear 2s;
     -moz-transition: opacity linear 2s;
@@ -236,6 +236,8 @@ export const Game = styled(ReactLink)`
         left: 50px;
         color: ${({ theme }) => theme.color.whiteColor};
         font-family: 'Roboto', sans-serif;
+        opacity: unset;
+        transition: unset;
 
         @media (max-width: 420px) {
             width: 70%;
@@ -308,6 +310,7 @@ export const More = styled.div`
         position: absolute;
         text-align: center;
         font-size: 4rem;
+        opacity: unset;
         will-change: transition;
         transition: ease-in-out 0.9s;
         -moz-transition: ease-in-out 0.9s;

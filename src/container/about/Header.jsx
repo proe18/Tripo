@@ -3,16 +3,12 @@ import { HeaderAbout } from '../../components'
 import { ScrollContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
-    const { isShow, headingElement, translateElement } = useContext(ScrollContext)
+    const { isShow, headingElement } = useContext(ScrollContext)
 
     return (
         <HeaderAbout>
             <HeaderAbout.Wrapper>
-                <HeaderAbout.Heading
-                    ref={headingElement}
-                    animationHeading={isShow}
-                    translateElement={translateElement}
-                >
+                <HeaderAbout.Heading ref={headingElement} animationHeading={isShow}>
                     <HeaderAbout.SubTitle>{data.subTitle}</HeaderAbout.SubTitle>
                     <HeaderAbout.Title>{data.title}</HeaderAbout.Title>
                 </HeaderAbout.Heading>
