@@ -39,7 +39,7 @@ export const Heading = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.color.textColor};
     /* will-change: opacity, transition;
-    opacity: ${({ active }) => active ? 1 : 0};
+    opacity: ${({ active }) => active === true ? 1 : 0};
     transition: opacity linear 0.3s; */
 
     ${ButtonLink} {

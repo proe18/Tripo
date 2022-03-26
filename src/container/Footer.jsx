@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import { Logo, Footer } from '../components'
 import { GalleryContext, ScrollContext } from '../context'
 
@@ -24,9 +24,20 @@ const FooterContainer = ({ data }) => {
             case 'object':
                 if (item.path) {
                     if (item.path.includes('https://')) {
-                        return <Footer.Link href={item.path} target='_blank' rel='noreferrer'>{item.title}</Footer.Link>
+                        return <Footer.Link
+                            href={item.path}
+                            target='_blank'
+                            rel='noreferrer'
+                        >
+                            {item.title}
+                        </Footer.Link>
                     }
-                    return <Footer.RouteLink to={item.path} onClick={handleOnClick(item.title)}>{item.title}</Footer.RouteLink>
+                    return <Footer.RouteLink
+                        to={item.path}
+                        onClick={handleOnClick(item.title)}
+                    >
+                        {item.title}
+                    </Footer.RouteLink>
                 }
                 return (
                     <Footer.Link href={'/'}>
@@ -65,4 +76,4 @@ const FooterContainer = ({ data }) => {
     )
 }
 
-export default FooterContainer
+export default memo(FooterContainer)

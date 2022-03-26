@@ -32,7 +32,7 @@ const App = () => {
 
     return (
         <>
-            <GlobalStyles mobileMenu={mobileMenu}/>
+            <GlobalStyles mobileMenu={mobileMenu} closeGallery={isCloseGallery}/>
             <NavBar />
             <Pages mobileMenu={mobileMenu} positionFixed={isMobile}>
                 <Routes>

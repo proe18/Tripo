@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineWarning } from 'react-icons/ai'
 import { GrClose } from 'react-icons/gr'
@@ -225,4 +225,4 @@ const PositionForm = () => {
     )
 }
 
-export default PositionForm
+export default memo(PositionForm)

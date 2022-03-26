@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { PositionForm } from '../components'
 import { ContentPosition, HeaderPosition } from '../container'
@@ -33,4 +34,4 @@ const Position = () => {
     )
 }
 
-export default Position
+export default memo(Position)

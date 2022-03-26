@@ -9,12 +9,35 @@ const ScrollProvider = ({ children }) => {
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
     const [isEqual, setIsEqual] = useState(false)
     const [isParam, setIsParam] = useState(false)
+    const [isShow, setIsShow] = useState(false)
     const listGameElement = useRef('listGame')
     const contactElement = useRef('contact')
     const paramRef = useRef('')
     const pathRoute = useRef(pathname)
     const timerID1 = useRef(0)
     const timerID2 = useRef(0)
+
+    const scrollToSmoothly = (pos, time) => {
+        let currentPos = window.pageYOffset
+        let start = null
+        if (time === null) time = 500
+        pos = +pos
+        time = +time
+        window.requestAnimationFrame(function step(currentTime) {
+            start = !start ? currentTime : start
+            let progress = currentTime - start
+            if (currentPos < pos) {
+                window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos)
+            } else {
+                window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time))
+            }
+            if (progress < time) {
+                window.requestAnimationFrame(step)
+            } else {
+                window.scrollTo(0, pos)
+            }
+        })
+    }
 
     const getElement = useCallback(el => {
         if (el === 'Games') return listGameElement.current
@@ -24,56 +47,51 @@ const ScrollProvider = ({ children }) => {
     const handleScroll = param => {
         if (param) {
             setIsParam(true)
-            if (param === 'Games') setIsActive(false)
-            if (param === 'Contact') setIsActive(true)
             paramRef.current = param
-        } else {
-            setIsActive(undefined)
-            setIsEqual(true)
         }
-        if (pathname !== ROUTES.HOME) setIsShow(false)
+        if (!param && pathname === pathRoute.current) {
+            setIsEqual(true)
+            setIsShow(true)
+            paramRef.current = undefined
+        }
+        if (!param && pathname !== pathRoute.current) paramRef.current = undefined
+        if (!param) setIsShow(false)
+        setIsActive(undefined)
         pathRoute.current = pathname
     }
+    
+    const scrollToPosition = useCallback(() => {
+        timerID2.current = setTimeout(() => {
+            const element = getElement(paramRef.current)
+            let position = Math.floor(element?.getBoundingClientRect().top + window.pageYOffset)
+            position = paramRef.current === 'Games' ? position - 90 : position - 60
+            scrollToSmoothly(position, 1500)
+            setIsParam(false)
+        }, 500)
+    }, [getElement])
 
     useEffect(() => {
-        //scroll the page without parameter
-        if (window.scrollY > 0 && isEqual) {
+        //scroll to top page if user click the same button without parameter
+        if (window.pageYOffset > 0 && isEqual) {
             window.scrollTo(0, 0)
             setIsEqual(false)
         }
 
-        //scroll the page with parameter
+        //scroll to position with parameter
         if (pathname === ROUTES.HOME && isParam) {
-            // console.log(pathRoute.current);
-            if (pathRoute.current !== pathname) window.scrollTo(0, 0)
-
-            timerID2.current = setTimeout(() => {
-                const element = getElement(paramRef.current)
-                const position = element?.getBoundingClientRect().top + window.scrollY
-                const options = {
-                    left: 0,
-                    top: paramRef.current === 'Games'
-                        ? Math.floor(position - 90)
-                        : Math.floor(position - 60),
-                    behavior: 'smooth'
-                }
-                window.scrollTo(options)
-                setIsParam(false)
-            }, 500)
+            scrollToPosition()
+        }
+        if (pathRoute.current !== pathname) {
+            window.scrollTo(0, 0)
+            scrollToPosition()
         }
 
         if (pathname === ROUTES.HOME) {
-            timerID1.current = setInterval(() => setIsActive(window.scrollY >= 4296), 300)
+            timerID1.current = setInterval(() => setIsActive(window.pageYOffset >= 4296), 300)
         }
 
         const handleReload = () => {
-            if (window.scrollY > 0) {
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: 'smooth'
-                })
-            }
+            if (window.pageYOffset > 0) scrollToSmoothly(0, 1200)
         }
 
         window.addEventListener('load', handleReload)
@@ -83,48 +101,51 @@ const ScrollProvider = ({ children }) => {
             clearInterval(timerID1.current)
             clearTimeout(timerID2.current)
         }
-    }, [pathname, isEqual, isParam, getElement])
+    }, [pathname, isEqual, isParam, scrollToPosition])
 
-    const [isShow, setIsShow] = useState(false)
-    // const [isShowElements, setIsShowElements] = useState(false)
-    const homeAboutHeading = useRef('home-about-heading')
-    const homeOurGamesHeading = useRef('home-ourgames-heading')
-    const homeOurGamesContent = useRef('home-ourgames-content')
-    const homeJoinTeamHeading = useRef('home-jointeam-heading')
-    const imageAbout = useRef('image-about')
-    const imageJoinTeam = useRef('image-joinTeam')
-    const topHomeElements = useRef([])
-    const activeHomeElement = useRef({})
+    // const homeAboutHeading = useRef('home-about-heading')
+    // const homeOurGamesHeading = useRef('home-ourgames-heading')
+    // const homeOurGamesContent = useRef('home-ourgames-content')
+    // const homeJoinTeamHeading = useRef('home-jointeam-heading')
+    // const imageAbout = useRef('image-about')
+    // const imageJoinTeam = useRef('image-joinTeam')
+    // const topHomeElements = useRef({})
+    // const [activeElement, setActiveElement] = useState({})
 
     const getTopElements = useCallback(elements => {
         if (typeof elements === 'object') {
-            return elements?.map(el => Math.floor(el?.getBoundingClientRect().top + window.scrollY))
+            const topElements = {}
+            for (let key in elements) {
+                const newObject =
+                    { [key]: Math.floor(elements[key]?.getBoundingClientRect().top + window.scrollY - 200) }
+                Object.assign(topElements, newObject)
+            }
+            return topElements
         }
     }, [])
-    // console.log(isShow);
 
     useEffect(() => {
         const timerID = setTimeout(() => {
             setIsShow(true)
-            const homeElements = [
-                homeAboutHeading.current,
-                imageAbout.current,
-                homeOurGamesHeading.current,
-                homeOurGamesContent.current,
-                homeJoinTeamHeading.current,
-                imageJoinTeam.current
-            ]
-            topHomeElements.current = getTopElements(homeElements)
-            // console.log(topHomeElements.current);
+            // const homeElements = {
+            //     about: homeAboutHeading.current,
+            //     imageAbout: imageAbout.current,
+            //     ourGamesHeading: homeOurGamesHeading.current,
+            //     ourGamesContent: homeOurGamesContent.current,
+            //     joinTeam: homeJoinTeamHeading.current,
+            //     imageJoinTeam: imageJoinTeam.current
+            // }
+            // topHomeElements.current = getTopElements(homeElements)
         }, 500)
 
         const handleScroll = () => {
-            topHomeElements.current.forEach((top, index) => {
-                let topElement = top - 200
-                if (window.scrollY >= topElement) {
-                    // Object.assign(activeHomeElement.current, {[index]: true})
-                }
-            })
+            // const topElements = topHomeElements.current
+            // for (let key in topElements) {
+            //     if (window.scrollY >= topElements[key]) {
+            //         Object.assign(topElements, { [key]: true })
+            //     }
+            // }
+            // setActiveElement(topElements)
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -140,14 +161,14 @@ const ScrollProvider = ({ children }) => {
         isActive,
         listGameElement,
         contactElement,
-        homeAboutHeading,
-        homeOurGamesHeading,
-        homeOurGamesContent,
-        homeJoinTeamHeading,
-        imageAbout,
-        imageJoinTeam,
+        // homeAboutHeading,
+        // homeOurGamesHeading,
+        // homeOurGamesContent,
+        // homeJoinTeamHeading,
+        // imageAbout,
+        // imageJoinTeam,
         isShow,
-        activeHomeElement,
+        // activeElement,
         handleScroll
     }
 

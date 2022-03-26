@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import { FullScreen } from 'react-full-screen'
 import { GrClose } from "react-icons/gr"
 import { BsArrowsAngleExpand, BsArrowsAngleContract, BsChevronRight, BsChevronLeft } from "react-icons/bs"
@@ -82,4 +82,4 @@ const GalleryContainer = ({ data }) => {
     )
 }
 
-export default GalleryContainer
+export default memo(GalleryContainer)

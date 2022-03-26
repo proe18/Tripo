@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import {
     Inner,
     Container,
@@ -9,11 +10,11 @@ import {
     DropDownIcon
 } from './NavBarStyled';
 
-const Navbar = ({ children, ...restProps }) => {
+const Navbar = forwardRef(({ children, ...restProps }, ref) => {
     return (
-        <Inner {...restProps}>{children}</Inner>
+        <Inner {...restProps} ref={ref}>{children}</Inner>
     );
-}
+})
 
 Navbar.Container = function NavbarContainer({ children, ...restProps }) {
     return (

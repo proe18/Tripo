@@ -18,13 +18,12 @@ export const Container = styled.div`
         `
     }
     opacity: ${({ navBar }) => !navBar ? 0 : 1};
-    visibility: ${({ navBar }) => !navBar ? 'hidden' : 'visible'};
     z-index: ${({ navBar }) => !navBar ? 0 : 99};
     will-change: transition, visibility;
-    transition: opacity ease-out 0.3s;
-    -moz-transition: opacity ease-in-out 0.3s;
-    -o-transition: opacity ease-in-out 0.3s;
-    -webkit-transition: opacity ease-in-out 0.3s;
+    transition: opacity linear 0.3s;
+    -moz-transition: opacity linear 0.3s;
+    -o-transition: opacity linear 0.3s;
+    -webkit-transition: opacity linear 0.3s;
 
     //Responsive mobile
     @media (max-width: 320px) {
@@ -86,18 +85,6 @@ export const Inner = styled.div`
         }
     }
 `
-//======= ANIMATION KEYFRAMES OF NAV ========
-// const slipDown = keyframes`
-//     0% {
-//         transform: translateY(-150%);
-//         opacity: 0;
-//     }
-//     100% {
-//         transform: translateY(0);
-//         opacity: 1;
-//     }
-// `
-//============================================
 
 export const Nav = styled.ul`
     width: 100%;

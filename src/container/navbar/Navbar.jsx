@@ -16,6 +16,7 @@ const NavBar = () => {
         dropDown,
         isMobile,
         navBarFixed,
+        navbarElement,
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
@@ -32,7 +33,7 @@ const NavBar = () => {
             marginTop={isMobile}
         >
             <Logo mobileMenu={mobileMenu} />
-            <Navbar mobileMenu={mobileMenu}>
+            <Navbar mobileMenu={mobileMenu} ref={navbarElement}>
                 <Navbar.Icon
                     mobileMenu={mobileMenu}
                     onClick={handleClickMobileMenu}

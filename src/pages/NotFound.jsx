@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { NotFoundPage, Container, ButtonLink } from '../components'
 import * as ROUTES from '../constants/routes'
 
@@ -14,4 +15,4 @@ const NotFound = () => {
     )
 }
 
-export default NotFound
+export default memo(NotFound)
