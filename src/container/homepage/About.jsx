@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { About, ButtonLink } from '../../components'
-import { HomePageContext } from '../../context'
+import { ScrollContext } from '../../context'
 
 const AboutContainer = ({ data }) => {
-    const { marginAbout } = useContext(HomePageContext)
+    const { marginAbout } = useContext(ScrollContext)
     // const { homeAboutHeading, imageAbout, activeElement } = useContext(ScrollContext)
     // console.log(activeElement);
     return (

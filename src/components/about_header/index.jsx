@@ -1,4 +1,5 @@
 // import { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { Wrapper, Image } from '../../GlobalStyles'
 import {
     Inner,
@@ -11,11 +12,11 @@ import {
     Text
 } from './HeaderStyled'
 
-const Header = ({ children, ...restProps }) => {
+const Header = forwardRef(({ children, ...restProps }, ref) => {
     return (
-        <Inner {...restProps}>{children}</Inner>
+        <Inner {...restProps} ref={ref}>{children}</Inner>
     )
-}
+})
 
 Header.Wrapper = function HeaderWrapper({ children, ...restProps }) {
     return (
@@ -53,11 +54,11 @@ Header.Wrap = function HeaderWrap({ children, ...restProps }) {
     )
 }
 
-Header.Image = function HeaderImage({ ...restProps }) {
+Header.Image = forwardRef(function HeaderImage({ ...restProps }, ref) {
     return (
-        <Image {...restProps} />
+        <Image {...restProps} ref={ref}/>
     )
-}
+})
 
 Header.Content = function HeaderContent({ children, ...restProps }) {
     return (

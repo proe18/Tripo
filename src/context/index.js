@@ -1,6 +1,5 @@
 export { NavbarProvider, NavbarContext } from './NavbarContext'
 export { GalleryProvider, GalleryContext } from './GalleryContext'
 export { GamesPageProvider, GamesPageContext } from './GamesPageContext'
-export { HomePageProvider, HomePageContext } from './HomePageContext'
 export { PositionFormProvider, PositionFormContext } from './PositionFromContext'
 export { ScrollProvider, ScrollContext } from './ScrollContext'

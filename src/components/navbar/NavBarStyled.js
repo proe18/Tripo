@@ -18,6 +18,7 @@ export const Container = styled.div`
         `
     }
     opacity: ${({ navBar }) => !navBar ? 0 : 1};
+    visibility: ${({navBar}) => !navBar ? 'hidden' : 'visible'};
     z-index: ${({ navBar }) => !navBar ? 0 : 99};
     will-change: transition, visibility;
     transition: opacity linear 0.3s;

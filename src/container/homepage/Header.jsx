@@ -1,14 +1,21 @@
 import { useContext } from 'react'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 import { HeaderHome } from '../../components'
-import { ScrollContext, HomePageContext } from '../../context'
+import { ScrollContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
-    const { headerElement, marginGames, gamesElement } = useContext(HomePageContext)
-    const { isShow } = useContext(ScrollContext)
+    const {
+        isShow,
+        headerElement,
+        marginGames,
+        gamesElement,
+        backGroundHome,
+        translate
+    } = useContext(ScrollContext)
 
     return (
-        <HeaderHome bg={data.bg} ref={headerElement}>
+        <HeaderHome ref={headerElement}>
+            <HeaderHome.Background ref={backGroundHome} translateLeft={translate}/>
             <HeaderHome.Wrapper>
                 <HeaderHome.Heading animationHeading={isShow}>
                     <HeaderHome.Title>{data.title}</HeaderHome.Title>

@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { Wrapper, PlatForms, Link, Image, } from '../../GlobalStyles'
 import {
+    Inner,
     Background,
     Heading,
     Title,
@@ -13,7 +14,13 @@ import {
 
 const Header = forwardRef(({ children, ...restProps }, ref) => {
     return (
-        <Background {...restProps} ref={ref}>{children}</Background>
+        <Inner {...restProps} ref={ref}>{children}</Inner>
+    )
+})
+
+Header.Background = forwardRef(function HeaderBackground({ ...restProps }, ref) {
+    return (
+        <Background {...restProps} ref={ref}/>
     )
 })
 

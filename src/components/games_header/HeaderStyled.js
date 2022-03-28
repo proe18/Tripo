@@ -39,16 +39,16 @@ export const Box = styled.div`
     background-color: ${({ theme }) => theme.color.whiteColor};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
     will-change: opacity, transition, transform;
-    transform: translateX(-150px);
+    transform: translateX(-200px);
     opacity: 0;
     ${({ animationBox }) => animationBox && css`
         transform: translateX(0);
         opacity: 1;
     `}
-    transition: all linear 0.5s;
-    -moz-transition: all linear 0.5s;
-    -o-transition: all linear 0.5s;
-    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.8s;
+    -moz-transition: all linear 0.8s;
+    -o-transition: all linear 0.8s;
+    -webkit-transition: all linear 0.8s;
 
     @media (max-width: 748px) {
         width: 87.5%;

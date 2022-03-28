@@ -7,12 +7,12 @@ const ScrollContext = createContext()
 const ScrollProvider = ({ children }) => {
     const { pathname } = useLocation()
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
-    const [isEqual, setIsEqual] = useState(false)
     const [isParam, setIsParam] = useState(false)
+    const [isEqualParam, setIsEqualParam] = useState(false)
     const [isShow, setIsShow] = useState(false)
     const listGameElement = useRef('listGame')
     const contactElement = useRef('contact')
-    const paramRef = useRef('')
+    const paramRef = useRef()
     const pathRoute = useRef(pathname)
     const timerID1 = useRef(0)
     const timerID2 = useRef(0)
@@ -39,55 +39,54 @@ const ScrollProvider = ({ children }) => {
         })
     }
 
-    const getElement = useCallback(el => {
-        if (el === 'Games') return listGameElement.current
-        if (el === 'Contact') return contactElement.current
-    }, [])
-
     const handleScroll = param => {
         if (param) {
             setIsParam(true)
+            setIsEqualParam(paramRef.current === param)
             paramRef.current = param
         }
-        if (!param && pathname === pathRoute.current) {
-            setIsEqual(true)
-            setIsShow(true)
+        if (!param) {
+            if (pathname === pathRoute.current) {
+                setIsShow(true)
+            }
+            setIsShow(false)
+            setIsParam(false)
+            setIsEqualParam(false)
             paramRef.current = undefined
         }
-        if (!param && pathname !== pathRoute.current) paramRef.current = undefined
-        if (!param) setIsShow(false)
         setIsActive(undefined)
         pathRoute.current = pathname
     }
-    
-    const scrollToPosition = useCallback(() => {
+    // console.log(isShow);
+
+    const scrollToPosition = useCallback(el => {
+        const element = el === 'Games' ? listGameElement.current : contactElement.current
         timerID2.current = setTimeout(() => {
-            const element = getElement(paramRef.current)
             let position = Math.floor(element?.getBoundingClientRect().top + window.pageYOffset)
             position = paramRef.current === 'Games' ? position - 90 : position - 60
             scrollToSmoothly(position, 1500)
             setIsParam(false)
         }, 500)
-    }, [getElement])
+    }, [])
 
     useEffect(() => {
-        //scroll to top page if user click the same button without parameter
-        if (window.pageYOffset > 0 && isEqual) {
-            window.scrollTo(0, 0)
-            setIsEqual(false)
-        }
-
-        //scroll to position with parameter
-        if (pathname === ROUTES.HOME && isParam) {
-            scrollToPosition()
-        }
-        if (pathRoute.current !== pathname) {
-            window.scrollTo(0, 0)
-            scrollToPosition()
-        }
-
         if (pathname === ROUTES.HOME) {
             timerID1.current = setInterval(() => setIsActive(window.pageYOffset >= 4296), 300)
+        }
+
+        if (!isParam && pathname !== pathRoute.current) window.scrollTo(0, 0)
+
+        //scroll to position with parameter
+        if (isParam && pathname !== pathRoute.current) {
+            window.scrollTo(0, 0)
+            scrollToPosition(paramRef.current)
+        }
+        if (isParam && pathname === pathRoute.current) {
+            if (isEqualParam) {
+                scrollToPosition(paramRef.current)
+            } else {
+                scrollToPosition(paramRef.current)
+            }
         }
 
         const handleReload = () => {
@@ -101,7 +100,7 @@ const ScrollProvider = ({ children }) => {
             clearInterval(timerID1.current)
             clearTimeout(timerID2.current)
         }
-    }, [pathname, isEqual, isParam, scrollToPosition])
+    }, [pathname, isParam, isEqualParam, scrollToPosition])
 
     // const homeAboutHeading = useRef('home-about-heading')
     // const homeOurGamesHeading = useRef('home-ourgames-heading')
@@ -111,6 +110,14 @@ const ScrollProvider = ({ children }) => {
     // const imageJoinTeam = useRef('image-joinTeam')
     // const topHomeElements = useRef({})
     // const [activeElement, setActiveElement] = useState({})
+    const headerElement = useRef('header')
+    const gamesElement = useRef('games')
+    const backGroundHome = useRef('bg')
+    const imageAbout = useRef('image')
+    const headerAbout = useRef('header')
+    const [marginGames, setMarginGames] = useState(0)
+    const [marginAbout, setMarginAbout] = useState(0)
+    const [translate, setTranslate] = useState(0)
 
     const getTopElements = useCallback(elements => {
         if (typeof elements === 'object') {
@@ -121,6 +128,13 @@ const ScrollProvider = ({ children }) => {
                 Object.assign(topElements, newObject)
             }
             return topElements
+        }
+    }, [])
+
+    const setTranslateLeft = useCallback((el) => {
+        const heightElement = el?.offsetHeight
+        if (window.pageYOffset <= heightElement) {
+            setTranslate(Math.floor(window.pageYOffset / 10))
         }
     }, [])
 
@@ -146,6 +160,12 @@ const ScrollProvider = ({ children }) => {
             //     }
             // }
             // setActiveElement(topElements)
+            if (pathname === ROUTES.HOME) {
+                setTranslateLeft(backGroundHome.current)
+            }
+            if (pathname === ROUTES.ABOUT) {
+                setTranslateLeft(headerAbout.current)
+            }
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -155,12 +175,33 @@ const ScrollProvider = ({ children }) => {
             clearTimeout(timerID)
         }
 
-    }, [pathname, getTopElements])
+    }, [pathname, getTopElements, setTranslateLeft])
+
+    useEffect(() => {
+
+        //set margin for games element and about element
+        const setHeightElement = () => {
+            setMarginGames(headerElement.current?.offsetHeight)
+            setMarginAbout(gamesElement.current?.offsetHeight)
+        }
+
+        window.addEventListener('resize', setHeightElement)
+
+        return () => window.removeEventListener('resize', setHeightElement)
+    }, [pathname, marginGames])
 
     const value = {
         isActive,
         listGameElement,
         contactElement,
+        headerElement,
+        gamesElement,
+        marginGames,
+        backGroundHome,
+        marginAbout,
+        translate,
+        imageAbout,
+        headerAbout,
         // homeAboutHeading,
         // homeOurGamesHeading,
         // homeOurGamesContent,

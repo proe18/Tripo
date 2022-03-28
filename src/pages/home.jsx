@@ -1,5 +1,4 @@
 import { HeaderHome, About, OurGames, JoinTeam } from '../container'
-import { HomePageProvider } from '../context'
 import { homeData } from '../data/Home_data'
 
 const Home = () => {
@@ -9,12 +8,12 @@ const Home = () => {
     const joinTeamData = homeData.joinTeam
 
     return (
-        <HomePageProvider>
+        <>
             <HeaderHome data={headerData} />
             <About data={aboutData} />
             <OurGames data={ourGamesData} />
             <JoinTeam data={joinTeamData} />
-        </HomePageProvider>
+        </>
     );
 }
 

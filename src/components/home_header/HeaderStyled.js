@@ -1,13 +1,26 @@
 import styled from 'styled-components'
 import { Link as ReactLink } from 'react-router-dom'
+import Bg from '../../images/background_home_1.jpg'
 import { Image, PlatForms, Link } from '../../GlobalStyles'
 
-export const Background = styled.header`
+export const Inner = styled.header`
     width: 100%;
     height: 100%;
     max-height: 800px;
-    background: ${({ bg }) => `url(${bg})`} no-repeat;
+    position: relative;
+    top: 0;
+`
+
+export const Background = styled.div`
+    width: 100%;
+    height: 100%;
+    max-height: 800px;
+    position: absolute;
+    top: 0;
+    background: url(${Bg}) repeat-x;
     background-size: cover;
+    will-change: transform;
+    transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`};
 
     @media (max-width: 420px) {
         max-height: 315px;
