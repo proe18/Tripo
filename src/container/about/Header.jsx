@@ -1,16 +1,15 @@
 import { useContext } from 'react'
 import { HeaderAbout } from '../../components'
-import { ScrollContext } from '../../context'
+import { NavbarContext, ScrollContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
-    const { 
-        isShow, 
-        headingElement, 
-        imageAbout, 
+    const {
+        headingElement,
+        imageAbout,
         headerAbout,
-        translate 
+        // translate 
     } = useContext(ScrollContext)
-    console.log(translate)
+    const { isShow } = useContext(NavbarContext)
 
     return (
         <HeaderAbout ref={headerAbout}>
@@ -22,7 +21,7 @@ const HeaderContainer = ({ data }) => {
             </HeaderAbout.Wrapper>
             <HeaderAbout.Group>
                 <HeaderAbout.Wrap>
-                    <HeaderAbout.Image src={data.img} alt='' ref={imageAbout}/>
+                    <HeaderAbout.Image src={data.img} alt='' ref={imageAbout} />
                 </HeaderAbout.Wrap>
                 <HeaderAbout.Content>
                     <HeaderAbout.Text>{data.text}</HeaderAbout.Text>

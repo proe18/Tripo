@@ -1,19 +1,19 @@
 import { useContext, memo } from 'react'
 import { Logo, Footer } from '../components'
-import { GalleryContext, ScrollContext } from '../context'
+import { GalleryContext, NavbarContext } from '../context'
 
 const FooterContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GalleryContext)
-    const { handleScroll } = useContext(ScrollContext)
+    const { handleSwitchPage } = useContext(NavbarContext)
 
     const handleOnClick = title => {
         switch (title) {
             case 'Games':
-                return () => handleScroll('Games')
+                return () => handleSwitchPage('Games')
             case 'Contact':
-                return () => handleScroll('Contact')
+                return () => handleSwitchPage('Contact')
             default:
-                return () => handleScroll()
+                return () => handleSwitchPage()
         }
     }
 

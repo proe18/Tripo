@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState, createContext, useRef } from 'react'
+import { useEffect, useLayoutEffect, useState, createContext, useCallback, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const GamesPageContext = createContext()
@@ -9,14 +9,14 @@ const GamesPageProvider = ({ children }) => {
     const [heightElement, setHeightElement] = useState(0)
 
     //set heigth for box header section
-    const getHeightElement = () => setHeightElement(groupElement.current.offsetHeight)
+    const getHeightElement = useCallback(() => setHeightElement(groupElement.current?.offsetHeight), [])
 
-    useLayoutEffect(getHeightElement, [pathname])
+    useLayoutEffect(getHeightElement, [pathname, getHeightElement])
     useEffect(() => {
         window.addEventListener('resize', getHeightElement)
 
         return () => window.removeEventListener('resize', getHeightElement)
-    }, [])
+    }, [pathname, getHeightElement])
 
     const value = {
         groupElement,

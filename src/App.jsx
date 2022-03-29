@@ -63,7 +63,11 @@ const App = () => {
                 <Footer data={footerData} />
                 {isCloseGallery &&
                     <ButtonScrollToTop
-                        onClick={() => window.scrollTo(0, 0)}
+                        onClick={() => window.scrollTo({
+                            left: 0,
+                            top: 0,
+                            behavior: 'smooth'
+                        })}
                         hideButton={showButtonScroll}
                     />
                 }

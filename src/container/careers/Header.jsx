@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import { HeaderCareers } from '../../components'
-import { ScrollContext } from '../../context'
+import { NavbarContext, ScrollContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
-    const { isShow, headingElement } = useContext(ScrollContext)
+    const { headingElement } = useContext(ScrollContext)
+    const { isShow } = useContext(NavbarContext)
 
     return (
         <HeaderCareers>

@@ -1,13 +1,10 @@
 import { useContext } from 'react'
 import { OurGames } from '../../components'
-import { ScrollContext } from '../../context'
+import { NavbarContext, ScrollContext } from '../../context'
 
 const OurGamesContainer = ({ data }) => {
-    const { 
-        listGameElement, 
-        homeOurGamesHeading,
-        homeOurGamesContent 
-    } = useContext(ScrollContext)
+    const { homeOurGamesHeading, homeOurGamesContent } = useContext(ScrollContext)
+    const { listGameElement } = useContext(NavbarContext)
 
     return (
         <OurGames ref={listGameElement}>

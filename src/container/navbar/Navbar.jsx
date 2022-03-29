@@ -5,7 +5,7 @@ import { Logo } from '../../components'
 import { Navbar } from '../../components'
 import { DropDown } from '../../container'
 import * as ROUTES from '../../constants/routes'
-import { NavbarContext, GalleryContext, ScrollContext } from '../../context'
+import { NavbarContext, GalleryContext } from '../../context'
 import { useNavigate } from 'react-router-dom'
 
 const NavBar = () => {
@@ -17,13 +17,14 @@ const NavBar = () => {
         isMobile,
         navBarFixed,
         navbarElement,
+        isActive,
         handleMouseEnter,
         handleMouseLeave,
         handleClickMobileMenu,
-        handleClickDropDown
+        handleClickDropDown,
+        handleSwitchPage
     } = useContext(NavbarContext)
     const { isCloseGallery } = useContext(GalleryContext)
-    const { handleScroll, isActive } = useContext(ScrollContext)
 
     return (
         <Navbar.Container
@@ -46,9 +47,8 @@ const NavBar = () => {
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleScroll()
+                            handleSwitchPage()
                             navigate(ROUTES.HOME)
-                            if (window.scrollY !== 0) window.scrollTo(0, 0)
                         }}
                     >
                         <span>Home</span>
@@ -74,7 +74,7 @@ const NavBar = () => {
                     <Navbar.Item
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleScroll()
+                            handleSwitchPage()
                         }}
                     >
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>
@@ -82,7 +82,7 @@ const NavBar = () => {
                     <Navbar.Item
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleScroll()
+                            handleSwitchPage()
                         }}
                     >
                         <Navbar.Link to={ROUTES.ABOUT}>About</Navbar.Link>
@@ -91,7 +91,7 @@ const NavBar = () => {
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleScroll('Contact')
+                            handleSwitchPage('Contact')
                             navigate(ROUTES.HOME)
                         }}
                     >

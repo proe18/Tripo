@@ -12,15 +12,15 @@ import App from './App'
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <ScrollProvider>
-                <NavbarProvider>
+            <NavbarProvider>
+                <ScrollProvider>
                     <GalleryProvider>
                         <StyleProvider>
                             <App />
                         </StyleProvider>
                     </GalleryProvider>
-                </NavbarProvider>
-            </ScrollProvider>
+                </ScrollProvider>
+            </NavbarProvider>
         </Router>
     </React.StrictMode>,
     document.getElementById('root')

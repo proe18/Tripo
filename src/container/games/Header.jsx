@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import { HeaderGames } from '../../components'
-import { GalleryContext, GamesPageContext, ScrollContext } from '../../context'
+import { GalleryContext, GamesPageContext, NavbarContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
     const { heightElement, groupElement } = useContext(GamesPageContext)
     const { isCloseGallery } = useContext(GalleryContext)
-    const { isShow } = useContext(ScrollContext)
+    const { isShow } = useContext(NavbarContext)
 
     return (
         <HeaderGames hideHeader={isCloseGallery}>

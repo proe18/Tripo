@@ -20,7 +20,7 @@ export const Background = styled.div`
     background: url(${Bg}) repeat-x;
     background-size: cover;
     will-change: transform;
-    transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`};
+    /* transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`}; */
 
     @media (max-width: 420px) {
         max-height: 315px;
@@ -165,24 +165,23 @@ export const Games = styled.div`
         margin-top: 0;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 420px) {
         padding-top: 85px;
     }
 
-    @media (min-width: 321px) and (max-width: 420px), 
-    (min-width: 681px) and (max-width: 1000px) {
-        padding-top: ${({ marginTop }) => `${(marginTop / 5)}px`};
+    @media (min-width: 681px) and (max-width: 1000px) {
+        padding-top: ${({ marginTop }) => `${(marginTop / 8)}px`};
     }
 
     @media (min-width: 421px) and (max-width: 450px) {
         padding-top: ${({ marginTop }) => `${(marginTop / 2.2)}px`};
     }
 
-    @media (min-width: 451px) and (max-width: 528px) {
-        padding-top: ${({ marginTop }) => `${(marginTop / 2.5)}px`};
+    @media (min-width: 451px) and (max-width: 540px) {
+        padding-top: ${({ marginTop }) => `${(marginTop / 3)}px`};
     }
 
-    @media (min-width: 529px) and (max-width: 640px) {
+    @media (min-width: 541px) and (max-width: 640px) {
         padding-top: ${({ marginTop }) => `${(marginTop / 2)}px`};
     }
 
