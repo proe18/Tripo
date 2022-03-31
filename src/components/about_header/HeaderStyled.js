@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Image } from '../../GlobalStyles'
 
 export const Inner = styled.header`
     padding-top: 162px;
@@ -67,6 +68,14 @@ export const Wrap = styled.div`
     width: 100%;
     max-width: 607px;
     height: 590px;
+    
+    ${({ isScroll }) => isScroll && css`
+        ${Image} {
+            width: 105%;
+            will-change: transform;
+            transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`};
+        }
+    `}
 
     @media (max-width: 1000px) {
         max-width: 100%;

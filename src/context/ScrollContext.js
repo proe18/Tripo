@@ -1,18 +1,19 @@
-import { useEffect, useRef, useState, createContext } from 'react'
+import { useEffect, useRef, useState, useCallback, createContext } from 'react'
 import { useLocation } from 'react-router-dom'
+import * as ROUTES from '../constants/routes'
 
 const ScrollContext = createContext()
 
 const ScrollProvider = ({ children }) => {
     const { pathname } = useLocation()
-    // const homeAboutHeading = useRef('home-about-heading')
-    // const homeOurGamesHeading = useRef('home-ourgames-heading')
-    // const homeOurGamesContent = useRef('home-ourgames-content')
-    // const homeJoinTeamHeading = useRef('home-jointeam-heading')
-    // const imageAbout = useRef('image-about')
-    // const imageJoinTeam = useRef('image-joinTeam')
-    // const topHomeElements = useRef({})
-    // const [activeElement, setActiveElement] = useState({})
+    const homeAboutHeading = useRef('home-about-heading')
+    const homeOurGamesHeading = useRef('home-ourgames-heading')
+    const homeOurGamesContent = useRef('home-ourgames-content')
+    const homeJoinTeamHeading = useRef('home-jointeam-heading')
+    const imageHomeAbout = useRef('image-about')
+    const imageJoinTeam = useRef('image-joinTeam')
+    const topHomeElements = useRef({})
+    const [activeElement, setActiveElement] = useState({})
     const headerElement = useRef('header')
     const gamesElement = useRef('games')
     const backGroundHome = useRef('bg')
@@ -20,66 +21,70 @@ const ScrollProvider = ({ children }) => {
     const headerAbout = useRef('header')
     const [marginGames, setMarginGames] = useState(0)
     const [marginAbout, setMarginAbout] = useState(0)
-    // const [translate, setTranslate] = useState(0)
+    const [isScrollImage, setIsScrollImage] = useState(false)
+    const [translate, setTranslate] = useState(0)
 
-    // const getTopElements = useCallback(elements => {
-    //     if (typeof elements === 'object') {
-    //         const topElements = {}
-    //         for (let key in elements) {
-    //             const newObject =
-    //                 { [key]: Math.floor(elements[key]?.getBoundingClientRect().top + window.scrollY - 200) }
-    //             Object.assign(topElements, newObject)
-    //         }
-    //         return topElements
-    //     }
-    // }, [])
+    const getTopElements = useCallback(elements => {
+        if (typeof elements === 'object') {
+            const topElements = {}
+            let topElement
+            for (let key in elements) {
+                topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.scrollY - 200)
+                if (window.pageYOffset + 400 >= topElement) {
+                    Object.assign(topElements, { [key]: true })
+                }
+            }
+            return topElements
+        }
+    }, [])
 
-    // const setTranslateLeft = useCallback((el) => {
-    //     const heightElement = el?.offsetHeight
-    //     let translateLeft
-    //     if (window.pageYOffset <= heightElement) {
-    //         translateLeft = Math.floor(window.pageYOffset / 10)
-    //     }
-    //     setTranslate(translateLeft)
-    // }, [])
+    const setTranslateLeft = useCallback((el) => {
+        const heightElement = el?.offsetHeight
+        if (window.pageYOffset <= heightElement) {
+           let translateLeft = Math.floor(window.pageYOffset / 10)
+           return translateLeft
+        }
+    }, [])
 
-    // useEffect(() => {
-    //     const timerID = setTimeout(() => {
-    //         // const homeElements = {
-    //         //     about: homeAboutHeading.current,
-    //         //     imageAbout: imageAbout.current,
-    //         //     ourGamesHeading: homeOurGamesHeading.current,
-    //         //     ourGamesContent: homeOurGamesContent.current,
-    //         //     joinTeam: homeJoinTeamHeading.current,
-    //         //     imageJoinTeam: imageJoinTeam.current
-    //         // }
-    //         // topHomeElements.current = getTopElements(homeElements)
-    //     }, 500)
+    useEffect(() => {
+        setTranslate(0)
+        const timerIDTimeOut = setTimeout(() => {
+            const homeElements = {
+                about: homeAboutHeading.current,
+                imageAbout: imageHomeAbout.current,
+                ourGamesHeading: homeOurGamesHeading.current,
+                ourGamesContent: homeOurGamesContent.current,
+                joinTeam: homeJoinTeamHeading.current,
+                imageJoinTeam: imageJoinTeam.current
+            }
+            topHomeElements.current = homeElements
+        }, 500)
 
-    //     const handleScroll = () => {
-    //         // const topElements = topHomeElements.current
-    //         // for (let key in topElements) {
-    //         //     if (window.scrollY >= topElements[key]) {
-    //         //         Object.assign(topElements, { [key]: true })
-    //         //     }
-    //         // }
-    //         // setActiveElement(topElements)
-    //         // if (pathname === ROUTES.HOME) {
-    //         //     setTranslateLeft(backGroundHome.current)
-    //         // }
-    //         // if (pathname === ROUTES.ABOUT) {
-    //         //     setTranslateLeft(headerAbout.current)
-    //         // }
-    //     }
+        const handleScroll = () => {
+            if (pathname === ROUTES.HOME) {
+                setTranslate(setTranslateLeft(backGroundHome.current) || 0)
+                setActiveElement(getTopElements(topHomeElements.current))
+            }
 
-    //     window.addEventListener('scroll', handleScroll)
+            if (pathname === ROUTES.ABOUT) {
+                setTranslate(setTranslateLeft(headerAbout.current) || 0)
+            }
+            setIsScrollImage(true)
+        }
+        const timerIDInterval = setInterval(() => {
+            const prePosition = window.pageYOffset
+            if (isScrollImage && window.pageYOffset === prePosition) setIsScrollImage(false)
+        }, 3000)
 
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll)
-    //         clearTimeout(timerID)
-    //     }
+        window.addEventListener('scroll', handleScroll)
 
-    // }, [pathname, setTranslateLeft])
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            clearTimeout(timerIDTimeOut)
+            clearInterval(timerIDInterval)
+        }
+
+    }, [pathname, isScrollImage, setTranslateLeft, getTopElements])
 
     useEffect(() => {
 
@@ -100,15 +105,17 @@ const ScrollProvider = ({ children }) => {
         marginGames,
         backGroundHome,
         marginAbout,
-        // translate,
+        translate,
         imageAbout,
         headerAbout,
-        // homeAboutHeading,
-        // homeOurGamesHeading,
-        // homeOurGamesContent,
-        // homeJoinTeamHeading,
-        // imageAbout,
-        // imageJoinTeam,
+        isScrollImage,
+        homeAboutHeading,
+        homeOurGamesHeading,
+        homeOurGamesContent,
+        homeJoinTeamHeading,
+        imageHomeAbout,
+        imageJoinTeam,
+        activeElement
     }
 
     return <ScrollContext.Provider value={value}>{children}</ScrollContext.Provider>

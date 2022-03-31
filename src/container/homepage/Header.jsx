@@ -9,15 +9,22 @@ const HeaderContainer = ({ data }) => {
         gamesElement,
         marginGames,
         backGroundHome,
-        // translate
+        translate,
+        isScrollImage
     } = useContext(ScrollContext)
     const { isShow } = useContext(NavbarContext)
-    
+
     return (
         <HeaderHome ref={headerElement}>
-            <HeaderHome.Background ref={backGroundHome}/>
+            <HeaderHome.Wrap>
+                <HeaderHome.Background
+                    ref={backGroundHome}
+                    translateLeft={translate}
+                    isScroll={isScrollImage}
+                />
+            </HeaderHome.Wrap>
             <HeaderHome.Wrapper>
-                <HeaderHome.Heading animationHeading={isShow}>
+                <HeaderHome.Heading animationHeading={isShow} >
                     <HeaderHome.Title>{data.title}</HeaderHome.Title>
                     <HeaderHome.Text>{data.text}</HeaderHome.Text>
                     <HeaderHome.PlatForms>

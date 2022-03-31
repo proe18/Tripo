@@ -29,10 +29,10 @@ const App = () => {
             window.removeEventListener('scroll', handleShowButtonScroll)
         }
     }, [pathname])
-
+    
     return (
         <>
-            <GlobalStyles mobileMenu={mobileMenu} closeGallery={isCloseGallery}/>
+            <GlobalStyles mobileMenu={mobileMenu} closeGallery={isCloseGallery} />
             <NavBar />
             <Pages mobileMenu={mobileMenu} positionFixed={isMobile}>
                 <Routes>

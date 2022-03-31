@@ -17,11 +17,11 @@ const NavbarProvider = ({ children }) => {
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
     const [isParam, setIsParam] = useState(false)
     const [isEqualParam, setIsEqualParam] = useState(false)
-    // const [isEqual, setIsEqual] = useState(false)
+    const [isEqual, setIsEqual] = useState(false)
     const [isShow, setIsShow] = useState(false)
     const listGameElement = useRef('listGame')
     const contactElement = useRef('contact')
-    const paramRef = useRef()
+    const paramRef = useRef('')
     const pathRoute = useRef(pathname)
     const timerID1 = useRef(0)
     const timerID2 = useRef(0)
@@ -70,11 +70,12 @@ const NavbarProvider = ({ children }) => {
             paramRef.current = param
         }
         if (!param) {
-            setIsShow(false)
+            setIsEqual(pathname === pathRoute.current)
             setIsParam(false)
             setIsEqualParam(false)
-            paramRef.current = undefined
+            paramRef.current = ''
         }
+        setIsShow(false)
         setIsScroll(false)
         setIsMouseHover(false)
         setIsActive(undefined)
@@ -89,16 +90,24 @@ const NavbarProvider = ({ children }) => {
             position = paramRef.current === 'Games' ? position - 90 : position - 60
             scrollToSmoothly(position, 1500)
             setIsParam(false)
-        }, 500)
+        }, 1000)
     }, [])
+
 
     //handle scroll to position
     useEffect(() => {
+        setIsShow(true)
         if (pathname === ROUTES.HOME) {
             timerID1.current = setInterval(() => setIsActive(window.pageYOffset >= 4296), 300)
         }
 
         if (!isParam && pathname !== pathRoute.current) window.scrollTo(0, 0)
+        // if (isEqual) {
+        //     window.scrollTo(0, 0)
+        //     setIsEqual(false)
+        // }
+        // console.log(isEqual);
+
 
         if (isParam && pathname !== pathRoute.current) {
             window.scrollTo(0, 0)
@@ -113,7 +122,11 @@ const NavbarProvider = ({ children }) => {
         }
 
         const handleReload = () => {
-            if (window.pageYOffset > 0) scrollToSmoothly(0, 1200)
+            if (window.pageYOffset > 0) window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            })
         }
 
         window.addEventListener('load', handleReload)
@@ -123,12 +136,10 @@ const NavbarProvider = ({ children }) => {
             clearInterval(timerID1.current)
             clearTimeout(timerID2.current)
         }
-    }, [pathname, isParam, isEqualParam, scrollToPosition])
+    }, [pathname, isParam, isEqual, isEqualParam, scrollToPosition])
 
     //handle show or hide navbar, heading page  
     useEffect(() => {
-        setIsShow(true)
-
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 860)
             if (window.innerWidth > 860) {
@@ -182,7 +193,7 @@ const NavbarProvider = ({ children }) => {
             navbar.removeEventListener('mouseout', handleMouseOut)
             clearInterval(timerIDInterval)
         }
-    }, [pathname, isScroll, dropDown, isMouseHover])
+    }, [pathname, isScroll, dropDown, isEqualParam, isMouseHover])
 
     const value = {
         mobileMenu,

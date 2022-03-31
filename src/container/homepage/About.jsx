@@ -4,14 +4,14 @@ import { ScrollContext } from '../../context'
 
 const AboutContainer = ({ data }) => {
     const { marginAbout } = useContext(ScrollContext)
-    // const { homeAboutHeading, imageAbout, activeElement } = useContext(ScrollContext)
-    // console.log(activeElement);
+    const { homeAboutHeading, imageHomeAbout, activeElement } = useContext(ScrollContext)
+    
     return (
         <About marginTop={marginAbout}>
             <About.Wrapper>
                 <About.Heading
-                    // ref={homeAboutHeading}
-                    // active={activeElement.about}
+                    ref={homeAboutHeading}
+                    active={activeElement.about}
                 >
                     <About.SubTitle>{data.subTitle}</About.SubTitle>
                     <About.Title>{data.title}</About.Title>
@@ -19,7 +19,7 @@ const AboutContainer = ({ data }) => {
                     <ButtonLink to={data.button.path}>{data.button.name}</ButtonLink>
                 </About.Heading>
                 <About.Wrap 
-                // ref={imageAbout}
+                ref={imageHomeAbout}
                 >
                     {data.images.map((image, index) =>
                         <About.Image key={index} src={image.img} alt={image.alt} />

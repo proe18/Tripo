@@ -38,9 +38,10 @@ export const Inner = styled.section`
 export const Heading = styled.div`
     text-align: center;
     color: ${({ theme }) => theme.color.textColor};
-    /* will-change: opacity, transition;
-    opacity: ${({ active }) => active === true ? 1 : 0};
-    transition: opacity linear 0.3s; */
+    opacity: 0;
+    will-change: opacity, transition;
+    opacity: ${({ active }) => active === true && 1};
+    transition: opacity linear 0.3s;
 
     ${ButtonLink} {
         max-width: 142px;

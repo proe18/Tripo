@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link as ReactLink } from 'react-router-dom'
 import Bg from '../../images/background_home_1.jpg'
 import { Image, PlatForms, Link } from '../../GlobalStyles'
@@ -11,16 +11,41 @@ export const Inner = styled.header`
     top: 0;
 `
 
+export const Wrap = styled.div`
+    width: 100%;
+    height: 100%;
+    max-height: 800px;
+    overflow-y: scroll;
+    /* overflow-x: ${({ isScroll }) => isScroll && 'hidden'}; */
+    /* ${({ isScroll }) => isScroll && css`
+        width: 105%;
+        overflow-x: hidden;
+        &::-webkit-scrollbar:horizontal {
+            height: 0;
+            width: 0;
+            display: none;
+        }
+    `} */
+`
+
 export const Background = styled.div`
     width: 100%;
     height: 100%;
     max-height: 800px;
     position: absolute;
     top: 0;
-    background: url(${Bg}) repeat-x;
+    background: url(${Bg}) no-repeat;
     background-size: cover;
-    will-change: transform;
-    /* transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`}; */
+    ${({ isScroll }) => isScroll && css`
+        width: 105%;
+        &::-webkit-scrollbar:horizontal {
+            height: 0;
+            width: 0;
+            display: none;
+        }
+        will-change: transform;
+        transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`};
+    `}
 
     @media (max-width: 420px) {
         max-height: 315px;
