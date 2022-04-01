@@ -6,31 +6,46 @@ const ScrollContext = createContext()
 
 const ScrollProvider = ({ children }) => {
     const { pathname } = useLocation()
+
+    const headerElement = useRef('header')
+    const gamesElement = useRef('games')
+    const backGroundHome = useRef('bg')
     const homeAboutHeading = useRef('home-about-heading')
     const homeOurGamesHeading = useRef('home-ourgames-heading')
     const homeOurGamesContent = useRef('home-ourgames-content')
     const homeJoinTeamHeading = useRef('home-jointeam-heading')
     const imageHomeAbout = useRef('image-about')
     const imageJoinTeam = useRef('image-joinTeam')
-    const topHomeElements = useRef({})
-    const [activeElement, setActiveElement] = useState({})
-    const headerElement = useRef('header')
-    const gamesElement = useRef('games')
-    const backGroundHome = useRef('bg')
+
+    const careersJobTitle = useRef('careers-title')
+    const careersSend = useRef('careers-sendCV')
+    const careersListJob = useRef('careers-listJob')
+
     const imageAbout = useRef('image')
     const headerAbout = useRef('header')
+    const aboutContent = useRef('about-content')
+    const aboutTitleInfo = useRef('about-titleInfo')
+    const aboutInfo = useRef('about-info')
+    const aboutTitleFounders = useRef('about-titleFounders')
+    const aboutFounders = useRef('about-founders')
+    const aboutOurOffices = useRef('about-ourOffices')
+
+
+    const elements = useRef({})
+    const [activeElement, setActiveElement] = useState({})
+
     const [marginGames, setMarginGames] = useState(0)
     const [marginAbout, setMarginAbout] = useState(0)
     const [isScrollImage, setIsScrollImage] = useState(false)
     const [translate, setTranslate] = useState(0)
 
-    const getTopElements = useCallback(elements => {
+    const setElements = useCallback(elements => {
         if (typeof elements === 'object') {
             const topElements = {}
             let topElement
             for (let key in elements) {
                 topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.scrollY - 200)
-                if (window.pageYOffset + 400 >= topElement) {
+                if (window.pageYOffset + 500 >= topElement) {
                     Object.assign(topElements, { [key]: true })
                 }
             }
@@ -41,8 +56,8 @@ const ScrollProvider = ({ children }) => {
     const setTranslateLeft = useCallback((el) => {
         const heightElement = el?.offsetHeight
         if (window.pageYOffset <= heightElement) {
-           let translateLeft = Math.floor(window.pageYOffset / 10)
-           return translateLeft
+            let translateLeft = Math.floor(window.pageYOffset / 10)
+            return translateLeft
         }
     }, [])
 
@@ -57,18 +72,47 @@ const ScrollProvider = ({ children }) => {
                 joinTeam: homeJoinTeamHeading.current,
                 imageJoinTeam: imageJoinTeam.current
             }
-            topHomeElements.current = homeElements
+
+            const careersElements = {
+                title: careersJobTitle.current,
+                send: careersSend.current,
+                listJob: careersListJob.current
+            }
+
+            const aboutElements = {
+                content: aboutContent.current,
+                titleInfo: aboutTitleInfo.current,
+                info: aboutInfo.current,
+                titleFounders: aboutTitleFounders.current,
+                founders: aboutFounders.current,
+                offices: aboutOurOffices.current
+            }
+
+            switch (pathname) {
+                case ROUTES.HOME:
+                    elements.current = homeElements
+                    break
+                case ROUTES.CAREERS:
+                    elements.current = careersElements
+                    break
+                case ROUTES.ABOUT:
+                    elements.current = aboutElements
+                    break
+                default: break
+            }
         }, 500)
 
         const handleScroll = () => {
+            setActiveElement(setElements(elements.current))
+
             if (pathname === ROUTES.HOME) {
                 setTranslate(setTranslateLeft(backGroundHome.current) || 0)
-                setActiveElement(getTopElements(topHomeElements.current))
             }
 
             if (pathname === ROUTES.ABOUT) {
                 setTranslate(setTranslateLeft(headerAbout.current) || 0)
             }
+
             setIsScrollImage(true)
         }
         const timerIDInterval = setInterval(() => {
@@ -84,7 +128,7 @@ const ScrollProvider = ({ children }) => {
             clearInterval(timerIDInterval)
         }
 
-    }, [pathname, isScrollImage, setTranslateLeft, getTopElements])
+    }, [pathname, isScrollImage, setTranslateLeft, setElements])
 
     useEffect(() => {
 
@@ -100,21 +144,34 @@ const ScrollProvider = ({ children }) => {
     }, [pathname])
 
     const value = {
+        isScrollImage,
+        translate,
+        
+        marginAbout,
+        marginGames,
         headerElement,
         gamesElement,
-        marginGames,
         backGroundHome,
-        marginAbout,
-        translate,
-        imageAbout,
-        headerAbout,
-        isScrollImage,
         homeAboutHeading,
         homeOurGamesHeading,
         homeOurGamesContent,
         homeJoinTeamHeading,
         imageHomeAbout,
         imageJoinTeam,
+
+        careersJobTitle,
+        careersSend,
+        careersListJob,
+
+        imageAbout,
+        headerAbout,
+        aboutContent,
+        aboutTitleInfo,
+        aboutInfo,
+        aboutTitleFounders,
+        aboutFounders,
+        aboutOurOffices,
+
         activeElement
     }
 

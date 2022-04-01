@@ -3,29 +3,36 @@ import { ButtonLink, JoinTeam, FormContainer, SubscribeForm } from '../../compon
 import { ScrollContext } from '../../context'
 
 const JoinTeamContainer = ({ data }) => {
-    const { homeJoinTeamHeading, imageJoinTeam } = useContext(ScrollContext)
+    const { homeJoinTeamHeading, imageJoinTeam, activeElement } = useContext(ScrollContext)
 
     return (
         <JoinTeam>
-            {data.background.map((bg, index) => <JoinTeam.Background key={index} bg={bg} />)}
-            <JoinTeam.Wrapper>
-                <JoinTeam.Group>
-                    <JoinTeam.Heading ref={homeJoinTeamHeading}>
-                        <JoinTeam.Title>{data.title}</JoinTeam.Title>
-                        <JoinTeam.Text>{data.text}</JoinTeam.Text>
-                        <ButtonLink to={data.path}>{data.name}</ButtonLink>
-                    </JoinTeam.Heading>
-                    <JoinTeam.Image src={data.img} alt='' ref={imageJoinTeam}/>
-                </JoinTeam.Group>
-            </JoinTeam.Wrapper>
-            <JoinTeam.Overlay>
+            <JoinTeam.Background>
                 <JoinTeam.Wrapper>
-                    <JoinTeam.Group>
-                        <FormContainer />
-                        <SubscribeForm />
+                    <JoinTeam.Group active={activeElement?.imageJoinTeam}>
+                        <JoinTeam.Heading ref={homeJoinTeamHeading} active={activeElement?.joinTeam}>
+                            <JoinTeam.Title>{data.title}</JoinTeam.Title>
+                            <JoinTeam.Text>{data.text}</JoinTeam.Text>
+                            <ButtonLink to={data.path}>{data.name}</ButtonLink>
+                        </JoinTeam.Heading>
+                        <JoinTeam.Image
+                            src={data.img}
+                            alt=''
+                            ref={imageJoinTeam}
+                        />
                     </JoinTeam.Group>
                 </JoinTeam.Wrapper>
-            </JoinTeam.Overlay>
+            </JoinTeam.Background>
+            <JoinTeam.Background>
+                <JoinTeam.Overlay>
+                    <JoinTeam.Wrapper>
+                        <JoinTeam.Group>
+                            <FormContainer />
+                            <SubscribeForm />
+                        </JoinTeam.Group>
+                    </JoinTeam.Wrapper>
+                </JoinTeam.Overlay>
+            </JoinTeam.Background>
         </JoinTeam>
     )
 }

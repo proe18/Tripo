@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Image } from '../../GlobalStyles'
 import { ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
 
@@ -32,29 +32,6 @@ export const Inner = styled.section`
 
     @media (min-width: 1001px) and (max-width: 1319px) {
         margin-top: ${({ marginTop }) => `${marginTop - 115}px`}
-    }
-`
-
-export const Heading = styled.div`
-    text-align: center;
-    color: ${({ theme }) => theme.color.textColor};
-    opacity: 0;
-    will-change: opacity, transition;
-    opacity: ${({ active }) => active === true && 1};
-    transition: opacity linear 0.3s;
-
-    ${ButtonLink} {
-        max-width: 142px;
-        
-        &:hover {
-            outline: 1px solid;
-        }
-
-        @media (max-width: 394px) {
-            max-width: 140px;
-            max-height: 55px;
-            line-height: 55px;
-        }
     }
 `
 
@@ -106,6 +83,57 @@ export const Text = styled.p`
     }
 `
 
+export const Heading = styled.div`
+    text-align: center;
+    color: ${({ theme }) => theme.color.textColor};
+
+    ${ButtonLink} {
+        max-width: 142px;
+        
+        &:hover {
+            outline: 1px solid;
+        }
+
+        @media (max-width: 394px) {
+            max-width: 140px;
+            max-height: 55px;
+            line-height: 55px;
+        }
+    }
+
+    & {
+        ${Title}, ${SubTitle}, ${Text}, ${ButtonLink} {
+            opacity: 0;
+        }
+    }
+    
+    ${({ active }) => active && css`
+        ${SubTitle} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s;
+        }
+
+        ${Title} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.2s;
+        }
+
+        ${Text} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.4s;
+        }
+
+        ${ButtonLink} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.6s;
+        }
+    `}
+`
+
 export const Wrap = styled.div`
     max-width: 698px;
     max-height: 398px;
@@ -114,6 +142,24 @@ export const Wrap = styled.div`
 
     ${Image} {
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
+    opacity: 0;
+    &:first-of-type {
+        transform: translateY(50px);
+    }
+
+    ${({active}) => active && css`
+        will-change: opacity, transition;
+        &:first-of-type {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all linear 0.8s;
+        }
+
+        &:last-of-type {
+            opacity: 1;
+            transition: opacity linear 1.5s;
+        }
+    `}
 
     &:last-of-type {
             max-width: 229px;

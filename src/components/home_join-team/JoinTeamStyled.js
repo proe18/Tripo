@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Image, Wrapper } from '../../GlobalStyles'
 import { ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
+import JoinTeam_1Bg from '../../images/background_home_2.jpg'
+import JoinTeam_2Bg from '../../images/background_careers_3.jpg'
 
 export const Inner = styled.section`
     width: 100%;
@@ -62,16 +64,20 @@ export const Inner = styled.section`
 export const Background = styled.div`
     width: 100%;
     height: 100%;
-    background: ${({ bg }) => `url(${bg})`} no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed, scroll;
 
-    &:first-of-type {
+    &:first-child {
         min-height: 747px;
+        background-image: url(${JoinTeam_1Bg});
+        z-index: 5;
     }
 
-    &:nth-of-type(2) {
+    &:last-child {
         min-height: 600px;
+        background-image: url(${JoinTeam_2Bg});
+        z-index: 10;
     }
 
     @media (max-width: 640px) {
@@ -83,11 +89,11 @@ export const Background = styled.div`
     }
 
     @media (max-width: 940px) {
-        &:first-of-type {
+        &:first-child {
             min-height: 500px;
         }
 
-        &:nth-of-type(2) {
+        &:last-child {
             min-height: 1165px;
         }
     }
@@ -97,6 +103,16 @@ export const Group = styled.div`
     width: 100%;
     height: 100%;
     max-height: 747px;
+
+    ${Image} {
+        transform: translateY(414px);
+
+        ${({active}) => active && css`
+            will-change: transform, transition;
+            transform: translateY(0);
+            transition: transform linear 0.9s;
+        `}
+    }
 `
 
 export const Overlay = styled.div`
@@ -106,7 +122,7 @@ export const Overlay = styled.div`
     max-height: 600px;
     position: absolute;
     top: 747px;
-    background-color: ${({theme}) => theme.color.bgSecondColor};
+    background-color: ${({ theme }) => theme.color.bgSecondColor};
 
     ${Group} {
         max-height: 600px;
@@ -116,37 +132,6 @@ export const Overlay = styled.div`
     @media (max-width: 940px) {
         max-height: 1165px;
         top: 500px;
-    }
-`
-
-export const Heading = styled.div`
-    width: 100%;
-    max-width: 770px;
-    color: ${({ theme }) => theme.color.whiteColor};
-    position: absolute;
-    top: 115px;
-
-    ${ButtonLink} {
-        margin: 0;
-        max-width: 150px;
-        text-align: center;
-        color: ${({ theme }) => theme.color.textColor};
-        background-color: ${({ theme }) => theme.color.secondColor};
-
-        &:hover {
-            background-color: ${({ theme }) => theme.color.whiteColor};
-        }
-
-        @media (max-width: 940px) {
-            max-width: 140px;
-            max-height: 50px;
-            line-height: 50px;
-            font-size: 1.5rem;
-        }
-    }
-
-    @media (max-width: 940px) {
-        top: 40px;
     }
 `
 
@@ -182,5 +167,62 @@ export const Text = styled.p`
 
     @media (min-width: 571px) and (max-width: 704px) {
         font-size: 4rem;
+    }
+`
+
+export const Heading = styled.div`
+    width: 100%;
+    max-width: 770px;
+    color: ${({ theme }) => theme.color.whiteColor};
+    position: absolute;
+    top: 115px;
+
+    ${ButtonLink} {
+        margin: 0;
+        max-width: 150px;
+        text-align: center;
+        color: ${({ theme }) => theme.color.textColor};
+        background-color: ${({ theme }) => theme.color.secondColor};
+
+        &:hover {
+            background-color: ${({ theme }) => theme.color.whiteColor};
+        }
+
+        @media (max-width: 940px) {
+            max-width: 140px;
+            max-height: 50px;
+            line-height: 50px;
+            font-size: 1.5rem;
+        }
+    }
+
+    & {
+        ${Title}, ${Text}, ${ButtonLink} {
+            opacity: 0;
+        }
+    }
+
+    ${({ active }) => active && css`
+        ${Title} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.2s;
+        }
+
+        ${Text} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.4s;
+        }
+
+        ${ButtonLink} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.6s;
+        }
+    `}
+
+    @media (max-width: 940px) {
+        top: 40px;
     }
 `

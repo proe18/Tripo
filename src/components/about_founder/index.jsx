@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Wrapper, Image } from '../../GlobalStyles'
 import {
     Inner,
@@ -22,17 +23,17 @@ Founder.Wrapper = function FounderWrapper({ children, ...restProps }) {
     )
 }
 
-Founder.Title = function FounderTitle({ children, ...restProps }) {
+Founder.Title = forwardRef(function FounderTitle({ children, ...restProps }, ref) {
     return (
-        <Title {...restProps}>{children}</Title>
+        <Title {...restProps} ref={ref}>{children}</Title>
     )
-}
+})
 
-Founder.Group = function FounderGroup({ children, ...restProps }) {
+Founder.Group = forwardRef(function FounderGroup({ children, ...restProps }, ref) {
     return (
-        <Group {...restProps}>{children}</Group>
+        <Group {...restProps} ref={ref}>{children}</Group>
     )
-}
+})
 
 Founder.Box = function FounderBox({ children, ...restProps }) {
     return (

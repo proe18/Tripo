@@ -7,8 +7,6 @@ import TreasureBg from '../images/background_treasure_2.jpg'
 import MainImage from '../images/home_1.jpg'
 import SubImage from '../images/home_2.jpg'
 import OurGameImage from '../images/home_3.jpg'
-import JoinTeam_1Bg from '../images/background_home_2.jpg'
-import JoinTeam_2Bg from '../images/background_careers_3.jpg'
 import JoinTeamImage from '../images/home_4.jpg'
 import AppStore from "../images/app_store.jpg"
 import GooglePlay from "../images/google_play.jpg"
@@ -144,7 +142,6 @@ export const homeData = {
         text: "It takes the world's best talent to change the game.",
         path: ROUTES.CAREERS,
         name: 'Explore Careers',
-        background: [JoinTeam_1Bg, JoinTeam_2Bg],
         img: JoinTeamImage
     }
 }

@@ -18,7 +18,7 @@ const JoinTeam = ({ children, ...restProps }) => {
 
 JoinTeam.Background = function JoinTeamBackground({ children, ...restProps }) {
     return (
-        <Background {...restProps} />
+        <Background {...restProps} >{children}</Background>
     )
 }
 

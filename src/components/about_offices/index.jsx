@@ -1,15 +1,16 @@
+import { forwardRef } from 'react'
 import { Wrapper, Image } from '../../GlobalStyles'
-import { 
-    Background, 
-    Overlay, 
-    Group, 
-    Heading, 
-    SubTitle, 
-    Title, 
-    Text, 
-    Box, 
-    Wrap, 
-    Content 
+import {
+    Background,
+    Overlay,
+    Group,
+    Heading,
+    SubTitle,
+    Title,
+    Text,
+    Box,
+    Wrap,
+    Content
 } from './OfficesStyled'
 
 const Offices = ({ children, ...restProps }) => {
@@ -30,11 +31,11 @@ Offices.Wrapper = function OfficesWrapper({ children, ...restProps }) {
     )
 }
 
-Offices.Group = function OfficesGroup({ children, ...restProps }) {
+Offices.Group = forwardRef(function OfficesGroup({ children, ...restProps }, ref) {
     return (
-        <Group {...restProps}>{children}</Group>
+        <Group {...restProps} ref={ref}>{children}</Group>
     )
-}
+})
 
 Offices.Heading = function OfficesHeading({ children, ...restProps }) {
     return (

@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Wrapper } from '../../GlobalStyles'
 import { 
     Background, 
@@ -27,17 +28,17 @@ Info.Wrapper = function InfoWrapper({ children, ...restProps }) {
     )
 }
 
-Info.Title = function InfoTitle({ children, ...restProps }) {
+Info.Title = forwardRef(function InfoTitle({ children, ...restProps }, ref) {
     return (
-        <Title {...restProps}>{children}</Title>
+        <Title {...restProps} ref={ref}>{children}</Title>
     )
-}
+})
 
-Info.Group = function InfoGroup({ children, ...restProps }) {
+Info.Group = forwardRef(function InfoGroup({ children, ...restProps }, ref) {
     return (
-        <Group {...restProps}>{children}</Group>
+        <Group {...restProps} ref={ref}>{children}</Group>
     )
-}
+})
 
 Info.Box = function InfoBox({ children, ...restProps }) {
     return (

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link, PlatForms, Image } from '../../GlobalStyles'
 import BackGround from '../../images/background_home_3.jpg'
 
@@ -75,16 +75,6 @@ export const Background = styled.div`
     }
 `
 
-export const Heading = styled.div`
-    margin-top: 205px;
-    text-align: center;
-    color: ${({ theme }) => theme.color.textColor};
-    
-    @media (max-width: 640px) {
-        margin-top: 140px;
-    }
-`
-
 export const Title = styled.h1`
     font-size: 5rem;
     font-weight: 500;
@@ -109,6 +99,34 @@ export const Text = styled.p`
 
     @media (max-width: 320px) {
         font-size: 1.6rem;
+    }
+`
+
+export const Heading = styled.div`
+    margin-top: 205px;
+    text-align: center;
+    color: ${({ theme }) => theme.color.textColor};
+    & {
+        ${Title}, ${Text} {
+            opacity: 0;
+        }
+    }
+    ${({ active }) => active && css`
+        ${Title} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s;
+        }
+
+        ${Text} {
+            will-change: opacity, transition;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.2s;
+        }
+    `}
+    
+    @media (max-width: 640px) {
+        margin-top: 140px;
     }
 `
 
@@ -151,6 +169,10 @@ export const Game = styled.div`
         display: flex;
         align-items: center;
         text-align: left;
+        
+        ${Title}, ${Text} {
+            opacity: 1;
+        }
 
         @media (max-width: 428px) {
             margin-bottom: 10px;

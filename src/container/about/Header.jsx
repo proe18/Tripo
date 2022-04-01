@@ -7,6 +7,7 @@ const HeaderContainer = ({ data }) => {
         headingElement,
         imageAbout,
         headerAbout,
+        aboutContent,
         translate,
         isScrollImage
     } = useContext(ScrollContext)
@@ -24,7 +25,7 @@ const HeaderContainer = ({ data }) => {
                 <HeaderAbout.Wrap translateLeft={translate} isScroll={isScrollImage}>
                     <HeaderAbout.Image src={data.img} alt='' ref={imageAbout} />
                 </HeaderAbout.Wrap>
-                <HeaderAbout.Content>
+                <HeaderAbout.Content ref={aboutContent}>
                     <HeaderAbout.Text>{data.text}</HeaderAbout.Text>
                     <HeaderAbout.Text>{data.text2}</HeaderAbout.Text>
                 </HeaderAbout.Content>

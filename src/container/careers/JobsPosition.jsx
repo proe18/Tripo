@@ -1,15 +1,16 @@
 import { useContext } from 'react'
-import { PositionFormContext } from '../../context'
+import { PositionFormContext, ScrollContext } from '../../context'
 import { Button, ButtonLink, JobsPosition } from '../../components'
 
 const JobsPositionContainer = ({ data }) => {
     const { handleCloseForm } = useContext(PositionFormContext)
+    const { careersJobTitle, careersSend, careersListJob } = useContext(ScrollContext)
 
     return (
         <JobsPosition>
             <JobsPosition.Wrapper>
-                <JobsPosition.Title>{data.title}</JobsPosition.Title>
-                <JobsPosition.ListJob>
+                <JobsPosition.Title ref={careersJobTitle}>{data.title}</JobsPosition.Title>
+                <JobsPosition.ListJob ref={careersListJob}>
                     {data.jobs.map(job =>
                         <JobsPosition.Position key={job.title}>
                             <JobsPosition.Wrap to={job.path}>
@@ -28,7 +29,7 @@ const JobsPositionContainer = ({ data }) => {
                 </JobsPosition.ListJob>
                 <JobsPosition.Send>
                     <JobsPosition.Overlay>
-                        <JobsPosition.Group>
+                        <JobsPosition.Group ref={careersSend}>
                             <JobsPosition.SubTitle>{data.sendCV.subTitle}</JobsPosition.SubTitle>
                             <JobsPosition.Title>{data.sendCV.title}</JobsPosition.Title>
                             <Button onClick={handleCloseForm}>{data.sendCV.button}</Button>

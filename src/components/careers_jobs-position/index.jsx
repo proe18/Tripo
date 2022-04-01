@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Image, Wrapper } from '../../GlobalStyles'
 import { 
     Inner, 
@@ -26,17 +27,17 @@ JobsPosition.Wrapper = function JobsPositionWrapper({children, ...restProps}) {
     )
 }
 
-JobsPosition.Title = function JobsPositionTitle({children, ...restProps}) {
+JobsPosition.Title = forwardRef(function JobsPositionTitle({children, ...restProps}, ref) {
     return (
-        <Title {...restProps}>{children}</Title>
+        <Title {...restProps} ref={ref}>{children}</Title>
     )
-}
+})
 
-JobsPosition.ListJob = function JobsPositionListJob({children, ...restProps}) {
+JobsPosition.ListJob = forwardRef(function JobsPositionListJob({children, ...restProps}, ref) {
     return (
-        <ListJob {...restProps}>{children}</ListJob>
+        <ListJob {...restProps} ref={ref}>{children}</ListJob>
     )
-}
+})
 
 JobsPosition.Position = function JobsPosition({children, ...restProps}) {
     return (
@@ -86,11 +87,11 @@ JobsPosition.Send = function JobsPositionSend({children, ...restProps}) {
     )
 }
 
-JobsPosition.Group = function JobsPositionGroup({children, ...restProps}) {
+JobsPosition.Group = forwardRef(function JobsPositionGroup({children, ...restProps}, ref) {
     return (
-        <Group {...restProps}>{children}</Group>
+        <Group {...restProps} ref={ref}>{children}</Group>
     )
-}
+})
 
 JobsPosition.SubTitle = function JobsPositionSubTitle({children, ...restProps}) {
     return (

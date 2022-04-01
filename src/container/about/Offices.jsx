@@ -1,12 +1,16 @@
+import { useContext } from 'react'
 import { ButtonLink, Offices } from '../../components'
 import * as ROUTES from '../../constants/routes'
+import { ScrollContext } from '../../context'
 
 const OfficesContainer = ({ data }) => {
+    const { aboutOurOffices } = useContext(ScrollContext)
+
     return (
         <Offices bg={data.bg}>
             <Offices.Overlay>
                 <Offices.Wrapper>
-                    <Offices.Group>
+                    <Offices.Group ref={aboutOurOffices}>
                         <Offices.Heading>
                             <Offices.SubTitle>{data.title}</Offices.SubTitle>
                             <Offices.Title>{data.place}</Offices.Title>

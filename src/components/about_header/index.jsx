@@ -60,11 +60,11 @@ Header.Image = forwardRef(function HeaderImage({ ...restProps }, ref) {
     )
 })
 
-Header.Content = function HeaderContent({ children, ...restProps }) {
+Header.Content = forwardRef(function HeaderContent({ children, ...restProps }, ref) {
     return (
-        <Content {...restProps}>{children}</Content>
+        <Content {...restProps} ref={ref}>{children}</Content>
     )
-}
+})
 
 Header.Text = function HeaderText({ children, ...restProps }) {
     return (
