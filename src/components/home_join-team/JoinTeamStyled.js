@@ -23,39 +23,6 @@ export const Inner = styled.section`
         }
     }
 
-    ${Image} {
-        max-width: 488px;
-        max-height: 414px;
-        position: absolute;
-        bottom: 0;
-        right: 38px;
-
-        @media (max-width: 390.5px) {
-            max-width: 240px;
-            max-height: 200px;
-        }
-
-        @media (min-width: 391px) and (max-width: 420px) {
-            max-width: 270px;
-            max-height: 230px;
-        }
-
-        @media (min-width: 421px) and (max-width: 1000px) {
-            max-width: 300px;
-            max-height: 260px;
-        }
-
-        @media (min-width: 1001px) and (max-width: 1180px) {
-            max-width: 350px;
-            max-height: 300px;
-        }
-
-        @media (max-width: 940px) {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    }
-
     @media (max-width: 699.5px) {
         margin-top: 40px;
     }
@@ -105,10 +72,43 @@ export const Group = styled.div`
     max-height: 747px;
 
     ${Image} {
-        transform: translateY(414px);
+        max-width: 488px;
+        max-height: 414px;
+        position: absolute;
+        bottom: 0;
+        right: 38px;
+
+        @media (max-width: 390.5px) {
+            max-width: 240px;
+            max-height: 200px;
+        }
+
+        @media (min-width: 391px) and (max-width: 420px) {
+            max-width: 270px;
+            max-height: 230px;
+        }
+
+        @media (min-width: 421px) and (max-width: 1000px) {
+            max-width: 300px;
+            max-height: 260px;
+        }
+
+        @media (min-width: 1001px) and (max-width: 1180px) {
+            max-width: 350px;
+            max-height: 300px;
+        }
+
+        @media (max-width: 940px) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    ${Image} {
+        transform: ${({heightElement}) => `translateY(${heightElement}px)`};
 
         ${({active}) => active && css`
-            will-change: transform, transition;
+            will-change: transform;
             transform: translateY(0);
             transition: transform linear 0.9s;
         `}
@@ -204,19 +204,19 @@ export const Heading = styled.div`
 
     ${({ active }) => active && css`
         ${Title} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s 0.2s;
         }
 
         ${Text} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s 0.4s;
         }
 
         ${ButtonLink} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s 0.6s;
         }

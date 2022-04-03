@@ -44,7 +44,6 @@ export const Wrap = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
 
     ${Image} {
-        will-change: transition;
         transition: ease-in-out 0.9s;
         -moz-transition: ease-in-out 0.9s;
         -webkit-transition: ease-in-out 0.9s;

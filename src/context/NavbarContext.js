@@ -25,6 +25,7 @@ const NavbarProvider = ({ children }) => {
     const pathRoute = useRef(pathname)
     const timerID1 = useRef(0)
     const timerID2 = useRef(0)
+    const timerIDTimeout = useRef(0)
 
     //handle show and hidden dropdown if device is PC
     const handleMouseEnter = () => setDropDown(window.innerWidth > 1280 && !dropDown)
@@ -96,7 +97,6 @@ const NavbarProvider = ({ children }) => {
 
     //handle scroll to position
     useEffect(() => {
-        setIsShow(true)
         if (pathname === ROUTES.HOME) {
             timerID1.current = setInterval(() => setIsActive(window.pageYOffset >= 4296), 300)
         }
@@ -140,6 +140,17 @@ const NavbarProvider = ({ children }) => {
 
     //handle show or hide navbar, heading page  
     useEffect(() => {
+        switch (pathname) {
+            case ROUTES.KIPON:
+            case ROUTES.ROBOTRIX:
+            case ROUTES.TREASURE:
+                timerIDTimeout.current = setTimeout(() => setIsShow(true), 750)
+                break
+            default:
+                setIsShow(true)
+                break
+        }
+
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 860)
             if (window.innerWidth > 860) {
@@ -192,6 +203,7 @@ const NavbarProvider = ({ children }) => {
             navbar.removeEventListener('mouseover', handleMouseOver)
             navbar.removeEventListener('mouseout', handleMouseOut)
             clearInterval(timerIDInterval)
+            clearTimeout(timerIDTimeout)
         }
     }, [pathname, isScroll, dropDown, isEqualParam, isMouseHover])
 

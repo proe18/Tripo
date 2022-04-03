@@ -3,14 +3,19 @@ import { Info } from '../../components'
 import { ScrollContext } from '../../context'
 
 const InfoContainer = ({ data }) => {
-    const { aboutTitleInfo, aboutInfo } = useContext(ScrollContext)
+    const { aboutTitleInfo, aboutInfo, activeElement } = useContext(ScrollContext)
 
     return (
         <Info bg={data.bg}>
             <Info.Overlay>
                 <Info.Wrapper>
-                    <Info.Title ref={aboutTitleInfo}>{data.title}</Info.Title>
-                    <Info.Group ref={aboutInfo}>
+                    <Info.Title
+                        ref={aboutTitleInfo}
+                        active={activeElement?.titleInfo}
+                    >
+                        {data.title}
+                    </Info.Title>
+                    <Info.Group ref={aboutInfo} active={activeElement?.info}>
                         {data.contents.map(content =>
                             <Info.Box key={content.title}>
                                 <Info.Content>

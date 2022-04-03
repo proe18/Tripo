@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback, createContext } from 'react'
+import { useEffect, useRef, useLayoutEffect, useState, useCallback, createContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 
@@ -30,14 +30,70 @@ const ScrollProvider = ({ children }) => {
     const aboutFounders = useRef('about-founders')
     const aboutOurOffices = useRef('about-ourOffices')
 
+    const gamesContent = useRef('games-content')
+    const postionContent = useRef('position-content')
 
     const elements = useRef({})
     const [activeElement, setActiveElement] = useState({})
 
     const [marginGames, setMarginGames] = useState(0)
     const [marginAbout, setMarginAbout] = useState(0)
+    const [heightImage, setHeightImage] = useState(0)
     const [isScrollImage, setIsScrollImage] = useState(false)
     const [translate, setTranslate] = useState(0)
+
+    const getElements = useCallback((path) => {
+        const homeElements = {
+            about: homeAboutHeading.current,
+            imageAbout: imageHomeAbout.current,
+            ourGamesHeading: homeOurGamesHeading.current,
+            ourGamesContent: homeOurGamesContent.current,
+            joinTeam: homeJoinTeamHeading.current,
+            imageJoinTeam: imageJoinTeam.current
+        }
+
+        const careersElements = {
+            title: careersJobTitle.current,
+            send: careersSend.current,
+            listJob: careersListJob.current
+        }
+
+        const aboutElements = {
+            content: aboutContent.current,
+            titleInfo: aboutTitleInfo.current,
+            info: aboutInfo.current,
+            titleFounders: aboutTitleFounders.current,
+            founders: aboutFounders.current,
+            offices: aboutOurOffices.current
+        }
+
+        const gamesElements = { content: gamesContent.current }
+        const positionElements = { content: postionContent.current }
+
+        switch (path) {
+            case ROUTES.HOME:
+                elements.current = homeElements
+                break
+            case ROUTES.CAREERS:
+                elements.current = careersElements
+                break
+            case ROUTES.ABOUT:
+                elements.current = aboutElements
+                break
+            case ROUTES.KIPON:
+            case ROUTES.ROBOTRIX:
+            case ROUTES.TREASURE:
+                elements.current = gamesElements
+                break
+            case `${ROUTES.CAREERS}/${ROUTES.MANAGER}`:
+            case `${ROUTES.CAREERS}/${ROUTES.TESTER}`:
+            case `${ROUTES.CAREERS}/${ROUTES.DESIGNER}`:
+            case `${ROUTES.CAREERS}/${ROUTES.DEVELOPER}`:
+                elements.current = positionElements
+                break
+            default: break
+        }
+    }, [])
 
     const setElements = useCallback(elements => {
         if (typeof elements === 'object') {
@@ -45,7 +101,7 @@ const ScrollProvider = ({ children }) => {
             let topElement
             for (let key in elements) {
                 topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.scrollY - 200)
-                if (window.pageYOffset + 500 >= topElement) {
+                if (window.pageYOffset + 350 >= topElement) {
                     Object.assign(topElements, { [key]: true })
                 }
             }
@@ -63,44 +119,7 @@ const ScrollProvider = ({ children }) => {
 
     useEffect(() => {
         setTranslate(0)
-        const timerIDTimeOut = setTimeout(() => {
-            const homeElements = {
-                about: homeAboutHeading.current,
-                imageAbout: imageHomeAbout.current,
-                ourGamesHeading: homeOurGamesHeading.current,
-                ourGamesContent: homeOurGamesContent.current,
-                joinTeam: homeJoinTeamHeading.current,
-                imageJoinTeam: imageJoinTeam.current
-            }
-
-            const careersElements = {
-                title: careersJobTitle.current,
-                send: careersSend.current,
-                listJob: careersListJob.current
-            }
-
-            const aboutElements = {
-                content: aboutContent.current,
-                titleInfo: aboutTitleInfo.current,
-                info: aboutInfo.current,
-                titleFounders: aboutTitleFounders.current,
-                founders: aboutFounders.current,
-                offices: aboutOurOffices.current
-            }
-
-            switch (pathname) {
-                case ROUTES.HOME:
-                    elements.current = homeElements
-                    break
-                case ROUTES.CAREERS:
-                    elements.current = careersElements
-                    break
-                case ROUTES.ABOUT:
-                    elements.current = aboutElements
-                    break
-                default: break
-            }
-        }, 500)
+        const timerIDTimeOut = setTimeout(getElements(pathname), 500)
 
         const handleScroll = () => {
             setActiveElement(setElements(elements.current))
@@ -128,15 +147,17 @@ const ScrollProvider = ({ children }) => {
             clearInterval(timerIDInterval)
         }
 
-    }, [pathname, isScrollImage, setTranslateLeft, setElements])
+    }, [pathname, isScrollImage, setTranslateLeft, setElements, getElements])
 
+    //set margin for games element and about element
+    const setHeightElement = () => {
+        setMarginGames(headerElement.current?.offsetHeight)
+        setMarginAbout(gamesElement.current?.offsetHeight)
+        setHeightImage(imageJoinTeam.current?.offsetHeight)
+    }
+
+    useLayoutEffect(setHeightElement, [])
     useEffect(() => {
-
-        //set margin for games element and about element
-        const setHeightElement = () => {
-            setMarginGames(headerElement.current?.offsetHeight)
-            setMarginAbout(gamesElement.current?.offsetHeight)
-        }
 
         window.addEventListener('resize', setHeightElement)
 
@@ -146,9 +167,10 @@ const ScrollProvider = ({ children }) => {
     const value = {
         isScrollImage,
         translate,
-        
+
         marginAbout,
         marginGames,
+        heightImage,
         headerElement,
         gamesElement,
         backGroundHome,
@@ -171,6 +193,9 @@ const ScrollProvider = ({ children }) => {
         aboutTitleFounders,
         aboutFounders,
         aboutOurOffices,
+
+        gamesContent,
+        postionContent,
 
         activeElement
     }

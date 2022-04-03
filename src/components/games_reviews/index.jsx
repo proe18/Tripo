@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Wrapper, Image } from '../../GlobalStyles'
 import {
     Inner,
@@ -72,11 +73,11 @@ Reviews.Box = function ReviewsBox({ children, ...restProps }) {
     )
 }
 
-Reviews.Content = function ReviewsContent({ children, ...restProps }) {
+Reviews.Content = forwardRef(function ReviewsContent({ children, ...restProps }, ref) {
     return (
-        <Content {...restProps}>{children}</Content>
+        <Content {...restProps} ref={ref}>{children}</Content>
     )
-}
+})
 
 Reviews.Name = function ReviewsName({ children, ...restProps }) {
     return (

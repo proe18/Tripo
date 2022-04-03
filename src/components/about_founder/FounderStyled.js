@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Image, Wrapper } from '../../GlobalStyles'
 
 export const Inner = styled.section`
@@ -20,6 +20,12 @@ export const Title = styled.h1`
     text-align: center;
     padding: 110px 0 70px;
     color: ${({ theme }) => theme.color.whiteColor};
+    opacity: 0;
+    ${({ active }) => active && css`
+        will-change: opacity;
+        opacity: 1;
+        transition: opacity linear 1s;
+    `}
 
     @media (max-width: 640px) {
         font-size: 2.6rem;
@@ -46,6 +52,14 @@ export const Group = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    ${({ active }) => active && css`
+        will-change: opacity, transform;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all linear 1s;
+    `}
 
     @media (max-width: 1000px) {
         flex-wrap: wrap;
@@ -69,7 +83,6 @@ export const Wrap = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
 
     ${Image} {
-        will-change: transition;
         transition: ease-in-out 0.9s;
         -moz-transition: ease-in-out 0.9s;
         -webkit-transition: ease-in-out 0.9s;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Wrapper } from '../../GlobalStyles'
 
 const widthContent = '660'
@@ -9,20 +9,6 @@ export const Inner = styled.section`
             width: 100%;
             max-width: 100%;
         }
-    }
-`
-
-export const Group = styled.div`
-    width: 100%;
-    max-width: ${`${widthContent * 2}px`};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -275px;
-
-    @media (max-width: 1000px) {
-        margin-top: 0;
-        display: block;
     }
 `
 
@@ -60,6 +46,32 @@ export const Wrap = styled.div`
         max-width: 90%;
         margin: 0 auto;
         padding: 40px 0;
+    }
+`
+
+export const Group = styled.div`
+    width: 100%;
+    max-width: ${`${widthContent * 2}px`};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -275px;
+
+    ${Wrap} {
+        opacity: 0;
+        transform: translateX(-50px);
+
+        ${({ active }) => active && css`
+            will-change: opacity, transform;
+            opacity: 1;
+            transform: translateX(0);
+            transition: all linear 1.5s;
+        `}
+    }
+
+    @media (max-width: 1000px) {
+        margin-top: 0;
+        display: block;
     }
 `
 

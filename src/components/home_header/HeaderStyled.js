@@ -9,6 +9,22 @@ export const Inner = styled.header`
     max-height: 800px;
     position: relative;
     top: 0;
+
+    @media (max-width: 420px) {
+        max-height: 315px;
+    }
+
+    @media (min-width: 421px) and (max-width: 640px) {
+        max-height: 480px;
+    }
+
+    @media (min-width: 641px) and (max-width: 768px) {
+        max-height: 550px;
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        max-height: 650px;
+    }
 `
 
 export const Wrap = styled.div`
@@ -38,11 +54,6 @@ export const Background = styled.div`
     background-size: cover;
     ${({ isScroll }) => isScroll && css`
         width: 105%;
-        &::-webkit-scrollbar:horizontal {
-            height: 0;
-            width: 0;
-            display: none;
-        }
         will-change: transform;
         transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`};
     `}
@@ -75,7 +86,7 @@ export const Background = styled.div`
 export const Heading = styled.div`
     padding-top: 185px;
     color: ${({ theme }) => theme.color.textColor};
-    will-change: opacity, transition;
+    will-change: opacity;
     opacity: ${({ animationHeading }) => animationHeading ? 1 : 0};
     transition: opacity linear 2s;
     -moz-transition: opacity linear 2s;
@@ -238,7 +249,6 @@ export const Overlay = styled.div`
     left: 0;
     bottom: 0;
     background-image: linear-gradient(180deg, transparent ,rgb(188, 52, 41));
-    will-change: transition;
     transition: background-image ease-out 1.5s;
     -moz-transition: background-image ease-out 1.5s;
     -webkit-transition: background-image ease-out 1.5s;
@@ -257,7 +267,6 @@ export const Game = styled(ReactLink)`
     ${Image} {
         max-width: 300px;
         min-height: 398px;
-        will-change: transition;
         transition: ease-in-out 0.9s;
         -moz-transition: ease-in-out 0.9s;
         -webkit-transition: ease-in-out 0.9s;

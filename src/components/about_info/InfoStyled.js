@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Wrapper } from '../../GlobalStyles'
 
 const maxHeight = '860px'
@@ -7,7 +7,7 @@ export const Background = styled.section`
     width: 100%;
     height: 100%;
     max-height: ${maxHeight};
-    background: ${({bg}) => `url(${bg})`} no-repeat;
+    background: ${({ bg }) => `url(${bg})`} no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
@@ -21,7 +21,7 @@ export const Overlay = styled.div`
     width: 100%;
     height: 100%;
     max-height: ${maxHeight};
-    background-color: ${({theme}) => theme.color.overlayAbout};
+    background-color: ${({ theme }) => theme.color.overlayAbout};
 
     ${Wrapper} {
         padding: 136px 0 132px;
@@ -41,7 +41,13 @@ export const Title = styled.h1`
     font-weight: 500;
     text-align: center;
     margin-bottom: 54px;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
+    opacity: 0;
+    ${({ active }) => active && css`
+        will-change: opacity;
+        opacity: 1;
+        transition: opacity linear 1.5s;
+    `}
 
     @media (max-width: 639.5px) {
         font-size: 2.6rem;
@@ -60,27 +66,17 @@ export const Title = styled.h1`
     }
 `
 
-export const Group = styled.div`
-    width: 100%;
-    max-width: 820px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-
-    @media (max-width: 866.5px) {
-        display: block;
-    }
-`
-
 export const Box = styled.div`
     width: 100%;
     max-width: 390px;
     padding: 40px;
-    border-radius: ${({theme}) => theme.borderRadius.radius2};
-    background-color: ${({theme}) => theme.color.whiteColor};
-    box-shadow: ${({theme}) => theme.shadow.boxShadow};
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
+    background-color: ${({ theme }) => theme.color.whiteColor};
+    box-shadow: ${({ theme }) => theme.shadow.boxShadow};
+
+    ${Title} {
+        opacity: 1;
+    }
 
     &:last-of-type {
         width: 100%;
@@ -106,6 +102,39 @@ export const Box = styled.div`
     }
 `
 
+export const Group = styled.div`
+    width: 100%;
+    max-width: 820px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    ${Box} {
+        opacity: 0;
+        transform: translateX(-50px);
+        ${({ active }) => active && css`
+            will-change: opacity, transform;
+            &:first-of-type, :nth-child(2) {
+                opacity: 1;
+                transform: translateX(0);
+                transition: all linear 0.8s;
+            }
+
+            &:last-of-type {
+                opacity: 1;
+                transform: translateX(0);
+                transition: all linear 0.8s 0.4s;
+            }
+        `}
+    }
+
+    @media (max-width: 866.5px) {
+        display: block;
+    }
+`
+
 export const Content = styled.div`
     width: 100%;
     max-width: 310px;
@@ -117,7 +146,7 @@ export const Content = styled.div`
         padding: 0;
         margin: 0;
         text-align: left;
-        color: ${({theme}) => theme.color.primaryColor};
+        color: ${({ theme }) => theme.color.primaryColor};
 
         @media (max-width: 639.5px) {
             font-size: 2.2rem;

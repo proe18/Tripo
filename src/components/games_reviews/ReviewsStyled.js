@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Wrapper } from '../../GlobalStyles'
 
 export const Inner = styled.section`
     margin-top: 95px;
-    opacity: ${({hideReviews}) => hideReviews === false ? 0 : 1};
+    opacity: ${({ hideReviews }) => hideReviews === false ? 0 : 1};
 
     @media (max-width: 640px) {
         margin-top: 50px;
@@ -144,20 +144,6 @@ export const Box = styled.div`
     }
 `
 
-export const Content = styled.div`
-    width: 100%;
-    max-width: 241px;
-    margin: 0 auto;
-
-    @media (max-width: 640px) {
-        width: 85%;
-    }
-
-    @media (max-width: 840px) {
-        max-width: 100%;
-    }
-`
-
 export const Name = styled.p`
     font-size: 2.1rem;
     font-family: 'Roboto', sans-serif;
@@ -181,6 +167,54 @@ export const Background = styled.div`
 
     @media (max-width: 840px) {
         margin: 0;
+    }
+`
+
+export const SubTitle = styled.h2`
+    font-size: 2.1rem;
+    font-family: 'Roboto', sans-serif;
+
+    @media (max-width: 640px) {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+`
+
+export const Content = styled.div`
+    width: 100%;
+    max-width: 241px;
+    margin: 0 auto;
+
+    ${SubTitle}, ${Title}, ${Text}:last-of-type {
+        opacity: 0;
+    }
+
+    ${({ active }) => active && css`
+        ${SubTitle} {
+            will-change: opacity;
+            opacity: 1;
+            transition: opacity linear 1.5s;
+        }
+
+        ${Title} {
+            will-change: opacity;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.2s;
+        }
+
+        ${Text}:last-of-type {
+            will-change: opacity;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.4s;
+        }
+    `}
+
+    @media (max-width: 640px) {
+        width: 85%;
+    }
+
+    @media (max-width: 840px) {
+        max-width: 100%;
     }
 `
 
@@ -222,16 +256,6 @@ export const Overlay = styled.div`
         @media (max-width: 640px) {
             font-size: 1.6rem;
         }
-    }
-`
-
-export const SubTitle = styled.h2`
-    font-size: 2.1rem;
-    font-family: 'Roboto', sans-serif;
-
-    @media (max-width: 640px) {
-        font-size: 1.8rem;
-        margin-bottom: 8px;
     }
 `
 

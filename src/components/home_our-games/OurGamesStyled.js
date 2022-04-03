@@ -13,65 +13,14 @@ export const Background = styled.div`
     background: url(${BackGround}) no-repeat;
     background-size: cover;
     background-position: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-
-    & > ${Image} {
-        width: 100%;
-        height: 100%;
-        max-width: 270px;
-        max-height: 300px;
-        object-fit: cover;
-        margin-top: -415px;
-    }
 
     @media (max-width: 699.5px) {
         background: none;
-        max-height: max-content;
-        margin-top: 70px;
-        justify-content: center;
     }
 
     @media (min-width: 681px) and (max-width: 890.5px) {
         background-size: contain;
         background-position-y: 60%;
-    }
-
-    @media (max-width: 340px) {
-        & > ${Image} {
-            max-width: 180px;
-            max-height: 200px;
-            margin: 20px auto 0;
-        }
-    }
-
-    @media (min-width: 341px) and (max-width: 699.5px) {
-        & > ${Image} {
-            margin: 40px auto 0;
-        }
-    }
-
-    @media (min-width: 341px) and (max-width: 420px) {
-        & > ${Image} {
-            max-width: 200px;
-            min-height: 220px;
-        }
-    }
-
-    @media (min-width: 421px) and (max-width: 640px) {
-        & > ${Image} {
-            max-width: 220px;
-            min-height: 240px;
-        }
-    }
-
-    @media (min-width: 641px) and (max-width: 799.5px) {
-        & > ${Image} {
-            max-width: 250px;
-            min-height: 280px;
-        }
     }
 `
 
@@ -113,13 +62,13 @@ export const Heading = styled.div`
     }
     ${({ active }) => active && css`
         ${Title} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s;
         }
 
         ${Text} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s 0.2s;
         }
@@ -262,6 +211,99 @@ export const Game = styled.div`
             max-width: 180px;
             max-height: 32px;
         }
+    }
+`
+
+export const WrapImage = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
+
+export const Content = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    
+    ${Game} {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    ${WrapImage} {
+        ${Image} {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+    }
+
+    ${({ active }) => active && css`
+        ${Game} {
+            will-change: opacity, transform;
+            opacity: 1;
+            transform: translateX(0);
+            transition: all linear 0.8s;
+        }
+
+        ${Game}:last-of-type {
+            will-change: opacity, transform;
+            opacity: 1;
+            transform: translateX(0);
+            transition: all linear 0.8s 0.4s;
+        }
+
+        ${WrapImage} {
+            ${Image} {
+                will-change: opacity, transform;
+                opacity: 1;
+                transform: translateX(0);
+                transition: all linear 0.8s;
+            }
+        }
+    `}
+
+    ${WrapImage} {
+        ${Image} {
+            width: 100%;
+            height: 100%;
+            max-width: 270px;
+            max-height: 300px;
+            margin-top: -415px;
+            
+            @media (max-width: 340px) {
+                max-width: 180px;
+                max-height: 200px;
+                margin: 20px auto 0;
+            }
+
+            @media (min-width: 341px) and (max-width: 699.5px) {
+                margin: 40px auto 0;
+            }
+
+            @media (min-width: 341px) and (max-width: 420px) {
+                max-width: 200px;
+                min-height: 220px;
+            }
+
+            @media (min-width: 421px) and (max-width: 640px) {
+                max-width: 220px;
+                min-height: 240px;
+            }
+
+            @media (min-width: 641px) and (max-width: 799.5px) {
+                max-width: 250px;
+                min-height: 280px;
+            }
+        }
+    }
+
+    @media (max-width: 699.5px) {
+        max-height: max-content;
+        margin-top: 70px;
+        justify-content: center;
     }
 `
 

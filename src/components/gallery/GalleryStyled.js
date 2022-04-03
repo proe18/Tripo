@@ -185,7 +185,7 @@ export const Slide = styled.div`
         -ms-user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
-        will-change: transition, transform;
+        will-change: transform;
         transition: transform ease-out 0.5s;
         -moz-transition: transform ease-out 0.5s;
         -o-transition: transform ease-out 0.5s;

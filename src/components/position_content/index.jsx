@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Wrapper } from '../../GlobalStyles'
 import { 
     Inner, 
@@ -21,11 +22,11 @@ Content.Wrapper = function ContentWrapper({ children, ...restProps }) {
     )
 }
 
-Content.Group = function ContentGroup({ children, ...restProps }) {
+Content.Group = forwardRef(function ContentGroup({ children, ...restProps }, ref) {
     return (
-        <Group {...restProps}>{children}</Group>
+        <Group {...restProps} ref={ref}>{children}</Group>
     )
-}
+})
 
 Content.RedContent = function ContentRedContent({ children, ...restProps }) {
     return (

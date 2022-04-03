@@ -67,7 +67,7 @@ export const Pages = styled.div`
 
     @media (max-width: 860px) {
         opacity: ${({ mobileMenu }) => mobileMenu ? 0 : 1};
-        will-change: transition;
+        will-change: opacity;
         transition: opacity ease-in-out 0.3s;
         -moz-transition: opacity ease-in-out 0.3s;
         -o-transition: opacity ease-in-out 0.3s;

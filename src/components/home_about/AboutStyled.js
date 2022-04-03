@@ -109,25 +109,25 @@ export const Heading = styled.div`
     
     ${({ active }) => active && css`
         ${SubTitle} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s;
         }
 
         ${Title} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s 0.2s;
         }
 
         ${Text} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s 0.4s;
         }
 
         ${ButtonLink} {
-            will-change: opacity, transition;
+            will-change: opacity;
             opacity: 1;
             transition: opacity linear 1.5s 0.6s;
         }
@@ -147,8 +147,8 @@ export const Wrap = styled.div`
         transform: translateY(50px);
     }
 
-    ${({active}) => active && css`
-        will-change: opacity, transition;
+    ${({ active }) => active && css`
+        will-change: opacity;
         &:first-of-type {
             opacity: 1;
             transform: translateY(0);

@@ -38,10 +38,11 @@ export const Box = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
     background-color: ${({ theme }) => theme.color.whiteColor};
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
-    will-change: opacity, transition, transform;
-    transform: translateX(-200px);
+    transform: translateX(-150px);
     opacity: 0;
+    
     ${({ animationBox }) => animationBox && css`
+        will-change: opacity, transform;
         transform: translateX(0);
         opacity: 1;
     `}

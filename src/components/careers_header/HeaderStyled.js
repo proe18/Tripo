@@ -13,7 +13,7 @@ export const Heading = styled.div`
     max-width: 564px;
     font-family: 'Roboto', sans-serif;
     color: ${({ theme }) => theme.color.textColor};
-    will-change: opacity, transition, transform;
+    will-change: opacity, transform;
     transform: translateX(-150px);
     opacity: 0;
     ${({ animationHeading }) => animationHeading && css`

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ButtonLinkStyled as Button } from '../button/ButtonStyled'
 
 const maxHeight = '800px'
@@ -8,7 +8,7 @@ export const Background = styled.section`
     height: 100%;
     max-height: ${maxHeight};
     margin-top: 100px;
-    background: ${({bg}) => `url(${bg})`} no-repeat;
+    background: ${({ bg }) => `url(${bg})`} no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
@@ -23,25 +23,10 @@ export const Overlay = styled.div`
     width: 100%;
     height: 100%;
     max-height: ${maxHeight};
-    background-color: ${({theme}) => theme.color.bgPrimaryColor};
+    background-color: ${({ theme }) => theme.color.bgPrimaryColor};
 
     @media (max-width: 880px) {
         max-height: calc(${maxHeight} * 2);
-    }
-`
-
-export const Group = styled.div`
-    width: 100%;
-    max-width: 1155px;
-    margin: 0 auto;
-    padding: 205px 0 200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media (max-width: 880px) {
-        display: block;
-        padding: 50px 0 40px;
     }
 `
 
@@ -49,7 +34,7 @@ export const Heading = styled.div`
     width: 100%;
     max-width: 390px;
     font-family: 'Roboto', sans-serif;
-    color: ${({theme}) => theme.color.whiteColor};
+    color: ${({ theme }) => theme.color.whiteColor};
 
     @media (min-width: 432px) and (max-width: 880px) {
         max-width: 100%;
@@ -98,12 +83,39 @@ export const Box = styled.div`
     max-width: 390px;
     max-height: 395px;
     position: relative;
-    border-radius: ${({theme}) => theme.borderRadius.radius2};
-    background-color: ${({theme}) => theme.color.whiteColor};
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
+    background-color: ${({ theme }) => theme.color.whiteColor};
 
     @media (max-width: 880px) {
         max-height: max-content;
         margin: 53px auto 0;
+    }
+`
+
+export const Group = styled.div`
+    width: 100%;
+    max-width: 1155px;
+    margin: 0 auto;
+    padding: 205px 0 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ${Heading}, ${Box} {
+        opacity: 0;
+        transform: translateX(-50px);
+
+        ${({ active }) => active && css`
+            will-change: opacity, transform;
+            opacity: 1;
+            transform: translateX(0);
+            transition: all linear 1.5s;
+        `}
+    }
+
+    @media (max-width: 880px) {
+        display: block;
+        padding: 50px 0 40px;
     }
 `
 
@@ -144,7 +156,7 @@ export const Content = styled.div`
     width: 100%;
     max-width: 298px;
     margin: 141px auto 44px;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
 
     ${Title} {
         font-size: 2.1rem;
@@ -164,11 +176,11 @@ export const Content = styled.div`
         max-width: 203px;
         text-align: center;
         margin: 0;
-        background-color: ${({theme}) => theme.color.textColor};
+        background-color: ${({ theme }) => theme.color.textColor};
 
         &:hover {
-            color: ${({theme}) => theme.color.whiteColor};
-            background-color: ${({theme}) => theme.color.primaryColor};
+            color: ${({ theme }) => theme.color.whiteColor};
+            background-color: ${({ theme }) => theme.color.primaryColor};
         }
     }
 

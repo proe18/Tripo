@@ -4,13 +4,13 @@ import * as ROUTES from '../../constants/routes'
 import { ScrollContext } from '../../context'
 
 const OfficesContainer = ({ data }) => {
-    const { aboutOurOffices } = useContext(ScrollContext)
+    const { aboutOurOffices, activeElement } = useContext(ScrollContext)
 
     return (
         <Offices bg={data.bg}>
             <Offices.Overlay>
                 <Offices.Wrapper>
-                    <Offices.Group ref={aboutOurOffices}>
+                    <Offices.Group ref={aboutOurOffices} active={activeElement?.offices}>
                         <Offices.Heading>
                             <Offices.SubTitle>{data.title}</Offices.SubTitle>
                             <Offices.Title>{data.place}</Offices.Title>

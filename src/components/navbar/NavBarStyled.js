@@ -20,7 +20,7 @@ export const Container = styled.div`
     opacity: ${({ navBar }) => !navBar ? 0 : 1};
     visibility: ${({navBar}) => !navBar ? 'hidden' : 'visible'};
     z-index: ${({ navBar }) => !navBar ? 0 : 99};
-    will-change: transition, visibility;
+    will-change: visibility;
     transition: opacity linear 0.3s;
     -moz-transition: opacity linear 0.3s;
     -o-transition: opacity linear 0.3s;
@@ -114,7 +114,7 @@ export const Nav = styled.ul`
         flex-direction: column;
         justify-content: flex-start;
         box-shadow: none;
-        will-change: transform, transition;
+        will-change: transform;
         transform: translateY(-80%);
         opacity: 0;
         ${({ mobileMenu }) => mobileMenu && css`
@@ -144,7 +144,6 @@ export const Link = styled(ReactNavLink)`
     display: block;
     text-decoration: none;
     color: ${({ theme }) => theme.color.textColor};
-    will-change: transition;
     transition: all linear 0.28s;
     -moz-transition: all ease-in-out 0.28s;
     -o-transition: all ease-in-out 0.28s;
@@ -165,7 +164,6 @@ export const Item = styled.li`
 
     span {
         display: block;
-        will-change: transition;
         transition: all linear 0.28s;
         -moz-transition: all ease-in-out 0.28s;
         -o-transition: all ease-in-out 0.28s;
@@ -181,7 +179,6 @@ export const Item = styled.li`
 
     ${({ mobileMenu }) => !mobileMenu && css`
         text-align: center;
-        will-change: transition;
         transition: all linear 0.28s;
         -moz-transition: all ease-in-out 0.28s;
         -o-transition: all ease-in-out 0.28s;
@@ -295,7 +292,6 @@ export const Icon = styled.div`
         font-size: 2.8rem;
         padding-top: 5px;
         color: ${({ theme, mobileMenu }) => mobileMenu && theme.color.whiteColor};
-        will-change: transition;
         transition: all 0.3s linear;
         -moz-transition: all ease-in-out 0.3s;
         -o-transition: all ease-in-out 0.3s;

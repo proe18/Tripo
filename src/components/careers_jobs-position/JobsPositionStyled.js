@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Image, Wrapper } from '../../GlobalStyles'
 import CareersBG from '../../images/background_careers_3.jpg'
@@ -8,7 +8,7 @@ export const Inner = styled.section`
     margin-top: 125px;
 
     ${Wrapper} {
-        background-color: ${({theme}) => theme.color.primaryColor};
+        background-color: ${({ theme }) => theme.color.primaryColor};
     }
 
     @media (max-width: 1180px) {
@@ -29,7 +29,15 @@ export const Title = styled.h1`
     font-family: 'Suez One', serif;
     font-weight: 500;
     padding: 100px 0 75px;
-    color: ${({theme}) => theme.color.whiteColor};
+    color: ${({ theme }) => theme.color.whiteColor};
+    &:first-child {
+        opacity: 0;
+        ${({ active }) => active && css`
+                will-change: opacity;
+                opacity: 1;
+                transition: opacity linear 1.5s;
+        `}
+    }
 
     @media (max-width: 640px) {
         font-size: 2.6rem;
@@ -45,6 +53,19 @@ export const ListJob = styled.ul`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+
+    ${({ active }) => active && css`
+        will-change: opacity;
+        transform: translateY(0);
+        opacity: 1;
+        transition: all linear 1s;
+    `}
+
+    ${Title} {
+        opacity: 1;
+    }
 
     @media (max-width: 1150.5px) {
         flex-wrap: wrap;
@@ -80,10 +101,10 @@ export const Position = styled.li`
         margin: 40px 0 110px;
         text-align: center;
         overflow: hidden;
-        background-color: ${({theme}) => theme.color.textColor};
+        background-color: ${({ theme }) => theme.color.textColor};
 
         &:hover {
-            color: ${({theme}) => theme.color.whiteColor};
+            color: ${({ theme }) => theme.color.whiteColor};
 
             ${Overlay} {
                 background-color: rgba(255,255,255,0.1);
@@ -118,14 +139,13 @@ export const Wrap = styled(Link)`
     overflow: hidden;
     text-decoration: none;
     cursor: pointer;
-    border-radius: ${({theme}) => theme.borderRadius.radius2};
+    border-radius: ${({ theme }) => theme.borderRadius.radius2};
 
     ${Image} {
-        will-change: transition;
         transition: ease-in-out 0.9s;
         -moz-transition: ease-in-out 0.9s;
         -webkit-transition: ease-in-out 0.9s;
-        border-radius: ${({theme}) => theme.borderRadius.radius2};
+        border-radius: ${({ theme }) => theme.borderRadius.radius2};
     }
 
     &:hover ${Image} {
@@ -156,7 +176,7 @@ export const Content = styled.div`
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
     margin-top: 20px;
-    color: ${({theme}) => theme.color.whiteColor};
+    color: ${({ theme }) => theme.color.whiteColor};
 
     ${Title} {
         font-size: 2.1rem;
@@ -197,7 +217,7 @@ export const Send = styled.div`
         height: 100%;
         max-width: 1320px;
         min-height: 476px;
-        background-color: ${({theme}) => theme.color.bgSecondColor};
+        background-color: ${({ theme }) => theme.color.bgSecondColor};
     }
 `
 
@@ -217,7 +237,7 @@ export const Group = styled.div`
     max-width: 1120px;
     padding-top: 125px;
     margin: 0 auto;
-    color: ${({theme}) => theme.color.whiteColor};
+    color: ${({ theme }) => theme.color.whiteColor};
     text-align: left;
 
     ${Title} {
@@ -230,13 +250,37 @@ export const Group = styled.div`
         max-height: 60px;
         margin: 0;
         text-align: center;
-        color: ${({theme}) => theme.color.textColor};
-        background-color: ${({theme}) => theme.color.secondColor};
+        color: ${({ theme }) => theme.color.textColor};
+        background-color: ${({ theme }) => theme.color.secondColor};
 
         &:hover {
-            background-color: ${({theme}) => theme.color.whiteColor};
+            background-color: ${({ theme }) => theme.color.whiteColor};
         }
     }
+
+    ${SubTitle}, ${Title}, ${Button} {
+        opacity: 0;
+    }
+
+    ${({ active }) => active && css`
+        ${SubTitle} {
+            will-change: opacity;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.2s;
+        }
+
+        ${Title} {
+            will-change: opacity;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.4s;
+        }
+
+        ${Button} {
+            will-change: opacity;
+            opacity: 1;
+            transition: opacity linear 1.5s 0.6s;
+        }
+    `}
 
     @media (max-width: 1150.5px) {
         text-align: center;

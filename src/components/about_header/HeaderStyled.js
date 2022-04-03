@@ -14,7 +14,7 @@ export const Heading = styled.div`
     height: 100%;
     max-width: 770px;
     color: ${({ theme }) => theme.color.textColor};
-    will-change: opacity, transition, transform;
+    will-change: opacity, transform;
     transform: translateX(-150px);
     opacity: 0;
     ${({ animationHeading }) => animationHeading && css`
@@ -71,9 +71,8 @@ export const Wrap = styled.div`
     
     ${({ isScroll }) => isScroll && css`
         ${Image} {
-            width: 105%;
             will-change: transform;
-            transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`};
+            transform: ${({ translateLeft }) => `translateX(${translateLeft}px)`};
         }
     `}
 
@@ -109,6 +108,14 @@ export const Content = styled.div`
     ${Text}:not(:last-of-type) {
         margin-bottom: 30px;
     }
+    will-change: transform, opacity;
+    transform: translateX(-50px);
+    opacity: 0;
+    ${({ active }) => active && css`
+        transform: translateX(0);
+        opacity: 1;
+        transition: all linear 1.5s;
+    `}
 
     @media (max-width: 1000px) {
         padding: 40px 0;

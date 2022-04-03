@@ -3,13 +3,18 @@ import { Founder } from '../../components'
 import { ScrollContext } from '../../context'
 
 const FounderContainer = ({ data }) => {
-    const { aboutTitleFounders, aboutFounders } = useContext(ScrollContext)
+    const { aboutTitleFounders, aboutFounders, activeElement } = useContext(ScrollContext)
 
     return (
         <Founder>
             <Founder.Wrapper>
-                <Founder.Title ref={aboutTitleFounders}>{data.title}</Founder.Title>
-                <Founder.Group ref={aboutFounders}>
+                <Founder.Title
+                    ref={aboutTitleFounders}
+                    active={activeElement?.titleFounders}
+                >
+                    {data.title}
+                </Founder.Title>
+                <Founder.Group ref={aboutFounders} active={activeElement?.founders}>
                     {data.founders.map((founder, index) =>
                         <Founder.Box key={index}>
                             <Founder.Wrap>

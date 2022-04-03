@@ -1,10 +1,14 @@
+import { useContext } from 'react'
 import { ContentPosition } from '../../components'
+import { ScrollContext } from '../../context'
 
 const ContentContainer = ({ data }) => {
+    const { postionContent, activeElement } = useContext(ScrollContext)
+
     return (
         <ContentPosition>
             <ContentPosition.Wrapper>
-                <ContentPosition.Group>
+                <ContentPosition.Group ref={postionContent} active={activeElement?.content}>
                     <ContentPosition.RedContent>
                         <ContentPosition.Wrap>
                             <ContentPosition.Title>{data.red.title}</ContentPosition.Title>

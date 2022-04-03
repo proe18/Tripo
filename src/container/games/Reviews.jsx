@@ -1,11 +1,12 @@
 import { Reviews } from '../../components'
 import { AiFillStar } from 'react-icons/ai'
 import { useContext } from 'react'
-import { GalleryContext } from '../../context'
+import { GalleryContext, ScrollContext } from '../../context'
 
 const ReviewsContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GalleryContext)
-    
+    const { gamesContent, activeElement } = useContext(ScrollContext)
+
     return (
         <Reviews hideReviews={isCloseGallery}>
             <Reviews.Wrapper>
@@ -33,7 +34,7 @@ const ReviewsContainer = ({ data }) => {
             </Reviews.Wrapper>
             <Reviews.Background bg={data.content.bg}>
                 <Reviews.Overlay>
-                    <Reviews.Content>
+                    <Reviews.Content ref={gamesContent} active={activeElement?.content}>
                         {data.content?.subTitle &&
                             <Reviews.SubTitle>{data.content.subTitle}</Reviews.SubTitle>
                         }

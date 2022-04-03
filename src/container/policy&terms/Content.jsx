@@ -1,16 +1,20 @@
+import { useContext } from 'react'
 import { Content } from '../../components'
+import { NavbarContext } from '../../context'
 
 const ContentContainer = ({ data }) => {
+    const { isShow } = useContext(NavbarContext)
+
     return (
         <Content>
             <Content.Header>
                 <Content.Wrapper>
-                    <Content.Title>{data.title}</Content.Title>
+                    <Content.Title active={isShow}>{data.title}</Content.Title>
                 </Content.Wrapper>
             </Content.Header>
             <Content.Section>
                 <Content.Wrapper>
-                    <Content.Group>
+                    <Content.Group active={isShow}>
                         <Content.Text>{data.text}</Content.Text>
                         <Content.Text>{data.text2}</Content.Text>
                         <Content.Questions>
@@ -30,7 +34,7 @@ const ContentContainer = ({ data }) => {
             </Content.Section>
             <Content.Section>
                 <Content.Wrapper>
-                    <Content.Group>
+                    <Content.Group active={isShow}>
                         <Content.Description>{data.description}</Content.Description>
                     </Content.Group>
                 </Content.Wrapper>

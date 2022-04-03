@@ -3,13 +3,19 @@ import { ButtonLink, JoinTeam, FormContainer, SubscribeForm } from '../../compon
 import { ScrollContext } from '../../context'
 
 const JoinTeamContainer = ({ data }) => {
-    const { homeJoinTeamHeading, imageJoinTeam, activeElement } = useContext(ScrollContext)
+    const {
+        homeJoinTeamHeading,
+        imageJoinTeam,
+        heightImage,
+        activeElement
+    } = useContext(ScrollContext)
+    console.log(heightImage);
 
     return (
         <JoinTeam>
             <JoinTeam.Background>
                 <JoinTeam.Wrapper>
-                    <JoinTeam.Group active={activeElement?.imageJoinTeam}>
+                    <JoinTeam.Group active={activeElement?.imageJoinTeam} heightElement={heightImage}>
                         <JoinTeam.Heading ref={homeJoinTeamHeading} active={activeElement?.joinTeam}>
                             <JoinTeam.Title>{data.title}</JoinTeam.Title>
                             <JoinTeam.Text>{data.text}</JoinTeam.Text>

@@ -13,7 +13,6 @@ export const ButtonStyled = styled.button`
     border: none;
     font-family: "Roboto", sans-serif;
     border-radius: ${({ theme }) => theme.borderRadius.radius1};
-    will-change: transition;
     transition: ease-in 0.3s;
     -moz-transition: ease-in 0.3s;
     -o-transition: ease-in 0.3s;
@@ -34,7 +33,6 @@ export const ButtonLinkStyled = styled(Link)`
     border: none;
     font-family: "Roboto", sans-serif;
     border-radius: ${({ theme }) => theme.borderRadius.radius1};
-    will-change: transition;
     transition: ease-in 0.3s;
     -moz-transition: ease-in 0.3s;
     -o-transition: ease-in 0.3s;
@@ -71,7 +69,7 @@ export const ButtonScrollStyled = styled.button`
     align-items: center;
     color: ${({theme}) => theme.color.whiteColor};
     background-color: ${({theme}) => theme.color.primaryColor};
-    will-change: transition, visibility, opacity;
+    will-change: visibility, opacity;
     transition: ease-in-out 0.3s;
     -moz-transition: ease-in-out 0.3s;
     -o-transition: ease-in-out 0.3s;

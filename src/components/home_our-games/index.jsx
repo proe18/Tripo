@@ -3,10 +3,12 @@ import { Wrapper, Image, Link, PlatForms } from '../../GlobalStyles'
 import {
     Inner,
     Background,
+    Content,
     Heading,
     Title, 
     Text, 
-    Game, 
+    Game,
+    WrapImage, 
     Wrap,
     Avatar,
     Info, 
@@ -22,6 +24,12 @@ const OurGames = forwardRef(({ children, ...restProps }, ref) => {
 OurGames.Background = forwardRef(function OurGamesBackground({children, ...restProps}, ref) {
     return (
         <Background {...restProps} ref={ref}>{children}</Background>
+    )
+})
+
+OurGames.Content = forwardRef(function OurGamesContent({children, ...restProps}, ref) {
+    return (
+        <Content {...restProps} ref={ref}>{children}</Content>
     )
 })
 
@@ -52,6 +60,12 @@ OurGames.Text = function OurGamesText({ children, ...restProps }) {
 OurGames.Game = function OurGamesGame({ children, ...restProps }) {
     return (
         <Game {...restProps}>{children}</Game>
+    )
+}
+
+OurGames.WrapImage = function OurGamesWrapImage({children, ...restProps}) {
+    return (
+        <WrapImage {...restProps}>{children}</WrapImage>
     )
 }
 

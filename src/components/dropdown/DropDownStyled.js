@@ -45,7 +45,6 @@ export const Menu = styled.ul`
 export const Item = styled.li`
     line-height: normal;
     background-color: ${({ theme }) => theme.color.whiteColor};
-    will-change: transition;
     transition: ease-in-out 0.3s;
     -moz-transition: ease-in-out 0.3s;
     -o-transition: ease-in-out 0.3s;

@@ -26,7 +26,7 @@ export const Container = styled.div`
     scrollbar-width: none;
     -ms-overflow-style: none;
     background-color: ${({ theme }) => theme.color.thirdColor};
-    will-change: transform, transition, opacity;
+    will-change: transform, opacity;
     transition: ease-in-out 0.36s;
     -moz-transition: ease-in-out 0.36s;
     -o-transition: ease-in-out 0.36s;
@@ -267,7 +267,6 @@ export const ButtonSubmit = styled.button`
     cursor: pointer;
     border-radius: 10px;
     background-color: ${({ theme }) => theme.color.primaryColor};
-    will-change: transition;
     transition: ease-in 0.3s;
     -moz-transition: ease-in 0.3s;
     -o-transition: ease-in 0.3s;
