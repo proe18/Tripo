@@ -78,6 +78,12 @@ export const Wrap = styled.div`
 
     @media (max-width: 1000px) {
         max-width: 100%;
+
+        ${({ isScroll }) => isScroll && css`
+            ${Image} {
+                transform: none;
+            }
+        `}
     }
 
     @media (max-width: 500px) {
@@ -104,22 +110,26 @@ export const Content = styled.div`
     max-width: 467px;
     margin: auto;
     color: ${({ theme }) => theme.color.whiteColor};
+    transform: translateX(-50px);
+    opacity: 0;
+    ${({ active }) => active && css`
+        will-change: opacity, transform;
+        opacity: 1;
+        transform: translateX(0);
+        transition: all linear 1.5s;
+    `}
 
     ${Text}:not(:last-of-type) {
         margin-bottom: 30px;
     }
-    will-change: transform, opacity;
-    transform: translateX(-50px);
-    opacity: 0;
-    ${({ active }) => active && css`
-        transform: translateX(0);
-        opacity: 1;
-        transition: all linear 1.5s;
-    `}
 
     @media (max-width: 1000px) {
         padding: 40px 0;
-        background-color: ${({ theme }) => theme.color.primaryColor};
+        transform: translateY(50px);
+
+        ${({ active }) => active && css`
+            transform: translateY(0);
+        `}
     }
 
     @media (max-width: 1150px) {

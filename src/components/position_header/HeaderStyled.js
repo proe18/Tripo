@@ -1,5 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ButtonStyled as Button } from '../button/ButtonStyled'
+import PositionBg from '../../images/background_position.jpg'
 
 export const Inner = styled.header``
 
@@ -7,7 +8,7 @@ export const Background = styled.div`
     width: 100%;
     height: 100%;
     min-height: 875px;
-    background: ${({ bg }) => `url(${bg})`} no-repeat;
+    background: url(${PositionBg}) no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
@@ -31,14 +32,27 @@ export const Overlay = styled.div`
 export const Content = styled.div`
     padding-top: 160px;
     color: ${({ theme }) => theme.color.whiteColor};
+    opacity: 0;
+    transform: translateX(-150px);
+    opacity: 0;
+    transition: all linear 0.8s;
+    -moz-transition: all linear 0.8s;
+    -o-transition: all linear 0.8s;
+    -webkit-transition: all linear 0.8s;
+    
+    ${({ animationContent }) => animationContent && css`
+        will-change: opacity, transform;
+        transform: translateX(0);
+        opacity: 1;
+    `}
 
     ${Button} {
         max-width: 142px;
-        color: ${({theme}) => theme.color.textColor};
-        background-color: ${({theme}) => theme.color.secondColor};
+        color: ${({ theme }) => theme.color.textColor};
+        background-color: ${({ theme }) => theme.color.secondColor};
 
         &:hover {
-            background-color: ${({theme}) => theme.color.whiteColor};
+            background-color: ${({ theme }) => theme.color.whiteColor};
         }
 
         @media (max-width: 640px) {

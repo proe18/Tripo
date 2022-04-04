@@ -6,7 +6,7 @@ const InfoContainer = ({ data }) => {
     const { aboutTitleInfo, aboutInfo, activeElement } = useContext(ScrollContext)
 
     return (
-        <Info bg={data.bg}>
+        <Info>
             <Info.Overlay>
                 <Info.Wrapper>
                     <Info.Title

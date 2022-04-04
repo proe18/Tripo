@@ -23,8 +23,12 @@ export const Inner = styled.section`
         }
     }
 
-    @media (max-width: 699.5px) {
-        margin-top: 40px;
+    @media (min-width: 340px) and (max-width: 640px) {
+        margin-top: ${({marginTop}) => `${marginTop / 3}px`};
+    }
+
+    @media (min-width: 641px) and (max-width: 699.5px) {
+        margin-top: ${({marginTop}) => `${marginTop / 2.5}px`};
     }
 `
 
@@ -66,48 +70,50 @@ export const Background = styled.div`
     }
 `
 
+export const Wrap = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 488px;
+    max-height: 414px;
+    position: absolute;
+    bottom: 0;
+    right: 38px;
+
+    @media (max-width: 390.5px) {
+        max-width: 240px;
+        max-height: 200px;
+    }
+
+    @media (min-width: 391px) and (max-width: 420px) {
+        max-width: 270px;
+        max-height: 230px;
+    }
+
+    @media (min-width: 421px) and (max-width: 1000px) {
+        max-width: 300px;
+        max-height: 260px;
+    }
+
+    @media (min-width: 1001px) and (max-width: 1180px) {
+        max-width: 350px;
+        max-height: 300px;
+    }
+
+    @media (max-width: 940px) {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+`
+
 export const Group = styled.div`
     width: 100%;
     height: 100%;
     max-height: 747px;
 
     ${Image} {
-        max-width: 488px;
-        max-height: 414px;
-        position: absolute;
-        bottom: 0;
-        right: 38px;
+        transform: ${({ heightImage }) => `translateY(${heightImage}px)`};
 
-        @media (max-width: 390.5px) {
-            max-width: 240px;
-            max-height: 200px;
-        }
-
-        @media (min-width: 391px) and (max-width: 420px) {
-            max-width: 270px;
-            max-height: 230px;
-        }
-
-        @media (min-width: 421px) and (max-width: 1000px) {
-            max-width: 300px;
-            max-height: 260px;
-        }
-
-        @media (min-width: 1001px) and (max-width: 1180px) {
-            max-width: 350px;
-            max-height: 300px;
-        }
-
-        @media (max-width: 940px) {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-    }
-
-    ${Image} {
-        transform: ${({heightElement}) => `translateY(${heightElement}px)`};
-
-        ${({active}) => active && css`
+        ${({ active }) => active && css`
             will-change: transform;
             transform: translateY(0);
             transition: transform linear 0.9s;

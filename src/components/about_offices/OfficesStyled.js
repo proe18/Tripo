@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { ButtonLinkStyled as Button } from '../button/ButtonStyled'
+import OfficesBg from '../../images/background_about_2.jpg'
 
 const maxHeight = '800px'
 
@@ -8,7 +9,7 @@ export const Background = styled.section`
     height: 100%;
     max-height: ${maxHeight};
     margin-top: 100px;
-    background: ${({ bg }) => `url(${bg})`} no-repeat;
+    background: url(${OfficesBg}) no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
@@ -116,6 +117,22 @@ export const Group = styled.div`
     @media (max-width: 880px) {
         display: block;
         padding: 50px 0 40px;
+
+        ${Heading}, ${Box} {
+            transform: translateY(100px);
+        }
+        
+        ${({ active }) => active && css`
+            ${Heading} {
+                transform: translateY(0);
+                transition: all linear 1s;
+            }
+
+            ${Box} {
+                transform: translateY(0);
+                transition: all linear 1s 0.3s;
+            }
+        `}
     }
 `
 

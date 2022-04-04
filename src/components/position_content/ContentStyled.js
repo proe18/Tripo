@@ -72,6 +72,14 @@ export const Group = styled.div`
     @media (max-width: 1000px) {
         margin-top: 0;
         display: block;
+
+        ${Wrap} {
+            transform: translateY(100px);
+
+            ${({ active }) => active && css`
+                transform: translateY(0);
+            `}
+        }
     }
 `
 

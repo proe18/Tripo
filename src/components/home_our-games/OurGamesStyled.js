@@ -245,14 +245,14 @@ export const Content = styled.div`
             will-change: opacity, transform;
             opacity: 1;
             transform: translateX(0);
-            transition: all linear 0.8s;
+            transition: all linear 1s;
         }
 
         ${Game}:last-of-type {
             will-change: opacity, transform;
             opacity: 1;
             transform: translateX(0);
-            transition: all linear 0.8s 0.4s;
+            transition: all linear 1.5s 0.4s;
         }
 
         ${WrapImage} {
@@ -260,7 +260,7 @@ export const Content = styled.div`
                 will-change: opacity, transform;
                 opacity: 1;
                 transform: translateX(0);
-                transition: all linear 0.8s;
+                transition: all linear 1.5s;
             }
         }
     `}
@@ -294,7 +294,7 @@ export const Content = styled.div`
             }
 
             @media (min-width: 641px) and (max-width: 799.5px) {
-                max-width: 250px;
+                max-width: 260px;
                 min-height: 280px;
             }
         }
@@ -304,6 +304,28 @@ export const Content = styled.div`
         max-height: max-content;
         margin-top: 70px;
         justify-content: center;
+
+        ${Game} {
+            transform: translateY(100px);
+        }
+
+        ${WrapImage} {
+            ${Image} {
+                transform: translateY(100px);
+            }
+        }
+
+        ${({ active }) => active && css`
+            ${Game}, ${Game}:last-of-type {
+                transform: translateY(0);
+            }
+
+            ${WrapImage} {
+                ${Image} {
+                    transform: translateY(0);
+                }
+            }
+        `}
     }
 `
 

@@ -5,7 +5,8 @@ import {
     Background, 
     Heading, 
     Title, 
-    Text, 
+    Text,
+    Wrap, 
     Overlay,
     Group 
 } from './JoinTeamStyled'
@@ -49,6 +50,12 @@ JoinTeam.Title = function JoinTeamTitle({ children, ...restProps }) {
 JoinTeam.Text = function JoinTeamText({ children, ...restProps }) {
     return (
         <Text {...restProps}>{children}</Text>
+    )
+}
+
+JoinTeam.Wrap = function JoinTeamWrap({ children, ...restProps }) {
+    return (
+        <Wrap {...restProps}>{children}</Wrap>
     )
 }
 

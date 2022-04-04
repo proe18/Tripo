@@ -40,16 +40,16 @@ export const Box = styled.div`
     box-shadow: ${({ theme }) => theme.shadow.boxShadow};
     transform: translateX(-150px);
     opacity: 0;
+    transition: all linear 0.8s;
+    -moz-transition: all linear 0.8s;
+    -o-transition: all linear 0.8s;
+    -webkit-transition: all linear 0.8s;
     
     ${({ animationBox }) => animationBox && css`
         will-change: opacity, transform;
         transform: translateX(0);
         opacity: 1;
     `}
-    transition: all linear 0.8s;
-    -moz-transition: all linear 0.8s;
-    -o-transition: all linear 0.8s;
-    -webkit-transition: all linear 0.8s;
 
     @media (max-width: 748px) {
         width: 87.5%;

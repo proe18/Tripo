@@ -1,5 +1,3 @@
-import PositionBg from '../images/background_position.jpg'
-
 export const jobPositionData = {
     manager: {
         header: {
@@ -8,7 +6,6 @@ export const jobPositionData = {
             location: "Location: San Francisco",
             employment: "Employment Type: Contract",
             buttonName: 'Apply Now',
-            bg: PositionBg
         },
         content: {
             red: {
@@ -62,7 +59,6 @@ export const jobPositionData = {
             location: "Location: San Francisco",
             employment: "Employment Type: Contract",
             buttonName: 'Apply Now',
-            bg: PositionBg
         },
         content: {
             red: {
@@ -116,7 +112,6 @@ export const jobPositionData = {
             location: "Location: San Francisco",
             employment: "Employment Type: Contract",
             buttonName: 'Apply Now',
-            bg: PositionBg
         },
         content: {
             red: {
@@ -170,7 +165,6 @@ export const jobPositionData = {
             location: "Location: San Francisco",
             employment: "Employment Type: Contract",
             buttonName: 'Apply Now',
-            bg: PositionBg
         },
         content: {
             red: {

@@ -1,5 +1,3 @@
-import InfoBg from '../images/background_about_1.jpg'
-import OfficesBg from '../images/background_about_2.jpg'
 import Team from "../images/about_1.jpg"
 import Invite from "../images/about_2.jpg"
 import DaisySuarez from "../images/founder_about_1.jpg"
@@ -26,7 +24,6 @@ export const aboutData = {
     },
     info: {
         title: "What We Are About",
-        bg: InfoBg,
         contents: [
             {
                 title: "Accomplishment",
@@ -71,7 +68,6 @@ export const aboutData = {
         ]
     },
     offices: {
-        bg: OfficesBg,
         title: "Our Offices",
         place: "Our Studio in San Francisco",
         text: `I'm a paragraph.

@@ -6,26 +6,28 @@ const JoinTeamContainer = ({ data }) => {
     const {
         homeJoinTeamHeading,
         imageJoinTeam,
+        marginJoinTeam,
         heightImage,
         activeElement
     } = useContext(ScrollContext)
-    console.log(heightImage);
 
     return (
-        <JoinTeam>
+        <JoinTeam marginTop={marginJoinTeam}>
             <JoinTeam.Background>
                 <JoinTeam.Wrapper>
-                    <JoinTeam.Group active={activeElement?.imageJoinTeam} heightElement={heightImage}>
+                    <JoinTeam.Group active={activeElement?.imageJoinTeam} heightImage={heightImage}>
                         <JoinTeam.Heading ref={homeJoinTeamHeading} active={activeElement?.joinTeam}>
                             <JoinTeam.Title>{data.title}</JoinTeam.Title>
                             <JoinTeam.Text>{data.text}</JoinTeam.Text>
                             <ButtonLink to={data.path}>{data.name}</ButtonLink>
                         </JoinTeam.Heading>
-                        <JoinTeam.Image
-                            src={data.img}
-                            alt=''
-                            ref={imageJoinTeam}
-                        />
+                        <JoinTeam.Wrap>
+                            <JoinTeam.Image
+                                src={data.img}
+                                alt=''
+                                ref={imageJoinTeam}
+                            />
+                        </JoinTeam.Wrap>
                     </JoinTeam.Group>
                 </JoinTeam.Wrapper>
             </JoinTeam.Background>

@@ -39,6 +39,7 @@ const ScrollProvider = ({ children }) => {
     const [marginGames, setMarginGames] = useState(0)
     const [marginAbout, setMarginAbout] = useState(0)
     const [heightImage, setHeightImage] = useState(0)
+    const [marginJoinTeam, setMarginJoinTeam] = useState(0)
     const [isScrollImage, setIsScrollImage] = useState(false)
     const [translate, setTranslate] = useState(0)
 
@@ -119,6 +120,7 @@ const ScrollProvider = ({ children }) => {
 
     useEffect(() => {
         setTranslate(0)
+
         const timerIDTimeOut = setTimeout(getElements(pathname), 500)
 
         const handleScroll = () => {
@@ -150,18 +152,19 @@ const ScrollProvider = ({ children }) => {
     }, [pathname, isScrollImage, setTranslateLeft, setElements, getElements])
 
     //set margin for games element and about element
-    const setHeightElement = () => {
+    const setElement = () => {
         setMarginGames(headerElement.current?.offsetHeight)
         setMarginAbout(gamesElement.current?.offsetHeight)
         setHeightImage(imageJoinTeam.current?.offsetHeight)
+        setMarginJoinTeam(homeOurGamesContent.current?.offsetHeight)
     }
 
-    useLayoutEffect(setHeightElement, [])
+    useLayoutEffect(setElement, [])
     useEffect(() => {
 
-        window.addEventListener('resize', setHeightElement)
+        window.addEventListener('resize', setElement)
 
-        return () => window.removeEventListener('resize', setHeightElement)
+        return () => window.removeEventListener('resize', setElement)
     }, [pathname])
 
     const value = {
@@ -170,6 +173,7 @@ const ScrollProvider = ({ children }) => {
 
         marginAbout,
         marginGames,
+        marginJoinTeam,
         heightImage,
         headerElement,
         gamesElement,

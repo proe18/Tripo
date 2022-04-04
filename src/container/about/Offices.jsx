@@ -7,7 +7,7 @@ const OfficesContainer = ({ data }) => {
     const { aboutOurOffices, activeElement } = useContext(ScrollContext)
 
     return (
-        <Offices bg={data.bg}>
+        <Offices>
             <Offices.Overlay>
                 <Offices.Wrapper>
                     <Offices.Group ref={aboutOurOffices} active={activeElement?.offices}>

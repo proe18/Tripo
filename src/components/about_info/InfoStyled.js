@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { Wrapper } from '../../GlobalStyles'
+import InfoBg from '../../images/background_about_1.jpg'
 
 const maxHeight = '860px'
 
@@ -7,7 +8,7 @@ export const Background = styled.section`
     width: 100%;
     height: 100%;
     max-height: ${maxHeight};
-    background: ${({ bg }) => `url(${bg})`} no-repeat;
+    background: url(${InfoBg}) no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed, scroll;
@@ -114,6 +115,7 @@ export const Group = styled.div`
     ${Box} {
         opacity: 0;
         transform: translateX(-50px);
+
         ${({ active }) => active && css`
             will-change: opacity, transform;
             &:first-of-type, :nth-child(2) {
@@ -132,6 +134,21 @@ export const Group = styled.div`
 
     @media (max-width: 866.5px) {
         display: block;
+
+        ${Box} {
+            transform: translateY(50px);
+
+            ${({ active }) => active && css`
+                &:first-of-type, :nth-child(2) {
+                    transform: translateY(0);
+                }
+
+                &:last-of-type {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            `}
+        }
     }
 `
 

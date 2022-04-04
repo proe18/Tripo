@@ -1,16 +1,17 @@
 import { useContext } from 'react'
-import { PositionFormContext } from '../../context'
+import { NavbarContext, PositionFormContext } from '../../context'
 import { Button, HeaderPosition } from '../../components'
 
 const HeaderContainer = ({ data }) => {
     const { handleCloseForm } = useContext(PositionFormContext)
+    const { isShow } = useContext(NavbarContext)
 
     return (
         <HeaderPosition>
-            <HeaderPosition.Background bg={data.bg}>
+            <HeaderPosition.Background>
                 <HeaderPosition.Overlay>
                     <HeaderPosition.Wrapper>
-                        <HeaderPosition.Content>
+                        <HeaderPosition.Content animationContent={isShow}>
                             <HeaderPosition.SubTitle>{data.subTitle}</HeaderPosition.SubTitle>
                             <HeaderPosition.Title>{data.title}</HeaderPosition.Title>
                             <HeaderPosition.Text>
