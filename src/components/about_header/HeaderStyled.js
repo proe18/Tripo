@@ -66,24 +66,28 @@ export const Group = styled.div`
 
 export const Wrap = styled.div`
     width: 100%;
-    max-width: 607px;
-    height: 590px;
-    
-    ${({ isScroll }) => isScroll && css`
-        ${Image} {
-            will-change: transform;
-            transform: ${({ translateLeft }) => `translateX(${translateLeft}px)`};
-        }
-    `}
+    height: 100%;
+    min-height: 590px;
+    max-width: 729px;
+    position: relative;
+    top: 0;
+
+    ${Image} {
+        /* width: 607px; */
+        width: 105%;
+        height: 590px;
+        /* position: absolute;
+        top: 0; */
+        /* left: -60.8px; */
+        will-change: transform;
+        transform: ${({ translateLeft }) => `translate3d(${translateLeft}px, 0px, 0px)`};
+    }
 
     @media (max-width: 1000px) {
         max-width: 100%;
-
-        ${({ isScroll }) => isScroll && css`
-            ${Image} {
-                transform: none;
-            }
-        `}
+        ${Image} {
+            transform: none;
+        }
     }
 
     @media (max-width: 500px) {

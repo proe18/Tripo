@@ -1,10 +1,11 @@
 import { useContext } from 'react'
-import { PositionFormContext, ScrollContext } from '../../context'
+import { NavbarContext, PositionFormContext, ScrollContext } from '../../context'
 import { Button, ButtonLink, JobsPosition } from '../../components'
 
 const JobsPositionContainer = ({ data }) => {
     const { handleCloseForm } = useContext(PositionFormContext)
     const { careersJobTitle, careersSend, careersListJob, activeElement } = useContext(ScrollContext)
+    const { handleSwitchPage } = useContext(NavbarContext)
 
     return (
         <JobsPosition>
@@ -26,7 +27,7 @@ const JobsPositionContainer = ({ data }) => {
                                 <JobsPosition.Place>{job.place}</JobsPosition.Place>
                                 <JobsPosition.Text>{job.text}</JobsPosition.Text>
                             </JobsPosition.Content>
-                            <ButtonLink to={job.path}>
+                            <ButtonLink to={job.path} onClick={() => handleSwitchPage()}>
                                 <JobsPosition.Overlay>{job.button}</JobsPosition.Overlay>
                             </ButtonLink>
                         </JobsPosition.Position>

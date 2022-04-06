@@ -7,10 +7,6 @@ import {
     Heading,
     Title,
     Text,
-    Games,
-    Game,
-    Overlay,
-    More
 } from './HeaderStyled'
 
 const Header = forwardRef(({ children, ...restProps }, ref) => {
@@ -70,30 +66,6 @@ Header.Link = function HeaderLink({ children, ...restProps }) {
 Header.Image = function HeaderImage({ ...restProps }) {
     return (
         <Image {...restProps} />
-    )
-}
-
-Header.Games = forwardRef(function HeaderGames({ children, ...restProps }, ref) {
-    return (
-        <Games {...restProps} ref={ref}>{children}</Games>
-    )
-})
-
-Header.Game = function HeaderGame({ children, ...restProps }) {
-    return (
-        <Game {...restProps}>{children}</Game>
-    )
-}
-
-Header.Overlay = function HeaderOverlay({ children, ...restProps }) {
-    return (
-        <Overlay {...restProps}>{children}</Overlay>
-    )
-}
-
-Header.More = function HeaderMore({ children, ...restProps }) {
-    return (
-        <More {...restProps}>{children}</More>
     )
 }
 

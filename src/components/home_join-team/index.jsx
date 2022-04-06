@@ -2,7 +2,8 @@ import { forwardRef } from 'react'
 import { Image, Wrapper } from '../../GlobalStyles'
 import { 
     Inner, 
-    Background, 
+    Background,
+    WrapSection, 
     Heading, 
     Title, 
     Text,
@@ -14,6 +15,12 @@ import {
 const JoinTeam = ({ children, ...restProps }) => {
     return (
         <Inner {...restProps}>{children}</Inner>
+    )
+}
+
+JoinTeam.WrapSection = function JoinTeamWrapSection({ children, ...restProps }) {
+    return (
+        <WrapSection {...restProps} >{children}</WrapSection>
     )
 }
 

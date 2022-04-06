@@ -1,16 +1,12 @@
 import { useContext } from 'react'
-import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 import { HeaderHome } from '../../components'
 import { NavbarContext, ScrollContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
     const {
         headerElement,
-        gamesElement,
-        marginGames,
         backGroundHome,
         translate,
-        isScrollImage
     } = useContext(ScrollContext)
     const { isShow } = useContext(NavbarContext)
 
@@ -20,7 +16,6 @@ const HeaderContainer = ({ data }) => {
                 <HeaderHome.Background
                     ref={backGroundHome}
                     translateLeft={translate}
-                    isScroll={isScrollImage}
                 />
             </HeaderHome.Wrap>
             <HeaderHome.Wrapper>
@@ -38,27 +33,6 @@ const HeaderContainer = ({ data }) => {
                         )}
                     </HeaderHome.PlatForms>
                 </HeaderHome.Heading>
-                <HeaderHome.Games marginTop={marginGames} ref={gamesElement}>
-                    {data.listGames.map(game =>
-                        <HeaderHome.Game key={game.title} to={game.path}>
-                            <HeaderHome.Image src={game.img} alt='GameImage' />
-                            <HeaderHome.Overlay>
-                                <HeaderHome.Heading>
-                                    <HeaderHome.Title>{game.title}</HeaderHome.Title>
-                                    <HeaderHome.Text>{game.text}</HeaderHome.Text>
-                                </HeaderHome.Heading>
-                            </HeaderHome.Overlay>
-                        </HeaderHome.Game>
-                    )}
-                    <HeaderHome.More>
-                        <HeaderHome.Overlay>
-                            <HeaderHome.Heading>
-                                <HeaderHome.Title>Explore Our Games</HeaderHome.Title>
-                                <HiOutlineArrowNarrowDown />
-                            </HeaderHome.Heading>
-                        </HeaderHome.Overlay>
-                    </HeaderHome.More>
-                </HeaderHome.Games>
             </HeaderHome.Wrapper>
         </HeaderHome>
     )

@@ -2,6 +2,7 @@ import { forwardRef } from 'react'
 import { Wrapper, Image, Link, PlatForms } from '../../GlobalStyles'
 import {
     Inner,
+    Group,
     Background,
     Content,
     Heading,
@@ -20,6 +21,12 @@ const OurGames = forwardRef(({ children, ...restProps }, ref) => {
         <Inner {...restProps} ref={ref}>{children}</Inner>
     )
 })
+
+OurGames.Group = function OurGamesGroup({ children, ...restProps }) {
+    return (
+        <Group {...restProps}>{children}</Group>
+    )
+}
 
 OurGames.Background = forwardRef(function OurGamesBackground({children, ...restProps}, ref) {
     return (

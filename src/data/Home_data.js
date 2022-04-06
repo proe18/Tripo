@@ -26,6 +26,8 @@ export const homeData = {
                 alt: "Google Play"
             }
         ],
+    },
+    about: {
         listGames: [
             {
                 title: "Kipon",
@@ -52,8 +54,6 @@ export const homeData = {
                 I’m a great place for you to tell a story and let your users know a little more about you.`
             },
         ],
-    },
-    about: {
         subTitle: "About Tripo",
         title: "Your Source for Mobile Entertainment",
         text: `I'm a paragraph.

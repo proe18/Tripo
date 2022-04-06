@@ -40,7 +40,6 @@ const ScrollProvider = ({ children }) => {
     const [marginAbout, setMarginAbout] = useState(0)
     const [heightImage, setHeightImage] = useState(0)
     const [marginJoinTeam, setMarginJoinTeam] = useState(0)
-    const [isScrollImage, setIsScrollImage] = useState(false)
     const [translate, setTranslate] = useState(0)
 
     const getElements = useCallback((path) => {
@@ -133,23 +132,16 @@ const ScrollProvider = ({ children }) => {
             if (pathname === ROUTES.ABOUT) {
                 setTranslate(setTranslateLeft(headerAbout.current) || 0)
             }
-
-            setIsScrollImage(true)
         }
-        const timerIDInterval = setInterval(() => {
-            const prePosition = window.pageYOffset
-            if (isScrollImage && window.pageYOffset === prePosition) setIsScrollImage(false)
-        }, 3000)
 
         window.addEventListener('scroll', handleScroll)
 
         return () => {
             window.removeEventListener('scroll', handleScroll)
             clearTimeout(timerIDTimeOut)
-            clearInterval(timerIDInterval)
         }
 
-    }, [pathname, isScrollImage, setTranslateLeft, setElements, getElements])
+    }, [pathname, setTranslateLeft, setElements, getElements])
 
     //set margin for games element and about element
     const setElement = () => {
@@ -168,7 +160,6 @@ const ScrollProvider = ({ children }) => {
     }, [pathname])
 
     const value = {
-        isScrollImage,
         translate,
 
         marginAbout,

@@ -32,18 +32,17 @@ export const Overlay = styled.div`
 export const Content = styled.div`
     padding-top: 160px;
     color: ${({ theme }) => theme.color.whiteColor};
+    transform: translateX(-100px);
     opacity: 0;
-    transform: translateX(-150px);
-    opacity: 0;
-    transition: all linear 0.8s;
-    -moz-transition: all linear 0.8s;
-    -o-transition: all linear 0.8s;
-    -webkit-transition: all linear 0.8s;
-    
+        
     ${({ animationContent }) => animationContent && css`
         will-change: opacity, transform;
         transform: translateX(0);
         opacity: 1;
+        transition: all linear 0.8s;
+        -moz-transition: all linear 0.8s;
+        -o-transition: all linear 0.8s;
+        -webkit-transition: all linear 0.8s;
     `}
 
     ${Button} {

@@ -5,6 +5,7 @@ import { Button, HeaderPosition } from '../../components'
 const HeaderContainer = ({ data }) => {
     const { handleCloseForm } = useContext(PositionFormContext)
     const { isShow } = useContext(NavbarContext)
+    console.log(isShow);
 
     return (
         <HeaderPosition>

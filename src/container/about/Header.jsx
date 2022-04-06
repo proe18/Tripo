@@ -9,7 +9,6 @@ const HeaderContainer = ({ data }) => {
         headerAbout,
         aboutContent,
         translate,
-        isScrollImage,
         activeElement
     } = useContext(ScrollContext)
     const { isShow } = useContext(NavbarContext)
@@ -23,7 +22,7 @@ const HeaderContainer = ({ data }) => {
                 </HeaderAbout.Heading>
             </HeaderAbout.Wrapper>
             <HeaderAbout.Group>
-                <HeaderAbout.Wrap translateLeft={translate} isScroll={isScrollImage}>
+                <HeaderAbout.Wrap translateLeft={translate}>
                     <HeaderAbout.Image src={data.img} alt='' ref={imageAbout} />
                 </HeaderAbout.Wrap>
                 <HeaderAbout.Content ref={aboutContent} active={activeElement?.content}>

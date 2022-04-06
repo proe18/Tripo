@@ -1,11 +1,10 @@
 import { useContext } from 'react'
 import { Dropdown } from '../../components'
-import { NavbarContext, ScrollContext } from '../../context'
+import { NavbarContext } from '../../context'
 import * as ROUTES from '../../constants/routes'
 
 const DropDown = () => {
-    const { handleClickMobileMenu } = useContext(NavbarContext)
-    const { handleScroll } = useContext(ScrollContext)
+    const { handleClickMobileMenu, handleSwitchPage } = useContext(NavbarContext)
 
     return (
         <Dropdown>
@@ -15,7 +14,7 @@ const DropDown = () => {
                         to={ROUTES.KIPON}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleScroll()
+                            handleSwitchPage()
                         }}
                     >
                         Kipon
@@ -26,7 +25,7 @@ const DropDown = () => {
                         to={ROUTES.ROBOTRIX}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleScroll()
+                            handleSwitchPage()
                         }}
                     >
                         Robotrix
@@ -37,7 +36,7 @@ const DropDown = () => {
                         to={ROUTES.TREASURE}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleScroll()
+                            handleSwitchPage()
                         }}
                     >
                         Treasure Box

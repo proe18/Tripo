@@ -6,7 +6,13 @@ import {
     Title,
     Text,
     SubTitle,
-    Wrap
+    Wrap,
+    WrapImage,
+    Games,
+    Game,
+    Overlay,
+    More,
+    GameMore
 } from './AboutStyled'
 
 const About = ({ children, ...restProps }) => {
@@ -45,15 +51,51 @@ About.Text = function AboutText({ children, ...restProps }) {
     )
 }
 
-About.Wrap = forwardRef(function AboutWrap({ children, ...restProps }, ref) {
+About.Wrap = function AboutWrap({ children, ...restProps }) {
     return (
-        <Wrap {...restProps} ref={ref}>{children}</Wrap>
+        <Wrap {...restProps}>{children}</Wrap>
+    )
+}
+
+About.WrapImage = forwardRef(function AboutWrapImage({ children, ...restProps }, ref) {
+    return (
+        <WrapImage {...restProps} ref={ref}>{children}</WrapImage>
     )
 })
 
 About.Image = function AboutImage({ ...restProps }) {
     return (
         <Image {...restProps}/>
+    )
+}
+
+About.Games = forwardRef(function AboutGames({ children, ...restProps }, ref) {
+    return (
+        <Games {...restProps} ref={ref}>{children}</Games>
+    )
+})
+
+About.Game = function AboutGame({ children, ...restProps }) {
+    return (
+        <Game {...restProps}>{children}</Game>
+    )
+}
+
+About.Overlay = function AboutOverlay({ children, ...restProps }) {
+    return (
+        <Overlay {...restProps}>{children}</Overlay>
+    )
+}
+
+About.More = function AboutMore({ children, ...restProps }) {
+    return (
+        <More {...restProps}>{children}</More>
+    )
+}
+
+About.GameMore = function AboutGameMore({ children, ...restProps }) {
+    return (
+        <GameMore {...restProps}>{children}</GameMore>
     )
 }
 

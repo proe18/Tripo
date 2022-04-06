@@ -13,7 +13,8 @@ const OurGamesContainer = ({ data }) => {
                     <OurGames.Title>{data.title}</OurGames.Title>
                     <OurGames.Text>{data.text}</OurGames.Text>
                 </OurGames.Heading>
-                <OurGames.Background>
+                <OurGames.Group>
+                    <OurGames.Background />
                     <OurGames.Content
                         ref={homeOurGamesContent}
                         active={activeElement?.ourGamesContent}
@@ -43,7 +44,7 @@ const OurGamesContainer = ({ data }) => {
                             <OurGames.Image src={data.img} alt='' />
                         </OurGames.WrapImage>
                     </OurGames.Content>
-                </OurGames.Background>
+                </OurGames.Group>
             </OurGames.Wrapper>
         </OurGames>
     )

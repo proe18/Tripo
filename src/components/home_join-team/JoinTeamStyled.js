@@ -23,48 +23,50 @@ export const Inner = styled.section`
         }
     }
 
-    @media (min-width: 340px) and (max-width: 640px) {
-        margin-top: ${({marginTop}) => `${marginTop / 3}px`};
+    @media (max-width: 640px) {
+        margin-top: ${({ marginTop }) => `${marginTop / 3}px`};
     }
 
     @media (min-width: 641px) and (max-width: 699.5px) {
-        margin-top: ${({marginTop}) => `${marginTop / 2.5}px`};
+        margin-top: ${({ marginTop }) => `${marginTop / 2.5}px`};
     }
 `
 
-export const Background = styled.div`
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed, scroll;
+export const Background = styled.div``
 
-    &:first-child {
+export const WrapSection = styled.div`
+    ${Background} {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed, scroll;
+
+        @media (max-width: 640px) {
+            background-position: center;
+        }
+
+        @media (max-width: 1000px) {
+            background-attachment: unset;
+        }
+    }
+
+    &:first-child ${Background} {
         min-height: 747px;
         background-image: url(${JoinTeam_1Bg});
-        z-index: 5;
     }
 
-    &:last-child {
+    &:last-child ${Background} {
         min-height: 600px;
         background-image: url(${JoinTeam_2Bg});
-        z-index: 10;
-    }
-
-    @media (max-width: 640px) {
-        background-position: center;
-    }
-
-    @media (max-width: 1000px) {
-        background-attachment: unset;
     }
 
     @media (max-width: 940px) {
-        &:first-child {
+        &:first-child ${Background} {
             min-height: 500px;
         }
 
-        &:last-child {
+        &:last-child ${Background} {
             min-height: 1165px;
         }
     }
@@ -78,6 +80,7 @@ export const Wrap = styled.div`
     position: absolute;
     bottom: 0;
     right: 38px;
+    overflow: hidden;
 
     @media (max-width: 390.5px) {
         max-width: 240px;
@@ -114,7 +117,7 @@ export const Group = styled.div`
         transform: ${({ heightImage }) => `translateY(${heightImage}px)`};
 
         ${({ active }) => active && css`
-            will-change: transform;
+            will-change: opacity, transform;
             transform: translateY(0);
             transition: transform linear 0.9s;
         `}

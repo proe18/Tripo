@@ -3,13 +3,24 @@ import { Link, PlatForms, Image } from '../../GlobalStyles'
 import BackGround from '../../images/background_home_3.jpg'
 
 export const Inner = styled.section``
-
-export const Background = styled.div`
+export const Group = styled.div`
     width: 100%;
     height: 100%;
     max-width: 1150px;
     max-height: 1100px;
     margin: 115px auto 0;
+    position: relative;
+
+    @media (max-width: 699.5px) {
+        margin-top: 70px;
+    }
+`
+
+export const Background = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 1150px;
+    min-height: 1100px;
     background: url(${BackGround}) no-repeat;
     background-size: cover;
     background-position: center;
@@ -223,10 +234,14 @@ export const WrapImage = styled.div`
 export const Content = styled.div`
     width: 100%;
     height: 100%;
+    max-width: 1150px;
+    max-height: 1100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    position: absolute;
+    top: 0;
     
     ${Game} {
         opacity: 0;
@@ -301,8 +316,6 @@ export const Content = styled.div`
     }
 
     @media (max-width: 699.5px) {
-        max-height: max-content;
-        margin-top: 70px;
         justify-content: center;
 
         ${Game} {
