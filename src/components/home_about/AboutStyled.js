@@ -5,6 +5,15 @@ import { ButtonLinkStyled as ButtonLink } from '../button/ButtonStyled'
 
 export const Inner = styled.section``
 
+//================ Heading About ==================
+export const Group = styled.div`
+    margin-top: 172px;
+
+    @media (max-width: 1318.5px) {
+        margin-top: 50px;
+    }
+`
+
 export const Title = styled.h1`
     width: 100%;
     max-width: 808px;
@@ -74,6 +83,7 @@ export const Heading = styled.div`
     & {
         ${Title}, ${SubTitle}, ${Text}, ${ButtonLink} {
             opacity: 0;
+            transition: opacity linear 0.8s;
         }
     }
     
@@ -81,60 +91,26 @@ export const Heading = styled.div`
         ${SubTitle} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s;
         }
 
         ${Title} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.2s;
+            transition-delay: 0.2s;
         }
 
         ${Text} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.4s;
+            transition-delay: 0.4s;
         }
 
         ${ButtonLink} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.6s;
+            transition-delay: 0.6s;
         }
     `}
-`
-
-export const Wrap = styled.div`
-    margin-top: 172px;
-
-    @media (max-width: 320px) {
-        margin-top: ${({ marginTop }) => `${marginTop - 30}px`}
-    }
-
-    @media (min-width: 321px) and (max-width: 420px) {
-        margin-top: ${({ marginTop }) => `${marginTop}px`}
-    }
-
-    @media (min-width: 421px) and (max-width: 450.5px) {
-        margin-top: ${({ marginTop }) => `${marginTop - 150}px`}
-    }
-
-    @media (min-width: 451px) and (max-width: 528px),
-    (min-width: 641px) and (max-width: 768px) {
-        margin-top: ${({ marginTop }) => `${marginTop - 130}px`}
-    }
-
-    @media (min-width: 529px) and (max-width: 640px) {
-        margin-top: ${({ marginTop }) => `${marginTop - 175}px`}
-    }
-
-    @media (min-width: 769px) and (max-width: 1319px) {
-        margin-top: ${({ marginTop }) => `${marginTop - 230}px`}
-    }
-
-    @media (min-width: 1001px) and (max-width: 1319px) {
-        margin-top: ${({ marginTop }) => `${marginTop - 115}px`}
-    }
 `
 
 export const WrapImage = styled.div`
@@ -146,23 +122,22 @@ export const WrapImage = styled.div`
     ${Image} {
     border-radius: ${({ theme }) => theme.borderRadius.radius2};
     opacity: 0;
+    transition: all linear 0.8s;
 
     &:first-of-type {
         transform: translateY(50px);
     }
 
     ${({ active }) => active && css`
-        will-change: opacity;
+        will-change: opacity, transform;
 
         &:first-of-type {
             opacity: 1;
             transform: translateY(0);
-            transition: all linear 0.8s;
         }
 
         &:last-of-type {
             opacity: 1;
-            transition: opacity linear 1.5s;
         }
     `}
 
@@ -201,7 +176,9 @@ export const WrapImage = styled.div`
         max-height: 233px;
     }
 `
+//==========================================================
 
+//================ Games ===================================
 export const Games = styled.div`
     width: 100%;
     height: auto;
@@ -218,36 +195,16 @@ export const Games = styled.div`
         flex-wrap: wrap;
     }
 
-    @media (max-width: 1000px) {
-        margin-top: 0;
+    @media (max-width: 680px) {
+        margin-top: 20px;
     }
 
-    @media (max-width: 420px) {
-        padding-top: 85px;
+    @media (min-width: 681px) and (max-width: 768.5px) {
+        padding-top: 150px;
     }
 
-    @media (min-width: 681px) and (max-width: 1000px) {
-        padding-top: ${({ marginTop }) => `${(marginTop / 8)}px`};
-    }
-
-    @media (min-width: 421px) and (max-width: 450px) {
-        padding-top: ${({ marginTop }) => `${(marginTop / 2.2)}px`};
-    }
-
-    @media (min-width: 451px) and (max-width: 540px) {
-        padding-top: ${({ marginTop }) => `${(marginTop / 3)}px`};
-    }
-
-    @media (min-width: 541px) and (max-width: 640px) {
-        padding-top: ${({ marginTop }) => `${(marginTop / 2)}px`};
-    }
-
-    @media (min-width: 641px) and (max-width: 680px) {
-        padding-top: ${({ marginTop }) => `${(marginTop / 2.8)}px`};
-    }
-
-    @media (min-width: 1001px) and (max-width: 1024px) {
-        margin: 80px auto 0;
+    @media (min-width: 769px) and (max-width: 1024px) {
+        padding-top: 80px;
     }
 
     @media (min-width: 821px) and (max-width: 1000px) {
@@ -302,9 +259,9 @@ export const Game = styled(ReactLink)`
         bottom: 35px;
         left: 50px;
         color: ${({ theme }) => theme.color.whiteColor};
-        font-family: 'Roboto', sans-serif;
         opacity: unset;
         transition: unset;
+        text-align: unset;
 
         @media (max-width: 420px) {
             width: 70%;
@@ -314,13 +271,16 @@ export const Game = styled(ReactLink)`
     ${Title} {
         font-size: 2.1rem;
         font-weight: 600;
-        /* font-family: 'Roboto', sans-serif; */
+        opacity: 1;
+        font-family: 'Roboto', sans-serif;
     }
 
     ${Text} {
         margin-bottom: 0;
         font-size: 1.6rem;
-        /* font-family: 'Roboto', sans-serif; */
+        opacity: 1;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
     }
 
     &:hover ${Overlay} {
@@ -392,6 +352,7 @@ export const More = styled.div`
         font-size: 3rem;
         font-weight: 600;
         font-family: 'Roboto', sans-serif;
+        opacity: 1;
 
         @media (max-width: 541px) {
             width: 100%;
@@ -421,3 +382,4 @@ export const More = styled.div`
 `
 
 export const GameMore = styled(ReactLink)``
+//==========================================================

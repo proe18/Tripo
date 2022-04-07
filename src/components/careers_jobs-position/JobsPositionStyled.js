@@ -55,12 +55,12 @@ export const ListJob = styled.ul`
     align-items: center;
     opacity: 0;
     transform: translateY(50px);
+    transition: all linear 0.8s;
 
     ${({ active }) => active && css`
         will-change: opacity;
         transform: translateY(0);
         opacity: 1;
-        transition: all linear 1s;
     `}
 
     ${Title} {
@@ -260,25 +260,26 @@ export const Group = styled.div`
 
     ${SubTitle}, ${Title}, ${Button} {
         opacity: 0;
+        transition: opacity linear 1.5s;
     }
 
     ${({ active }) => active && css`
         ${SubTitle} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.2s;
+            transition-delay: 0.2s;
         }
 
         ${Title} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.4s;
+            transition-delay: 0.4s;
         }
 
         ${Button} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.6s;
+            transition-delay: 0.6s;
         }
     `}
 

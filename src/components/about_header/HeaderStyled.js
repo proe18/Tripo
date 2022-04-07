@@ -116,11 +116,12 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.color.whiteColor};
     transform: translateX(-50px);
     opacity: 0;
+    transition: all linear 1.5s;
+
     ${({ active }) => active && css`
         will-change: opacity, transform;
         opacity: 1;
         transform: translateX(0);
-        transition: all linear 1.5s;
     `}
 
     ${Text}:not(:last-of-type) {

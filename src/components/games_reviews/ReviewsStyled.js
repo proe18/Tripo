@@ -187,25 +187,25 @@ export const Content = styled.div`
 
     ${SubTitle}, ${Title}, ${Text}:last-of-type {
         opacity: 0;
+        transition: opacity linear 1.5s;
     }
 
     ${({ active }) => active && css`
         ${SubTitle} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s;
         }
 
         ${Title} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.2s;
+            transition-delay: 0.2s;
         }
 
         ${Text}:last-of-type {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.4s;
+            transition-delay: 0.4s;
         }
     `}
 

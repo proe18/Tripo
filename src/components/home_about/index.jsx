@@ -6,7 +6,7 @@ import {
     Title,
     Text,
     SubTitle,
-    Wrap,
+    Group,
     WrapImage,
     Games,
     Game,
@@ -51,9 +51,9 @@ About.Text = function AboutText({ children, ...restProps }) {
     )
 }
 
-About.Wrap = function AboutWrap({ children, ...restProps }) {
+About.Group = function AboutGroup({ children, ...restProps }) {
     return (
-        <Wrap {...restProps}>{children}</Wrap>
+        <Group {...restProps}>{children}</Group>
     )
 }
 

@@ -11,26 +11,25 @@ export const Inner = styled.header`
     overflow: hidden;
 
     @media (max-width: 420px) {
-        max-height: 315px;
+        min-height: 315px;
     }
 
     @media (min-width: 421px) and (max-width: 640px) {
-        max-height: 480px;
+        min-height: 480px;
     }
 
     @media (min-width: 641px) and (max-width: 768px) {
-        max-height: 550px;
+        min-height: 550px;
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
-        max-height: 650px;
+        min-height: 650px;
     }
 `
 
 export const Wrap = styled.div`
     width: 100%;
     height: 100%;
-    max-height: 800px;
 `
 
 export const Background = styled.div`
@@ -45,27 +44,32 @@ export const Background = styled.div`
     transform: ${({ translateLeft }) => `translateX(-${translateLeft}px)`};
 
     @media (max-width: 420px) {
+        width: 110%;
         max-height: 315px;
         background-position: 50% 0;
     }
 
     @media (min-width: 421px) and (max-width: 640px) {
+        width: 111%;
         max-height: 480px;
         background-position: 53% 0;
     }
 
     @media (min-width: 641px) and (max-width: 768px) {
+        width: 110%;
         max-height: 550px;
         background-position: 40% 0;
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
+        width: 110%;
         max-height: 650px;
         background-position: 36% 0;
     }
 
     @media (min-width: 1025px) and (max-width: 1180px) {
-        background-position: 20% 0;
+        width: 110%;
+        background-position: 38% 0;
     }
 `
 

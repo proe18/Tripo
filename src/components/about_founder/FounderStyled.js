@@ -21,10 +21,11 @@ export const Title = styled.h1`
     padding: 110px 0 70px;
     color: ${({ theme }) => theme.color.whiteColor};
     opacity: 0;
+    transition: opacity linear 1s;
+
     ${({ active }) => active && css`
         will-change: opacity;
         opacity: 1;
-        transition: opacity linear 1s;
     `}
 
     @media (max-width: 640px) {
@@ -54,11 +55,12 @@ export const Group = styled.div`
     align-items: center;
     opacity: 0;
     transform: translateY(50px);
+    transition: all linear 1s;
+
     ${({ active }) => active && css`
         will-change: opacity, transform;
         opacity: 1;
         transform: translateY(0);
-        transition: all linear 1s;
     `}
 
     @media (max-width: 1000px) {

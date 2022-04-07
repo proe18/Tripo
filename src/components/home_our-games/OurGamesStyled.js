@@ -66,22 +66,21 @@ export const Heading = styled.div`
     margin-top: 205px;
     text-align: center;
     color: ${({ theme }) => theme.color.textColor};
-    & {
-        ${Title}, ${Text} {
-            opacity: 0;
-        }
+    
+    ${Title}, ${Text} {
+        opacity: 0;
+        transition: opacity linear 1.5s;
     }
     ${({ active }) => active && css`
         ${Title} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s;
         }
 
         ${Text} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.2s;
+            transition-delay: 0.2s;
         }
     `}
     
@@ -246,12 +245,14 @@ export const Content = styled.div`
     ${Game} {
         opacity: 0;
         transform: translateX(-50px);
+        transition: all linear 1s;
     }
 
     ${WrapImage} {
         ${Image} {
             opacity: 0;
             transform: translateX(50px);
+            transition: all linear 1s;
         }
     }
 
@@ -260,14 +261,13 @@ export const Content = styled.div`
             will-change: opacity, transform;
             opacity: 1;
             transform: translateX(0);
-            transition: all linear 1s;
         }
 
         ${Game}:last-of-type {
             will-change: opacity, transform;
             opacity: 1;
             transform: translateX(0);
-            transition: all linear 1.5s 0.4s;
+            transition-delay: 0.4s;
         }
 
         ${WrapImage} {
@@ -275,7 +275,6 @@ export const Content = styled.div`
                 will-change: opacity, transform;
                 opacity: 1;
                 transform: translateX(0);
-                transition: all linear 1.5s;
             }
         }
     `}

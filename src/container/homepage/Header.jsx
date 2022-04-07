@@ -4,14 +4,13 @@ import { NavbarContext, ScrollContext } from '../../context'
 
 const HeaderContainer = ({ data }) => {
     const {
-        headerElement,
         backGroundHome,
-        translate,
+        translate
     } = useContext(ScrollContext)
     const { isShow } = useContext(NavbarContext)
 
     return (
-        <HeaderHome ref={headerElement}>
+        <HeaderHome>
             <HeaderHome.Wrap>
                 <HeaderHome.Background
                     ref={backGroundHome}

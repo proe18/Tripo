@@ -115,11 +115,11 @@ export const Group = styled.div`
 
     ${Image} {
         transform: ${({ heightImage }) => `translateY(${heightImage}px)`};
+        transition: transform linear 0.9s;
 
         ${({ active }) => active && css`
             will-change: opacity, transform;
             transform: translateY(0);
-            transition: transform linear 0.9s;
         `}
     }
 `
@@ -208,6 +208,7 @@ export const Heading = styled.div`
     & {
         ${Title}, ${Text}, ${ButtonLink} {
             opacity: 0;
+            transition: opacity linear 1.5s;
         }
     }
 
@@ -215,19 +216,19 @@ export const Heading = styled.div`
         ${Title} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.2s;
+            transition-delay: 0.2s;
         }
 
         ${Text} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.4s;
+            transition-delay: 0.4s;
         }
 
         ${ButtonLink} {
             will-change: opacity;
             opacity: 1;
-            transition: opacity linear 1.5s 0.6s;
+            transition-delay: 0.6s;
         }
     `}
 

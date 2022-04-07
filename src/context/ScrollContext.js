@@ -7,8 +7,6 @@ const ScrollContext = createContext()
 const ScrollProvider = ({ children }) => {
     const { pathname } = useLocation()
 
-    const headerElement = useRef('header')
-    const gamesElement = useRef('games')
     const backGroundHome = useRef('bg')
     const homeAboutHeading = useRef('home-about-heading')
     const homeOurGamesHeading = useRef('home-ourgames-heading')
@@ -36,13 +34,11 @@ const ScrollProvider = ({ children }) => {
     const elements = useRef({})
     const [activeElement, setActiveElement] = useState({})
 
-    const [marginGames, setMarginGames] = useState(0)
-    const [marginAbout, setMarginAbout] = useState(0)
     const [heightImage, setHeightImage] = useState(0)
     const [marginJoinTeam, setMarginJoinTeam] = useState(0)
     const [translate, setTranslate] = useState(0)
 
-    const getElements = useCallback((path) => {
+    const getElements = useCallback(path => {
         const homeElements = {
             about: homeAboutHeading.current,
             imageAbout: imageHomeAbout.current,
@@ -145,8 +141,6 @@ const ScrollProvider = ({ children }) => {
 
     //set margin for games element and about element
     const setElement = () => {
-        setMarginGames(headerElement.current?.offsetHeight)
-        setMarginAbout(gamesElement.current?.offsetHeight)
         setHeightImage(imageJoinTeam.current?.offsetHeight)
         setMarginJoinTeam(homeOurGamesContent.current?.offsetHeight)
     }
@@ -162,12 +156,8 @@ const ScrollProvider = ({ children }) => {
     const value = {
         translate,
 
-        marginAbout,
-        marginGames,
         marginJoinTeam,
         heightImage,
-        headerElement,
-        gamesElement,
         backGroundHome,
         homeAboutHeading,
         homeOurGamesHeading,

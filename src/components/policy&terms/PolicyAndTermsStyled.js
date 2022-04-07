@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Wrapper } from '../../GlobalStyles'
 
 export const Inner = styled.div``
@@ -21,12 +21,12 @@ export const Group = styled.div`
     color: ${({ theme }) => theme.color.textColor};
     opacity: 0;
     transform: translateX(-50px);
+    transition: all linear 0.8s;
     
-    ${({active}) => active && css`
+    ${({ active }) => active && css`
         will-change: opacity, transform;
         opacity: 1;
         transform: translateX(0);
-        transition: all linear 0.8s;
     `}
 
     @media (max-width: 700px) {
@@ -79,7 +79,7 @@ export const Title = styled.h1`
     opacity: 0;
     transform: translateX(-50px);
     
-    ${({active}) => active && css`
+    ${({ active }) => active && css`
         will-change: opacity, transform;
         opacity: 1;
         transform: translateX(0);

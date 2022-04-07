@@ -44,10 +44,11 @@ export const Title = styled.h1`
     margin-bottom: 54px;
     color: ${({ theme }) => theme.color.textColor};
     opacity: 0;
+    transition: opacity linear 1.5s;
+
     ${({ active }) => active && css`
         will-change: opacity;
         opacity: 1;
-        transition: opacity linear 1.5s;
     `}
 
     @media (max-width: 639.5px) {
@@ -115,19 +116,19 @@ export const Group = styled.div`
     ${Box} {
         opacity: 0;
         transform: translateX(-50px);
+        transition: all linear 0.8s;
 
         ${({ active }) => active && css`
             will-change: opacity, transform;
             &:first-of-type, :nth-child(2) {
                 opacity: 1;
                 transform: translateX(0);
-                transition: all linear 0.8s;
             }
 
             &:last-of-type {
                 opacity: 1;
                 transform: translateX(0);
-                transition: all linear 0.8s 0.4s;
+                transition-delay: 0.4s;
             }
         `}
     }

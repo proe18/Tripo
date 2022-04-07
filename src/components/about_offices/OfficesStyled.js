@@ -105,12 +105,12 @@ export const Group = styled.div`
     ${Heading}, ${Box} {
         opacity: 0;
         transform: translateX(-50px);
+        transition: all linear 1.5s;
 
         ${({ active }) => active && css`
             will-change: opacity, transform;
             opacity: 1;
             transform: translateX(0);
-            transition: all linear 1.5s;
         `}
     }
 
@@ -120,17 +120,17 @@ export const Group = styled.div`
 
         ${Heading}, ${Box} {
             transform: translateY(100px);
+            transition: all linear 0.8s;
         }
         
         ${({ active }) => active && css`
             ${Heading} {
                 transform: translateY(0);
-                transition: all linear 1s;
             }
 
             ${Box} {
                 transform: translateY(0);
-                transition: all linear 1s 0.3s;
+                transition-delay: 0.3s;
             }
         `}
     }

@@ -6,19 +6,16 @@ import * as ROUTES from '../../constants/routes'
 
 const AboutContainer = ({ data }) => {
     const {
-        marginAbout,
         homeAboutHeading,
         imageHomeAbout,
         activeElement,
-        gamesElement,
-        marginGames
     } = useContext(ScrollContext)
     const { handleSwitchPage } = useContext(NavbarContext)
 
     return (
         <About>
             <About.Wrapper>
-                <About.Games marginTop={marginGames} ref={gamesElement}>
+                <About.Games>
                     {data.listGames.map(game =>
                         <About.Game
                             key={game.title}
@@ -48,7 +45,7 @@ const AboutContainer = ({ data }) => {
                         </About.GameMore>
                     </About.More>
                 </About.Games>
-                <About.Wrap marginTop={marginAbout}>
+                <About.Group>
                     <About.Heading
                         ref={homeAboutHeading}
                         active={activeElement?.about}
@@ -66,7 +63,7 @@ const AboutContainer = ({ data }) => {
                             <About.Image key={index} src={image.img} alt={image.alt} />
                         )}
                     </About.WrapImage>
-                </About.Wrap>
+                </About.Group>
             </About.Wrapper>
         </About>
     )
