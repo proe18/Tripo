@@ -57,7 +57,7 @@ const AboutContainer = ({ data }) => {
                     </About.Heading>
                     <About.WrapImage
                         ref={imageHomeAbout}
-                        active={activeElement?.imageAbout}
+                        active={activeElement?.image}
                     >
                         {data.images.map((image, index) =>
                             <About.Image key={index} src={image.img} alt={image.alt} />

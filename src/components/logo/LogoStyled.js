@@ -10,12 +10,12 @@ export const LogoStyled = styled.div`
     font-size: 2.6rem;
     overflow: hidden;
     z-index: 10;
-    box-shadow: ${({theme}) => theme.shadow.boxShadow};
+    box-shadow: ${({ theme }) => theme.shadow.boxShadow};
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.radius1};
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.radius1};
 
     @media (max-width: 860px) {
-        display: ${({mobileMenu}) => mobileMenu && 'none'};
+        display: ${({ mobileMenu }) => mobileMenu && 'none'};
     }
 
     @media (max-width: 420px) {
@@ -41,7 +41,7 @@ export const LogoLink = styled(Link)`
     display: block;
     padding: 13.6px 27px;
     text-decoration: none;
-    font-family: ${({theme}) => theme.font.caveat};
+    font-family: ${({ theme }) => theme.font.caveat};
     color: ${({ theme }) => theme.color.whiteColor};
     background-color: ${({ theme }) => theme.color.primaryColor};
 

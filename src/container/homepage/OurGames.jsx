@@ -3,7 +3,12 @@ import { OurGames } from '../../components'
 import { NavbarContext, ScrollContext } from '../../context'
 
 const OurGamesContainer = ({ data }) => {
-    const { homeOurGamesHeading, homeOurGamesContent, activeElement } = useContext(ScrollContext)
+    const {
+        homeOurGamesHeading,
+        homeOurGamesContent,
+        homeOurGamesBg,
+        activeElement
+    } = useContext(ScrollContext)
     const { listGameElement } = useContext(NavbarContext)
 
     return (
@@ -14,7 +19,7 @@ const OurGamesContainer = ({ data }) => {
                     <OurGames.Text>{data.text}</OurGames.Text>
                 </OurGames.Heading>
                 <OurGames.Group>
-                    <OurGames.Background />
+                    <OurGames.Background ref={homeOurGamesBg} />
                     <OurGames.Content
                         ref={homeOurGamesContent}
                         active={activeElement?.ourGamesContent}

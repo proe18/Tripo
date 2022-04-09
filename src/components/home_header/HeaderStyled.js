@@ -46,30 +46,30 @@ export const Background = styled.div`
     @media (max-width: 420px) {
         width: 110%;
         max-height: 315px;
-        background-position: 50% 0;
+        background-position: 55% 0;
     }
 
     @media (min-width: 421px) and (max-width: 640px) {
         width: 111%;
         max-height: 480px;
-        background-position: 53% 0;
+        background-position: 58% 0;
     }
 
     @media (min-width: 641px) and (max-width: 768px) {
         width: 110%;
         max-height: 550px;
-        background-position: 40% 0;
+        background-position: 50% 0;
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
         width: 110%;
         max-height: 650px;
-        background-position: 36% 0;
+        background-position: 50% 0;
     }
 
     @media (min-width: 1025px) and (max-width: 1180px) {
         width: 110%;
-        background-position: 38% 0;
+        background-position: 42% 0;
     }
 `
 

@@ -68,19 +68,19 @@ export const Wrap = styled.div`
     width: 100%;
     height: 100%;
     min-height: 590px;
-    max-width: 729px;
+    max-width: 608px;
+    overflow: hidden;
     position: relative;
     top: 0;
 
     ${Image} {
-        /* width: 607px; */
-        width: 105%;
+        width: 730px;
         height: 590px;
-        /* position: absolute;
-        top: 0; */
-        /* left: -60.8px; */
+        position: absolute;
+        top: 0;
+        left: -60.8px;
         will-change: transform;
-        transform: ${({ translateLeft }) => `translate3d(${translateLeft}px, 0px, 0px)`};
+        transform: ${({ translateLeft }) => `translateX(${translateLeft}px)`};
     }
 
     @media (max-width: 1000px) {

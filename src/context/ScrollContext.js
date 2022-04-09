@@ -11,6 +11,7 @@ const ScrollProvider = ({ children }) => {
     const homeAboutHeading = useRef('home-about-heading')
     const homeOurGamesHeading = useRef('home-ourgames-heading')
     const homeOurGamesContent = useRef('home-ourgames-content')
+    const homeOurGamesBg = useRef('home-ourgames-bg')
     const homeJoinTeamHeading = useRef('home-jointeam-heading')
     const imageHomeAbout = useRef('image-about')
     const imageJoinTeam = useRef('image-joinTeam')
@@ -32,6 +33,7 @@ const ScrollProvider = ({ children }) => {
     const postionContent = useRef('position-content')
 
     const elements = useRef({})
+    const heightElement = useRef(0)
     const [activeElement, setActiveElement] = useState({})
 
     const [heightImage, setHeightImage] = useState(0)
@@ -41,7 +43,7 @@ const ScrollProvider = ({ children }) => {
     const getElements = useCallback(path => {
         const homeElements = {
             about: homeAboutHeading.current,
-            imageAbout: imageHomeAbout.current,
+            image: imageHomeAbout.current,
             ourGamesHeading: homeOurGamesHeading.current,
             ourGamesContent: homeOurGamesContent.current,
             joinTeam: homeJoinTeamHeading.current,
@@ -96,7 +98,7 @@ const ScrollProvider = ({ children }) => {
             const topElements = {}
             let topElement
             for (let key in elements) {
-                topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.scrollY - 200)
+                topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.pageYOffset - 200)
                 if (window.pageYOffset + 350 >= topElement) {
                     Object.assign(topElements, { [key]: true })
                 }
@@ -105,29 +107,42 @@ const ScrollProvider = ({ children }) => {
         }
     }, [])
 
-    const setTranslateLeft = useCallback((el) => {
-        const heightElement = el?.offsetHeight
+    //caculate translate left for element
+    const getHeightElement = useCallback(el => el?.offsetHeight, [])
+    const translateLeft = useCallback(heightElement => {
         if (window.pageYOffset <= heightElement) {
-            let translateLeft = Math.floor(window.pageYOffset / 10)
-            return translateLeft
+            return Math.floor(window.pageYOffset / 10)
         }
     }, [])
+    //=========================================================
 
+    const getOpacity = useCallback(el => {
+        const heightElement = el?.offsetHeight
+        let opacity
+        // if (window.pageYOffset <= heightElement + window.pageYOffset) {
+            opacity = Math.floor(window.pageYOffset % heightElement)
+        // }
+        console.log(opacity);
+    }, [])
+
+    //handle scroll page
     useEffect(() => {
-        setTranslate(0)
-
-        const timerIDTimeOut = setTimeout(getElements(pathname), 500)
-
-        const handleScroll = () => {
-            setActiveElement(setElements(elements.current))
+        const timerIDTimeOut = setTimeout(() => {
+            getElements(pathname)
 
             if (pathname === ROUTES.HOME) {
-                setTranslate(setTranslateLeft(backGroundHome.current) || 0)
+                heightElement.current = getHeightElement(backGroundHome.current)
             }
 
             if (pathname === ROUTES.ABOUT) {
-                setTranslate(setTranslateLeft(headerAbout.current) || 0)
+                heightElement.current = getHeightElement(headerAbout.current)
             }
+        }, 500)
+
+        const handleScroll = () => {
+            setActiveElement(setElements(elements.current))
+            setTranslate(translateLeft(heightElement.current) || 0)
+            // getOpacity(homeOurGamesBg.current)
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -137,16 +152,19 @@ const ScrollProvider = ({ children }) => {
             clearTimeout(timerIDTimeOut)
         }
 
-    }, [pathname, setTranslateLeft, setElements, getElements])
+    }, [pathname, translateLeft, setElements, getElements, getHeightElement, getOpacity])
+    //=========================================================
 
-    //set margin for games element and about element
+    //set margin element and get height element
     const setElement = () => {
         setHeightImage(imageJoinTeam.current?.offsetHeight)
         setMarginJoinTeam(homeOurGamesContent.current?.offsetHeight)
     }
+    //=========================================================
 
     useLayoutEffect(setElement, [])
     useEffect(() => {
+        setTranslate(0)
 
         window.addEventListener('resize', setElement)
 
@@ -162,6 +180,7 @@ const ScrollProvider = ({ children }) => {
         homeAboutHeading,
         homeOurGamesHeading,
         homeOurGamesContent,
+        homeOurGamesBg,
         homeJoinTeamHeading,
         imageHomeAbout,
         imageJoinTeam,
