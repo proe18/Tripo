@@ -6,7 +6,6 @@ const HeaderContainer = ({ data }) => {
     const {
         headingElement,
         imageAbout,
-        headerAbout,
         aboutContent,
         translate,
         activeElement
@@ -14,7 +13,7 @@ const HeaderContainer = ({ data }) => {
     const { isShow } = useContext(NavbarContext)
 
     return (
-        <HeaderAbout ref={headerAbout}>
+        <HeaderAbout>
             <HeaderAbout.Wrapper>
                 <HeaderAbout.Heading ref={headingElement} animationHeading={isShow}>
                     <HeaderAbout.SubTitle>{data.subTitle}</HeaderAbout.SubTitle>

@@ -22,7 +22,7 @@ const NavbarProvider = ({ children }) => {
     const listGameElement = useRef('listGame')
     const contactElement = useRef('contact')
     const paramRef = useRef('')
-    const pathRoute = useRef(pathname)
+    const prePath = useRef(pathname)
     const timerID1 = useRef(0)
     const timerID2 = useRef(0)
     const timerIDTimeout = useRef(0)
@@ -43,7 +43,7 @@ const NavbarProvider = ({ children }) => {
     }
     //===============================================================
 
-    //handle scroll smooth
+    //animation scroll
     const scrollToSmoothly = (pos, time) => {
         let currentPos = window.pageYOffset
         let start = null
@@ -75,55 +75,60 @@ const NavbarProvider = ({ children }) => {
             paramRef.current = param
         }
 
-        pathRoute.current = pathname
-
         if (!param) {
-            setIsEqual(pathname === pathRoute.current)
+            if (window.pageYOffset > 0 && pathname === prePath.current) setIsEqual(true)
             setIsParam(false)
             setIsEqualParam(false)
             paramRef.current = ''
         }
-
+        
         setIsShow(false)
         setIsScroll(false)
         setIsMouseHover(false)
         setIsActive(undefined)
+        prePath.current = pathname
     }
     //===============================================================
-
-    //caculate position scroll
+    
+    //calculate position scroll
     const scrollToPosition = useCallback(el => {
         const element = el === 'Games' ? listGameElement.current : contactElement.current
         timerID2.current = setTimeout(() => {
             let position = Math.floor(element?.getBoundingClientRect().top + window.pageYOffset)
-            position = paramRef.current === 'Games' ? position - 90 : position - 60
+            position = el === 'Games' ? position - 90 : position - 60
             scrollToSmoothly(position, 1500)
             setIsParam(false)
         }, 1000)
     }, [])
     //===============================================================
-
+    
     //handle scroll to position
     useEffect(() => {
         if (pathname === ROUTES.HOME) {
             timerID1.current = setInterval(() => setIsActive(window.pageYOffset >= 4228), 300)
         }
 
-        if (!isParam && pathname !== pathRoute.current && !isEqual) window.scrollTo(0, 0)
-        if (!isParam && isEqual && window.pageYOffset > 0) {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            })
-            setIsEqual(false)
+        if (!isParam && !isEqual) {
+            if (pathname !== prePath.current) {
+                window.scrollTo(0, 0)
+            }
+        }
+        if (!isParam && isEqual) {
+            if (window.pageYOffset > 0) {
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                })
+                setIsEqual(false)
+            }
         }
 
-        if (isParam && pathname !== pathRoute.current && !isEqual) {
+        if (isParam && pathname !== prePath.current) {
             window.scrollTo(0, 0)
             scrollToPosition(paramRef.current)
         }
-        if (isParam && pathname === pathRoute.current && !isEqual) {
+        if (isParam && pathname === prePath.current) {
             if (isEqualParam) {
                 scrollToPosition(paramRef.current)
             } else {
@@ -155,7 +160,7 @@ const NavbarProvider = ({ children }) => {
             case ROUTES.KIPON:
             case ROUTES.ROBOTRIX:
             case ROUTES.TREASURE:
-                timerIDTimeout.current = setTimeout(() => setIsShow(true), 750)
+                timerIDTimeout.current = setTimeout(() => setIsShow(true), 1000)
                 break
             default:
                 setIsShow(true)
@@ -214,7 +219,7 @@ const NavbarProvider = ({ children }) => {
             navbar.removeEventListener('mouseover', handleMouseOver)
             navbar.removeEventListener('mouseout', handleMouseOut)
             clearInterval(timerIDInterval)
-            clearTimeout(timerIDTimeout)
+            clearTimeout(timerIDTimeout.current)
         }
     }, [pathname, isScroll, dropDown, isEqualParam, isMouseHover])
     //===============================================================

@@ -12,11 +12,11 @@ import {
     Text
 } from './HeaderStyled'
 
-const Header = forwardRef(({ children, ...restProps }, ref) => {
+const Header = ({ children, ...restProps }) => {
     return (
-        <Inner {...restProps} ref={ref}>{children}</Inner>
+        <Inner {...restProps}>{children}</Inner>
     )
-})
+}
 
 Header.Wrapper = function HeaderWrapper({ children, ...restProps }) {
     return (

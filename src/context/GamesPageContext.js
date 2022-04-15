@@ -1,5 +1,6 @@
-import { useEffect, useLayoutEffect, useState, createContext, useRef } from 'react'
+import { useEffect, useState, createContext, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
+import * as ROUTES from '../constants/routes'
 
 const GamesPageContext = createContext()
 
@@ -8,13 +9,20 @@ const GamesPageProvider = ({ children }) => {
     const groupElement = useRef('group')
     const [heightElement, setHeightElement] = useState(0)
 
-    //set heigth for box
-    const getHeightElement = () => setHeightElement(groupElement.current?.offsetHeight)
-    //===============================================================
-
-    useLayoutEffect(getHeightElement, [])
     useEffect(() => {
-        window.addEventListener('resize', getHeightElement)
+        //set heigth for box
+        const getHeightElement = () => setHeightElement(groupElement.current?.offsetHeight)
+        //===============================================================
+
+        switch (pathname) {
+            case ROUTES.KIPON:
+            case ROUTES.ROBOTRIX:
+            case ROUTES.TREASURE:
+                getHeightElement()
+                window.addEventListener('resize', getHeightElement)
+                break
+            default: break
+        }
 
         return () => window.removeEventListener('resize', getHeightElement)
     }, [pathname])

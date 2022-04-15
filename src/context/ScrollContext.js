@@ -21,7 +21,6 @@ const ScrollProvider = ({ children }) => {
     const careersListJob = useRef('careers-listJob')
 
     const imageAbout = useRef('image')
-    const headerAbout = useRef('header')
     const aboutContent = useRef('about-content')
     const aboutTitleInfo = useRef('about-titleInfo')
     const aboutInfo = useRef('about-info')
@@ -33,13 +32,15 @@ const ScrollProvider = ({ children }) => {
     const postionContent = useRef('position-content')
 
     const elements = useRef({})
-    const heightElement = useRef(0)
+    const dimensionsElement = useRef({})
+    const dimensionsOurGameBg = useRef({})
     const [activeElement, setActiveElement] = useState({})
 
     const [heightImage, setHeightImage] = useState(0)
     const [marginJoinTeam, setMarginJoinTeam] = useState(0)
     const [translate, setTranslate] = useState(0)
 
+    //get the element of each page
     const getElements = useCallback(path => {
         const homeElements = {
             about: homeAboutHeading.current,
@@ -92,13 +93,14 @@ const ScrollProvider = ({ children }) => {
             default: break
         }
     }, [])
+    //=========================================================
 
     const setElements = useCallback(elements => {
         if (typeof elements === 'object') {
             const topElements = {}
             let topElement
             for (let key in elements) {
-                topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.pageYOffset - 200)
+                topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.pageYOffset - 100)
                 if (window.pageYOffset + 350 >= topElement) {
                     Object.assign(topElements, { [key]: true })
                 }
@@ -107,22 +109,33 @@ const ScrollProvider = ({ children }) => {
         }
     }, [])
 
-    //caculate translate left for element
-    const getHeightElement = useCallback(el => el?.offsetHeight, [])
-    const translateLeft = useCallback(heightElement => {
-        if (window.pageYOffset <= heightElement) {
+    //get dimensions of element
+    const getDimensionsElement = useCallback(el => {
+        const top = el?.getBoundingClientRect().top
+        const height = el?.getBoundingClientRect().height
+        return { top, height }
+    }, [])
+    //=========================================================
+
+    //calculate translate for element
+    const translateElement = useCallback(topElement => {
+        if (topElement === 0) {
             return Math.floor(window.pageYOffset / 10)
+        } else if (topElement > 0) {
+            return Math.floor((window.pageYOffset / 10) / 2)
         }
     }, [])
     //=========================================================
 
-    const getOpacity = useCallback(el => {
-        const heightElement = el?.offsetHeight
-        let opacity
-        // if (window.pageYOffset <= heightElement + window.pageYOffset) {
-            opacity = Math.floor(window.pageYOffset % heightElement)
-        // }
-        console.log(opacity);
+    const getOpacity = useCallback(dimensions => {
+        if (typeof dimensions === 'object') {
+            const totalElement = Math.floor(dimensions.top + dimensions.height)
+            let opacity
+            if (window.pageYOffset >= dimensions.top && window.pageYOffset <= totalElement) {
+                opacity = Math.floor(totalElement / (window.pageYOffset * 10))
+                console.log(opacity);
+            }
+        }
     }, [])
 
     //handle scroll page
@@ -131,18 +144,30 @@ const ScrollProvider = ({ children }) => {
             getElements(pathname)
 
             if (pathname === ROUTES.HOME) {
-                heightElement.current = getHeightElement(backGroundHome.current)
+                dimensionsElement.current = getDimensionsElement(backGroundHome.current)
+                dimensionsOurGameBg.current = getDimensionsElement(homeOurGamesBg.current)
             }
 
             if (pathname === ROUTES.ABOUT) {
-                heightElement.current = getHeightElement(headerAbout.current)
+                dimensionsElement.current = getDimensionsElement(imageAbout.current)
             }
-        }, 500)
+        }, 800)
 
         const handleScroll = () => {
             setActiveElement(setElements(elements.current))
-            setTranslate(translateLeft(heightElement.current) || 0)
-            // getOpacity(homeOurGamesBg.current)
+
+            if (pathname === ROUTES.HOME || pathname === ROUTES.ABOUT) {
+                const dimensions = dimensionsElement.current
+                const total = dimensions.top + dimensions.height
+
+                if (window.pageYOffset <= total) {
+                    setTranslate(translateElement(dimensions.top) || 0)
+                }
+            }
+            
+            // if (pathname === ROUTES.HOME) {
+            //     getOpacity(dimensionsOurGameBg.current)
+            // }
         }
 
         window.addEventListener('scroll', handleScroll)
@@ -152,7 +177,7 @@ const ScrollProvider = ({ children }) => {
             clearTimeout(timerIDTimeOut)
         }
 
-    }, [pathname, translateLeft, setElements, getElements, getHeightElement, getOpacity])
+    }, [pathname, translateElement, setElements, getElements, getDimensionsElement, getOpacity])
     //=========================================================
 
     //set margin element and get height element
@@ -190,7 +215,6 @@ const ScrollProvider = ({ children }) => {
         careersListJob,
 
         imageAbout,
-        headerAbout,
         aboutContent,
         aboutTitleInfo,
         aboutInfo,
