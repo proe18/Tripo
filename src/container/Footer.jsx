@@ -12,8 +12,11 @@ const FooterContainer = ({ data }) => {
                 return () => handleSwitchPage('Games')
             case 'Contact':
                 return () => handleSwitchPage('Contact')
-            default:
-                return () => handleSwitchPage()
+            case 'Careers':
+                return () => handleSwitchPage('Careers')
+            case 'About':
+                return () => handleSwitchPage('About')
+            default: return
         }
     }
 

@@ -100,7 +100,8 @@ const ScrollProvider = ({ children }) => {
             const topElements = {}
             let topElement
             for (let key in elements) {
-                topElement = Math.floor(elements[key]?.getBoundingClientRect().top + window.pageYOffset - 100)
+                topElement =
+                    Math.floor(elements[key]?.getBoundingClientRect().top + window.pageYOffset - 200)
                 if (window.pageYOffset + 350 >= topElement) {
                     Object.assign(topElements, { [key]: true })
                 }
@@ -140,7 +141,7 @@ const ScrollProvider = ({ children }) => {
 
     //handle scroll page
     useEffect(() => {
-        const timerIDTimeOut = setTimeout(() => {
+        const timerID = setTimeout(() => {
             getElements(pathname)
 
             if (pathname === ROUTES.HOME) {
@@ -151,7 +152,7 @@ const ScrollProvider = ({ children }) => {
             if (pathname === ROUTES.ABOUT) {
                 dimensionsElement.current = getDimensionsElement(imageAbout.current)
             }
-        }, 800)
+        }, 1000)
 
         const handleScroll = () => {
             setActiveElement(setElements(elements.current))
@@ -164,7 +165,7 @@ const ScrollProvider = ({ children }) => {
                     setTranslate(translateElement(dimensions.top) || 0)
                 }
             }
-            
+
             // if (pathname === ROUTES.HOME) {
             //     getOpacity(dimensionsOurGameBg.current)
             // }
@@ -174,7 +175,7 @@ const ScrollProvider = ({ children }) => {
 
         return () => {
             window.removeEventListener('scroll', handleScroll)
-            clearTimeout(timerIDTimeOut)
+            clearTimeout(timerID)
         }
 
     }, [pathname, translateElement, setElements, getElements, getDimensionsElement, getOpacity])

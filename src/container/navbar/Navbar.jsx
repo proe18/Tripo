@@ -47,7 +47,7 @@ const NavBar = () => {
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage()
+                            handleSwitchPage('Home')
                             navigate(ROUTES.HOME)
                         }}
                     >
@@ -74,7 +74,7 @@ const NavBar = () => {
                     <Navbar.Item
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage()
+                            handleSwitchPage('Careers')
                         }}
                     >
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>
@@ -82,7 +82,7 @@ const NavBar = () => {
                     <Navbar.Item
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage()
+                            handleSwitchPage('About')
                         }}
                     >
                         <Navbar.Link to={ROUTES.ABOUT}>About</Navbar.Link>

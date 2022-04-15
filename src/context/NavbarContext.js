@@ -17,7 +17,6 @@ const NavbarProvider = ({ children }) => {
     const [isActive, setIsActive] = useState(pathname === ROUTES.HOME ? false : undefined)
     const [isParam, setIsParam] = useState(false)
     const [isEqualParam, setIsEqualParam] = useState(false)
-    const [isEqual, setIsEqual] = useState(false)
     const [isShow, setIsShow] = useState(false)
     const listGameElement = useRef('listGame')
     const contactElement = useRef('contact')
@@ -75,13 +74,6 @@ const NavbarProvider = ({ children }) => {
             paramRef.current = param
         }
 
-        if (!param) {
-            if (window.pageYOffset > 0 && pathname === prePath.current) setIsEqual(true)
-            setIsParam(false)
-            setIsEqualParam(false)
-            paramRef.current = ''
-        }
-        
         setIsShow(false)
         setIsScroll(false)
         setIsMouseHover(false)
@@ -89,51 +81,68 @@ const NavbarProvider = ({ children }) => {
         prePath.current = pathname
     }
     //===============================================================
-    
+
     //calculate position scroll
     const scrollToPosition = useCallback(el => {
-        const element = el === 'Games' ? listGameElement.current : contactElement.current
+        let element
+        switch (el) {
+            case 'Games':
+                element = listGameElement.current
+                break
+            case 'Contact':
+                element = contactElement.current
+                break
+            default: break
+        }
         timerID2.current = setTimeout(() => {
             let position = Math.floor(element?.getBoundingClientRect().top + window.pageYOffset)
             position = el === 'Games' ? position - 90 : position - 60
             scrollToSmoothly(position, 1500)
-            setIsParam(false)
         }, 1000)
     }, [])
     //===============================================================
-    
+
     //handle scroll to position
     useEffect(() => {
         if (pathname === ROUTES.HOME) {
             timerID1.current = setInterval(() => setIsActive(window.pageYOffset >= 4228), 300)
         }
 
-        if (!isParam && !isEqual) {
-            if (pathname !== prePath.current) {
-                window.scrollTo(0, 0)
-            }
-        }
-        if (!isParam && isEqual) {
-            if (window.pageYOffset > 0) {
-                window.scrollTo({
-                    top: 0,
-                    left: 0,
-                    behavior: 'smooth'
-                })
-                setIsEqual(false)
-            }
-        }
-
-        if (isParam && pathname !== prePath.current) {
-            window.scrollTo(0, 0)
-            scrollToPosition(paramRef.current)
-        }
-        if (isParam && pathname === prePath.current) {
-            if (isEqualParam) {
-                scrollToPosition(paramRef.current)
-            } else {
-                scrollToPosition(paramRef.current)
-            }
+        switch (paramRef.current) {
+            case 'Home':
+            case 'Careers':
+            case 'About':
+                if (pathname !== prePath.current) {
+                    window.scrollTo(0, 0)
+                }
+                if (pathname === prePath.current) {
+                    if (window.pageYOffset > 0 || isEqualParam) {
+                        window.scrollTo({
+                            top: 0,
+                            left: 0,
+                            behavior: 'smooth'
+                        })
+                        setIsEqualParam(false)
+                    }
+                }
+                setIsParam(false)
+                break
+                
+            case 'Games':
+            case 'Contact':
+                if (pathname !== prePath.current) {
+                    window.scrollTo(0, 0)
+                    scrollToPosition(paramRef.current)
+                }
+                if (pathname === prePath.current) {
+                    if (window.pageYOffset >= 0 || isEqualParam) {
+                        scrollToPosition(paramRef.current)
+                    }
+                    setIsEqualParam(false)
+                }
+                setIsParam(false)
+                break
+            default: break
         }
 
         const handleReload = () => {
@@ -151,7 +160,7 @@ const NavbarProvider = ({ children }) => {
             clearInterval(timerID1.current)
             clearTimeout(timerID2.current)
         }
-    }, [pathname, isParam, isEqual, isEqualParam, scrollToPosition])
+    }, [pathname, isParam, isEqualParam, scrollToPosition])
     //===============================================================
 
     //handle show or hide navbar, heading page  
