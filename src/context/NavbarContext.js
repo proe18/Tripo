@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext, useCallback, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
+import * as PAGESTITLE from '../constants/pages_title'
 
 const NavbarContext = createContext()
 
@@ -109,13 +110,20 @@ const NavbarProvider = ({ children }) => {
         }
 
         switch (paramRef.current) {
-            case 'Home':
-            case 'Careers':
-            case 'About':
+            case PAGESTITLE.HOME:
+            case PAGESTITLE.CAREERS:
+            case PAGESTITLE.ABOUT:
+            case PAGESTITLE.KIPON:
+            case PAGESTITLE.ROBOTRIX:
+            case PAGESTITLE.TREASURE:
+            case PAGESTITLE.POLICY:
+            case PAGESTITLE.TERMS:
                 if (pathname !== prePath.current) {
+                    console.log('switch page');
                     window.scrollTo(0, 0)
                 }
                 if (pathname === prePath.current) {
+                    console.log('same page');
                     if (window.pageYOffset > 0 || isEqualParam) {
                         window.scrollTo({
                             top: 0,
@@ -127,9 +135,9 @@ const NavbarProvider = ({ children }) => {
                 }
                 setIsParam(false)
                 break
-                
-            case 'Games':
-            case 'Contact':
+
+            case PAGESTITLE.GAMES:
+            case PAGESTITLE.CONTACT:
                 if (pathname !== prePath.current) {
                     window.scrollTo(0, 0)
                     scrollToPosition(paramRef.current)

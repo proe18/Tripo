@@ -170,7 +170,7 @@ const ScrollProvider = ({ children }) => {
             //     getOpacity(dimensionsOurGameBg.current)
             // }
         }
-
+        
         window.addEventListener('scroll', handleScroll)
 
         return () => {

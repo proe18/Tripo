@@ -1,18 +1,16 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import { LogoStyled, LogoLink } from './LogoStyled'
 import * as ROUTES from '../../constants/routes'
-import { ScrollContext } from '../../context'
+import * as PAGESTITLE from '../../constants/pages_title'
+import { NavbarContext } from '../../context'
 
 const Logo = ({ mobileMenu }) => {
-    const { handleScroll } = useContext(ScrollContext)
+    const { handleSwitchPage } = useContext(NavbarContext)
     return (
         <LogoStyled mobileMenu={mobileMenu}>
             <LogoLink
                 to={ROUTES.HOME}
-                onClick={() => {
-                    handleScroll()
-                    if (window.scrollY !== 0) window.scrollTo(0, 0)
-                }}
+                onClick={() => handleSwitchPage(PAGESTITLE.HOME)}
             >
                 Tripo Games
             </LogoLink>
@@ -20,4 +18,4 @@ const Logo = ({ mobileMenu }) => {
     )
 }
 
-export default Logo
+export default memo(Logo)

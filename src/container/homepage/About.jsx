@@ -3,6 +3,7 @@ import { About, ButtonLink } from '../../components'
 import { ScrollContext, NavbarContext } from '../../context'
 import { HiOutlineArrowNarrowDown } from 'react-icons/hi'
 import * as ROUTES from '../../constants/routes'
+import * as PAGESTITLE from '../../constants/pages_title'
 
 const AboutContainer = ({ data }) => {
     const {
@@ -12,6 +13,20 @@ const AboutContainer = ({ data }) => {
     } = useContext(ScrollContext)
     const { handleSwitchPage } = useContext(NavbarContext)
 
+    const handleOnClick = title => {
+        switch (title) {
+            case PAGESTITLE.KIPON:
+                return () => handleSwitchPage(PAGESTITLE.KIPON)
+            case PAGESTITLE.ROBOTRIX:
+                return () => handleSwitchPage(PAGESTITLE.ROBOTRIX)
+            case PAGESTITLE.TREASURE:
+                return () => handleSwitchPage(PAGESTITLE.TREASURE)
+            default:
+                console.error('Invail value:', title);
+                return
+        }
+    }
+
     return (
         <About>
             <About.Wrapper>
@@ -20,7 +35,7 @@ const AboutContainer = ({ data }) => {
                         <About.Game
                             key={game.title}
                             to={game.path}
-                            onClick={() => handleSwitchPage()}
+                            onClick={handleOnClick(game.title)}
                         >
                             <About.Image src={game.img} alt='GameImage' />
                             <About.Overlay>
@@ -34,7 +49,7 @@ const AboutContainer = ({ data }) => {
                     <About.More>
                         <About.GameMore
                             to={ROUTES.HOME}
-                            onClick={() => handleSwitchPage('Games')}
+                            onClick={() => handleSwitchPage(PAGESTITLE.GAMES)}
                         >
                             <About.Overlay>
                                 <About.Heading>

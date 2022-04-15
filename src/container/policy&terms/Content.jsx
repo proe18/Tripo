@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import { Content } from '../../components'
 import { NavbarContext } from '../../context'
 
@@ -43,4 +43,4 @@ const ContentContainer = ({ data }) => {
     )
 }
 
-export default ContentContainer
+export default memo(ContentContainer)

@@ -5,6 +5,7 @@ import { Logo } from '../../components'
 import { Navbar } from '../../components'
 import { DropDown } from '../../container'
 import * as ROUTES from '../../constants/routes'
+import * as PAGESTITLE from '../../constants/pages_title'
 import { NavbarContext, GalleryContext } from '../../context'
 import { useNavigate } from 'react-router-dom'
 
@@ -47,7 +48,7 @@ const NavBar = () => {
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage('Home')
+                            handleSwitchPage(PAGESTITLE.HOME)
                             navigate(ROUTES.HOME)
                         }}
                     >
@@ -74,7 +75,7 @@ const NavBar = () => {
                     <Navbar.Item
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage('Careers')
+                            handleSwitchPage(PAGESTITLE.CAREERS)
                         }}
                     >
                         <Navbar.Link to={ROUTES.CAREERS}>Careers</Navbar.Link>
@@ -82,7 +83,7 @@ const NavBar = () => {
                     <Navbar.Item
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage('About')
+                            handleSwitchPage(PAGESTITLE.ABOUT)
                         }}
                     >
                         <Navbar.Link to={ROUTES.ABOUT}>About</Navbar.Link>
@@ -91,7 +92,7 @@ const NavBar = () => {
                         active={isActive}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage('Contact')
+                            handleSwitchPage(PAGESTITLE.CONTACT)
                             navigate(ROUTES.HOME)
                         }}
                     >

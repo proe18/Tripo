@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Content } from '../container'
 import * as ROUTES from '../constants/routes'
@@ -22,4 +21,4 @@ const PolicyAndTerms = () => {
     return <Content data={contentData} />
 }
 
-export default memo(PolicyAndTerms)
+export default PolicyAndTerms

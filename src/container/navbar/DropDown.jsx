@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { Dropdown } from '../../components'
 import { NavbarContext } from '../../context'
 import * as ROUTES from '../../constants/routes'
+import * as PAGESTITLE from '../../constants/pages_title'
 
 const DropDown = () => {
     const { handleClickMobileMenu, handleSwitchPage } = useContext(NavbarContext)
@@ -14,7 +15,7 @@ const DropDown = () => {
                         to={ROUTES.KIPON}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage()
+                            handleSwitchPage(PAGESTITLE.KIPON)
                         }}
                     >
                         Kipon
@@ -25,7 +26,7 @@ const DropDown = () => {
                         to={ROUTES.ROBOTRIX}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage()
+                            handleSwitchPage(PAGESTITLE.ROBOTRIX)
                         }}
                     >
                         Robotrix
@@ -36,7 +37,7 @@ const DropDown = () => {
                         to={ROUTES.TREASURE}
                         onClick={() => {
                             handleClickMobileMenu()
-                            handleSwitchPage()
+                            handleSwitchPage(PAGESTITLE.TREASURE)
                         }}
                     >
                         Treasure Box

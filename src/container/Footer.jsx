@@ -1,21 +1,40 @@
 import { useContext, memo } from 'react'
 import { Logo, Footer } from '../components'
 import { GalleryContext, NavbarContext } from '../context'
+import * as PAGESTITLE from '../constants/pages_title'
 
 const FooterContainer = ({ data }) => {
     const { isCloseGallery } = useContext(GalleryContext)
     const { handleSwitchPage } = useContext(NavbarContext)
+    
+    const checkTitle = title => {
+        if (title === 'Privacy Policy') {
+            const titleLength = title.length
+            const policyLength = PAGESTITLE.POLICY.length
+            return title.slice(-policyLength, titleLength)
+        }
+
+        if (title === 'Terms & Conditions') {
+            return title.slice(0, PAGESTITLE.TERMS.length)
+        }
+
+        return title
+    }
 
     const handleOnClick = title => {
-        switch (title) {
-            case 'Games':
-                return () => handleSwitchPage('Games')
-            case 'Contact':
-                return () => handleSwitchPage('Contact')
-            case 'Careers':
-                return () => handleSwitchPage('Careers')
-            case 'About':
-                return () => handleSwitchPage('About')
+        switch (checkTitle(title)) {
+            case PAGESTITLE.GAMES:
+                return () => handleSwitchPage(PAGESTITLE.GAMES)
+            case PAGESTITLE.CONTACT:
+                return () => handleSwitchPage(PAGESTITLE.CONTACT)
+            case PAGESTITLE.CAREERS:
+                return () => handleSwitchPage(PAGESTITLE.CAREERS)
+            case PAGESTITLE.ABOUT:
+                return () => handleSwitchPage(PAGESTITLE.ABOUT)
+            case PAGESTITLE.POLICY:
+                return () => handleSwitchPage(PAGESTITLE.POLICY)
+            case PAGESTITLE.TERMS:
+                return () => handleSwitchPage(PAGESTITLE.TERMS)
             default: return
         }
     }
