@@ -51,7 +51,7 @@ export const FormWrapper = styled.div`
 
 export const FormHeading = styled.div`
     font-family: 'Roboto', sans-serif;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
 `
 
 export const FormTitle = styled.h1`
@@ -80,6 +80,7 @@ export const FormInput = styled.input`
     width: 100%;
     height: 100%;
     min-height: 60px;
+    font-size: 1.4rem;
     border-radius: 10px;
     outline: none;
     border: 1px solid #2a2929;
@@ -94,12 +95,29 @@ export const FormInput = styled.input`
     }
 `
 
+export const FormTextArea = styled.textarea`
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    resize: none;
+    font-size: 1.4rem;
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-left: 2px;
+    border: 1px solid #2a2929;
+    border-radius: 10px;
+
+    @media (max-width: 940px) {
+        min-height: 160px;
+    }
+`
+
 export const FormWrap = styled.div`
     width: 100%;
     max-width: 100%;
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
     margin-bottom: 30px;
     position: relative;
 `
@@ -107,14 +125,6 @@ export const FormWrap = styled.div`
 export const Form = styled.form`
     ${FormWrap}:last-of-type {
         margin-bottom: 20px;
-
-        ${FormInput} {
-            min-height: 100px;
-
-            @media (max-width: 940px) {
-                min-height: 160px;
-            }
-        }
     }
 `
 
@@ -183,7 +193,7 @@ export const ButtonSubmit = styled.button`
     outline: none;
     cursor: pointer;
     border-radius: 10px;
-    background-color: ${({theme}) => theme.color.thirdColor};
+    background-color: ${({ theme }) => theme.color.thirdColor};
     will-change: transition;
     transition: ease-in 0.3s;
     -moz-transition: ease-in 0.3s;
@@ -191,12 +201,12 @@ export const ButtonSubmit = styled.button`
     -webkit-transition: ease-in 0.3s;
 
     &:hover {
-        background-color: ${({theme}) => theme.color.primaryColor};
+        background-color: ${({ theme }) => theme.color.primaryColor};
     }
 
     @media (max-width: 1319px) {
         &:hover {
-            background-color: ${({theme}) => theme.color.thirdColor};
+            background-color: ${({ theme }) => theme.color.thirdColor};
         }
     }
 `
@@ -206,7 +216,7 @@ export const SubscribeFormContainer = styled(Container)`
     max-width: 388px;
     min-height: unset;
     max-height: 210px;
-    background-color: ${({theme}) => theme.color.primaryColor};
+    background-color: ${({ theme }) => theme.color.primaryColor};
     position: unset;
     float: right;
     margin-top: 192px;
@@ -287,8 +297,8 @@ export const SubscribeFormContainer = styled(Container)`
 export const ButtonJoin = styled(ButtonSubmit)`
     max-width: 80px;
     margin-top: 15px;
-    color: ${({theme}) => theme.color.textColor};
-    background-color: ${({theme}) => theme.color.secondColor};
+    color: ${({ theme }) => theme.color.textColor};
+    background-color: ${({ theme }) => theme.color.secondColor};
 
     &:hover {
         background-color: #ffff;
@@ -301,7 +311,7 @@ export const ButtonJoin = styled(ButtonSubmit)`
 
     @media (max-width: 1319px) {
         &:hover {
-            background-color: ${({theme}) => theme.color.secondColor};
+            background-color: ${({ theme }) => theme.color.secondColor};
         }
     }
 `

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ButtonLink, JoinTeam, FormContainer, SubscribeForm } from '../../components'
+import { ButtonLink, JoinTeam, MainForm, SubscribeForm } from '../../components'
 import { ScrollContext } from '../../context'
 
 const JoinTeamContainer = ({ data }) => {
@@ -38,7 +38,7 @@ const JoinTeamContainer = ({ data }) => {
                     <JoinTeam.Overlay>
                         <JoinTeam.Wrapper>
                             <JoinTeam.Group>
-                                <FormContainer />
+                                <MainForm />
                                 <SubscribeForm />
                             </JoinTeam.Group>
                         </JoinTeam.Wrapper>

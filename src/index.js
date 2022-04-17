@@ -4,7 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import {
     NavbarProvider,
     GalleryProvider,
-    ScrollProvider
+    ScrollProvider,
+    FormProvider
 } from './context'
 import { StyleProvider } from './GlobalStyles'
 import App from './App'
@@ -15,9 +16,11 @@ ReactDOM.render(
             <NavbarProvider>
                 <ScrollProvider>
                     <GalleryProvider>
-                        <StyleProvider>
-                            <App />
-                        </StyleProvider>
+                        <FormProvider>
+                            <StyleProvider>
+                                <App />
+                            </StyleProvider>
+                        </FormProvider>
                     </GalleryProvider>
                 </ScrollProvider>
             </NavbarProvider>

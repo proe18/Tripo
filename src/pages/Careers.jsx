@@ -1,4 +1,3 @@
-import { PositionFormProvider } from '../context'
 import { Outlet, useLocation } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 import { HeaderCareers, JobsPosition } from '../container'
@@ -14,11 +13,11 @@ const Careers = () => {
         return <Outlet />
     }
     return (
-        <PositionFormProvider>
+        <>
             <HeaderCareers data={headerData} />
             <JobsPosition data={jobsPositionData} />
             <PositionForm />
-        </PositionFormProvider>
+        </>
     );
 }
 

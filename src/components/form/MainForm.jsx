@@ -1,10 +1,9 @@
-import { useContext } from 'react'
-import { NavbarContext } from '../../context'
+import { useContext, memo } from 'react'
 import { useForm } from 'react-hook-form'
+import { NavbarContext } from '../../context'
 import { AiOutlineWarning } from 'react-icons/ai'
 import {
     Container,
-    SubscribeFormContainer,
     FormWrapper,
     FormGroup,
     FormHeading,
@@ -14,16 +13,19 @@ import {
     FormWrap,
     FormLabel,
     FormInput,
+    FormTextArea,
     ErrorWrap,
     ErrorMes,
     ButtonSubmit,
-    ButtonJoin
 } from './FormStyled'
 
-export const FormContainer = () => {
+const MainForm = () => {
     const { contactElement } = useContext(NavbarContext)
-    const { register, formState: { errors }, handleSubmit } = useForm()
-    const onSubmit = (data, e) => console.log(data, e)
+    const { register, formState: { errors }, reset, handleSubmit } = useForm()
+    const onSubmit = data => {
+        console.log(data)
+        reset()
+    }
 
     return (
         <Container ref={contactElement}>
@@ -122,7 +124,7 @@ export const FormContainer = () => {
                     </FormWrap>
                     <FormWrap>
                         <FormLabel>Leave us a message...</FormLabel>
-                        <FormInput type={'text'} />
+                        <FormTextArea type={'text'} />
                     </FormWrap>
                     <ButtonSubmit>Submit</ButtonSubmit>
                 </Form>
@@ -131,39 +133,4 @@ export const FormContainer = () => {
     )
 }
 
-export const SubscribeForm = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm()
-    const onSubmit = (data, e) => console.log(data, e)
-
-    return (
-        <SubscribeFormContainer>
-            <FormWrapper>
-                <FormHeading>
-                    <FormTitle>Subscribe to Our Newsletter</FormTitle>
-                </FormHeading>
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                    <FormLabel>Email *</FormLabel>
-                    <FormWrap>
-                        <FormInput type={'email'} {...register('email', {
-                            required: true,
-                            pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                        })} />
-                        {errors.email?.type === "required" &&
-                            <ErrorWrap>
-                                <AiOutlineWarning />
-                                <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
-                            </ErrorWrap>
-                        }
-                        {errors.email?.type === "pattern" &&
-                            <ErrorWrap>
-                                <AiOutlineWarning />
-                                <ErrorMes>Email không hợp lệ</ErrorMes>
-                            </ErrorWrap>
-                        }
-                        <ButtonJoin>Join</ButtonJoin>
-                    </FormWrap>
-                </Form>
-            </FormWrapper>
-        </SubscribeFormContainer>
-    )
-}
+export default memo(MainForm)

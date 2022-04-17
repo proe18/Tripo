@@ -1,8 +1,7 @@
 import { useContext, memo } from 'react'
-import { useForm } from 'react-hook-form'
 import { AiOutlineWarning } from 'react-icons/ai'
 import { GrClose } from 'react-icons/gr'
-import { PositionFormContext } from '../../context'
+import { FormContext } from '../../context'
 import {
     PositionFormContainer,
     Modal,
@@ -18,6 +17,7 @@ import {
     FormWrap,
     FormLabel,
     FormInput,
+    FormTextArea,
     FormSelect,
     FormOption,
     ErrorWrap,
@@ -27,9 +27,14 @@ import {
 } from './PositionFormStyled'
 
 const PositionForm = () => {
-    const { isCloseForm, handleCloseForm} = useContext(PositionFormContext)
-    const { register, formState: { errors }, handleSubmit } = useForm()
-    const onSubmit = (data, e) => console.log(data, e)
+    const {
+        isCloseForm,
+        register,
+        errors,
+        handleSubmit,
+        handleCloseForm,
+        onSubmit,
+    } = useContext(FormContext)
 
     return (
         <PositionFormContainer>
@@ -50,12 +55,15 @@ const PositionForm = () => {
                             <FormGroup>
                                 <FormWrap>
                                     <FormLabel>First Name *</FormLabel>
-                                    <FormInput type={'text'} {...register('firstName', {
-                                        required: true,
-                                        minLength: 3,
-                                        maxLength: 20,
-                                        pattern: /^[A-Za-z]+$/i
-                                    })} />
+                                    <FormInput
+                                        type={'text'}
+                                        {...register('firstName', {
+                                            required: true,
+                                            minLength: 3,
+                                            maxLength: 20,
+                                            pattern: /^[A-Za-z]+$/i
+                                        })}
+                                    />
                                     {errors.firstName?.type === "required" &&
                                         <ErrorWrap>
                                             <AiOutlineWarning />
@@ -83,12 +91,15 @@ const PositionForm = () => {
                                 </FormWrap>
                                 <FormWrap>
                                     <FormLabel>Last Name *</FormLabel>
-                                    <FormInput type={'text'} {...register('lastName', {
-                                        required: true,
-                                        minLength: 3,
-                                        maxLength: 20,
-                                        pattern: /^[A-Za-z]+$/i
-                                    })} />
+                                    <FormInput
+                                        type={'text'}
+                                        {...register('lastName', {
+                                            required: true,
+                                            minLength: 3,
+                                            maxLength: 20,
+                                            pattern: /^[A-Za-z]+$/i
+                                        })}
+                                    />
                                     {errors.lastName?.type === "required" &&
                                         <ErrorWrap>
                                             <AiOutlineWarning />
@@ -118,10 +129,13 @@ const PositionForm = () => {
                             <FormGroup>
                                 <FormWrap>
                                     <FormLabel>Email *</FormLabel>
-                                    <FormInput type={'text'} {...register('email', {
-                                        required: true,
-                                        pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                                    })} />
+                                    <FormInput
+                                        type={'text'}
+                                        {...register('email', {
+                                            required: true,
+                                            pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                                        })}
+                                    />
                                     {errors.email?.type === "required" &&
                                         <ErrorWrap>
                                             <AiOutlineWarning />
@@ -137,11 +151,14 @@ const PositionForm = () => {
                                 </FormWrap>
                                 <FormWrap>
                                     <FormLabel>Phone</FormLabel>
-                                    <FormInput type={'text'} {...register('phone', {
+                                    <FormInput 
+                                    type={'text'} 
+                                    {...register('phone', {
                                         minLength: 4,
                                         maxLength: 17,
                                         pattern: /(84|0[3|5|7|8|9])+([0-9]{8})\b/g
-                                    })} />
+                                    })}
+                                     />
                                     {errors.phone?.type === "minLength" &&
                                         <ErrorWrap>
                                             <AiOutlineWarning />
@@ -164,7 +181,8 @@ const PositionForm = () => {
                             </FormGroup>
                             <FormWrap>
                                 <FormLabel>Position *</FormLabel>
-                                <FormSelect value={''} {...register('position', { required: true })}>
+                                <FormSelect {...register('position', { required: true })}>
+                                    <FormOption value={''} hidden></FormOption>
                                     <FormOption value={'CommunityManager'}>Community Manager</FormOption>
                                     <FormOption value={'QA Tester'}>QA Tester</FormOption>
                                     <FormOption value={'Game Designer'}>Game Designer</FormOption>
@@ -180,10 +198,13 @@ const PositionForm = () => {
                             <FormGroup>
                                 <FormWrap>
                                     <FormLabel>CV URL *</FormLabel>
-                                    <FormInput type={'text'} {...register('url', {
+                                    <FormInput 
+                                    type={'text'} 
+                                    {...register('url', {
                                         required: true,
                                         pattern: /^(?:http(s)?:\/\/)?[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/gm
-                                    })} />
+                                    })} 
+                                    />
                                     {errors.url?.type === "required" &&
                                         <ErrorWrap>
                                             <AiOutlineWarning />
@@ -199,9 +220,12 @@ const PositionForm = () => {
                                 </FormWrap>
                                 <FormWrap>
                                     <FormLabel>LinkedIn URL</FormLabel>
-                                    <FormInput type={'text'} {...register('linkedurl', {
+                                    <FormInput 
+                                    type={'text'} 
+                                    {...register('linkedurl', {
                                         pattern: /^(?:http(s)?:\/\/)?[\w.-]+(?:.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/gm
-                                    })} />
+                                    })}
+                                     />
                                     {errors.linkedurl?.type === "pattern" &&
                                         <ErrorWrap>
                                             <AiOutlineWarning />
@@ -212,7 +236,7 @@ const PositionForm = () => {
                             </FormGroup>
                             <FormWrap>
                                 <FormLabel>Any Comments</FormLabel>
-                                <FormInput type={'text'} />
+                                <FormTextArea type={'text'} {...register('comments')}/>
                             </FormWrap>
                             <FormButton>
                                 <ButtonSubmit>Submit</ButtonSubmit>

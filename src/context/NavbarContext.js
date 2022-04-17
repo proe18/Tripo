@@ -87,17 +87,17 @@ const NavbarProvider = ({ children }) => {
     const scrollToPosition = useCallback(el => {
         let element
         switch (el) {
-            case 'Games':
+            case PAGESTITLE.GAMES:
                 element = listGameElement.current
                 break
-            case 'Contact':
+            case PAGESTITLE.CONTACT:
                 element = contactElement.current
                 break
             default: break
         }
         timerID2.current = setTimeout(() => {
             let position = Math.floor(element?.getBoundingClientRect().top + window.pageYOffset)
-            position = el === 'Games' ? position - 90 : position - 60
+            position = el === PAGESTITLE.GAMES ? position - 90 : position - 60
             scrollToSmoothly(position, 1500)
         }, 1000)
     }, [])
@@ -119,11 +119,9 @@ const NavbarProvider = ({ children }) => {
             case PAGESTITLE.POLICY:
             case PAGESTITLE.TERMS:
                 if (pathname !== prePath.current) {
-                    console.log('switch page');
                     window.scrollTo(0, 0)
                 }
                 if (pathname === prePath.current) {
-                    console.log('same page');
                     if (window.pageYOffset > 0 || isEqualParam) {
                         window.scrollTo({
                             top: 0,

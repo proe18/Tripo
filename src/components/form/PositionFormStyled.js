@@ -139,6 +139,7 @@ export const FormInput = styled.input`
     height: 100%;
     min-height: 60px;
     margin-top: 15px;
+    font-size: 1.6rem;
     border-radius: 10px;
     border: 1px solid #2a2929;
 
@@ -149,6 +150,19 @@ export const FormInput = styled.input`
     @media (max-width: 519.5px) {
         max-width: 100%;
     }
+`
+
+export const FormTextArea = styled.textarea`
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+    resize: none;
+    font-size: 1.6rem;
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-left: 2px;
+    border: 1px solid #2a2929;
+    border-radius: 10px;
 `
 
 export const Form = styled.form`
@@ -178,10 +192,6 @@ export const Form = styled.form`
 
     ${FormWrap}:nth-child(5) {
         margin-bottom: 20px;
-
-        ${FormInput} {
-            min-height: 150px;
-        }
     }
 `
 

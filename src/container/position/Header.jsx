@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { NavbarContext, PositionFormContext } from '../../context'
+import { NavbarContext, FormContext } from '../../context'
 import { Button, HeaderPosition } from '../../components'
 
 const HeaderContainer = ({ data }) => {
-    const { handleCloseForm } = useContext(PositionFormContext)
+    const { handleCloseForm } = useContext(FormContext)
     const { isShow } = useContext(NavbarContext)
     console.log(isShow);
 

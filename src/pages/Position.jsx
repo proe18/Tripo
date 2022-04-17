@@ -2,7 +2,6 @@ import { memo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { PositionForm } from '../components'
 import { ContentPosition, HeaderPosition } from '../container'
-import { PositionFormProvider } from '../context'
 import * as ROUTES from '../constants/routes'
 import { jobPositionData } from '../data/JobPosition_data'
 
@@ -26,11 +25,11 @@ const Position = () => {
     const positionData = checkPath(pathname)
 
     return (
-        <PositionFormProvider>
+        <>
             <HeaderPosition data={positionData.header} />
             <ContentPosition data={positionData.content} />
             <PositionForm />
-        </PositionFormProvider>
+        </>
     )
 }
 

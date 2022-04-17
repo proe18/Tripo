@@ -1,9 +1,9 @@
 import { useContext } from 'react'
-import { NavbarContext, PositionFormContext, ScrollContext } from '../../context'
+import { NavbarContext, FormContext, ScrollContext } from '../../context'
 import { Button, ButtonLink, JobsPosition } from '../../components'
 
 const JobsPositionContainer = ({ data }) => {
-    const { handleCloseForm } = useContext(PositionFormContext)
+    const { handleCloseForm } = useContext(FormContext)
     const { careersJobTitle, careersSend, careersListJob, activeElement } = useContext(ScrollContext)
     const { handleSwitchPage } = useContext(NavbarContext)
 
