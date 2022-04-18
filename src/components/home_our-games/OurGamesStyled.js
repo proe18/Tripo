@@ -24,6 +24,8 @@ export const Background = styled.div`
     background: url(${BackGround}) no-repeat;
     background-size: cover;
     background-position: center;
+    will-change: opacity;
+    opacity: ${({ opacityBg }) => (opacityBg >= 0.6) ? 0.8 : `${opacityBg}`};
 
     @media (max-width: 699.5px) {
         background: none;

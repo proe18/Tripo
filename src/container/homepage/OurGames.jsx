@@ -7,7 +7,8 @@ const OurGamesContainer = ({ data }) => {
         homeOurGamesHeading,
         homeOurGamesContent,
         homeOurGamesBg,
-        activeElement
+        activeElement,
+        opacity
     } = useContext(ScrollContext)
     const { listGameElement } = useContext(NavbarContext)
 
@@ -19,7 +20,7 @@ const OurGamesContainer = ({ data }) => {
                     <OurGames.Text>{data.text}</OurGames.Text>
                 </OurGames.Heading>
                 <OurGames.Group>
-                    <OurGames.Background ref={homeOurGamesBg} />
+                    <OurGames.Background ref={homeOurGamesBg} opacityBg={opacity}/>
                     <OurGames.Content
                         ref={homeOurGamesContent}
                         active={activeElement?.ourGamesContent}

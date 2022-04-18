@@ -31,16 +31,17 @@ const ScrollProvider = ({ children }) => {
     const gamesContent = useRef('games-content')
     const postionContent = useRef('position-content')
 
-    const elements = useRef({})
-    const dimensionsElement = useRef({})
-    const dimensionsOurGameBg = useRef({})
+    const elements = useRef()
+    const dimensionsElement = useRef()
+    const bgOurGames = useRef()
     const [activeElement, setActiveElement] = useState({})
 
     const [heightImage, setHeightImage] = useState(0)
     const [marginJoinTeam, setMarginJoinTeam] = useState(0)
     const [translate, setTranslate] = useState(0)
+    const [opacity, setOpacity] = useState(0)
 
-    //get the element of each page
+    //get element each page
     const getElements = useCallback(path => {
         const homeElements = {
             about: homeAboutHeading.current,
@@ -112,13 +113,13 @@ const ScrollProvider = ({ children }) => {
 
     //get dimensions of element
     const getDimensionsElement = useCallback(el => {
-        const top = el?.getBoundingClientRect().top
+        const top = Math.floor(el?.getBoundingClientRect().top)
         const height = el?.getBoundingClientRect().height
         return { top, height }
     }, [])
     //=========================================================
 
-    //calculate translate for element
+    //calculate translate
     const translateElement = useCallback(topElement => {
         if (topElement === 0) {
             return Math.floor(window.pageYOffset / 10)
@@ -128,16 +129,15 @@ const ScrollProvider = ({ children }) => {
     }, [])
     //=========================================================
 
-    const getOpacity = useCallback(dimensions => {
-        if (typeof dimensions === 'object') {
-            const totalElement = Math.floor(dimensions.top + dimensions.height)
-            let opacity
-            if (window.pageYOffset >= dimensions.top && window.pageYOffset <= totalElement) {
-                opacity = Math.floor(totalElement / (window.pageYOffset * 10))
-                console.log(opacity);
-            }
+    //calculate opacity
+    const opacityBg = useCallback(bgOurGamesObj => {
+        if (typeof bgOurGamesObj === 'object') {
+            const heightElement = bgOurGamesObj.height
+            const topElement = Math.floor(bgOurGamesObj.element?.getBoundingClientRect().top)
+            return Math.round(Math.abs(topElement / heightElement) * 100) / 100
         }
     }, [])
+    //=========================================================
 
     //handle scroll page
     useEffect(() => {
@@ -146,7 +146,12 @@ const ScrollProvider = ({ children }) => {
 
             if (pathname === ROUTES.HOME) {
                 dimensionsElement.current = getDimensionsElement(backGroundHome.current)
-                dimensionsOurGameBg.current = getDimensionsElement(homeOurGamesBg.current)
+                bgOurGames.current =
+                {
+                    top: getDimensionsElement(homeOurGamesBg.current).top,
+                    height: getDimensionsElement(homeOurGamesBg.current).height,
+                    element: homeOurGamesBg.current
+                }
             }
 
             if (pathname === ROUTES.ABOUT) {
@@ -155,22 +160,39 @@ const ScrollProvider = ({ children }) => {
         }, 1000)
 
         const handleScroll = () => {
+            //active elements if user scroll page to each position
             setActiveElement(setElements(elements.current))
+            //=========================================================
 
+            //set translate element when user scroll page
             if (pathname === ROUTES.HOME || pathname === ROUTES.ABOUT) {
                 const dimensions = dimensionsElement.current
-                const total = dimensions.top + dimensions.height
 
-                if (window.pageYOffset <= total) {
-                    setTranslate(translateElement(dimensions.top) || 0)
+                if (dimensions) {
+                    const total = dimensions.top + dimensions.height
+
+                    if (window.pageYOffset <= total) {
+                        setTranslate(translateElement(dimensions.top))
+                    }
                 }
             }
+            //=========================================================
 
-            // if (pathname === ROUTES.HOME) {
-            //     getOpacity(dimensionsOurGameBg.current)
-            // }
+            //set opacity for "Our Games" background when user scroll page
+            if (pathname === ROUTES.HOME) {
+                const bgOurGamesObj = bgOurGames.current
+
+                if (bgOurGamesObj) {
+                    const total = (bgOurGamesObj.top + bgOurGamesObj.height) - 400
+
+                    if (window.pageYOffset >= bgOurGamesObj.top && window.pageYOffset <= total) {
+                        setOpacity(opacityBg(bgOurGames.current))
+                    }
+                }
+            }
+            //=========================================================
         }
-        
+
         window.addEventListener('scroll', handleScroll)
 
         return () => {
@@ -178,7 +200,7 @@ const ScrollProvider = ({ children }) => {
             clearTimeout(timerID)
         }
 
-    }, [pathname, translateElement, setElements, getElements, getDimensionsElement, getOpacity])
+    }, [pathname, translateElement, setElements, getElements, getDimensionsElement, opacityBg])
     //=========================================================
 
     //set margin element and get height element
@@ -199,6 +221,7 @@ const ScrollProvider = ({ children }) => {
 
     const value = {
         translate,
+        opacity,
 
         marginJoinTeam,
         heightImage,
