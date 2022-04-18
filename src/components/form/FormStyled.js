@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
     width: 100%;
@@ -82,13 +82,17 @@ export const FormInput = styled.input`
     min-height: 60px;
     font-size: 1.4rem;
     border-radius: 10px;
-    outline: none;
     border: 1px solid #2a2929;
     margin-top: 15px;
 
-    &:hover, &:focus {
-        border: 2px solid #000000;
-    }
+    ${({ errorMessage }) => errorMessage && css`
+        border: 2px solid red;
+        outline: none;
+
+        &:focus {
+            border: 2px solid red;
+        }
+    `}
 
     @media (max-width: 940px) {
         margin-top: 10px;
@@ -246,11 +250,29 @@ export const SubscribeFormContainer = styled(Container)`
         ${ErrorWrap} {
             color: #ffff;
         }
+    }
 
-        ${FormInput} {
-            max-width: 238px;
-            min-height: 60px !important;
-            border: none;
+    ${Form} {
+        ${FormWrap} {
+            ${FormInput} {
+                max-width: 238px;
+                min-height: 60px !important;
+
+                ${({ errorMessage }) => errorMessage 
+                    ? css`
+                        border: 2px solid black;
+                        outline: none;
+                        opacity: 0.6;
+
+                        &:focus {
+                            border: 2px solid black;
+                        }
+                    `
+                    : css`
+                        border: none;
+                    `
+                }
+            }
         }
     }
 

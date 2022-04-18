@@ -1,6 +1,7 @@
-import { memo } from 'react'
+import { useContext, memo } from 'react'
 import { useForm } from 'react-hook-form'
 import { AiOutlineWarning } from 'react-icons/ai'
+import { FormContext } from '../../context/FromContext'
 import {
     SubscribeFormContainer,
     FormWrapper,
@@ -16,6 +17,8 @@ import {
 } from './FormStyled'
 
 const SubscribeForm = () => {
+    const { registerOptions } = useContext(FormContext)
+
     const { register, formState: { errors }, reset, handleSubmit } = useForm()
     const onSubmit = data => {
         console.log(data)
@@ -31,20 +34,15 @@ const SubscribeForm = () => {
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <FormLabel>Email *</FormLabel>
                     <FormWrap>
-                        <FormInput type={'email'} {...register('email', {
-                            required: true,
-                            pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                        })} />
-                        {errors.email?.type === "required" &&
+                        <FormInput
+                            type={'email'}
+                            errorMessage={errors.email}
+                            {...register('email', registerOptions.email)}
+                        />
+                        {errors?.email &&
                             <ErrorWrap>
                                 <AiOutlineWarning />
-                                <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
-                            </ErrorWrap>
-                        }
-                        {errors.email?.type === "pattern" &&
-                            <ErrorWrap>
-                                <AiOutlineWarning />
-                                <ErrorMes>Email không hợp lệ</ErrorMes>
+                                <ErrorMes>{errors.email.message}</ErrorMes>
                             </ErrorWrap>
                         }
                         <ButtonJoin>Join</ButtonJoin>

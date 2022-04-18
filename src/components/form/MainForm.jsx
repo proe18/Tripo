@@ -1,6 +1,6 @@
 import { useContext, memo } from 'react'
 import { useForm } from 'react-hook-form'
-import { NavbarContext } from '../../context'
+import { FormContext, NavbarContext } from '../../context'
 import { AiOutlineWarning } from 'react-icons/ai'
 import {
     Container,
@@ -21,6 +21,8 @@ import {
 
 const MainForm = () => {
     const { contactElement } = useContext(NavbarContext)
+    const { registerOptions } = useContext(FormContext)
+
     const { register, formState: { errors }, reset, handleSubmit } = useForm()
     const onSubmit = data => {
         console.log(data)
@@ -38,87 +40,44 @@ const MainForm = () => {
                     <FormGroup>
                         <FormWrap>
                             <FormLabel>First Name *</FormLabel>
-                            <FormInput type={'text'} {...register('firstName', {
-                                required: true,
-                                minLength: 3,
-                                maxLength: 20,
-                                pattern: /^[A-Za-z]+$/i
-                            })} />
-                            {errors.firstName?.type === "required" &&
+                            <FormInput
+                                type={'text'}
+                                errorMessage={errors.firstName}
+                                {...register('firstName', registerOptions.firstName)}
+                            />
+                            {errors?.firstName &&
                                 <ErrorWrap>
                                     <AiOutlineWarning />
-                                    <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
-                                </ErrorWrap>
-                            }
-                            {errors.firstName?.type === "minLength" &&
-                                <ErrorWrap>
-                                    <AiOutlineWarning />
-                                    <ErrorMes>Tối thiểu 3 ký tự</ErrorMes>
-                                </ErrorWrap>
-                            }
-                            {errors.firstName?.type === "maxLength" &&
-                                <ErrorWrap>
-                                    <AiOutlineWarning />
-                                    <ErrorMes>Tối đa 20 ký tự</ErrorMes>
-                                </ErrorWrap>
-                            }
-                            {errors.firstName?.type === "pattern" &&
-                                <ErrorWrap>
-                                    <AiOutlineWarning />
-                                    <ErrorMes>Chỉ các ký tự trong bảng chữ cái</ErrorMes>
+                                    <ErrorMes>{errors.firstName.message}</ErrorMes>
                                 </ErrorWrap>
                             }
                         </FormWrap>
                         <FormWrap>
                             <FormLabel>Last Name *</FormLabel>
-                            <FormInput type={'text'} {...register('lastName', {
-                                required: true,
-                                minLength: 3,
-                                maxLength: 30,
-                                pattern: /^[A-Za-z]+$/i
-                            })} />
-                            {errors.lastName?.type === "required" &&
+                            <FormInput
+                                type={'text'}
+                                errorMessage={errors.lastName}
+                                {...register('lastName', registerOptions.lastName)}
+                            />
+                            {errors?.lastName &&
                                 <ErrorWrap>
                                     <AiOutlineWarning />
-                                    <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
-                                </ErrorWrap>
-                            }
-                            {errors.lastName?.type === "minLength" &&
-                                <ErrorWrap>
-                                    <AiOutlineWarning />
-                                    <ErrorMes>Tối thiểu 3 ký tự</ErrorMes>
-                                </ErrorWrap>
-                            }
-                            {errors.lastName?.type === "maxLength" &&
-                                <ErrorWrap>
-                                    <AiOutlineWarning />
-                                    <ErrorMes>Tối đa 20 ký tự</ErrorMes>
-                                </ErrorWrap>
-                            }
-                            {errors.lastName?.type === "pattern" &&
-                                <ErrorWrap>
-                                    <AiOutlineWarning />
-                                    <ErrorMes>Chỉ các ký tự trong bảng chữ cái</ErrorMes>
+                                    <ErrorMes>{errors.lastName.message}</ErrorMes>
                                 </ErrorWrap>
                             }
                         </FormWrap>
                     </FormGroup>
                     <FormWrap>
                         <FormLabel>Email *</FormLabel>
-                        <FormInput type={'text'} {...register('email', {
-                            required: true,
-                            pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-                        })} />
-                        {errors.email?.type === "required" &&
+                        <FormInput
+                            type={'text'}
+                            errorMessage={errors.email}
+                            {...register('email', registerOptions.email)}
+                        />
+                        {errors?.email &&
                             <ErrorWrap>
                                 <AiOutlineWarning />
-                                <ErrorMes>Vui lòng điền vào trường này</ErrorMes>
-                            </ErrorWrap>
-                        }
-                        {errors.email?.type === "pattern" &&
-                            <ErrorWrap>
-                                <AiOutlineWarning />
-                                <ErrorMes>Email không hợp lệ</ErrorMes>
+                                <ErrorMes>{errors.email.message}</ErrorMes>
                             </ErrorWrap>
                         }
                     </FormWrap>

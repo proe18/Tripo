@@ -143,9 +143,14 @@ export const FormInput = styled.input`
     border-radius: 10px;
     border: 1px solid #2a2929;
 
-    &:hover, &:focus {
-        border: 2px solid #000000;
-    }
+    ${({ errorMessage }) => errorMessage && css`
+        border: 2px solid red;
+        outline: none;
+
+        &:focus {
+            border: 2px solid red;
+        }
+    `}
 
     @media (max-width: 519.5px) {
         max-width: 100%;
@@ -227,7 +232,10 @@ export const FormSelect = styled.select`
     border: 1px solid #2a2929;
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
+    ${({ errorMessage }) => errorMessage && css`
+        border: 2px solid red;
+    `}
 
     @media (max-width: 519.5px) {
         max-width: 100%;
@@ -237,7 +245,7 @@ export const FormSelect = styled.select`
 export const FormOption = styled.option`
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    color: ${({theme}) => theme.color.textColor};
+    color: ${({ theme }) => theme.color.textColor};
 `
 
 export const FormLabel = styled.label``
