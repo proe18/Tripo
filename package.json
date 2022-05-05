@@ -1,6 +1,6 @@
 {
-  "homepage": "https://proe18.github.io/Tripo",
-  "name": "tripo-clone",
+  "homepage": "https://proe18.github.io/tripo",
+  "name": "tripo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
