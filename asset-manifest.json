@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/tripo/static/js/main.eda1b0e2.js",
+    "main.js": "/tripo/static/js/main.cd919637.js",
     "static/media/treasure_1.jpg": "/tripo/static/media/treasure_1.11468ecfe66768e788cb.jpg",
     "static/media/robotrix_2.jpg": "/tripo/static/media/robotrix_2.4b69a6ed1c8602ac20fc.jpg",
     "static/media/robotrix_1.jpg": "/tripo/static/media/robotrix_1.b96eac857c9b0ff08bcb.jpg",
@@ -33,9 +33,9 @@
     "static/media/careers_2.jpg": "/tripo/static/media/careers_2.6ace799221500e15a66a.jpg",
     "static/media/careers_4.jpg": "/tripo/static/media/careers_4.0b3e73351b71c26e57c8.jpg",
     "index.html": "/tripo/index.html",
-    "main.eda1b0e2.js.map": "/tripo/static/js/main.eda1b0e2.js.map"
+    "main.cd919637.js.map": "/tripo/static/js/main.cd919637.js.map"
   },
   "entrypoints": [
-    "static/js/main.eda1b0e2.js"
+    "static/js/main.cd919637.js"
   ]
 }
