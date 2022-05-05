@@ -1,4 +1,4 @@
-export const HOME = '/'
+export const HOME = '/Tripo'
 export const CAREERS ='/careers'
 export const ABOUT = '/about'
 export const KIPON = '/kipon'

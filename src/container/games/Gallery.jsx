@@ -29,7 +29,6 @@ const GalleryContainer = ({ data }) => {
             <Gallery
                 hideGallery={isCloseGallery}
                 fullscreen={isFullscreen}
-                hideButton={isPre}
                 tabIndex='0'
                 onKeyDown={({ key }) => key === 'Escape' && handleCloseGallery()}
             >

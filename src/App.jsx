@@ -29,7 +29,7 @@ const App = () => {
             window.removeEventListener('scroll', handleShowButtonScroll)
         }
     }, [pathname])
-    
+
     return (
         <>
             <GlobalStyles mobileMenu={mobileMenu} closeGallery={isCloseGallery} />
