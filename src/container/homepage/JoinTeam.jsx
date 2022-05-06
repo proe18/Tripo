@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { ButtonLink, JoinTeam, MainForm, SubscribeForm } from '../../components'
 import { ScrollContext } from '../../context'
+import * as ROUTES from '../../constants/routes'
 
 const JoinTeamContainer = ({ data }) => {
     const {
@@ -20,7 +21,7 @@ const JoinTeamContainer = ({ data }) => {
                             <JoinTeam.Heading ref={homeJoinTeamHeading} active={activeElement?.joinTeam}>
                                 <JoinTeam.Title>{data.title}</JoinTeam.Title>
                                 <JoinTeam.Text>{data.text}</JoinTeam.Text>
-                                <ButtonLink to={data.path}>{data.name}</ButtonLink>
+                                <ButtonLink to={ROUTES.CAREERS}>{data.name}</ButtonLink>
                             </JoinTeam.Heading>
                             <JoinTeam.Wrap>
                                 <JoinTeam.Image

@@ -10,7 +10,6 @@ import OurGameImage from '../images/home_3.jpg'
 import JoinTeamImage from '../images/home_4.jpg'
 import AppStore from "../images/app_store.jpg"
 import GooglePlay from "../images/google_play.jpg"
-import * as ROUTES from '../constants/routes'
 
 export const homeData = {
     header: {
@@ -20,7 +19,7 @@ export const homeData = {
             {
                 img: AppStore,
                 alt: "App Store"
-            }, 
+            },
             {
                 img: GooglePlay,
                 alt: "Google Play"
@@ -31,7 +30,6 @@ export const homeData = {
         listGames: [
             {
                 title: "Kipon",
-                path: ROUTES.KIPON,
                 text: "Casual - Free",
                 img: KiponBg,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
@@ -39,7 +37,6 @@ export const homeData = {
             },
             {
                 title: "Robotrix",
-                path: ROUTES.ROBOTRIX,
                 text: "RPG - Free",
                 img: RobotrixBg,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
@@ -47,7 +44,6 @@ export const homeData = {
             },
             {
                 title: "Treasure Box",
-                path: ROUTES.TREASURE,
                 text: "Adventure - Free",
                 img: TreasureBg,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
@@ -62,7 +58,6 @@ export const homeData = {
         I’m a great place for you to tell a story and let your users know a little more about you.`,
         button: {
             name: 'Learn More',
-            path: ROUTES.ABOUT
         },
         images: [
             {
@@ -84,14 +79,13 @@ export const homeData = {
                 avatar: Kipon,
                 title: "Kipon",
                 text: "Casual - Free",
-                path: ROUTES.KIPON,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 ’m a great place for you to tell a story and let your users know a little more about you.`,
                 platForms: [
                     {
                         img: AppStore,
                         alt: "App Store"
-                    }, 
+                    },
                     {
                         img: GooglePlay,
                         alt: "Google Play"
@@ -102,14 +96,13 @@ export const homeData = {
                 avatar: Robotrix,
                 title: "Robotrix",
                 text: "RPG - Free",
-                path: ROUTES.ROBOTRIX,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 I’m a great place for you to tell a story and let your users know a little more about you.`,
                 platForms: [
                     {
                         img: AppStore,
                         alt: "App Store"
-                    }, 
+                    },
                     {
                         img: GooglePlay,
                         alt: "Google Play"
@@ -120,14 +113,13 @@ export const homeData = {
                 avatar: Treasure,
                 title: "Treasure Box",
                 text: "Adventure - Free",
-                path: ROUTES.TREASURE,
                 description: `I'm a paragraph. Click here to add your own text and edit me.
                 I’m a great place for you to tell a story and let your users know a little more about you.`,
                 platForms: [
                     {
                         img: AppStore,
                         alt: "App Store"
-                    }, 
+                    },
                     {
                         img: GooglePlay,
                         alt: "Google Play"
@@ -140,7 +132,6 @@ export const homeData = {
     joinTeam: {
         title: "Join Our Team",
         text: "It takes the world's best talent to change the game.",
-        path: ROUTES.CAREERS,
         name: 'Explore Careers',
         img: JoinTeamImage
     }

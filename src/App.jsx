@@ -1,4 +1,4 @@
-import { useContext, useState, useLayoutEffect } from 'react'
+import { useContext, useState, useLayoutEffect, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
 import * as ROUTES from './constants/routes'
@@ -17,6 +17,27 @@ const App = () => {
     const { mobileMenu, isMobile } = useContext(NavbarContext)
     const { isCloseGallery } = useContext(GalleryContext)
     const [showButtonScroll, setShowButtonScroll] = useState(false)
+    const [isShowFooter, setIsShowFooter] = useState(true)
+
+    useEffect(() => {
+        const routes = [
+            ROUTES.HOME, 
+            ROUTES.ABOUT, 
+            ROUTES.CAREERS, 
+            ROUTES.KIPON, 
+            ROUTES.ROBOTRIX, 
+            ROUTES.TREASURE, 
+            ROUTES.POLICY, 
+            ROUTES.TERMS,
+            `${ROUTES.CAREERS}/${ROUTES.MANAGER}`, 
+            `${ROUTES.CAREERS}/${ROUTES.TESTER}`, 
+            `${ROUTES.CAREERS}/${ROUTES.DESIGNER}`, 
+            `${ROUTES.CAREERS}/${ROUTES.DEVELOPER}`
+        ]
+
+        const showFooter = routes.some(route => pathname === route)
+        setIsShowFooter(showFooter)
+    }, [pathname])
 
     useLayoutEffect(() => {
         const handleShowButtonScroll = () => setShowButtonScroll(window.innerWidth <= 860 && window.scrollY > 580)
@@ -60,7 +81,7 @@ const App = () => {
 
                     <Route path='*' element={<NotFound />} />
                 </Routes>
-                <Footer data={footerData} />
+                {isShowFooter && <Footer data={footerData} />}
                 {isCloseGallery &&
                     <ButtonScrollToTop
                         onClick={() => window.scrollTo({

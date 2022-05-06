@@ -1,5 +1,3 @@
-import * as ROUTES from '../constants/routes'
-
 import Manager from "../images/careers_1.jpg"
 import Tester from "../images/careers_2.jpg"
 import Designer from "../images/careers_3.jpg"
@@ -20,7 +18,6 @@ export const careersData = {
             {
                 img: Manager,
                 title: "Community Manager",
-                path: ROUTES.MANAGER,
                 place: "San Francisco, CA",
                 text: `I'm a paragraph. 
                 Click here to add your own text and edit me.
@@ -31,7 +28,6 @@ export const careersData = {
             {
                 img: Tester,
                 title: "QA Tester",
-                path: ROUTES.TESTER,
                 place: "San Francisco, CA",
                 text: `I'm a paragraph. 
                 Click here to add your own text and edit me.
@@ -42,7 +38,6 @@ export const careersData = {
             {
                 img: Designer,
                 title: "Game Designer",
-                path: ROUTES.DESIGNER,
                 place: "San Francisco, CA",
                 text: `I'm a paragraph. 
                 Click here to add your own text and edit me.
@@ -53,7 +48,6 @@ export const careersData = {
             {
                 img: Developer,
                 title: "Game Developer",
-                path: ROUTES.DEVELOPER,
                 place: "San Francisco, CA",
                 text: `I'm a paragraph. 
                 Click here to add your own text and edit me.

@@ -21,9 +21,19 @@ const AboutContainer = ({ data }) => {
                 return () => handleSwitchPage(PAGESTITLE.ROBOTRIX)
             case PAGESTITLE.TREASURE:
                 return () => handleSwitchPage(PAGESTITLE.TREASURE)
-            default:
-                console.error('Invail value:', title);
-                return
+            default: return
+        }
+    }
+
+    const selectPath = title => {
+        switch (title) {
+            case PAGESTITLE.KIPON:
+                return ROUTES.KIPON
+            case PAGESTITLE.ROBOTRIX:
+                return ROUTES.ROBOTRIX
+            case PAGESTITLE.TREASURE:
+                return ROUTES.TREASURE
+            default: return
         }
     }
 
@@ -34,7 +44,7 @@ const AboutContainer = ({ data }) => {
                     {data.listGames.map(game =>
                         <About.Game
                             key={game.title}
-                            to={game.path}
+                            to={selectPath(game.title)}
                             onClick={handleOnClick(game.title)}
                         >
                             <About.Image src={game.img} alt='GameImage' />
@@ -68,7 +78,7 @@ const AboutContainer = ({ data }) => {
                         <About.SubTitle>{data.subTitle}</About.SubTitle>
                         <About.Title>{data.title}</About.Title>
                         <About.Text>{data.text}</About.Text>
-                        <ButtonLink to={data.button.path}>{data.button.name}</ButtonLink>
+                        <ButtonLink to={ROUTES.ABOUT}>{data.button.name}</ButtonLink>
                     </About.Heading>
                     <About.WrapImage
                         ref={imageHomeAbout}
