@@ -78,7 +78,10 @@ const AboutContainer = ({ data }) => {
                         <About.SubTitle>{data.subTitle}</About.SubTitle>
                         <About.Title>{data.title}</About.Title>
                         <About.Text>{data.text}</About.Text>
-                        <ButtonLink to={ROUTES.ABOUT}>{data.button.name}</ButtonLink>
+                        <ButtonLink
+                            to={ROUTES.ABOUT}
+                            onClick={() => handleSwitchPage(PAGESTITLE.ABOUT)}
+                        >{data.button.name}</ButtonLink>
                     </About.Heading>
                     <About.WrapImage
                         ref={imageHomeAbout}

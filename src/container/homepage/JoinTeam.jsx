@@ -1,7 +1,8 @@
 import { useContext } from 'react'
 import { ButtonLink, JoinTeam, MainForm, SubscribeForm } from '../../components'
-import { ScrollContext } from '../../context'
+import { ScrollContext, NavbarContext } from '../../context'
 import * as ROUTES from '../../constants/routes'
+import * as PAGESTITLE from '../../constants/pages_title'
 
 const JoinTeamContainer = ({ data }) => {
     const {
@@ -11,6 +12,7 @@ const JoinTeamContainer = ({ data }) => {
         heightImage,
         activeElement
     } = useContext(ScrollContext)
+    const { handleSwitchPage } = useContext(NavbarContext)
 
     return (
         <JoinTeam marginTop={marginJoinTeam}>
@@ -21,7 +23,10 @@ const JoinTeamContainer = ({ data }) => {
                             <JoinTeam.Heading ref={homeJoinTeamHeading} active={activeElement?.joinTeam}>
                                 <JoinTeam.Title>{data.title}</JoinTeam.Title>
                                 <JoinTeam.Text>{data.text}</JoinTeam.Text>
-                                <ButtonLink to={ROUTES.CAREERS}>{data.name}</ButtonLink>
+                                <ButtonLink
+                                    to={ROUTES.CAREERS}
+                                    onClick={() => handleSwitchPage(PAGESTITLE.CAREERS)}
+                                >{data.name}</ButtonLink>
                             </JoinTeam.Heading>
                             <JoinTeam.Wrap>
                                 <JoinTeam.Image
